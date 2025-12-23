@@ -1,11 +1,11 @@
-import {getContrast} from "color2k";
-import {get} from "@heroui/shared-utils";
+import { getContrast } from "color2k";
+import { get } from "@heroui-mobile/shared-utils";
 
-import {semanticColors} from "../src/colors/semantic";
+import { semanticColors } from "../src/colors/semantic";
 
 type Guideline = keyof typeof guidelines;
 
-const guidelines = {decorative: 1.5, readable: 3, aa: 4.5, aaa: 7};
+const guidelines = { decorative: 1.5, readable: 3, aa: 4.5, aaa: 7 };
 const targetGuideline: Guideline = "readable";
 
 const testGoodContrast = (colorPath: string, backgroundPath: string, standard: Guideline) => {

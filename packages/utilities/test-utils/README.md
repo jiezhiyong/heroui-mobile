@@ -1,4 +1,4 @@
-# @heroui/test-utils
+# @heroui-mobile/test-utils
 
 A Quick description of the component
 
@@ -7,9 +7,9 @@ A Quick description of the component
 ## Installation
 
 ```sh
-yarn add @heroui/test-utils
+yarn add @heroui-mobile/test-utils
 # or
-npm i @heroui/test-utils
+npm i @heroui-mobile/test-utils
 ```
 
 ## Contribution

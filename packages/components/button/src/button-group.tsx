@@ -1,14 +1,14 @@
-import type {UseButtonGroupProps} from "./use-button-group";
+import type { UseButtonGroupProps } from "./use-button-group";
 
-import {forwardRef} from "@heroui/system";
+import { forwardRef } from "@heroui-mobile/system";
 
-import {ButtonGroupProvider} from "./button-group-context";
-import {useButtonGroup} from "./use-button-group";
+import { ButtonGroupProvider } from "./button-group-context";
+import { useButtonGroup } from "./use-button-group";
 
 export interface ButtonGroupProps extends UseButtonGroupProps {}
 
 const ButtonGroup = forwardRef<"div", ButtonGroupProps>((props, ref) => {
-  const {Component, domRef, context, children, classNames, getButtonGroupProps} = useButtonGroup({
+  const { Component, domRef, context, children, classNames, getButtonGroupProps } = useButtonGroup({
     ...props,
     ref,
   });

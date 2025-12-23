@@ -1,8 +1,8 @@
 import React from "react";
-import {render} from "@testing-library/react";
+import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import {ButtonGroup, Button} from "../src";
+import { ButtonGroup, Button } from "../src";
 
 describe("ButtonGroup", () => {
   it("should render correctly", () => {

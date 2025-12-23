@@ -1,4 +1,4 @@
-# @heroui/use-is-mobile
+# @heroui-mobile/use-is-mobile
 
 A Quick description of the component
 
@@ -7,18 +7,18 @@ A Quick description of the component
 ## Installation
 
 ```sh
-yarn add @heroui/use-is-mobile
+yarn add @heroui-mobile/use-is-mobile
 # or
-npm i @heroui/use-is-mobile
+npm i @heroui-mobile/use-is-mobile
 ```
 
 ## Contribution
 
 Yes please! See the
-[contributing guidelines](https://github.com/heroui-inc/heroui/blob/master/CONTRIBUTING.md)
+[contributing guidelines](https://github.com/jiezhiyong/heroui-mobile/blob/main/CONTRIBUTING.md)
 for details.
 
 ## License
 
 This project is licensed under the terms of the
-[MIT license](https://github.com/heroui-inc/heroui/blob/master/LICENSE).
+[MIT license](https://github.com/jiezhiyong/heroui-mobile/blob/main/LICENSE).

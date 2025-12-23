@@ -1,0 +1,54 @@
+{
+  "name": "@heroui-mobile/safe-area-insert-top",
+  "version": "2.0.0",
+  "description": "...",
+  "keywords": [
+    "safe-area-insert-top"
+  ],
+  "author": "jiezhiyong <vopjie@gmail.com>",
+  "homepage": "https://github.com/jiezhiyong/heroui-mobile",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiezhiyong/heroui-mobile.git",
+    "directory": "packages/components/safe-area-insert-top"
+  },
+  "bugs": {
+    "url": "https://github.com/jiezhiyong/heroui-mobile/issues"
+  },
+  "scripts": {
+    "build": "tsup src --dts",
+    "build:fast": "tsup src",
+    "dev": "pnpm build:fast --watch",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "peerDependencies": {
+    "react": ">=18 || >=19.0.0-rc.0",
+    "react-dom": ">=18 || >=19.0.0-rc.0",
+    "@heroui-mobile/theme": ">=2.4.24",
+    "@heroui-mobile/system": ">=2.4.23"
+  },
+  "dependencies": {
+    "@heroui-mobile/shared-utils": "workspace:*",
+    "@heroui-mobile/react-utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@heroui-mobile/theme": "workspace:*",
+    "@heroui-mobile/system": "workspace:*",
+    "clean-package": "2.2.0",
+    "react": "18.3.0",
+    "react-dom": "18.3.0"
+  },
+  "clean-package": "../../../clean-package.config.json"
+}

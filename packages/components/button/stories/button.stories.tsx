@@ -1,11 +1,11 @@
-import type {Meta} from "@storybook/react";
-import type {ButtonProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { ButtonProps } from "../src";
 
 import React from "react";
-import {button} from "@heroui/theme";
-import {Camera, HeadphonesIcon, Notification} from "@heroui/shared-icons";
+import { button } from "@heroui-mobile/theme";
+import { Camera, HeadphonesIcon, Notification } from "@heroui-mobile/shared-icons";
 
-import {Button} from "../src";
+import { Button } from "../src";
 
 export default {
   title: "Components/Button",

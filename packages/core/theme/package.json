@@ -1,5 +1,5 @@
 {
-  "name": "@heroui/theme",
+  "name": "@heroui-mobile/theme",
   "version": "2.4.25",
   "description": "The default theme for HeroUI components",
   "keywords": [
@@ -11,8 +11,8 @@
     "classNames",
     "css"
   ],
-  "author": "HeroUI <support@heroui.com>",
-  "homepage": "https://heroui.com",
+  "author": "jiezhiyong <vopjie@gmail.com>",
+  "homepage": "https://github.com/jiezhiyong/heroui-mobile",
   "license": "MIT",
   "main": "src/index.ts",
   "sideEffects": false,
@@ -30,11 +30,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heroui-inc/heroui.git",
+    "url": "git+https://github.com/jiezhiyong/heroui-mobile.git",
     "directory": "packages/core/theme"
   },
   "bugs": {
-    "url": "https://github.com/heroui-inc/heroui/issues"
+    "url": "https://github.com/jiezhiyong/heroui-mobile/issues"
   },
   "scripts": {
     "build": "tsup src --dts",
@@ -52,7 +52,7 @@
     "flat": "^5.0.2",
     "tailwind-variants": "3.2.2",
     "tailwind-merge": "3.4.0",
-    "@heroui/shared-utils": "workspace:*"
+    "@heroui-mobile/shared-utils": "workspace:*"
   },
   "peerDependencies": {
     "tailwindcss": ">=4.0.0"

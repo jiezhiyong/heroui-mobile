@@ -1,4 +1,4 @@
-# @heroui/system-rsc
+# @heroui-mobile/system-rsc
 
 A Quick description of the component
 
@@ -7,9 +7,9 @@ A Quick description of the component
 ## Installation
 
 ```sh
-yarn add @heroui/system-rsc
+yarn add @heroui-mobile/system-rsc
 # or
-npm i @heroui/system-rsc
+npm i @heroui-mobile/system-rsc
 ```
 
 ## Contribution

@@ -1,61 +1,220 @@
-<p align="center">
-  <a href="https://heroui.com">
-      <img width="20%" src="https://raw.githubusercontent.com/heroui-inc/heroui/main/apps/docs/public/isotipo.png" alt="heorui" />
-      <h1 align="center">HeroUI</h1>
-  </a>
-</p>
-</br>
-<p align="center">
-  <a href="https://github.com/heroui-inc/heroui/blob/main/LICENSE">
-    <img src="https://img.shields.io/npm/l/@heroui/react?style=flat" alt="License">
-  </a>
-  <a href="https://codecov.io/gh/jrgarciadev/nextui">
-    <img src="https://codecov.io/gh/jrgarciadev/nextui/branch/main/graph/badge.svg?token=QJF2QKR5N4" alt="codecov badge">
-  </a>
-  <!-- <a href="https://github.com/heroui-inc/heroui/actions/workflows/main.yaml">
-    <img src="https://github.com/heroui-inc/heroui/actions/workflows/main.yaml/badge.svg" alt="CI/CD heroui">
-  </a> -->
-  <a href="https://www.npmjs.com/package/@heroui/react">
-    <img src="https://img.shields.io/npm/dm/@heroui/react.svg?style=flat-round" alt="npm downloads">
-  </a>
-</p>
+# HeroUI Mobile
 
-## Getting Started
+基于 [HeroUI](https://github.com/heroui-inc/heroui) V2 扩展的适用于手机端的组件库
 
-Visit <a aria-label="heroui learn" href="https://heroui.com/learn">https://heroui.com/guide</a> to get started with HeroUI.
+## 使用 Plop 生成器创建新组件、Hook、工具包，组件名称小写，使用连字符，如 `my-component`
 
-## Documentation
+```bash
+pnpm create:cmp
+pnpm create:hook
+pnpm create:pkg
+```
 
-Visit [https://heroui.com/docs](https://heroui.com/docs) to view the full documentation.
+## 将新组件添加到主包
 
-## Storybook
+编辑 `packages/core/react/package.json`，在 `dependencies` 中添加：
 
-Visit [https://storybook.heroui.com](https://storybook.heroui.com/) to view the storybook for all components.
+```json
+{
+  "dependencies": {
+    "@heroui-mobile/your-component": "workspace:*"
+  }
+}
+```
 
-## Canary Release
+编辑 `packages/core/react/src/index.ts`，添加导出：
 
-Canary versions are available after every merge into `canary` branch. You can install the packages with the tag `canary` in npm to use the latest changes before the next production release.
+```typescript
+export * from "@heroui-mobile/your-component";
+```
 
-- [Documentation](https://canary.heroui.com/docs)
-- [Storybook](https://canary-sb.heroui.com)
+## 开发环境启动
 
-## Community
+### 前置要求
 
-We're excited to see the community adopt HeroUI, raise issues, and provide feedback.
-Whether it's a feature request, bug report, or a project to showcase, please get involved!
+- Node.js >= 22.x
+- pnpm >= 10.x
 
-- [Discord](https://discord.gg/9b6yyZKmH4)
-- [X](https://x.com/hero_ui)
-- [GitHub Discussions](https://github.com/heroui-inc/heroui/discussions)
+### 安装依赖
 
-## Contributing
+```bash
+pnpm install
+```
 
-Contributions are always welcome!
+### 启动开发环境
 
-See [CONTRIBUTING.md](https://github.com/heroui-inc/heroui/blob/main/CONTRIBUTING.md) for ways to get started.
+```bash
+# 启动 Storybook（组件开发预览）
+pnpm sb
+# 或
+pnpm dev
 
-Please adhere to this project's [CODE_OF_CONDUCT](https://github.com/heroui-inc/heroui/blob/main/CODE_OF_CONDUCT.md).
+# 启动文档站点
+pnpm dev:docs
 
-## License
+# 启动特定组件的开发模式（监听文件变化）
+cd packages/components/your-component
+pnpm dev
+```
 
-[MIT](https://choosealicense.com/licenses/mit/)
+### 其他开发命令
+
+```bash
+# 类型检查
+pnpm typecheck
+
+# 代码检查
+pnpm lint
+pnpm lint:fix
+
+# 运行测试
+pnpm test
+
+# 格式化代码
+pnpm format:write
+```
+
+## 构建打包
+
+### 构建所有包
+
+```bash
+# 完整构建（包含类型定义）
+pnpm build
+
+# 快速构建（不包含类型定义，开发时使用）
+pnpm build:fast
+```
+
+### 构建特定包
+
+```bash
+# 使用 turbo 过滤
+pnpm --filter @heroui-mobile/button build
+
+# 或进入组件目录
+cd packages/components/your-component
+pnpm build
+```
+
+### 构建文档
+
+```bash
+# 构建文档站点
+pnpm build:docs
+```
+
+### 构建 Storybook
+
+```bash
+pnpm build:sb
+```
+
+## 发布到 npm
+
+### 1. 配置 npm 发布
+
+确保你的组件包 `package.json` 中有正确的发布配置：
+
+```json
+{
+  "publishConfig": {
+    "access": "public"
+  }
+}
+```
+
+### 2. 登录 npm
+
+```bash
+npm login
+```
+
+### 3. 使用 Changesets 管理版本
+
+项目使用 [Changesets](https://github.com/changesets/changesets) 管理版本和发布。
+
+#### 创建变更集
+
+```bash
+# 创建变更集（描述你的更改）
+pnpm changeset:canary
+```
+在heroui的基础上，扩展自己的包
+#### 版本管理
+
+```bash
+# 更新版本号（基于变更集）
+pnpm version:canary
+```
+
+#### 发布
+
+```bash
+# 发布到 npm
+pnpm release:canary
+```
+
+### 4. 发布流程示例
+
+```bash
+# 1. 创建变更集
+pnpm changeset:canary
+
+# 2. 提交变更
+git add .
+git commit -m "feat: 添加新组件"
+
+# 3. 更新版本号
+pnpm version:canary
+
+# 4. 构建项目
+pnpm build
+
+# 5. 发布到 npm
+pnpm release:canary
+
+# 6. 推送代码和标签
+git push
+git push --tags
+```
+
+### 5. 手动发布单个包
+
+如果需要单独发布某个组件：
+
+```bash
+cd packages/components/your-component
+pnpm build
+npm publish
+```
+
+## 常见问题
+
+### Q: 构建失败怎么办？
+
+A:
+1. 清理缓存：`pnpm clean`
+2. 重新安装依赖：`pnpm install`
+3. 检查 TypeScript 错误：`pnpm typecheck`
+
+### Q: 如何保持与上游同步？
+
+A:
+```bash
+# 添加上游仓库
+git remote add upstream https://github.com/heroui-inc/heroui.git
+
+# 拉取上游更新
+git fetch upstream
+
+# 合并上游变更
+git merge upstream/canary
+```
+
+## 相关资源
+
+- [HeroUI 文档](https://heroui.com/docs)
+- [Changesets 文档](https://github.com/changesets/changesets)
+- [Turbo 文档](https://turbo.build/repo/docs)
+- [pnpm 文档](https://pnpm.io/)

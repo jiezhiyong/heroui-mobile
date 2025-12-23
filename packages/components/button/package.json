@@ -1,12 +1,12 @@
 {
-  "name": "@heroui/button",
+  "name": "@heroui-mobile/button",
   "version": "2.2.29",
   "description": "Buttons allow users to perform actions and choose with a single tap.",
   "keywords": [
     "button"
   ],
-  "author": "HeroUI <support@heroui.com>",
-  "homepage": "https://heroui.com",
+  "author": "jiezhiyong <vopjie@gmail.com>",
+  "homepage": "https://github.com/jiezhiyong/heroui-mobile",
   "license": "MIT",
   "main": "src/index.ts",
   "sideEffects": false,
@@ -18,11 +18,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heroui-inc/heroui.git",
+    "url": "git+https://github.com/jiezhiyong/heroui-mobile.git",
     "directory": "packages/components/button"
   },
   "bugs": {
-    "url": "https://github.com/heroui-inc/heroui/issues"
+    "url": "https://github.com/jiezhiyong/heroui-mobile/issues"
   },
   "scripts": {
     "build": "tsup src --dts",
@@ -37,12 +37,12 @@
     "react": ">=18 || >=19.0.0-rc.0",
     "react-dom": ">=18 || >=19.0.0-rc.0",
     "framer-motion": ">=11.5.6 || >=12.0.0-alpha.1",
-    "@heroui/theme": ">=2.4.24",
-    "@heroui/system": ">=2.4.18"
+    "@heroui-mobile/theme": ">=2.4.24",
+    "@heroui-mobile/system": ">=2.4.18"
   },
   "dependencies": {
-    "@heroui/shared-utils": "workspace:*",
-    "@heroui/react-utils": "workspace:*",
+    "@heroui-mobile/shared-utils": "workspace:*",
+    "@heroui-mobile/react-utils": "workspace:*",
     "@heroui/use-aria-button": "workspace:*",
     "@heroui/ripple": "workspace:*",
     "@heroui/spinner": "workspace:*",
@@ -51,9 +51,9 @@
     "@react-types/shared": "3.32.1"
   },
   "devDependencies": {
-    "@heroui/theme": "workspace:*",
-    "@heroui/system": "workspace:*",
-    "@heroui/shared-icons": "workspace:*",
+    "@heroui-mobile/theme": "workspace:*",
+    "@heroui-mobile/system": "workspace:*",
+    "@heroui-mobile/shared-icons": "workspace:*",
     "framer-motion": "11.18.2",
     "clean-package": "2.2.0",
     "react": "18.3.0",

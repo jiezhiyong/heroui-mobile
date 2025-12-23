@@ -1,4 +1,4 @@
-# @heroui/shared-utils
+# @heroui-mobile/shared-utils
 
 A Quick description of the component
 
@@ -7,9 +7,9 @@ A Quick description of the component
 ## Installation
 
 ```sh
-yarn add @heroui/shared-utils
+yarn add @heroui-mobile/shared-utils
 # or
-npm i @heroui/shared-utils
+npm i @heroui-mobile/shared-utils
 ```
 
 ## Contribution

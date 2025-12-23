@@ -1,7 +1,7 @@
-import type {VariantProps} from "tailwind-variants";
+import type { VariantProps } from "tailwind-variants";
 
-import {tv} from "../utils/tv";
-import {collapseAdjacentVariantBorders, colorVariants, dataFocusVisibleClasses} from "../utils";
+import { tv } from "../utils/tv";
+import { collapseAdjacentVariantBorders, colorVariants, dataFocusVisibleClasses } from "../utils";
 
 /**
  * Button wrapper **Tailwind Variants** component
@@ -473,4 +473,4 @@ const buttonGroup = tv({
 export type ButtonGroupVariantProps = VariantProps<typeof buttonGroup>;
 export type ButtonVariantProps = VariantProps<typeof button>;
 
-export {button, buttonGroup};
+export { button, buttonGroup };

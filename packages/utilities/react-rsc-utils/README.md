@@ -1,4 +1,4 @@
-# @heroui/react-rsc-utils
+# @heroui-mobile/react-rsc-utils
 
 A Quick description of the component
 
@@ -7,9 +7,9 @@ A Quick description of the component
 ## Installation
 
 ```sh
-yarn add @heroui/react-rsc-utils
+yarn add @heroui-mobile/react-rsc-utils
 # or
-npm i @heroui/react-rsc-utils
+npm i @heroui-mobile/react-rsc-utils
 ```
 
 ## Contribution

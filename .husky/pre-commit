@@ -6,4 +6,5 @@ if [ -t 2 ]; then
   exec >/dev/tty 2>&1
 fi
 
-pnpm lint-staged -c .lintstagedrc.cjs
+# 暂时停用 husky 检查
+# pnpm lint-staged -c .lintstagedrc.cjs

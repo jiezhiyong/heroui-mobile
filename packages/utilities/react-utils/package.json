@@ -1,5 +1,5 @@
 {
-  "name": "@heroui/react-utils",
+  "name": "@heroui-mobile/react-utils",
   "version": "2.1.14",
   "description": "A set of utilities for react on client side",
   "keywords": [
@@ -37,8 +37,8 @@
     "react": ">=18 || >=19.0.0-rc.0"
   },
   "dependencies": {
-    "@heroui/shared-utils": "workspace:*",
-    "@heroui/react-rsc-utils": "workspace:*"
+    "@heroui-mobile/shared-utils": "workspace:*",
+    "@heroui-mobile/react-rsc-utils": "workspace:*"
   },
   "devDependencies": {
     "clean-package": "2.2.0",

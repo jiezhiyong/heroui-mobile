@@ -1,13 +1,13 @@
 {
-  "name": "@heroui/storybook",
+  "name": "@heroui-mobile/storybook",
   "version": "2.0.0",
-  "description": "The HeroUI react components storybook ",
+  "description": "The HeroUI Mobile react components storybook ",
   "keywords": [
     "storybook"
   ],
   "type": "module",
-  "author": "HeroUI <support@heroui.com>",
-  "homepage": "https://heroui.com",
+  "author": "jiezhiyong <vopjie@gmail.com>",
+  "homepage": "https://github.com/jiezhiyong/heroui-mobile",
   "license": "MIT",
   "main": "src/index.ts",
   "sideEffects": true,
@@ -19,11 +19,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heroui-inc/heroui.git",
-    "directory": "packages/components/storybook"
+    "url": "git+https://github.com/jiezhiyong/heroui-mobile.git",
+    "directory": "packages/storybook"
   },
   "bugs": {
-    "url": "https://github.com/heroui-inc/heroui/issues"
+    "url": "https://github.com/jiezhiyong/heroui-mobile/issues"
   },
   "scripts": {
     "dev": "pnpm storybook dev -p 6006",
@@ -31,8 +31,8 @@
     "start": "pnpm dlx http-server storybook-static"
   },
   "dependencies": {
-    "@heroui/system": "workspace:*",
-    "@heroui/theme": "workspace:*",
+    "@heroui-mobile/system": "workspace:*",
+    "@heroui-mobile/theme": "workspace:*",
     "react": "18.3.0",
     "react-dom": "18.3.0"
   },

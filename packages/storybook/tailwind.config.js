@@ -1,4 +1,4 @@
-import {heroui} from "@heroui/theme/plugin";
+import { heroui } from "@heroui-mobile/theme/plugin";
 
 /** @type {import('tailwindcss').Config} */
 export default {

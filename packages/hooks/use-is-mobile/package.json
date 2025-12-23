@@ -1,12 +1,12 @@
 {
-  "name": "@heroui/use-is-mobile",
+  "name": "@heroui-mobile/use-is-mobile",
   "version": "2.2.12",
   "description": "A hook that returns whether the device is mobile or not",
   "keywords": [
     "use-is-mobile"
   ],
-  "author": "HeroUI <support@heroui.com>",
-  "homepage": "https://heroui.com",
+  "author": "jiezhiyong <vopjie@gmail.com>",
+  "homepage": "https://github.com/jiezhiyong/heroui-mobile",
   "license": "MIT",
   "main": "src/index.ts",
   "sideEffects": false,
@@ -18,11 +18,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heroui-inc/heroui.git",
+    "url": "git+https://github.com/jiezhiyong/heroui-mobile.git",
     "directory": "packages/hooks/use-is-mobile"
   },
   "bugs": {
-    "url": "https://github.com/heroui-inc/heroui/issues"
+    "url": "https://github.com/jiezhiyong/heroui-mobile/issues"
   },
   "scripts": {
     "build": "tsup src --dts",
