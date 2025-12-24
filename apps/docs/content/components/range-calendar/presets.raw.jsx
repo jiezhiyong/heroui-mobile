@@ -1,28 +1,28 @@
-import {RangeCalendar, Radio, RadioGroup, Button, ButtonGroup, cn} from "@heroui/react";
-import {today, getLocalTimeZone, startOfWeek, startOfMonth} from "@internationalized/date";
-import {useLocale} from "@react-aria/i18n";
+import { RangeCalendar, Radio, RadioGroup, Button, ButtonGroup, cn } from "@heroui/react";
+import { today, getLocalTimeZone, startOfWeek, startOfMonth } from "@internationalized/date";
+import { useLocale } from "@react-aria/i18n";
 
 export default function App() {
   let [value, setValue] = React.useState({
     start: today(getLocalTimeZone()),
-    end: today(getLocalTimeZone()).add({weeks: 1, days: 3}),
+    end: today(getLocalTimeZone()).add({ weeks: 1, days: 3 }),
   });
   let [focusedValue, setFocusedValue] = React.useState(today(getLocalTimeZone()));
 
-  let {locale} = useLocale();
+  let { locale } = useLocale();
 
   let now = today(getLocalTimeZone());
-  let nextMonth = now.add({months: 1});
+  let nextMonth = now.add({ months: 1 });
 
   let nextWeek = {
-    start: startOfWeek(now.add({weeks: 1}), locale),
-    end: endOfWeek(now.add({weeks: 1}), locale),
+    start: startOfWeek(now.add({ weeks: 1 }), locale),
+    end: endOfWeek(now.add({ weeks: 1 }), locale),
   };
-  let thisMonth = {start: startOfMonth(now), end: endOfMonth(now)};
-  let nextMonthValue = {start: startOfMonth(nextMonth), end: endOfMonth(nextMonth)};
+  let thisMonth = { start: startOfMonth(now), end: endOfMonth(now) };
+  let nextMonthValue = { start: startOfMonth(nextMonth), end: endOfMonth(nextMonth) };
 
   const CustomRadio = (props) => {
-    const {children, ...otherProps} = props;
+    const { children, ...otherProps } = props;
 
     return (
       <Radio
@@ -100,7 +100,7 @@ export default function App() {
             </Button>
             <Button
               onPress={() => {
-                setValue(nextMonthValue), setFocusedValue(nextMonthValue.start);
+                (setValue(nextMonthValue), setFocusedValue(nextMonthValue.start));
               }}
             >
               Next month

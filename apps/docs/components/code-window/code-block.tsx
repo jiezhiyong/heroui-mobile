@@ -6,12 +6,12 @@ import jsx from "refractor/lang/jsx";
 import bash from "refractor/lang/bash";
 import css from "refractor/lang/css";
 import diff from "refractor/lang/diff";
-import {toHtml} from "hast-util-to-html";
+import { toHtml } from "hast-util-to-html";
 import rangeParser from "parse-numeric-range";
-import {cn} from "@heroui/theme";
+import { clsx } from "@heroui/shared-utils";
 
-import {Pre} from "./pre";
-import {WindowActions} from "./window-actions";
+import { Pre } from "./pre";
+import { WindowActions } from "./window-actions";
 
 import highlightLine from "@/libs/rehype-highlight-line";
 import highlightWord from "@/libs/rehype-highlight-word";
@@ -84,7 +84,7 @@ function wrapEachCharacter(textNode: any, tag: string, count: number) {
   parent.removeChild(textNode);
 }
 
-function CodeTypewriter({value, className, css, ...props}: any) {
+function CodeTypewriter({ value, className, css, ...props }: any) {
   const wrapperRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -108,10 +108,10 @@ function CodeTypewriter({value, className, css, ...props}: any) {
   return (
     <Pre className={className} css={css} {...props}>
       <code
-        dangerouslySetInnerHTML={{__html: value}}
+        dangerouslySetInnerHTML={{ __html: value }}
         ref={wrapperRef}
         className={className}
-        style={{opacity: 0}}
+        style={{ opacity: 0 }}
       />
     </Pre>
   );
@@ -141,7 +141,7 @@ const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>((_props, forw
 
   // TODO reset theme
   const classes = `language-${language}`;
-  const codeClasses = cn("absolute w-full px-4 pb-6", showWindowIcons ? "top-10" : "top-0");
+  const codeClasses = clsx("absolute w-full px-4 pb-6", showWindowIcons ? "top-10" : "top-0");
 
   if (mode === "typewriter") {
     return <CodeTypewriter className={classes} css={css} value={result} {...props} />;
@@ -150,12 +150,12 @@ const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>((_props, forw
   return (
     <Pre
       ref={forwardedRef}
-      className={cn("code-block", classes, className)}
+      className={clsx("code-block", classes, className)}
       data-line-numbers={showLineNumbers}
       {...props}
     >
       {showWindowIcons && <WindowActions title={title} />}
-      <code dangerouslySetInnerHTML={{__html: result}} className={cn(classes, codeClasses)} />
+      <code dangerouslySetInnerHTML={{ __html: result }} className={clsx(classes, codeClasses)} />
     </Pre>
   );
 });

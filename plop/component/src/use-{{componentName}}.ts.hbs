@@ -1,9 +1,9 @@
 import type { {{capitalize componentName}}VariantProps } from "@heroui-mobile/theme";
 
-import { HTMLHeroUIProps, mapPropsVariants } from "@heroui-mobile/system";
+import { HTMLHeroUIProps, mapPropsVariants } from "@heroui/system";
 import { {{componentName}} } from "@heroui-mobile/theme";
-import { ReactRef, useDOMRef } from "@heroui-mobile/react-utils";
-import { objectToDeps } from "@heroui-mobile/shared-utils";
+import { ReactRef, useDOMRef } from "@heroui/react-utils";
+import { objectToDeps } from "@heroui/shared-utils";
 import { useMemo } from "react";
 
 interface Props extends HTMLHeroUIProps<"div"> {

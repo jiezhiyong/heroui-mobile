@@ -1,5 +1,5 @@
-import type {Key} from "react";
-import type {TreeCollection} from "@react-stately/tree";
+import type { Key } from "react";
+import type { TreeCollection } from "@react-stately/tree";
 
 export class TreeKeyboardDelegate<T> {
   collator: Intl.Collator;
@@ -13,7 +13,7 @@ export class TreeKeyboardDelegate<T> {
   }
 
   getKeyAbove(key: Key) {
-    let {collection, disabledKeys} = this;
+    let { collection, disabledKeys } = this;
     let keyBefore = collection.getKeyBefore(key);
 
     while (keyBefore !== null) {
@@ -30,7 +30,7 @@ export class TreeKeyboardDelegate<T> {
   }
 
   getKeyBelow(key: Key) {
-    let {collection, disabledKeys} = this;
+    let { collection, disabledKeys } = this;
     let keyBelow = collection.getKeyAfter(key);
 
     while (keyBelow !== null) {
@@ -47,7 +47,7 @@ export class TreeKeyboardDelegate<T> {
   }
 
   getFirstKey() {
-    let {collection, disabledKeys} = this;
+    let { collection, disabledKeys } = this;
     let key = collection.getFirstKey();
 
     while (key !== null) {
@@ -64,7 +64,7 @@ export class TreeKeyboardDelegate<T> {
   }
 
   getLastKey() {
-    let {collection, disabledKeys} = this;
+    let { collection, disabledKeys } = this;
     let key = collection.getLastKey();
 
     while (key !== null) {
@@ -81,7 +81,7 @@ export class TreeKeyboardDelegate<T> {
   }
 
   getKeyForSearch(search: string, fromKey = this.getFirstKey()) {
-    let {collator, collection} = this;
+    let { collator, collection } = this;
     let key = fromKey;
 
     while (key !== null) {

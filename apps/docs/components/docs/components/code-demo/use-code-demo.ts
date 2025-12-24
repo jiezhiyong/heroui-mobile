@@ -1,14 +1,14 @@
-import type {FileCode} from "./types";
-import type {SandpackProps} from "@/components/sandpack";
+import type { FileCode } from "./types";
+import type { SandpackProps } from "@/components/sandpack";
 
-import {scope} from "./react-live-demo";
-import {transformCode, joinCode, getFileName} from "./utils";
+import { scope } from "./react-live-demo";
+import { transformCode, joinCode, getFileName } from "./utils";
 
 export interface UseCodeDemoProps extends SandpackProps {
   code?: string;
 }
 
-export const useCodeDemo = ({code: inputCode, files: filesProp}: UseCodeDemoProps) => {
+export const useCodeDemo = ({ code: inputCode, files: filesProp }: UseCodeDemoProps) => {
   let code = inputCode?.trim();
   let noInline = false;
   const files = (filesProp || {}) as object;
@@ -18,11 +18,11 @@ export const useCodeDemo = ({code: inputCode, files: filesProp}: UseCodeDemoProp
   const scopeKeys = Object.keys(scope);
   // convert scopeKeys to string values
   const scopeValues = scopeKeys.map((key) => {
-    return {[key]: `${key}`};
+    return { [key]: `${key}` };
   });
 
   // add 'React' to scopeValues
-  scopeValues.push({React: "React"});
+  scopeValues.push({ React: "React" });
   // convert scopeValues to object
   const imports = Object.assign({}, ...scopeValues);
 

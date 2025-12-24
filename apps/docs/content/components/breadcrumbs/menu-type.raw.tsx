@@ -1,5 +1,5 @@
 import React from "react";
-import {Breadcrumbs, BreadcrumbItem} from "@heroui/react";
+import { Breadcrumbs, BreadcrumbItem } from "@heroui/react";
 
 export default function App() {
   const [currentPage, setCurrentPage] = React.useState<React.Key>("music");

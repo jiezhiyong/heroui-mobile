@@ -1,6 +1,6 @@
-@import "tailwindcss";
-
-@config "../tailwind.config.js";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 h1 {
   @apply text-4xl font-bold !text-foreground;

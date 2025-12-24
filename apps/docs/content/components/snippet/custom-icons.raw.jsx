@@ -1,6 +1,6 @@
-import {Snippet} from "@heroui/react";
+import { Snippet } from "@heroui/react";
 
-export const CopyIcon = ({size, height, width, ...props}) => {
+export const CopyIcon = ({ size, height, width, ...props }) => {
   return (
     <svg
       fill="none"
@@ -19,7 +19,7 @@ export const CopyIcon = ({size, height, width, ...props}) => {
   );
 };
 
-export const CheckIcon = ({size, height, width, ...props}) => {
+export const CheckIcon = ({ size, height, width, ...props }) => {
   return (
     <svg
       fill="currentColor"

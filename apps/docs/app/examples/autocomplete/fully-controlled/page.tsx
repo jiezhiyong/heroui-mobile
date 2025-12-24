@@ -1,25 +1,25 @@
 "use client";
 
-import type {MenuTriggerAction} from "@heroui/react";
+import type { MenuTriggerAction } from "@heroui/react";
 
 import * as React from "react";
-import {Autocomplete, AutocompleteItem} from "@heroui/react";
-import {useFilter} from "@react-aria/i18n";
+import { Autocomplete, AutocompleteItem } from "@heroui/react";
+import { useFilter } from "@react-aria/i18n";
 
 const animals = [
-  {label: "Cat", value: "cat", description: "The second most popular pet in the world"},
-  {label: "Dog", value: "dog", description: "The most popular pet in the world"},
-  {label: "Elephant", value: "elephant", description: "The largest land animal"},
-  {label: "Lion", value: "lion", description: "The king of the jungle"},
-  {label: "Tiger", value: "tiger", description: "The largest cat species"},
-  {label: "Giraffe", value: "giraffe", description: "The tallest land animal"},
+  { label: "Cat", value: "cat", description: "The second most popular pet in the world" },
+  { label: "Dog", value: "dog", description: "The most popular pet in the world" },
+  { label: "Elephant", value: "elephant", description: "The largest land animal" },
+  { label: "Lion", value: "lion", description: "The king of the jungle" },
+  { label: "Tiger", value: "tiger", description: "The largest cat species" },
+  { label: "Giraffe", value: "giraffe", description: "The tallest land animal" },
   {
     label: "Dolphin",
     value: "dolphin",
     description: "A widely distributed and diverse group of aquatic mammals",
   },
-  {label: "Penguin", value: "penguin", description: "A group of aquatic flightless birds"},
-  {label: "Zebra", value: "zebra", description: "A several species of African equids"},
+  { label: "Penguin", value: "penguin", description: "A group of aquatic flightless birds" },
+  { label: "Zebra", value: "zebra", description: "A several species of African equids" },
   {
     label: "Shark",
     value: "shark",
@@ -30,8 +30,8 @@ const animals = [
     value: "whale",
     description: "Diverse group of fully aquatic placental marine mammals",
   },
-  {label: "Otter", value: "otter", description: "A carnivorous mammal in the subfamily Lutrinae"},
-  {label: "Crocodile", value: "crocodile", description: "A large semiaquatic reptile"},
+  { label: "Otter", value: "otter", description: "A carnivorous mammal in the subfamily Lutrinae" },
+  { label: "Crocodile", value: "crocodile", description: "A large semiaquatic reptile" },
 ];
 
 type FieldState = {
@@ -51,7 +51,7 @@ export default function Page() {
 
   // Implement custom filtering logic and control what items are
   // available to the Autocomplete.
-  const {startsWith} = useFilter({sensitivity: "base"});
+  const { startsWith } = useFilter({ sensitivity: "base" });
 
   // Specify how each of the Autocomplete values should change when an
   // option is selected from the list box

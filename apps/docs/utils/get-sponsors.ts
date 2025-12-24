@@ -1,11 +1,11 @@
-import type {Sponsor} from "@/libs/docs/sponsors";
+import type { Sponsor } from "@/libs/docs/sponsors";
 
-import {uniqBy} from "@heroui/shared-utils";
+import { uniqBy } from "@heroui/shared-utils";
 import fetch from "node-fetch";
 
-import {__PROD__} from "./env";
+import { __PROD__ } from "./env";
 
-import {mockData} from "@/libs/docs/sponsors";
+import { mockData } from "@/libs/docs/sponsors";
 
 export const getSponsors = async () => {
   try {

@@ -1,12 +1,12 @@
-import {InputOtp} from "@heroui/react";
-import {useForm, Controller} from "react-hook-form";
-import {Button} from "@heroui/react";
+import { InputOtp } from "@heroui/react";
+import { useForm, Controller } from "react-hook-form";
+import { Button } from "@heroui/react";
 
 export default function App() {
   const {
     handleSubmit,
     control,
-    formState: {errors},
+    formState: { errors },
   } = useForm({
     defaultValues: {
       otp: "",
@@ -22,7 +22,7 @@ export default function App() {
       <Controller
         control={control}
         name="otp"
-        render={({field}) => (
+        render={({ field }) => (
           <InputOtp
             {...field}
             errorMessage={errors.otp && errors.otp.message}

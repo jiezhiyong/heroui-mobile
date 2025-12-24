@@ -9,21 +9,21 @@ import {
   Spinner,
   Button,
 } from "@heroui/react";
-import {useAsyncList} from "@react-stately/data";
+import { useAsyncList } from "@react-stately/data";
 
 export default function App() {
   const [page, setPage] = React.useState(1);
   const [isLoading, setIsLoading] = React.useState(true);
 
   let list = useAsyncList({
-    async load({signal, cursor}) {
+    async load({ signal, cursor }) {
       if (cursor) {
         setPage((prev) => prev + 1);
       }
 
       // If no cursor is available, then we're loading the first page.
       // Otherwise, the cursor is the next URL to load, as returned from the previous page.
-      const res = await fetch(cursor || "https://swapi.py4e.com/api/people/?search=", {signal});
+      const res = await fetch(cursor || "https://swapi.py4e.com/api/people/?search=", { signal });
       let json = await res.json();
 
       if (!cursor) {

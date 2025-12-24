@@ -1,6 +1,6 @@
 import React from "react";
-import {Autocomplete, AutocompleteItem} from "@heroui/react";
-import {useInfiniteScroll} from "@heroui/use-infinite-scroll";
+import { Autocomplete, AutocompleteItem } from "@heroui/react";
+import { useInfiniteScroll } from "@heroui/use-infinite-scroll";
 
 export type Pokemon = {
   name: string;
@@ -12,7 +12,7 @@ export type UsePokemonListProps = {
   fetchDelay?: number;
 };
 
-export function usePokemonList({fetchDelay = 0}: UsePokemonListProps = {}) {
+export function usePokemonList({ fetchDelay = 0 }: UsePokemonListProps = {}) {
   const [items, setItems] = React.useState<Pokemon[]>([]);
   const [hasMore, setHasMore] = React.useState(true);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -21,7 +21,7 @@ export function usePokemonList({fetchDelay = 0}: UsePokemonListProps = {}) {
 
   const loadPokemon = async (currentOffset: number) => {
     const controller = new AbortController();
-    const {signal} = controller;
+    const { signal } = controller;
 
     try {
       setIsLoading(true);
@@ -33,7 +33,7 @@ export function usePokemonList({fetchDelay = 0}: UsePokemonListProps = {}) {
 
       let res = await fetch(
         `https://pokeapi.co/api/v2/pokemon?offset=${currentOffset}&limit=${limit}`,
-        {signal},
+        { signal },
       );
 
       if (!res.ok) {
@@ -80,7 +80,7 @@ export function usePokemonList({fetchDelay = 0}: UsePokemonListProps = {}) {
 
 export default function App() {
   const [isOpen, setIsOpen] = React.useState(false);
-  const {items, hasMore, isLoading, onLoadMore} = usePokemonList({fetchDelay: 1500});
+  const { items, hasMore, isLoading, onLoadMore } = usePokemonList({ fetchDelay: 1500 });
 
   const [, scrollerRef] = useInfiniteScroll({
     hasMore,

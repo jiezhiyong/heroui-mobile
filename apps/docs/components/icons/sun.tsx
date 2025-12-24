@@ -1,6 +1,6 @@
-import type {IconSvgProps} from "@/types";
+import type { IconSvgProps } from "@/types";
 
-export const SunFilledIcon = ({size = 24, width, height, ...props}: IconSvgProps) => (
+export const SunFilledIcon = ({ size = 24, width, height, ...props }: IconSvgProps) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -17,7 +17,7 @@ export const SunFilledIcon = ({size = 24, width, height, ...props}: IconSvgProps
   </svg>
 );
 
-export const SunLinearIcon = ({size = 24, width, height, ...props}: IconSvgProps) => (
+export const SunLinearIcon = ({ size = 24, width, height, ...props }: IconSvgProps) => (
   <svg
     aria-hidden="true"
     fill="none"

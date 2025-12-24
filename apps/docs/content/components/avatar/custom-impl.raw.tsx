@@ -1,7 +1,7 @@
-import type {AvatarProps as BaseAvatarProps} from "@heroui/react";
+import type { AvatarProps as BaseAvatarProps } from "@heroui/react";
 
-import {forwardRef, useMemo} from "react";
-import {AvatarIcon, useAvatar} from "@heroui/react";
+import { forwardRef, useMemo } from "react";
+import { AvatarIcon, useAvatar } from "@heroui/react";
 
 export interface AvatarProps extends BaseAvatarProps {}
 
@@ -32,7 +32,7 @@ const MyAvatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
       return (
         <div
           aria-label={ariaLabel}
-          className={slots.fallback({class: classNames?.fallback})}
+          className={slots.fallback({ class: classNames?.fallback })}
           role="img"
         >
           {fallbackComponent}
@@ -41,11 +41,11 @@ const MyAvatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     }
 
     return name ? (
-      <span aria-label={ariaLabel} className={slots.name({class: classNames?.name})} role="img">
+      <span aria-label={ariaLabel} className={slots.name({ class: classNames?.name })} role="img">
         {getInitials(name)}
       </span>
     ) : (
-      <span aria-label={ariaLabel} className={slots.icon({class: classNames?.icon})} role="img">
+      <span aria-label={ariaLabel} className={slots.icon({ class: classNames?.icon })} role="img">
         {icon}
       </span>
     );

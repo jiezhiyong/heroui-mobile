@@ -1,10 +1,10 @@
-import type {PopoverProps} from "@heroui/react";
-import type {HeroUIScaling} from "../../types";
+import type { PopoverProps } from "@heroui/react";
+import type { HeroUIScaling } from "../../types";
 
-import {Popover, PopoverTrigger, PopoverContent, Button} from "@heroui/react";
+import { Popover, PopoverTrigger, PopoverContent, Button } from "@heroui/react";
 
-import {ShowcaseComponent} from "../showcase-component";
-import {useThemeBuilder} from "../../provider";
+import { ShowcaseComponent } from "../showcase-component";
+import { useThemeBuilder } from "../../provider";
 
 type Color = PopoverProps["color"];
 type Radius = PopoverProps["radius"];
@@ -78,7 +78,7 @@ const Section = ({
 
 export const PopoverComponent = () => {
   const colors: Color[] = ["default", "primary", "secondary", "success", "warning", "danger"];
-  const {radiusValue, scaling} = useThemeBuilder();
+  const { radiusValue, scaling } = useThemeBuilder();
 
   return (
     <ShowcaseComponent name="Popover">

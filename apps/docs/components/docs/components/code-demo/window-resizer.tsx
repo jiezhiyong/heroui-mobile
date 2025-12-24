@@ -1,10 +1,10 @@
 import React from "react";
-import {motion, useMotionValue, useTransform} from "framer-motion";
-import {tv} from "tailwind-variants";
+import { motion, useMotionValue, useTransform } from "framer-motion";
+import { tv } from "tailwind-variants";
 
-import {useIsMobile} from "@/hooks/use-media-query";
-import {useIsomorphicLayoutEffect} from "@/hooks/use-isomorphic-layout-effect";
-import {WindowActions} from "@/components/code-window/window-actions";
+import { useIsMobile } from "@/hooks/use-media-query";
+import { useIsomorphicLayoutEffect } from "@/hooks/use-isomorphic-layout-effect";
+import { WindowActions } from "@/components/code-window/window-actions";
 
 const resizer = tv({
   slots: {
@@ -78,7 +78,7 @@ const WindowResizer: React.FC<WindowResizerProps> = (props) => {
   } = props;
   const hasInitialWidth = iframeInitialWidth !== undefined;
 
-  const {main, base, barInner, barWrapper, bar, iframe, iframeWrapper} = resizer({
+  const { main, base, barInner, barWrapper, bar, iframe, iframeWrapper } = resizer({
     hasInitialWidth,
     isMobile,
     enablePointerEvents,
@@ -115,7 +115,7 @@ const WindowResizer: React.FC<WindowResizerProps> = (props) => {
   }, []);
 
   return (
-    <div className={main()} style={{height}}>
+    <div className={main()} style={{ height }}>
       <motion.div
         className={iframeWrapper()}
         style={{
@@ -143,7 +143,7 @@ const WindowResizer: React.FC<WindowResizerProps> = (props) => {
             dragConstraints={constraintsResizerRef}
             dragElastic={0}
             dragMomentum={false}
-            style={{x: resizerX}}
+            style={{ x: resizerX }}
             onDragEnd={() => {
               document.documentElement.classList.remove("dragging-ew");
               iframeRef.current?.classList.remove("dragging-ew");

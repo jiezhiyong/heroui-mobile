@@ -1,9 +1,9 @@
 "use client";
 
-import type {FC} from "react";
-import type {VariantProps} from "tailwind-variants";
+import type { FC } from "react";
+import type { VariantProps } from "tailwind-variants";
 
-import {tv} from "tailwind-variants";
+import { tv } from "tailwind-variants";
 
 const blockquoteStyles = tv({
   base: "border px-4 bg-default-50 my-6 py-3 rounded-xl [&>p]:m-0",
@@ -29,8 +29,8 @@ export interface BlockquoteProps extends BlockquoteVariantProps {
   className?: string;
 }
 
-export const Blockquote: FC<BlockquoteProps> = ({children, color, className, ...props}) => {
-  const styles = blockquoteStyles({color, className});
+export const Blockquote: FC<BlockquoteProps> = ({ children, color, className, ...props }) => {
+  const styles = blockquoteStyles({ color, className });
 
   return (
     <blockquote className={styles} {...props}>

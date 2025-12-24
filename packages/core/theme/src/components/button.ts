@@ -1,6 +1,6 @@
 import type { VariantProps } from "tailwind-variants";
 
-import { tv } from "@heroui/theme";
+import { tv } from "tailwind-variants";
 import {
   collapseAdjacentVariantBorders,
   colorVariants,
@@ -26,6 +26,8 @@ import {
 const button = tv({
   base: [
     "z-0",
+    "animate-spinner-ease-spin",
+    "animate-ping",
     "group",
     "relative",
     "inline-flex",

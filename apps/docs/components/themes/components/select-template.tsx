@@ -1,12 +1,12 @@
-import type {Template, TemplateType} from "../types";
+import type { Template, TemplateType } from "../types";
 
-import {cn, Select, SelectItem} from "@heroui/react";
+import { cn, Select, SelectItem } from "@heroui/react";
 
-import {templates} from "../templates";
+import { templates } from "../templates";
 
 import Swatch from "./configuration/swatch";
 
-import {MirrorLeft} from "@/components/icons";
+import { MirrorLeft } from "@/components/icons";
 
 interface SelectTemplateProps {
   name: TemplateType | null;
@@ -14,7 +14,7 @@ interface SelectTemplateProps {
   currentTheme: string | undefined;
 }
 
-export function SelectTemplate({name, onChange, currentTheme}: SelectTemplateProps) {
+export function SelectTemplate({ name, onChange, currentTheme }: SelectTemplateProps) {
   function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
     const value = e.target.value as TemplateType;
     const template = templates.find((template) => template.name === value);

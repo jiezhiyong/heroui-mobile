@@ -1,4 +1,4 @@
-import {InputOtp} from "@heroui/react";
+import { InputOtp } from "@heroui/react";
 
 export default function App() {
   const sizes = ["sm", "md", "lg"];

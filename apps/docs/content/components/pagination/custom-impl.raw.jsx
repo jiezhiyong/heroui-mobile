@@ -1,4 +1,4 @@
-import {usePagination, PaginationItemType} from "@heroui/react";
+import { usePagination, PaginationItemType } from "@heroui/react";
 
 export const ChevronIcon = (props) => {
   return (
@@ -24,7 +24,7 @@ export const ChevronIcon = (props) => {
 };
 
 export default function App() {
-  const {activePage, range, setPage, onNext, onPrevious} = usePagination({
+  const { activePage, range, setPage, onNext, onPrevious } = usePagination({
     total: 6,
     showControls: true,
     siblings: 10,

@@ -1,6 +1,6 @@
-import {Button} from "@heroui/react";
+import { Button } from "@heroui/react";
 
-export const HeartIcon = ({fill = "currentColor", filled, size, height, width, ...props}) => {
+export const HeartIcon = ({ fill = "currentColor", filled, size, height, width, ...props }) => {
   return (
     <svg
       fill={filled ? fill : "none"}
@@ -21,7 +21,7 @@ export const HeartIcon = ({fill = "currentColor", filled, size, height, width, .
   );
 };
 
-export const CameraIcon = ({fill = "currentColor", size, height, width, ...props}) => {
+export const CameraIcon = ({ fill = "currentColor", size, height, width, ...props }) => {
   return (
     <svg
       fill="none"

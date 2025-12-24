@@ -1,4 +1,4 @@
-import {Form, Input, Select, SelectItem, Checkbox, Button} from "@heroui/react";
+import { Form, Input, Select, SelectItem, Checkbox, Button } from "@heroui/react";
 
 export default function App() {
   const [password, setPassword] = React.useState("");
@@ -46,7 +46,7 @@ export default function App() {
     }
 
     if (data.terms !== "true") {
-      setErrors({terms: "Please accept the terms"});
+      setErrors({ terms: "Please accept the terms" });
 
       return;
     }
@@ -66,7 +66,7 @@ export default function App() {
       <div className="flex flex-col gap-4 max-w-md">
         <Input
           isRequired
-          errorMessage={({validationDetails}) => {
+          errorMessage={({ validationDetails }) => {
             if (validationDetails.valueMissing) {
               return "Please enter your name";
             }
@@ -81,7 +81,7 @@ export default function App() {
 
         <Input
           isRequired
-          errorMessage={({validationDetails}) => {
+          errorMessage={({ validationDetails }) => {
             if (validationDetails.valueMissing) {
               return "Please enter your email";
             }
@@ -132,7 +132,7 @@ export default function App() {
           name="terms"
           validationBehavior="aria"
           value="true"
-          onValueChange={() => setErrors((prev) => ({...prev, terms: undefined}))}
+          onValueChange={() => setErrors((prev) => ({ ...prev, terms: undefined }))}
         >
           I agree to the terms and conditions
         </Checkbox>

@@ -1,6 +1,6 @@
 "use client";
 
-import type {Selection, ChipProps, SortDescriptor} from "@heroui/react";
+import type { Selection, ChipProps, SortDescriptor } from "@heroui/react";
 
 import {
   Table,
@@ -19,12 +19,12 @@ import {
   User,
   Pagination,
 } from "@heroui/react";
-import {ChevronDownIcon, SearchIcon} from "@heroui/shared-icons";
-import {useCallback, useMemo, useState} from "react";
-import {capitalize} from "@heroui/shared-utils";
+import { ChevronDownIcon, SearchIcon } from "@heroui/shared-icons";
+import { useCallback, useMemo, useState } from "react";
+import { capitalize } from "@heroui/shared-utils";
 
-import {PlusLinearIcon} from "@/components/icons";
-import {VerticalDotsIcon} from "@/components/icons/vertical-dots";
+import { PlusLinearIcon } from "@/components/icons";
+import { VerticalDotsIcon } from "@/components/icons/vertical-dots";
 
 const statusColorMap: Record<string, ChipProps["color"]> = {
   active: "success",
@@ -33,20 +33,20 @@ const statusColorMap: Record<string, ChipProps["color"]> = {
 };
 
 const columns = [
-  {name: "ID", uid: "id", sortable: true},
-  {name: "NAME", uid: "name", sortable: true},
-  {name: "AGE", uid: "age", sortable: true},
-  {name: "ROLE", uid: "role", sortable: true},
-  {name: "TEAM", uid: "team"},
-  {name: "EMAIL", uid: "email"},
-  {name: "STATUS", uid: "status", sortable: true},
-  {name: "ACTIONS", uid: "actions"},
+  { name: "ID", uid: "id", sortable: true },
+  { name: "NAME", uid: "name", sortable: true },
+  { name: "AGE", uid: "age", sortable: true },
+  { name: "ROLE", uid: "role", sortable: true },
+  { name: "TEAM", uid: "team" },
+  { name: "EMAIL", uid: "email" },
+  { name: "STATUS", uid: "status", sortable: true },
+  { name: "ACTIONS", uid: "actions" },
 ];
 
 const statusOptions = [
-  {name: "Active", uid: "active"},
-  {name: "Paused", uid: "paused"},
-  {name: "Vacation", uid: "vacation"},
+  { name: "Active", uid: "active" },
+  { name: "Paused", uid: "paused" },
+  { name: "Vacation", uid: "vacation" },
 ];
 
 const INITIAL_VISIBLE_COLUMNS = ["name", "role", "status", "actions"];
@@ -320,7 +320,7 @@ export default function Page() {
       case "name":
         return (
           <User
-            avatarProps={{radius: "lg", src: user.avatar}}
+            avatarProps={{ radius: "lg", src: user.avatar }}
             description={user.email}
             name={cellValue}
           >
@@ -342,18 +342,20 @@ export default function Page() {
         );
       case "actions":
         return (
-          <Dropdown>
-            <DropdownTrigger>
-              <Button isIconOnly size="sm" variant="light">
-                <VerticalDotsIcon className="text-default-300" />
-              </Button>
-            </DropdownTrigger>
-            <DropdownMenu>
-              <DropdownItem key="view">View</DropdownItem>
-              <DropdownItem key="edit">Edit</DropdownItem>
-              <DropdownItem key="delete">Delete</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+          <div className="relative flex justify-end items-center gap-2">
+            <Dropdown>
+              <DropdownTrigger>
+                <Button isIconOnly size="sm" variant="light">
+                  <VerticalDotsIcon className="text-default-300" />
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu>
+                <DropdownItem key="view">View</DropdownItem>
+                <DropdownItem key="edit">Edit</DropdownItem>
+                <DropdownItem key="delete">Delete</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
         );
       default:
         return cellValue;
@@ -457,7 +459,7 @@ export default function Page() {
           <label className="flex items-center text-default-400 text-small">
             Rows per page:
             <select
-              className="bg-transparent outline-solid outline-transparent text-default-400 text-small"
+              className="bg-transparent outline-none text-default-400 text-small"
               onChange={onRowsPerPageChange}
             >
               <option value="5">5</option>

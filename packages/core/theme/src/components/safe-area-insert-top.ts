@@ -1,6 +1,6 @@
 import type { VariantProps } from "tailwind-variants";
 
-import { tv } from "@heroui/theme";
+import { tv } from "tailwind-variants";
 
 /**
  * SafeAreaInsertTop wrapper **Tailwind Variants** component

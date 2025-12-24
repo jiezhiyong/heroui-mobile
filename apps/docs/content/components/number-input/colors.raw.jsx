@@ -1,4 +1,4 @@
-import {NumberInput} from "@heroui/react";
+import { NumberInput } from "@heroui/react";
 
 export default function App() {
   const colors = ["default", "primary", "secondary", "success", "warning", "danger"];

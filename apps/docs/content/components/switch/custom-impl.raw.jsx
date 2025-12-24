@@ -1,4 +1,4 @@
-import {VisuallyHidden, useSwitch} from "@heroui/react";
+import { VisuallyHidden, useSwitch } from "@heroui/react";
 
 export const MoonIcon = (props) => {
   return (
@@ -39,7 +39,7 @@ export const SunIcon = (props) => {
 };
 
 const ThemeSwitch = (props) => {
-  const {Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps} =
+  const { Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps } =
     useSwitch(props);
 
   return (

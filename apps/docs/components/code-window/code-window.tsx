@@ -1,19 +1,19 @@
 "use client";
 // Inspired by https://github.dev/modulz/stitches-site code demo
-import type {CodeBlockProps} from "./code-block";
+import type { CodeBlockProps } from "./code-block";
 
 import React from "react";
 import rangeParser from "parse-numeric-range";
 
 import CodeBlock from "./code-block";
 
-import {CopyButton} from "@/components";
+import { CopyButton } from "@/components";
 
 export interface CodeWindowProps extends CodeBlockProps {
   showCopy?: boolean;
 }
 
-export const CodeWindow: React.FC<CodeWindowProps> = ({highlightLines, showCopy, ...props}) => {
+export const CodeWindow: React.FC<CodeWindowProps> = ({ highlightLines, showCopy, ...props }) => {
   const wrapperRef = React.useRef<HTMLPreElement>(null);
 
   React.useEffect(() => {

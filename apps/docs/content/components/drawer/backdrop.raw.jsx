@@ -56,7 +56,7 @@ export const LockIcon = (props) => {
 };
 
 export default function App() {
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [backdrop, setBackdrop] = React.useState("opaque");
 
   const backdrops = ["opaque", "blur", "transparent"];
@@ -89,7 +89,7 @@ export default function App() {
               <DrawerBody>
                 <Input
                   endContent={
-                    <MailIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />
+                    <MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
                   }
                   label="Email"
                   placeholder="Enter your email"
@@ -97,7 +97,7 @@ export default function App() {
                 />
                 <Input
                   endContent={
-                    <LockIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />
+                    <LockIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
                   }
                   label="Password"
                   placeholder="Enter your password"

@@ -1,14 +1,14 @@
 "use client";
 
-import {Button, Chip} from "@heroui/react";
-import {useEffect, useState} from "react";
-import {useTheme} from "next-themes";
+import { Button, Chip } from "@heroui/react";
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
-import {sectionWrapper, title, titleWrapper, subtitle} from "../primitives";
+import { sectionWrapper, title, titleWrapper, subtitle } from "../primitives";
 
 import Marquee from "./marquee";
 
-import {useIsMobile} from "@/hooks/use-media-query";
+import { useIsMobile } from "@/hooks/use-media-query";
 
 export const HeroUIProSection = () => {
   const [mounted, setMounted] = useState(false);
@@ -18,7 +18,7 @@ export const HeroUIProSection = () => {
   }, []);
 
   const isMobile = useIsMobile();
-  const {theme} = useTheme();
+  const { theme } = useTheme();
   const isDarkMode = theme === "dark";
 
   let imgSrc: string;
@@ -56,12 +56,12 @@ export const HeroUIProSection = () => {
   );
 
   return (
-    <section className={sectionWrapper({class: "mt-16 lg:mt-44 overflow-hidden"})}>
+    <section className={sectionWrapper({ class: "mt-16 lg:mt-44 overflow-hidden" })}>
       <div className="flex flex-col gap-8 min-h-[480px]">
         <div className="z-30 flex w-screen h-full flex-col items-start justify-center leading-8 pt-4">
           <Chip
             classNames={{
-              base: "ml-0.5 transition-colors bg-linear-to-br from-cyan-600 to-blue-600",
+              base: "ml-0.5 transition-colors bg-gradient-to-br from-cyan-600 to-blue-600",
               content: "text-tiny font-semibold",
             }}
             color="primary"
@@ -69,8 +69,8 @@ export const HeroUIProSection = () => {
           >
             PRO
           </Chip>
-          <div className={titleWrapper({class: "mt-2 inline md:block"})}>
-            <h1 className={title({size: "lg", class: "[text-shadow:_0_3px_0_rgb(0_0_0_/_10%)]"})}>
+          <div className={titleWrapper({ class: "mt-2 inline md:block" })}>
+            <h1 className={title({ size: "lg", class: "[text-shadow:_0_3px_0_rgb(0_0_0_/_10%)]" })}>
               Ship&nbsp;
             </h1>
             <h1
@@ -82,19 +82,23 @@ export const HeroUIProSection = () => {
             >
               faster&nbsp;
             </h1>
-            <h1 className={title({size: "lg", class: "[text-shadow:_0_3px_0_rgb(0_0_0_/_10%)]"})}>
+            <h1 className={title({ size: "lg", class: "[text-shadow:_0_3px_0_rgb(0_0_0_/_10%)]" })}>
               with&nbsp;
             </h1>
             <div className="flex flex-col sm:flex-row">
-              <h1 className={title({size: "lg", class: "[text-shadow:_0_3px_0_rgb(0_0_0_/_10%)]"})}>
+              <h1
+                className={title({ size: "lg", class: "[text-shadow:_0_3px_0_rgb(0_0_0_/_10%)]" })}
+              >
                 beautiful&nbsp;
               </h1>
-              <h1 className={title({size: "lg", class: "[text-shadow:_0_3px_0_rgb(0_0_0_/_10%)]"})}>
+              <h1
+                className={title({ size: "lg", class: "[text-shadow:_0_3px_0_rgb(0_0_0_/_10%)]" })}
+              >
                 components
               </h1>
             </div>
           </div>
-          <p className={subtitle({class: "pr-12 text-foreground-500"})}>
+          <p className={subtitle({ class: "pr-12 text-foreground-500" })}>
             Premade templates of over 210+ beautiful and responsive components, professionally
             created by the team behind HeroUI.
           </p>

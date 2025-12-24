@@ -1,12 +1,12 @@
-import {useThemeBuilder} from "../../provider";
-import {ConfigSection} from "../config-section";
+import { useThemeBuilder } from "../../provider";
+import { ConfigSection } from "../config-section";
 
 import EditableButton from "./editable-button";
 
-import {CropMinimalistic} from "@/components/icons/crop";
+import { CropMinimalistic } from "@/components/icons/crop";
 
 export function Radiuses() {
-  const {radiusValue, setRadiusValue} = useThemeBuilder();
+  const { radiusValue, setRadiusValue } = useThemeBuilder();
 
   return (
     <ConfigSection visualPurposeOnly icon={<CropMinimalistic className="h-4 w-4" />} title="Radius">

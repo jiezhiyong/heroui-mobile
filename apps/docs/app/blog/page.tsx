@@ -1,8 +1,8 @@
-import {allBlogPosts} from "contentlayer2/generated";
-import {compareDesc} from "date-fns";
+import { allBlogPosts } from "contentlayer2/generated";
+import { compareDesc } from "date-fns";
 
-import {BlogPostList} from "@/components/blog-post";
-import {__DEV__, __PREVIEW__} from "@/utils";
+import { BlogPostList } from "@/components/blog-post";
+import { __DEV__, __PREVIEW__ } from "@/utils";
 
 const isDraftVisible = __DEV__ || __PREVIEW__;
 

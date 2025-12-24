@@ -1,14 +1,14 @@
 "use client";
 
-import type {ReactNode} from "react";
-import type {LinkProps, SlotsToClasses} from "@heroui/react";
+import type { ReactNode } from "react";
+import type { LinkProps, SlotsToClasses } from "@heroui/react";
 
 import React from "react";
-import {usePostHog} from "posthog-js/react";
-import {tv} from "tailwind-variants";
-import {Card, CardHeader, CardBody} from "@heroui/react";
-import {useRouter} from "next/navigation";
-import {LinkIcon} from "@heroui/shared-icons";
+import { usePostHog } from "posthog-js/react";
+import { tv } from "tailwind-variants";
+import { Card, CardHeader, CardBody } from "@heroui/react";
+import { useRouter } from "next/navigation";
+import { LinkIcon } from "@heroui/shared-icons";
 
 const styles = tv({
   slots: {
@@ -36,7 +36,7 @@ interface FeaturesGridProps {
   classNames?: SlotsToClasses<FeaturesGridSlots>;
 }
 
-export const FeaturesGrid: React.FC<FeaturesGridProps> = ({features, classNames, ...props}) => {
+export const FeaturesGrid: React.FC<FeaturesGridProps> = ({ features, classNames, ...props }) => {
   const router = useRouter();
 
   const posthog = usePostHog();
@@ -64,23 +64,23 @@ export const FeaturesGrid: React.FC<FeaturesGridProps> = ({features, classNames,
   };
 
   return (
-    <div className={slots.base({class: classNames?.base})} {...props}>
+    <div className={slots.base({ class: classNames?.base })} {...props}>
       {features.map((feat: Feature, index: number) => (
         <Card
           key={`${feat.title}_${index}`}
           isBlurred
-          className={slots.card({class: classNames?.card})}
+          className={slots.card({ class: classNames?.card })}
           isPressable={!!feat.href}
           onPress={() => handleClick(feat)}
         >
-          <CardHeader className={slots.header({class: classNames?.header})}>
-            <div className={slots.iconWrapper({class: classNames?.iconWrapper})}>{feat.icon}</div>
-            <p className={slots.title({class: classNames?.title})}>{feat.title}</p>
+          <CardHeader className={slots.header({ class: classNames?.header })}>
+            <div className={slots.iconWrapper({ class: classNames?.iconWrapper })}>{feat.icon}</div>
+            <p className={slots.title({ class: classNames?.title })}>{feat.title}</p>
             {feat.isExternal && <LinkIcon height={18} width={18} />}
           </CardHeader>
           {feat.description ? (
-            <CardBody className={slots.body({class: classNames?.body})}>
-              <p className={slots.description({class: classNames?.description})}>
+            <CardBody className={slots.body({ class: classNames?.body })}>
+              <p className={slots.description({ class: classNames?.description })}>
                 {feat.description}
               </p>
             </CardBody>

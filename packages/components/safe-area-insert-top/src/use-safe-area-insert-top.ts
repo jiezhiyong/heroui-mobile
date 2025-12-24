@@ -1,11 +1,11 @@
 import type { SafeAreaInsertTopVariantProps } from "@heroui-mobile/theme";
-import type { HTMLHeroUIProps } from "@heroui-mobile/system";
-import type { ReactRef } from "@heroui-mobile/react-utils";
+import type { HTMLHeroUIProps } from "@heroui/system";
+import type { ReactRef } from "@heroui/react-utils";
 
-import { mapPropsVariants } from "@heroui-mobile/system";
+import { mapPropsVariants } from "@heroui/system";
 import { safeAreaInsertTop } from "@heroui-mobile/theme";
-import { useDOMRef } from "@heroui-mobile/react-utils";
-import { objectToDeps } from "@heroui-mobile/shared-utils";
+import { useDOMRef } from "@heroui/react-utils";
+import { objectToDeps } from "@heroui/shared-utils";
 import { useMemo } from "react";
 
 interface Props extends HTMLHeroUIProps<"div"> {

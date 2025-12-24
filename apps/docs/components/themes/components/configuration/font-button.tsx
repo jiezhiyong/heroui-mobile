@@ -1,7 +1,7 @@
-import type {FontName, FontType} from "../../types";
+import type { FontName, FontType } from "../../types";
 
-import {Button} from "@heroui/react";
-import {cn} from "@heroui/theme";
+import { Button } from "@heroui/react";
+import { clsx } from "@heroui/shared-utils";
 
 interface FontButtonProps {
   title: FontName;
@@ -17,28 +17,28 @@ interface FontStyle {
 
 function getFontStyle(fontName: FontName | undefined): FontStyle {
   if (!fontName) {
-    return {fontFamily: "'Inter', sans-serif"};
+    return { fontFamily: "'Inter', sans-serif" };
   }
   switch (fontName) {
     case "Inter":
-      return {fontFamily: "'Inter', sans-serif"};
+      return { fontFamily: "'Inter', sans-serif" };
     case "Roboto":
-      return {fontFamily: "'Roboto', sans-serif"};
+      return { fontFamily: "'Roboto', sans-serif" };
     case "Outfit":
-      return {fontFamily: "'Outfit', sans-serif"};
+      return { fontFamily: "'Outfit', sans-serif" };
     case "Lora":
-      return {fontFamily: "'Lora', serif"};
+      return { fontFamily: "'Lora', serif" };
     default:
-      return {fontFamily: "'Inter', sans-serif"};
+      return { fontFamily: "'Inter', sans-serif" };
   }
 }
 
-const FontButton = ({title, value, setValue}: FontButtonProps) => {
+const FontButton = ({ title, value, setValue }: FontButtonProps) => {
   const style = getFontStyle(title);
 
   return (
     <Button
-      className={cn(
+      className={clsx(
         "group h-24 flex flex-col justify-center items-center gap-y-2 px-0 border-black/20 dark:border-white/20",
         value === title ? "border-black/60 dark:border-white/60" : "",
       )}

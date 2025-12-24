@@ -1,5 +1,5 @@
-import {forwardRef} from "react";
-import {useButton, Ripple, Spinner} from "@heroui/react";
+import { forwardRef } from "react";
+import { useButton, Ripple, Spinner } from "@heroui/react";
 
 const MyButton = forwardRef((props, ref) => {
   const {
@@ -19,7 +19,7 @@ const MyButton = forwardRef((props, ref) => {
     ...props,
   });
 
-  const {ripples, onClear} = getRippleProps();
+  const { ripples, onClear } = getRippleProps();
 
   return (
     <button ref={domRef} {...getButtonProps()}>

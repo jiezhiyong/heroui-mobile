@@ -1,11 +1,11 @@
-import type {MDX} from "contentlayer2/core";
+import type { MDX } from "contentlayer2/core";
 import type * as Local from "contentlayer2/source-files";
 
-import {TAG, FORCE_TAG, CONTENT_PATH, ASSETS_PATH} from "./config";
+import { TAG, FORCE_TAG, CONTENT_PATH, ASSETS_PATH } from "./config";
 
-import {getLatestTag} from "@/libs/github/api";
-import {getRawFileFromRepo, getRawAssetFromRepo} from "@/libs/github/raw";
-import {__PROD__, __PREVIEW__, removeFromLast} from "@/utils";
+import { getLatestTag } from "@/libs/github/api";
+import { getRawFileFromRepo, getRawAssetFromRepo } from "@/libs/github/raw";
+import { __PROD__, __PREVIEW__, removeFromLast } from "@/utils";
 import localRoutes from "@/config/routes.json";
 
 export interface Route {
@@ -44,7 +44,7 @@ export interface RouteContext {
 }
 
 export interface Carry {
-  params: {slug: any};
+  params: { slug: any };
 }
 
 export async function getCurrentTag(tag?: string) {
@@ -85,7 +85,7 @@ export function findRouteByPath(path: string, routes: Route[]): Route | null | u
   }
 }
 
-export function getPaths(nextRoutes: Route[], carry: Carry[] = [{params: {slug: []}}]) {
+export function getPaths(nextRoutes: Route[], carry: Carry[] = [{ params: { slug: [] } }]) {
   nextRoutes.forEach((route: Route) => {
     if (route.comingSoon) {
       return;

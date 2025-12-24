@@ -1,5 +1,5 @@
-import {DateInput} from "@heroui/react";
-import {getLocalTimeZone, today} from "@internationalized/date";
+import { DateInput } from "@heroui/react";
+import { getLocalTimeZone, today } from "@internationalized/date";
 
 export default function App() {
   return (
@@ -7,7 +7,7 @@ export default function App() {
       <div className="w-full flex flex-col gap-1">
         <h3>Min date</h3>
         <DateInput
-          defaultValue={today(getLocalTimeZone()).subtract({days: 1})}
+          defaultValue={today(getLocalTimeZone()).subtract({ days: 1 })}
           label="Date and time"
           minValue={today(getLocalTimeZone())}
         />
@@ -15,7 +15,7 @@ export default function App() {
       <div className="w-full flex flex-col gap-2">
         <h3>Max date</h3>
         <DateInput
-          defaultValue={today(getLocalTimeZone()).add({days: 1})}
+          defaultValue={today(getLocalTimeZone()).add({ days: 1 })}
           label="Date and time"
           maxValue={today(getLocalTimeZone())}
         />

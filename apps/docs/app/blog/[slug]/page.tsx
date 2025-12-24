@@ -1,18 +1,18 @@
-import type {Metadata} from "next";
-import type {Route} from "@/libs/docs/page";
+import type { Metadata } from "next";
+import type { Route } from "@/libs/docs/page";
 
-import {notFound} from "next/navigation";
-import {allBlogPosts} from "contentlayer2/generated";
-import {Link, Spacer, User} from "@heroui/react";
-import {format, parseISO} from "date-fns";
+import { notFound } from "next/navigation";
+import { allBlogPosts } from "contentlayer2/generated";
+import { Link, Spacer, User } from "@heroui/react";
+import { format, parseISO } from "date-fns";
 import NextLink from "next/link";
-import {Balancer} from "react-wrap-balancer";
+import { Balancer } from "react-wrap-balancer";
 
-import {__DEV__, __PREVIEW__} from "@/utils";
-import {MDXContent} from "@/components/mdx-content";
-import {siteConfig} from "@/config/site";
-import {ChevronRightLinearIcon} from "@/components/icons";
-import {CarbonAd} from "@/components/ads/carbon-ad";
+import { __DEV__, __PREVIEW__ } from "@/utils";
+import { MDXContent } from "@/components/mdx-content";
+import { siteConfig } from "@/config/site";
+import { ChevronRightLinearIcon } from "@/components/icons";
+import { CarbonAd } from "@/components/ads/carbon-ad";
 
 interface BlogPostProps {
   params: {
@@ -22,7 +22,7 @@ interface BlogPostProps {
 
 const isDraftVisible = __DEV__ || __PREVIEW__;
 
-async function getBlogPostFromParams({params}: BlogPostProps) {
+async function getBlogPostFromParams({ params }: BlogPostProps) {
   const slug = params.slug || "";
   const post = allBlogPosts.find((post) => post.slugAsParams === slug);
 
@@ -36,11 +36,11 @@ async function getBlogPostFromParams({params}: BlogPostProps) {
     path: `/${post?._raw?.sourceFilePath}`,
   };
 
-  return {post, currentRoute};
+  return { post, currentRoute };
 }
 
-export async function generateMetadata({params}: BlogPostProps): Promise<Metadata> {
-  const {post} = await getBlogPostFromParams({params});
+export async function generateMetadata({ params }: BlogPostProps): Promise<Metadata> {
+  const { post } = await getBlogPostFromParams({ params });
 
   if (!post) {
     return {};
@@ -79,8 +79,8 @@ export async function generateStaticParams(): Promise<BlogPostProps["params"][]>
   }));
 }
 
-export default async function DocPage({params}: BlogPostProps) {
-  const {post} = await getBlogPostFromParams({params});
+export default async function DocPage({ params }: BlogPostProps) {
+  const { post } = await getBlogPostFromParams({ params });
 
   if (!post || (post.draft && !isDraftVisible)) {
     notFound();

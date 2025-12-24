@@ -1,24 +1,24 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 "use client";
 
-import type {FC} from "react";
-import type {ButtonProps} from "@heroui/react";
+import type { FC } from "react";
+import type { ButtonProps } from "@heroui/react";
 
-import {Command} from "cmdk";
-import {useEffect, useState, useMemo, useCallback, useRef} from "react";
-import {matchSorter} from "match-sorter";
-import {Button, Kbd, Modal, ModalContent} from "@heroui/react";
-import {CloseIcon} from "@heroui/shared-icons";
-import {tv} from "tailwind-variants";
-import {usePathname, useRouter} from "next/navigation";
+import { Command } from "cmdk";
+import { useEffect, useState, useMemo, useCallback, useRef } from "react";
+import { matchSorter } from "match-sorter";
+import { Button, Kbd, Modal, ModalContent } from "@heroui/react";
+import { CloseIcon } from "@heroui/shared-icons";
+import { tv } from "tailwind-variants";
+import { usePathname, useRouter } from "next/navigation";
 import MultiRef from "react-multi-ref";
-import {cn} from "@heroui/theme";
+import { clsx } from "@heroui/shared-utils";
 import scrollIntoView from "scroll-into-view-if-needed";
-import {isAppleDevice, isWebKit} from "@react-aria/utils";
-import {create} from "zustand";
-import {isEmpty, intersectionBy} from "@heroui/shared-utils";
-import {writeStorage, useLocalStorage} from "@rehooks/local-storage";
-import {usePostHog} from "posthog-js/react";
+import { isAppleDevice, isWebKit } from "@react-aria/utils";
+import { create } from "zustand";
+import { isEmpty, intersectionBy } from "@heroui/shared-utils";
+import { writeStorage, useLocalStorage } from "@rehooks/local-storage";
+import { usePostHog } from "posthog-js/react";
 
 import {
   DocumentCodeBoldIcon,
@@ -28,7 +28,7 @@ import {
 } from "./icons";
 
 import searchData from "@/config/search-meta.json";
-import {useUpdateEffect} from "@/hooks/use-update-effect";
+import { useUpdateEffect } from "@/hooks/use-update-effect";
 
 const hideOnPaths = ["examples"];
 
@@ -40,8 +40,8 @@ export interface CmdkStore {
 
 export const useCmdkStore = create<CmdkStore>((set) => ({
   isOpen: false,
-  onClose: () => set({isOpen: false}),
-  onOpen: () => set({isOpen: true}),
+  onClose: () => set({ isOpen: false }),
+  onOpen: () => set({ isOpen: true }),
 }));
 
 const cmdk = tv({
@@ -63,7 +63,7 @@ const cmdk = tv({
       "h-14",
       "font-sans",
       "text-lg",
-      "outline-solid outline-transparent",
+      "outline-none",
       "rounded-none",
       "bg-transparent",
       "text-default-700",
@@ -81,7 +81,7 @@ const cmdk = tv({
       "justify-between",
       "items-center",
       "rounded-lg",
-      "shadow-xs",
+      "shadow",
       "bg-content2/50",
       "active:opacity-70",
       "cursor-pointer",
@@ -140,7 +140,7 @@ export const Cmdk: FC<{}> = () => {
   const listRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  const {isOpen, onClose, onOpen} = useCmdkStore();
+  const { isOpen, onClose, onOpen } = useCmdkStore();
 
   const posthog = usePostHog();
 
@@ -205,7 +205,7 @@ export const Cmdk: FC<{}> = () => {
         name: "cmdk - search",
         action: "search",
         category: "cmdk",
-        data: {query, words, matches: matches?.map((match) => match.url).join(", ")},
+        data: { query, words, matches: matches?.map((match) => match.url).join(", ") },
       });
 
       return matches;
@@ -323,7 +323,7 @@ export const Cmdk: FC<{}> = () => {
       return (
         <Button
           isIconOnly
-          className={cn(
+          className={clsx(
             "border data-[hover=true]:bg-content2 border-default-400 dark:border-default-100",
             className,
           )}
@@ -397,10 +397,10 @@ export const Cmdk: FC<{}> = () => {
           "mt-[20vh]",
           "border-small",
           "dark:border-default-100",
-          "supports-backdrop-filter:bg-background/80",
-          "dark:supports-backdrop-filter:bg-background/30",
-          "supports-backdrop-filter:backdrop-blur-md",
-          "supports-backdrop-filter:backdrop-saturate-150",
+          "supports-[backdrop-filter]:bg-background/80",
+          "dark:supports-[backdrop-filter]:bg-background/30",
+          "supports-[backdrop-filter]:backdrop-blur-md",
+          "supports-[backdrop-filter]:backdrop-saturate-150",
         ],
         backdrop: ["bg-black/80"],
       }}

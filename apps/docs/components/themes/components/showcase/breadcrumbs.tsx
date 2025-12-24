@@ -1,13 +1,13 @@
-import type {BreadcrumbsProps} from "@heroui/react";
-import type {Border, Radius} from "../../types";
+import type { BreadcrumbsProps } from "@heroui/react";
+import type { Border, Radius } from "../../types";
 
 import {
   Breadcrumbs as HeroUIBreadcrumbs,
   BreadcrumbItem as HeroUIBreadcrumbsItem,
 } from "@heroui/react";
 
-import {ShowcaseComponent} from "../showcase-component";
-import {useThemeBuilder} from "../../provider";
+import { ShowcaseComponent } from "../showcase-component";
+import { useThemeBuilder } from "../../provider";
 
 type Color = BreadcrumbsProps["color"];
 
@@ -54,7 +54,7 @@ const Section = ({
 }) => {
   const variants = ["bordered", "light", "solid", "solid"];
   const disabled = [false, false, false, true];
-  let classNames = {base: "text-small"};
+  let classNames = { base: "text-small" };
 
   let borderClass = "border-medium";
 
@@ -66,23 +66,23 @@ const Section = ({
 
   switch (scaling) {
     case 90: {
-      classNames = {base: "text-[0.7rem]"};
+      classNames = { base: "text-[0.7rem]" };
       break;
     }
     case 95: {
-      classNames = {base: "text-tiny"};
+      classNames = { base: "text-tiny" };
       break;
     }
     case 100: {
-      classNames = {base: "text-small p-0.5"};
+      classNames = { base: "text-small p-0.5" };
       break;
     }
     case 105: {
-      classNames = {base: "text-medium p-1"};
+      classNames = { base: "text-medium p-1" };
       break;
     }
     case 110: {
-      classNames = {base: "text-large p-1.5"};
+      classNames = { base: "text-large p-1.5" };
       break;
     }
   }
@@ -108,7 +108,7 @@ const Section = ({
 
 export const BreadCrumbs = () => {
   const colors: Color[] = ["foreground", "primary", "secondary", "success", "warning", "danger"];
-  const {scaling, borderWidthValue, radiusValue} = useThemeBuilder();
+  const { scaling, borderWidthValue, radiusValue } = useThemeBuilder();
 
   return (
     <ShowcaseComponent name="BreadCrumbs">

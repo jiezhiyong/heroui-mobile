@@ -18,8 +18,6 @@ const docsComponentsDir = path.resolve(rootDir, 'apps/docs/content/docs/componen
 const themeDir = path.resolve(packagesDir, 'core/theme'); // Theme directory path
 
 const baseDocs = 'https://heroui.com/docs/components';
-const filePath = './src/index.ts';
-
 
 const EXCLUDE_LIST = ['.DS_Store'];
 

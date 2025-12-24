@@ -1,4 +1,4 @@
-import {Select, SelectItem, SelectSection} from "@heroui/react";
+import { Select, SelectItem, SelectSection } from "@heroui/react";
 
 export default function App() {
   const headingClasses =

@@ -1,6 +1,6 @@
-import {Alert} from "@heroui/react";
+import { Alert } from "@heroui/react";
 
-const UserIcon = ({fill = "currentColor", size, height, width, ...props}) => {
+const UserIcon = ({ fill = "currentColor", size, height, width, ...props }) => {
   return (
     <svg
       data-name="Iconly/Curved/Profile"

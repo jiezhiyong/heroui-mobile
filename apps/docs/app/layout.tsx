@@ -1,19 +1,18 @@
 import "@/styles/globals.css";
 import "@/styles/sandpack.css";
-import type {Metadata, Viewport} from "next";
+import type { Metadata, Viewport } from "next";
 
-import {cn} from "@heroui/theme";
-import {Analytics} from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/next";
+import clsx from "clsx";
 
-import {Providers} from "./providers";
+import { Providers } from "./providers";
 
-import {Cmdk} from "@/components/cmdk";
+import { Cmdk } from "@/components/cmdk";
 import manifest from "@/config/routes.json";
-import {siteConfig} from "@/config/site";
-import {fonts} from "@/config/fonts";
-import {Navbar} from "@/components/navbar";
-import {Footer} from "@/components/footer";
-import {ProBanner} from "@/components/pro-banner";
+import { siteConfig } from "@/config/site";
+import { fonts } from "@/config/fonts";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -54,15 +53,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://heroui.com",
     types: {
-      "application/rss+xml": [{url: "https://heroui.com/feed.xml", title: "HeroUI RSS Feed"}],
+      "application/rss+xml": [{ url: "https://heroui.com/feed.xml", title: "HeroUI RSS Feed" }],
     },
   },
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    {color: "#f4f4f5", media: "(prefers-color-scheme: light)"},
-    {color: "#111111", media: "(prefers-color-scheme: dark)"},
+    { color: "#f4f4f5", media: "(prefers-color-scheme: light)" },
+    { color: "#111111", media: "(prefers-color-scheme: dark)" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -70,20 +69,19 @@ export const viewport: Viewport = {
   userScalable: false,
 };
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html suppressHydrationWarning dir="ltr" lang="en">
       <head />
       <body
-        className={cn(
+        className={clsx(
           "min-h-screen text-foreground bg-background font-sans antialiased",
           fonts.sans.variable,
           fonts.mono.variable,
         )}
       >
-        <Providers themeProps={{attribute: "class", defaultTheme: "dark"}}>
+        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col" id="app-container">
-            <ProBanner />
             <Navbar mobileRoutes={manifest.mobileRoutes} routes={manifest.routes} />
             {children}
             <Analytics mode="production" />

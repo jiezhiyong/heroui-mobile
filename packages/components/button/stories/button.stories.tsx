@@ -3,7 +3,7 @@ import type { ButtonProps } from "../src";
 
 import React from "react";
 import { button } from "@heroui-mobile/theme";
-import { Camera, HeadphonesIcon, Notification } from "@heroui-mobile/shared-icons";
+import { Camera, HeadphonesIcon, Notification } from "@heroui/shared-icons";
 
 import { Button } from "../src";
 

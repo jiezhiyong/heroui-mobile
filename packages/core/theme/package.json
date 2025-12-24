@@ -1,8 +1,9 @@
 {
   "name": "@heroui-mobile/theme",
-  "version": "2.4.25",
+  "version": "2.4.17",
   "description": "The default theme for HeroUI components",
   "license": "MIT",
+  "type": "module",
   "main": "src/index.ts",
   "sideEffects": false,
   "files": [
@@ -36,13 +37,13 @@
     "@heroui-mobile/shared-utils": "workspace:*"
   },
   "peerDependencies": {
-    "tailwindcss": ">=3.0.0",
-    "@heroui/theme": "^2.4.25"
+    "tailwindcss": ">=3.4.0",
+    "@heroui/theme": "2.4.17"
   },
   "devDependencies": {
     "@types/color": "^4.2.0",
     "@types/flat": "^5.0.2",
-    "tailwindcss": "3.4.17",
+    "tailwindcss": "3.4.16",
     "clean-package": "2.2.0"
   },
   "tsup": {

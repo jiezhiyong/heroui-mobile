@@ -1,24 +1,24 @@
 "use client";
 
-import type {FC, ChangeEvent} from "react";
-import type {SwitchProps} from "@heroui/react";
+import type { FC, ChangeEvent } from "react";
+import type { SwitchProps } from "@heroui/react";
 
-import {VisuallyHidden} from "@react-aria/visually-hidden";
-import {useSwitch} from "@heroui/react";
-import {useTheme} from "next-themes";
-import {cn} from "@heroui/theme";
-import {useIsSSR} from "@react-aria/ssr";
-import {usePostHog} from "posthog-js/react";
+import { VisuallyHidden } from "@react-aria/visually-hidden";
+import { useSwitch } from "@heroui/react";
+import { useTheme } from "next-themes";
+import { clsx } from "@heroui/shared-utils";
+import { useIsSSR } from "@react-aria/ssr";
+import { usePostHog } from "posthog-js/react";
 
-import {SunLinearIcon, MoonIcon} from "@/components/icons";
+import { SunLinearIcon, MoonIcon } from "@/components/icons";
 
 export interface ThemeSwitchProps {
   className?: string;
   classNames?: SwitchProps["classNames"];
 }
 
-export const ThemeSwitch: FC<ThemeSwitchProps> = ({className, classNames}) => {
-  const {theme, setTheme} = useTheme();
+export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, classNames }) => {
+  const { theme, setTheme } = useTheme();
   const isSSR = useIsSSR();
   const posthog = usePostHog();
 
@@ -41,7 +41,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({className, classNames}) => {
     });
   };
 
-  const {Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps} = useSwitch({
+  const { Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps } = useSwitch({
     isSelected: initialTheme === "light",
     "aria-label": `Switch to ${initialTheme === "light" ? "dark" : "light"} mode`,
     onChange: handleThemeChange as (event: ChangeEvent<HTMLInputElement>) => void,
@@ -50,7 +50,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({className, classNames}) => {
   return (
     <Component
       {...getBaseProps({
-        className: cn(
+        className: clsx(
           "p-1 w-8 h-8 transition-opacity hover:opacity-80 cursor-pointer",
           className,
           classNames?.base,
@@ -69,14 +69,14 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({className, classNames}) => {
       <div
         {...getWrapperProps()}
         className={slots.wrapper({
-          class: cn(
+          class: clsx(
             [
               "w-auto h-auto",
               "bg-transparent",
               "rounded-lg",
               "flex items-center justify-center",
               "group-data-[selected=true]:bg-transparent",
-              "text-default-600! dark:text-default-300!",
+              "!text-default-600 dark:!text-default-300",
               "pt-0",
               "px-0",
               "mx-0",

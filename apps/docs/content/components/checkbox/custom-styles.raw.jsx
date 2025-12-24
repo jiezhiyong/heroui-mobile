@@ -1,4 +1,4 @@
-import {Checkbox, Link, User, Chip, cn} from "@heroui/react";
+import { Checkbox, Link, User, Chip, cn } from "@heroui/react";
 
 export default function App() {
   const [isSelected, setIsSelected] = React.useState(false);
@@ -29,7 +29,7 @@ export default function App() {
     >
       <div className="w-full flex justify-between gap-2">
         <User
-          avatarProps={{size: "md", src: user.avatar}}
+          avatarProps={{ size: "md", src: user.avatar }}
           description={
             <Link isExternal href={user.url} size="sm">
               @{user.username}

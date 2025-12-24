@@ -1,4 +1,4 @@
-import type {FileCode} from "./types";
+import type { FileCode } from "./types";
 
 const importRegex = /^(import\s+(?!type\s+\{)[\s\S]*?;)/gm;
 
@@ -6,7 +6,7 @@ const exportDefaultRegex = /export\s+default\s+function\s+\w+\s*\(\s*\)\s*\{/;
 
 export const transformCode = (
   code: string,
-  imports: {[key: string]: any} = {},
+  imports: { [key: string]: any } = {},
   compName = "App",
 ) => {
   let cleanedCode = code
@@ -45,7 +45,7 @@ export const transformCode = (
 
 export const joinCode = (filesCode: FileCode[]) => {
   // join all the code
-  const code = filesCode.reduce((acc, {code}) => {
+  const code = filesCode.reduce((acc, { code }) => {
     return `${acc}${code}`;
   }, "");
 

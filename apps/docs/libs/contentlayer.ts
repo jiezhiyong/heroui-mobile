@@ -1,8 +1,8 @@
-import type {Document, MDX} from "contentlayer2/core";
+import type { Document, MDX } from "contentlayer2/core";
 
-import {slug} from "github-slugger";
+import { slug } from "github-slugger";
 
-export type MDXDocument = Document & {body: MDX};
+export type MDXDocument = Document & { body: MDX };
 export type MDXDocumentDate = MDXDocument & {
   date: string;
 };
@@ -29,7 +29,7 @@ export function sortedBlogPost(allBlogs: MDXDocumentDate[]) {
 type ConvertUndefined<T> = OrNull<{
   [K in keyof T as undefined extends T[K] ? K : never]-?: T[K];
 }>;
-type OrNull<T> = {[K in keyof T]: Exclude<T[K], undefined> | null};
+type OrNull<T> = { [K in keyof T]: Exclude<T[K], undefined> | null };
 type PickRequired<T> = {
   [K in keyof T as undefined extends T[K] ? never : K]: T[K];
 };
@@ -46,7 +46,7 @@ type ConvertPick<T> = ConvertUndefined<T> & PickRequired<T>;
 export const pick = <Obj, Keys extends keyof Obj>(
   obj: Obj,
   keys: Keys[],
-): ConvertPick<{[K in Keys]: Obj[K]}> => {
+): ConvertPick<{ [K in Keys]: Obj[K] }> => {
   return keys.reduce((acc, key) => {
     acc[key] = obj[key] ?? null;
 

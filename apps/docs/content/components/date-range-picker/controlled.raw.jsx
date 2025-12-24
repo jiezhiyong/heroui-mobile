@@ -1,6 +1,6 @@
-import {DateRangePicker} from "@heroui/react";
-import {parseDate, getLocalTimeZone} from "@internationalized/date";
-import {useDateFormatter} from "@react-aria/i18n";
+import { DateRangePicker } from "@heroui/react";
+import { parseDate, getLocalTimeZone } from "@internationalized/date";
+import { useDateFormatter } from "@react-aria/i18n";
 
 export default function App() {
   const [value, setValue] = React.useState({
@@ -8,7 +8,7 @@ export default function App() {
     end: parseDate("2024-04-08"),
   });
 
-  let formatter = useDateFormatter({dateStyle: "long"});
+  let formatter = useDateFormatter({ dateStyle: "long" });
 
   return (
     <div className="flex flex-row gap-2">

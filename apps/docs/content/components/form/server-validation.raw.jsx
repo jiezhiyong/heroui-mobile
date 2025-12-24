@@ -1,4 +1,4 @@
-import {Form, Input, Button} from "@heroui/react";
+import { Form, Input, Button } from "@heroui/react";
 
 export default function App() {
   const [errors, setErrors] = React.useState({});
@@ -9,7 +9,7 @@ export default function App() {
     const data = Object.fromEntries(new FormData(e.currentTarget));
 
     if (!data.username) {
-      setErrors({username: "Username is required"});
+      setErrors({ username: "Username is required" });
 
       return;
     }

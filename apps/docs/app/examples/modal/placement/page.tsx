@@ -1,6 +1,6 @@
 "use client";
 
-import type {ModalProps} from "@heroui/react";
+import type { ModalProps } from "@heroui/react";
 
 import {
   Modal,
@@ -13,10 +13,10 @@ import {
   RadioGroup,
   Radio,
 } from "@heroui/react";
-import {useState} from "react";
+import { useState } from "react";
 
 export default function Page() {
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [modalPlacement, setModalPlacement] = useState("auto");
 
   return (

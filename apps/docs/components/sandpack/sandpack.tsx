@@ -1,20 +1,20 @@
 "use client";
 
-import type {FC} from "react";
-import type {UseSandpackProps} from "./use-sandpack";
+import type { FC } from "react";
+import type { UseSandpackProps } from "./use-sandpack";
 
-import {useRef} from "react";
-import {SandpackProvider, SandpackLayout, SandpackPreview} from "@codesandbox/sandpack-react";
+import { useRef } from "react";
+import { SandpackProvider, SandpackLayout, SandpackPreview } from "@codesandbox/sandpack-react";
 
-import {StackblitzButton} from "../stackblitz-button";
+import { StackblitzButton } from "../stackblitz-button";
 
-import {SandpackCodeViewer} from "./code-viewer";
-import {herouiTheme} from "./theme";
-import {useSandpack} from "./use-sandpack";
-import {BugReportButton} from "./bugreport-button";
-import {CopyButton} from "./copy-button";
-import {CodeSandboxButton} from "./codesandbox-button";
-import {LanguageSelector} from "./language-selector";
+import { SandpackCodeViewer } from "./code-viewer";
+import { herouiTheme } from "./theme";
+import { useSandpack } from "./use-sandpack";
+import { BugReportButton } from "./bugreport-button";
+import { CopyButton } from "./copy-button";
+import { CodeSandboxButton } from "./codesandbox-button";
+import { LanguageSelector } from "./language-selector";
 
 export interface SandpackProps extends UseSandpackProps {
   showTabs?: boolean;
@@ -41,7 +41,7 @@ export const Sandpack: FC<SandpackProps> = ({
 }) => {
   const editorContainerRef = useRef(null);
 
-  const {files, decorators, customSetup, sandpackTemplate, hasTypescript, setCurrentTemplate} =
+  const { files, decorators, customSetup, sandpackTemplate, hasTypescript, setCurrentTemplate } =
     useSandpack({
       files: filesProp,
       template,

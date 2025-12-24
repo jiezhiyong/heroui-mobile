@@ -17,11 +17,11 @@ import {
   extendVariants,
   PaginationItem,
 } from "@heroui/react";
-import {useFilter} from "@react-aria/i18n";
-import {useEffect, useMemo, useRef, useState} from "react";
-import {useSearchParams} from "next/navigation";
+import { useFilter } from "@react-aria/i18n";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
-import {SearchLinearIcon} from "@/components/icons";
+import { SearchLinearIcon } from "@/components/icons";
 
 const MyRadioGroup = () => {
   const [radio, setRadio] = useState("1");
@@ -101,7 +101,7 @@ const MyInput = extendVariants(Input, {
         inputWrapper: [
           "bg-zinc-100",
           "border",
-          "shadow-sm",
+          "shadow",
           "transition-colors",
           "focus-within:bg-zinc-100",
           "data-[hover=true]:border-zinc-600",
@@ -138,7 +138,7 @@ const MyInput = extendVariants(Input, {
     },
     radius: {
       xs: {
-        inputWrapper: "rounded-sm",
+        inputWrapper: "rounded",
       },
       sm: {
         inputWrapper: "rounded-[4px]",
@@ -402,7 +402,7 @@ export default function HeroUIPerf() {
 
   const page = Number(searchParams.get("page"));
 
-  let {startsWith} = useFilter({sensitivity: "base"});
+  let { startsWith } = useFilter({ sensitivity: "base" });
 
   const filteredItems = inputValue
     ? usersData.filter((item) => startsWith(item.name, inputValue))
@@ -454,7 +454,7 @@ export default function HeroUIPerf() {
           classNames: {
             base: [
               "before:content-[''] before:rounded-t-medium before:fixed before:w-full before:h-14 before:z-10",
-              "before:top-0 before:left-0 before:bg-linear-to-b before:from-default-50",
+              "before:top-0 before:left-0 before:bg-gradient-to-b before:from-default-50",
             ],
           },
         }}
@@ -468,7 +468,7 @@ export default function HeroUIPerf() {
         {(item) => (
           <SelectItem key={item.id} textValue={item.name}>
             <div className="flex gap-2 items-center">
-              <Avatar alt={item.name} className="shrink-0" size="sm" src={item.avatar} />
+              <Avatar alt={item.name} className="flex-shrink-0" size="sm" src={item.avatar} />
               <div className="flex flex-col">
                 <span className="text-small">{item.name}</span>
                 <span className="text-tiny text-default-400">{item.email}</span>
@@ -513,7 +513,7 @@ export default function HeroUIPerf() {
           Pariatur ullamco cillum proident aliqua nostrud. Labore ea veniam cillum duis veniam in
         </AccordionItem>
       </Accordion>
-      <Tabs classNames={{panel: "flex flex-col gap-5"}} variant="underlined">
+      <Tabs classNames={{ panel: "flex flex-col gap-5" }} variant="underlined">
         <Tab title="Test 1">
           <Textarea defaultValue="ASdasd" label="Default value (uncontrolled)" />
           <Input label="Text B Tab 1" value={textB} onValueChange={setTextB} />
@@ -551,7 +551,7 @@ export default function HeroUIPerf() {
       <Pagination
         showControls
         initialPage={page ?? 1}
-        renderItem={({page, ...itemProps}) => {
+        renderItem={({ page, ...itemProps }) => {
           return <PaginationItem href={`/examples/perf?page=${page}`} {...itemProps} />;
         }}
         total={10}

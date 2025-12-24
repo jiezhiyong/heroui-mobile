@@ -1,17 +1,17 @@
 "use client";
 
-import {useMemo, useState} from "react";
-import {Tabs, Tab, Card, CardBody, Image, Button, RadioGroup, Radio} from "@heroui/react";
+import { useMemo, useState } from "react";
+import { Tabs, Tab, Card, CardBody, Image, Button, RadioGroup, Radio } from "@heroui/react";
 import NextLink from "next/link";
 import NextImage from "next/image";
 
-import {shopCartStyles} from "./styles";
+import { shopCartStyles } from "./styles";
 
-import {title, subtitle, titleWrapper, sectionWrapper} from "@/components/primitives";
-import {PaletteIcon, MagicIcon, GamingConsoleIcon, StarIcon} from "@/components/icons";
-import {SmallLogoOutlined, CodeWindow} from "@/components";
+import { title, subtitle, titleWrapper, sectionWrapper } from "@/components/primitives";
+import { PaletteIcon, MagicIcon, GamingConsoleIcon, StarIcon } from "@/components/icons";
+import { HeroUILogo, CodeWindow } from "@/components";
 import landingContent from "@/content/landing";
-import {useIsMobile} from "@/hooks/use-media-query";
+import { useIsMobile } from "@/hooks/use-media-query";
 
 const themesTabs = (isMobile: boolean) => [
   {
@@ -22,7 +22,8 @@ const themesTabs = (isMobile: boolean) => [
       </p>
     ),
     icon: () => (
-      <SmallLogoOutlined
+      <HeroUILogo
+        outlined
         className="text-default-400 group-data-[selected=true]:text-foreground"
         size={isMobile ? 34 : 44}
       />
@@ -68,7 +69,7 @@ const themesTabs = (isMobile: boolean) => [
 ];
 
 type Theme = "heroui" | "modern" | "elegant" | "retro";
-type Tab = {id: string; title: () => JSX.Element; icon: () => JSX.Element};
+type Tab = { id: string; title: () => JSX.Element; icon: () => JSX.Element };
 
 const itemSizes = ["xs", "s", "m", "l", "xl"];
 
@@ -227,14 +228,14 @@ export const CustomThemes = () => {
   const [selectedTheme, setSelectedTheme] = useState<Theme>(tabs[0].id as Theme);
 
   return (
-    <section className={sectionWrapper({class: "mt-24 lg:mt-56"})}>
+    <section className={sectionWrapper({ class: "mt-24 lg:mt-56" })}>
       <div className="flex flex-col gap-8">
         <div>
           <div className={titleWrapper()}>
-            <h1 className={title({size: "lg"})}>Apply your own</h1>
+            <h1 className={title({ size: "lg" })}>Apply your own</h1>
             <div>
-              <h1 className={title({color: "blue", size: "lg"})}>theming&nbsp;</h1>
-              <h1 className={title({size: "lg"})}>decisions.</h1>
+              <h1 className={title({ color: "blue", size: "lg" })}>theming&nbsp;</h1>
+              <h1 className={title({ size: "lg" })}>decisions.</h1>
             </div>
           </div>
           <p className={subtitle()}>
@@ -259,7 +260,7 @@ export const CustomThemes = () => {
           />
         </div>
       </div>
-      <div className="h-full dark:md:block absolute hidden -bottom-[10%] -left-[15%] -z-1">
+      <div className="h-full dark:md:block absolute hidden -bottom-[10%] -left-[15%] -z-[1]">
         <Image
           removeWrapper
           alt="custom themes background"

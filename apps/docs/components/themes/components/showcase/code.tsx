@@ -1,10 +1,10 @@
-import type {CodeProps} from "@heroui/react";
-import type {HeroUIScaling} from "../../types";
+import type { CodeProps } from "@heroui/react";
+import type { HeroUIScaling } from "../../types";
 
-import {Code as HeroUICode} from "@heroui/react";
+import { Code as HeroUICode } from "@heroui/react";
 
-import {ShowcaseComponent} from "../showcase-component";
-import {useThemeBuilder} from "../../provider";
+import { ShowcaseComponent } from "../showcase-component";
+import { useThemeBuilder } from "../../provider";
 
 type Color = CodeProps["color"];
 type Radius = CodeProps["radius"];
@@ -68,7 +68,7 @@ const Section = ({
 
 export const Code = () => {
   const colors: Color[] = ["default", "primary", "secondary", "success", "warning", "danger"];
-  const {radiusValue, scaling} = useThemeBuilder();
+  const { radiusValue, scaling } = useThemeBuilder();
 
   return (
     <ShowcaseComponent name="Code">

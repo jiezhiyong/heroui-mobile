@@ -1,4 +1,4 @@
-import {Card, CardBody, Image, Button, Slider} from "@heroui/react";
+import { Card, CardBody, Image, Button, Slider } from "@heroui/react";
 
 export const HeartIcon = ({
   size = 24,
@@ -30,7 +30,7 @@ export const HeartIcon = ({
   );
 };
 
-export const PauseCircleIcon = ({size = 24, width, height, ...props}) => {
+export const PauseCircleIcon = ({ size = 24, width, height, ...props }) => {
   return (
     <svg
       aria-hidden="true"
@@ -50,7 +50,7 @@ export const PauseCircleIcon = ({size = 24, width, height, ...props}) => {
   );
 };
 
-export const NextIcon = ({size = 24, width, height, ...props}) => {
+export const NextIcon = ({ size = 24, width, height, ...props }) => {
   return (
     <svg
       aria-hidden="true"
@@ -74,7 +74,7 @@ export const NextIcon = ({size = 24, width, height, ...props}) => {
   );
 };
 
-export const PreviousIcon = ({size = 24, width, height, ...props}) => {
+export const PreviousIcon = ({ size = 24, width, height, ...props }) => {
   return (
     <svg
       aria-hidden="true"
@@ -98,7 +98,7 @@ export const PreviousIcon = ({size = 24, width, height, ...props}) => {
   );
 };
 
-export const RepeatOneIcon = ({size = 24, width, height, ...props}) => {
+export const RepeatOneIcon = ({ size = 24, width, height, ...props }) => {
   return (
     <svg
       aria-hidden="true"
@@ -126,7 +126,7 @@ export const RepeatOneIcon = ({size = 24, width, height, ...props}) => {
   );
 };
 
-export const ShuffleIcon = ({size = 24, width, height, ...props}) => {
+export const ShuffleIcon = ({ size = 24, width, height, ...props }) => {
   return (
     <svg
       aria-hidden="true"
@@ -185,7 +185,7 @@ export default function App() {
               </div>
               <Button
                 isIconOnly
-                className="text-default-900/60 data-hover:bg-foreground/10! -translate-y-2 translate-x-2"
+                className="text-default-900/60 data-[hover]:bg-foreground/10 -translate-y-2 translate-x-2"
                 radius="full"
                 variant="light"
                 onPress={() => setLiked((v) => !v)}
@@ -217,7 +217,7 @@ export default function App() {
             <div className="flex w-full items-center justify-center">
               <Button
                 isIconOnly
-                className="data-hover:bg-foreground/10!"
+                className="data-[hover]:bg-foreground/10"
                 radius="full"
                 variant="light"
               >
@@ -225,7 +225,7 @@ export default function App() {
               </Button>
               <Button
                 isIconOnly
-                className="data-hover:bg-foreground/10!"
+                className="data-[hover]:bg-foreground/10"
                 radius="full"
                 variant="light"
               >
@@ -233,7 +233,7 @@ export default function App() {
               </Button>
               <Button
                 isIconOnly
-                className="w-auto h-auto data-hover:bg-foreground/10!"
+                className="w-auto h-auto data-[hover]:bg-foreground/10"
                 radius="full"
                 variant="light"
               >
@@ -241,7 +241,7 @@ export default function App() {
               </Button>
               <Button
                 isIconOnly
-                className="data-hover:bg-foreground/10!"
+                className="data-[hover]:bg-foreground/10"
                 radius="full"
                 variant="light"
               >
@@ -249,7 +249,7 @@ export default function App() {
               </Button>
               <Button
                 isIconOnly
-                className="data-hover:bg-foreground/10!"
+                className="data-[hover]:bg-foreground/10"
                 radius="full"
                 variant="light"
               >

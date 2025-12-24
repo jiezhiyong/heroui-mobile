@@ -1,4 +1,4 @@
-import {Input} from "@heroui/react";
+import { Input } from "@heroui/react";
 
 export const EyeSlashFilledIcon = (props) => {
   return (
@@ -71,7 +71,7 @@ export default function App() {
       endContent={
         <button
           aria-label="toggle password visibility"
-          className="focus:outline-solid outline-transparent"
+          className="focus:outline-none"
           type="button"
           onClick={toggleVisibility}
         >

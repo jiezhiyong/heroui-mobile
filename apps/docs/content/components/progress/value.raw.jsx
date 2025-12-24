@@ -1,4 +1,4 @@
-import {Progress} from "@heroui/react";
+import { Progress } from "@heroui/react";
 
 export default function App() {
   const [value, setValue] = React.useState(0);

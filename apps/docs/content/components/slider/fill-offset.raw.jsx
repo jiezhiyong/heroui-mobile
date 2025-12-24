@@ -1,4 +1,4 @@
-import {Slider} from "@heroui/react";
+import { Slider } from "@heroui/react";
 
 export default function App() {
   return (
@@ -7,7 +7,7 @@ export default function App() {
       color="warning"
       defaultValue={1.5}
       fillOffset={0}
-      formatOptions={{signDisplay: "always"}}
+      formatOptions={{ signDisplay: "always" }}
       label="Exposure"
       maxValue={5}
       minValue={-5}

@@ -36,13 +36,13 @@ export function transformTokens(tokens: TransformTokens, folderLine = 10) {
     result.push(token);
 
     const lineContent = getLineContent(token);
-    const {isStartTag, isEndTag} = checkIsElement(lineContent);
+    const { isStartTag, isEndTag } = checkIsElement(lineContent);
 
     // If it has startElementName means it is within the element range
     if (startElementName) {
       if (isEndTag) {
         // Judge whether it is the end tag of the element then reset startElementName
-        const {endElementName} = getElementName(lineContent);
+        const { endElementName } = getElementName(lineContent);
 
         if (endElementName === startElementName) {
           startElementName = "";
@@ -51,7 +51,7 @@ export function transformTokens(tokens: TransformTokens, folderLine = 10) {
 
       return;
     } else if (isStartTag) {
-      const {startElementName: elementName, endElementName} = getElementName(lineContent);
+      const { startElementName: elementName, endElementName } = getElementName(lineContent);
 
       if (!endElementName) {
         startElementName = elementName;

@@ -1,19 +1,23 @@
 import React from "react";
-import {themes} from "@storybook/theming";
-import {HeroUIProvider} from "@heroui-mobile/system/src/provider";
-import type {Preview} from "@storybook/react";
+import { themes } from "@storybook/theming";
+import { HeroUIProvider } from "@heroui/system";
+import type { Preview } from "@storybook/react";
 
 import "./style.css";
-import {withStrictModeSwitcher} from "./addons/react-strict-mode";
+import { withStrictModeSwitcher } from "./addons/react-strict-mode";
 
 const decorators: Preview["decorators"] = [
-  (Story, {globals: {locale, disableAnimation, labelPlacement}}) => {
+  (Story, { globals: { locale, disableAnimation, labelPlacement } }) => {
     const direction =
       // @ts-ignore
       locale && new Intl.Locale(locale)?.textInfo?.direction === "rtl" ? "rtl" : undefined;
 
     return (
-      <HeroUIProvider locale={locale} disableAnimation={disableAnimation} labelPlacement={labelPlacement}>
+      <HeroUIProvider
+        locale={locale}
+        disableAnimation={disableAnimation}
+        labelPlacement={labelPlacement}
+      >
         <div className="bg-dark" lang={locale} dir={direction}>
           <Story />
         </div>
@@ -110,7 +114,7 @@ const globalTypes: Preview["globalTypes"] = {
       icon: "globe",
       items: locales.map((locale) => ({
         value: locale,
-        title: new Intl.DisplayNames(undefined, {type: "language"}).of(locale),
+        title: new Intl.DisplayNames(undefined, { type: "language" }).of(locale),
         // @ts-ignore
         right: new Intl.Locale(locale)?.textInfo?.direction === "rtl" ? "Right to Left" : undefined,
       })),
@@ -122,8 +126,8 @@ const globalTypes: Preview["globalTypes"] = {
     toolbar: {
       icon: "photodrag",
       items: [
-        {value: true, title: "True"},
-        {value: false, title: "False"},
+        { value: true, title: "True" },
+        { value: false, title: "False" },
       ],
     },
   },
@@ -133,12 +137,12 @@ const globalTypes: Preview["globalTypes"] = {
     toolbar: {
       icon: "component",
       items: [
-        {value: "inside", title: "Inside"},
-        {value: "outside", title: "Outside"},
-        {value: "outside-left", title: "Outside Left"},
+        { value: "inside", title: "Inside" },
+        { value: "outside", title: "Outside" },
+        { value: "outside-left", title: "Outside Left" },
       ],
     },
-  }
+  },
 };
 
 const preview: Preview = {

@@ -1,11 +1,11 @@
-import type {CheckboxProps} from "@heroui/react";
-import type {HeroUIScaling} from "../../types";
+import type { CheckboxProps } from "@heroui/react";
+import type { HeroUIScaling } from "../../types";
 
-import {cloneElement} from "react";
-import {Checkbox as HeroUICheckbox} from "@heroui/react";
+import { cloneElement } from "react";
+import { Checkbox as HeroUICheckbox } from "@heroui/react";
 
-import {ShowcaseComponent} from "../showcase-component";
-import {useThemeBuilder} from "../../provider";
+import { ShowcaseComponent } from "../showcase-component";
+import { useThemeBuilder } from "../../provider";
 
 type Color = CheckboxProps["color"];
 type Radius = CheckboxProps["radius"];
@@ -96,15 +96,15 @@ const Section = ({
 
   return (
     <div key={color} className="flex flex-col gap-y-4">
-      {cloneElement(<SectionBase />, {color, radius, classNames, isDisabled: false})}
-      {cloneElement(<SectionBase />, {color, radius, classNames, isDisabled: true})}
+      {cloneElement(<SectionBase />, { color, radius, classNames, isDisabled: false })}
+      {cloneElement(<SectionBase />, { color, radius, classNames, isDisabled: true })}
     </div>
   );
 };
 
 export const Checkbox = () => {
   const colors: Color[] = ["default", "primary", "secondary", "success", "warning", "danger"];
-  const {radiusValue, scaling} = useThemeBuilder();
+  const { radiusValue, scaling } = useThemeBuilder();
 
   return (
     <ShowcaseComponent name="Checkbox">

@@ -1,12 +1,12 @@
-import type {ButtonProps} from "@heroui/react";
-import type {Border} from "../../types";
+import type { ButtonProps } from "@heroui/react";
+import type { Border } from "../../types";
 
-import {cloneElement} from "react";
-import {Button as HeroUIButton} from "@heroui/react";
-import {cn} from "@heroui/theme";
+import { cloneElement } from "react";
+import { Button as HeroUIButton } from "@heroui/react";
+import { clsx } from "@heroui/shared-utils";
 
-import {ShowcaseComponent} from "../showcase-component";
-import {useThemeBuilder} from "../../provider";
+import { ShowcaseComponent } from "../showcase-component";
+import { useThemeBuilder } from "../../provider";
 
 type Color = ButtonProps["color"];
 type Radius = ButtonProps["radius"];
@@ -28,7 +28,7 @@ const SectionBase = ({
   return (
     <HeroUIButton
       key={color}
-      className={cn(className, "capitalize")}
+      className={clsx(className, "capitalize")}
       color={color}
       isDisabled={isDisabled}
       radius={radius}
@@ -74,7 +74,7 @@ const Section = ({
       {variants.map((variant) => (
         <SectionBase
           key={variant}
-          className={cn(
+          className={clsx(
             className,
             variant === "bordered" || variant === "faded" || variant === "ghost" ? borderClass : "",
           )}
@@ -98,7 +98,7 @@ const Section = ({
 
 export const Button = () => {
   const colors: Color[] = ["default", "primary", "secondary", "success", "warning", "danger"];
-  const {radiusValue, scaling, borderWidthValue} = useThemeBuilder();
+  const { radiusValue, scaling, borderWidthValue } = useThemeBuilder();
 
   return (
     <ShowcaseComponent name="Button">

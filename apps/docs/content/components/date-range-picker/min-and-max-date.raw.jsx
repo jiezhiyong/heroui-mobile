@@ -1,5 +1,5 @@
-import {DateRangePicker} from "@heroui/react";
-import {getLocalTimeZone, parseDate, today} from "@internationalized/date";
+import { DateRangePicker } from "@heroui/react";
+import { getLocalTimeZone, parseDate, today } from "@internationalized/date";
 
 export default function App() {
   return (
@@ -8,7 +8,7 @@ export default function App() {
         <h3>Min date</h3>
         <DateRangePicker
           defaultValue={{
-            start: today(getLocalTimeZone()).subtract({days: 1}),
+            start: today(getLocalTimeZone()).subtract({ days: 1 }),
             end: parseDate("2024-04-08"),
           }}
           label="Date and time"
@@ -19,7 +19,7 @@ export default function App() {
         <h3>Max date</h3>
         <DateRangePicker
           defaultValue={{
-            start: today(getLocalTimeZone()).subtract({days: 1}),
+            start: today(getLocalTimeZone()).subtract({ days: 1 }),
             end: parseDate("2024-04-08"),
           }}
           label="Date and time"

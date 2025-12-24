@@ -1,4 +1,4 @@
-import {DateRangePicker, Radio, RadioGroup, Button, ButtonGroup, cn} from "@heroui/react";
+import { DateRangePicker, Radio, RadioGroup, Button, ButtonGroup, cn } from "@heroui/react";
 import {
   today,
   startOfWeek,
@@ -7,29 +7,29 @@ import {
   endOfMonth,
   getLocalTimeZone,
 } from "@internationalized/date";
-import {useLocale, useDateFormatter} from "@react-aria/i18n";
+import { useLocale, useDateFormatter } from "@react-aria/i18n";
 
 export default function App() {
   let defaultDate = {
     start: today(getLocalTimeZone()),
-    end: today(getLocalTimeZone()).add({days: 7}),
+    end: today(getLocalTimeZone()).add({ days: 7 }),
   };
   let [value, setValue] = React.useState(defaultDate);
 
-  let {locale} = useLocale();
-  let formatter = useDateFormatter({dateStyle: "full"});
+  let { locale } = useLocale();
+  let formatter = useDateFormatter({ dateStyle: "full" });
   let now = today(getLocalTimeZone());
   let nextWeek = {
-    start: startOfWeek(now.add({weeks: 1}), locale),
-    end: endOfWeek(now.add({weeks: 1}), locale),
+    start: startOfWeek(now.add({ weeks: 1 }), locale),
+    end: endOfWeek(now.add({ weeks: 1 }), locale),
   };
   let nextMonth = {
-    start: startOfMonth(now.add({months: 1})),
-    end: endOfMonth(now.add({months: 1})),
+    start: startOfMonth(now.add({ months: 1 })),
+    end: endOfMonth(now.add({ months: 1 })),
   };
 
   const CustomRadio = (props) => {
-    const {children, ...otherProps} = props;
+    const { children, ...otherProps } = props;
 
     return (
       <Radio
@@ -84,7 +84,7 @@ export default function App() {
               onPress={() =>
                 setValue({
                   start: now,
-                  end: now.add({days: 7}),
+                  end: now.add({ days: 7 }),
                 })
               }
             >
@@ -96,7 +96,7 @@ export default function App() {
         }
         calendarProps={{
           focusedValue: value.start,
-          onFocusChange: (val) => setValue({...value, start: val}),
+          onFocusChange: (val) => setValue({ ...value, start: val }),
           nextButtonProps: {
             variant: "bordered",
           },

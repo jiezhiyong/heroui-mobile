@@ -1,8 +1,8 @@
-import type {DateValue} from "@react-types/calendar";
+import type { DateValue } from "@react-types/calendar";
 
 import React from "react";
-import {Calendar} from "@heroui/react";
-import {today, getLocalTimeZone} from "@internationalized/date";
+import { Calendar } from "@heroui/react";
+import { today, getLocalTimeZone } from "@internationalized/date";
 
 export default function App() {
   let defaultDate = today(getLocalTimeZone());

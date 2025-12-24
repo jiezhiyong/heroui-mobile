@@ -1,4 +1,4 @@
-import {Pagination, PaginationItemType} from "@heroui/react";
+import { Pagination, PaginationItemType } from "@heroui/react";
 
 export const ChevronIcon = (props) => {
   return (
@@ -24,7 +24,7 @@ export const ChevronIcon = (props) => {
 };
 
 export default function App() {
-  const renderItem = ({ref, key, value, isActive, onNext, onPrevious, setPage, className}) => {
+  const renderItem = ({ ref, key, value, isActive, onNext, onPrevious, setPage, className }) => {
     if (value === PaginationItemType.NEXT) {
       return (
         <button
@@ -64,7 +64,7 @@ export default function App() {
         ref={ref}
         className={cn(
           className,
-          isActive && "text-white bg-linear-to-br from-indigo-500 to-pink-500 font-bold",
+          isActive && "text-white bg-gradient-to-br from-indigo-500 to-pink-500 font-bold",
         )}
         onClick={() => setPage(value)}
       >

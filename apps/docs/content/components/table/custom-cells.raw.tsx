@@ -1,5 +1,5 @@
-import type {SVGProps} from "react";
-import type {ChipProps} from "@heroui/react";
+import type { SVGProps } from "react";
+import type { ChipProps } from "@heroui/react";
 
 import React from "react";
 import {
@@ -19,10 +19,10 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 };
 
 export const columns = [
-  {name: "NAME", uid: "name"},
-  {name: "ROLE", uid: "role"},
-  {name: "STATUS", uid: "status"},
-  {name: "ACTIONS", uid: "actions"},
+  { name: "NAME", uid: "name" },
+  { name: "ROLE", uid: "role" },
+  { name: "STATUS", uid: "status" },
+  { name: "ACTIONS", uid: "actions" },
 ];
 
 export const users = [
@@ -214,7 +214,7 @@ export default function App() {
       case "name":
         return (
           <User
-            avatarProps={{radius: "lg", src: user.avatar}}
+            avatarProps={{ radius: "lg", src: user.avatar }}
             description={user.email}
             name={cellValue}
           >

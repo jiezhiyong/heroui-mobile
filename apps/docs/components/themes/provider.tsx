@@ -10,10 +10,10 @@ import type {
   Border,
 } from "./types";
 
-import {useState, createContext, useContext} from "react";
-import {useLocalStorage} from "usehooks-ts";
+import { useState, createContext, useContext } from "react";
+import { useLocalStorage } from "usehooks-ts";
 
-import {configKey, initialConfig} from "./constants";
+import { configKey, initialConfig } from "./constants";
 
 export interface ThemeBuilderContextProps {
   config: Config;
@@ -81,7 +81,7 @@ interface ThemeBuilderProviderProps {
   children: React.ReactNode;
 }
 
-export default function ThemeBuilderProvider({children}: ThemeBuilderProviderProps) {
+export default function ThemeBuilderProvider({ children }: ThemeBuilderProviderProps) {
   const [lsConfig] = useLocalStorage<Config>(configKey, initialConfig);
   const [config, setConfig] = useState<Config>(lsConfig);
   const [radiusValue, setRadiusValue] = useState<Radius>("sm");

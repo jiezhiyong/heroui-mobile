@@ -1,6 +1,6 @@
-import {Button} from "@heroui/react";
+import { Button } from "@heroui/react";
 
-export const UserIcon = ({fill = "currentColor", size, height, width, ...props}) => {
+export const UserIcon = ({ fill = "currentColor", size, height, width, ...props }) => {
   return (
     <svg
       data-name="Iconly/Curved/Profile"
@@ -28,7 +28,7 @@ export const UserIcon = ({fill = "currentColor", size, height, width, ...props})
   );
 };
 
-export const CameraIcon = ({fill = "currentColor", size, height, width, ...props}) => {
+export const CameraIcon = ({ fill = "currentColor", size, height, width, ...props }) => {
   return (
     <svg
       fill="none"

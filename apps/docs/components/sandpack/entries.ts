@@ -46,21 +46,13 @@ module.exports = {
 
 export const postcssConfig = `module.exports = {
   plugins: {
-    "@tailwindcss/postcss": {},
+    tailwindcss: {},
+    autoprefixer: {},
   },
 }`;
 
-export const stylesConfig = `@import "tailwindcss";
-@config "./tailwind.config.js";`;
+export const stylesConfig = `@tailwind base;
+@tailwind components;
+@tailwind utilities;`;
 
 export const npmrcConfig = `public-hoist-pattern[]=*@heroui/*`;
-
-export const viteConfig = `import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
-});
-`;

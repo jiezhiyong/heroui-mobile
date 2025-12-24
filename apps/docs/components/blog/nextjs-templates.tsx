@@ -1,5 +1,5 @@
-import {NewNextJSIcon} from "@/components/icons";
-import {FeaturesGrid} from "@/components/marketing/features-grid";
+import { NewNextJSIcon } from "@/components/icons";
+import { FeaturesGrid } from "@/components/marketing/features-grid";
 
 const frameworks = [
   {

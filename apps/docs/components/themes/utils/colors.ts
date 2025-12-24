@@ -1,10 +1,10 @@
-import type {ColorShades, ThemeType, ThemeColor, ColorPickerType} from "../types";
+import type { ColorShades, ThemeType, ThemeColor, ColorPickerType } from "../types";
 
-import {swapColorValues} from "@heroui/theme/src/utils/object";
-import {readableColor} from "color2k";
+import { swapColorValues } from "@heroui-mobile/theme/src/utils/object";
+import { readableColor } from "color2k";
 import Values from "values.js";
 
-import {colorWeight, defaultDarkColorWeight, defaultLightColorWeight} from "../constants";
+import { colorWeight, defaultDarkColorWeight, defaultLightColorWeight } from "../constants";
 
 /**
  * Convert color values to RGB

@@ -1,15 +1,15 @@
 "use client";
 
-import type {BlogPost} from "contentlayer2/generated";
+import type { BlogPost } from "contentlayer2/generated";
 
-import {Card, CardFooter, CardBody, CardHeader, Link, Avatar, Image} from "@heroui/react";
+import { Card, CardFooter, CardBody, CardHeader, Link, Avatar, Image } from "@heroui/react";
 import Balancer from "react-wrap-balancer";
-import {format, parseISO} from "date-fns";
+import { format, parseISO } from "date-fns";
 import NextLink from "next/link";
-import {AnimatePresence, motion} from "framer-motion";
-import {usePostHog} from "posthog-js/react";
+import { AnimatePresence, motion } from "framer-motion";
+import { usePostHog } from "posthog-js/react";
 
-import {useIsMounted} from "@/hooks/use-is-mounted";
+import { useIsMounted } from "@/hooks/use-is-mounted";
 
 const BlogPostCard = (post: BlogPost) => {
   const isMounted = useIsMounted();
@@ -29,10 +29,10 @@ const BlogPostCard = (post: BlogPost) => {
     <AnimatePresence>
       {isMounted && (
         <motion.article
-          animate={{opacity: 1, y: 0}}
-          exit={{opacity: 0, y: 5}}
-          initial={{opacity: 0, y: 5}}
-          transition={{duration: 0.3}}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 5 }}
+          initial={{ opacity: 0, y: 5 }}
+          transition={{ duration: 0.3 }}
         >
           <Card
             disableRipple
@@ -72,7 +72,7 @@ const BlogPostCard = (post: BlogPost) => {
   );
 };
 
-export const BlogPostList = ({posts}: {posts: BlogPost[]}) => {
+export const BlogPostList = ({ posts }: { posts: BlogPost[] }) => {
   return (
     <div className="mt-10 grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
       {posts.map((post, idx) => (

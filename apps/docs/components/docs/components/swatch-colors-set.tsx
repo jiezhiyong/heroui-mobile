@@ -1,10 +1,10 @@
-import {parseToRgba, readableColor} from "color2k";
-import {Button, Tooltip} from "@heroui/react";
-import {commonColors, semanticColors} from "@heroui/theme";
-import {useClipboard} from "@heroui/use-clipboard";
-import {useState} from "react";
-import {useTheme} from "next-themes";
-import {get, isEmpty} from "@heroui/shared-utils";
+import { parseToRgba, readableColor } from "color2k";
+import { Button, Tooltip } from "@heroui/react";
+import { commonColors, semanticColors } from "@heroui/theme";
+import { useClipboard } from "@heroui/use-clipboard";
+import { useState } from "react";
+import { useTheme } from "next-themes";
+import { get, isEmpty } from "@heroui/shared-utils";
 
 type ColorsItem = {
   color: string;
@@ -36,9 +36,9 @@ const scaleIndexMap: Record<number, string> = {
   9: "900",
 };
 
-const Swatch = ({color, scale}: {color: string; scale?: string}) => {
+const Swatch = ({ color, scale }: { color: string; scale?: string }) => {
   const [copied, setCopied] = useState(false);
-  const {copy} = useClipboard();
+  const { copy } = useClipboard();
 
   const colorText = color
     ? `#${parseToRgba(color)
@@ -100,9 +100,9 @@ const SemanticSwatch = ({
   textClassName?: string;
 }) => {
   const [copied, setCopied] = useState(false);
-  const {copy} = useClipboard();
+  const { copy } = useClipboard();
 
-  const {theme} = useTheme();
+  const { theme } = useTheme();
   let value: string = "";
   const [colorName, colorScale] = color.split("-");
 
@@ -139,9 +139,9 @@ const SemanticSwatch = ({
   );
 };
 
-const SwatchSet = ({colors, isSemantic = false}: SwatchSetProps) => (
+const SwatchSet = ({ colors, isSemantic = false }: SwatchSetProps) => (
   <div className="flex flex-row flex-wrap items-center justify-center">
-    {colors.map(({title, items}) => (
+    {colors.map(({ title, items }) => (
       <div key={title} className="flex flex-col items-start w-full h-full">
         <h2 className="text-xl font-bold text-foreground">{title}</h2>
         <div className="flex flex-row flex-wrap items-center justify-start w-full h-full px-4 py-1">

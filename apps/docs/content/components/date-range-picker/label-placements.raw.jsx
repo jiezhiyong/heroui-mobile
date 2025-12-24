@@ -1,7 +1,7 @@
-import {DateRangePicker} from "@heroui/react";
+import { DateRangePicker } from "@heroui/react";
 
 export default function App() {
-  const placements = ["inside", "outside", "outside-left", "outside-top"];
+  const placements = ["inside", "outside", "outside-left"];
 
   return (
     <div className="flex flex-col gap-4">

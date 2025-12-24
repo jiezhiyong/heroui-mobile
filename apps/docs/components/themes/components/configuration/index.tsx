@@ -1,6 +1,6 @@
-import type {Config, Template, ThemeType} from "../../types";
+import type { Config, Template, ThemeType } from "../../types";
 
-import {useEffect, useState, useMemo} from "react";
+import { useEffect, useState, useMemo } from "react";
 import {
   Card,
   CardBody,
@@ -14,36 +14,37 @@ import {
   DrawerContent,
   cn,
 } from "@heroui/react";
-import {useTheme} from "next-themes";
-import {useLocalStorage} from "usehooks-ts";
-import {Icon} from "@iconify/react/dist/offline";
+import { useTheme } from "next-themes";
+import { useLocalStorage } from "usehooks-ts";
+import { Icon } from "@iconify/react/dist/offline";
 import LinkSquareIcon from "@iconify/icons-solar/link-square-linear";
-import {ArrowLeftIcon, ChevronIcon, ChevronUpIcon, CloseIcon} from "@heroui/shared-icons";
+import { ArrowLeftIcon, ChevronIcon, ChevronUpIcon, CloseIcon } from "@heroui/shared-icons";
+import { clsx } from "@heroui/shared-utils";
 
-import {useThemeBuilder} from "../../provider";
-import {configKey, syncThemesKey, initialConfig} from "../../constants";
-import {SelectTemplate} from "../select-template";
-import {generatePluginConfig} from "../../utils/config";
-import {setAllCssVars} from "../../css-vars";
-import {templates} from "../../templates";
+import { useThemeBuilder } from "../../provider";
+import { configKey, syncThemesKey, initialConfig } from "../../constants";
+import { SelectTemplate } from "../select-template";
+import { generatePluginConfig } from "../../utils/config";
+import { setAllCssVars } from "../../css-vars";
+import { templates } from "../../templates";
 
-import {BaseColors} from "./base-colors";
-import {ContentColors} from "./content-colors";
-import {LayoutColors} from "./layout-colors";
-import {Radiuses} from "./radiuses";
-import {DefaultColors} from "./default-colors";
-import {DisableOpacity} from "./disable-opacity";
+import { BaseColors } from "./base-colors";
+import { ContentColors } from "./content-colors";
+import { LayoutColors } from "./layout-colors";
+import { Radiuses } from "./radiuses";
+import { DefaultColors } from "./default-colors";
+import { DisableOpacity } from "./disable-opacity";
 import Swatch from "./swatch";
-import {Fonts} from "./fonts";
-import {Scaling} from "./scaling";
-import {BorderWidths} from "./border-widths";
+import { Fonts } from "./fonts";
+import { Scaling } from "./scaling";
+import { BorderWidths } from "./border-widths";
 
 import usePrevious from "@/hooks/use-previous";
-import {Filters, RotateLeftLinearIcon} from "@/components/icons";
-import {ThemeSwitch} from "@/components/theme-switch";
-import {Crop, CropMinimalistic} from "@/components/icons/crop";
-import {RadialBlur} from "@/components/icons/radial-blur";
-import {Scaling as ScalingIcon} from "@/components/icons/scaling";
+import { Filters, RotateLeftLinearIcon } from "@/components/icons";
+import { ThemeSwitch } from "@/components/theme-switch";
+import { Crop, CropMinimalistic } from "@/components/icons/crop";
+import { RadialBlur } from "@/components/icons/radial-blur";
+import { Scaling as ScalingIcon } from "@/components/icons/scaling";
 
 export default function Configuration() {
   const {
@@ -70,7 +71,7 @@ export default function Configuration() {
   const [selectedSection, setSelectedSection] = useState<
     "none" | "color" | "radius" | "font" | "opacity" | "scaling" | "borderWidths"
   >("none");
-  const {theme: currentTheme} = useTheme();
+  const { theme: currentTheme } = useTheme();
 
   /**
    * Update the CSS variables and the configuration when the theme changes.
@@ -83,7 +84,7 @@ export default function Configuration() {
 
     // Set the configuration in the local storage when the theme changes
     if (prevTheme === theme) {
-      setLsConfig({...config});
+      setLsConfig({ ...config });
     }
   }, [config, theme, prevTheme]);
 
@@ -104,7 +105,7 @@ export default function Configuration() {
 
       setAllCssVars(config, theme);
     }
-    setLsConfig({...config});
+    setLsConfig({ ...config });
   }
 
   function handleCopy() {
@@ -127,7 +128,7 @@ export default function Configuration() {
             </Button>
           </div>
           <div className="h-9">
-            <ThemeSwitch classNames={{wrapper: "dark:!text-default-500"}} />
+            <ThemeSwitch classNames={{ wrapper: "dark:!text-default-500" }} />
           </div>
         </CardHeader>
         <Divider className="bg-default-200" />
@@ -233,7 +234,7 @@ export default function Configuration() {
                     return (
                       <div key={template.name} className="flex flex-col items-center">
                         <Button
-                          className={cn(
+                          className={clsx(
                             "p-0 min-w-0 w-auto h-10 border border-black/5 gap-0 rounded-sm overflow-hidden m-[3px]",
                             templateTheme === template.name
                               ? "outline-1 outline-foreground-800"
@@ -487,7 +488,7 @@ export default function Configuration() {
                 </ScrollShadow>
               </div>
             </div>
-            <Divider className={cn("my-2 p-0", {hidden: selectedSection != "none"})} />
+            <Divider className={cn("my-2 p-0", { hidden: selectedSection != "none" })} />
             <div
               className={cn("flex flex-col items-center px-4 pb-4 gap-y-2", {
                 hidden: selectedSection != "none",

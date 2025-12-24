@@ -1,4 +1,4 @@
-import {Link} from "@heroui/react";
+import { Link } from "@heroui/react";
 
 export const AnchorIcon = (props) => {
   return (

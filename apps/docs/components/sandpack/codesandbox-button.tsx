@@ -1,8 +1,8 @@
 import React from "react";
-import {UnstyledOpenInCodeSandboxButton} from "@codesandbox/sandpack-react";
-import {Tooltip, Button} from "@heroui/react";
+import { UnstyledOpenInCodeSandboxButton } from "@codesandbox/sandpack-react";
+import { Tooltip, Button } from "@heroui/react";
 
-import {CodeSandboxIcon} from "@/components/icons";
+import { CodeSandboxIcon } from "@/components/icons";
 
 export const CodeSandboxButton = () => {
   return (

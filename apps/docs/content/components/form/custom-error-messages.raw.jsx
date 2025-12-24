@@ -1,4 +1,4 @@
-import {Form, Input, Button} from "@heroui/react";
+import { Form, Input, Button } from "@heroui/react";
 
 export default function App() {
   const onSubmit = (e) => {
@@ -9,7 +9,7 @@ export default function App() {
     <Form className="w-full max-w-xs" onSubmit={onSubmit}>
       <Input
         isRequired
-        errorMessage={({validationDetails}) => {
+        errorMessage={({ validationDetails }) => {
           if (validationDetails.valueMissing) {
             return "Please enter a valid name";
           }

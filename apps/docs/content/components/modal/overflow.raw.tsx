@@ -1,4 +1,4 @@
-import type {ModalProps} from "@heroui/react";
+import type { ModalProps } from "@heroui/react";
 
 import React from "react";
 import {
@@ -14,7 +14,7 @@ import {
 } from "@heroui/react";
 
 export default function App() {
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [scrollBehavior, setScrollBehavior] =
     React.useState<ModalProps["scrollBehavior"]>("inside");
 

@@ -1,4 +1,4 @@
-import {Slider} from "@heroui/react";
+import { Slider } from "@heroui/react";
 
 export default function App() {
   return (

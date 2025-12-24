@@ -1,13 +1,13 @@
-import {RangeCalendar} from "@heroui/react";
-import {today, getLocalTimeZone, isWeekend} from "@internationalized/date";
-import {useLocale} from "@react-aria/i18n";
+import { RangeCalendar } from "@heroui/react";
+import { today, getLocalTimeZone, isWeekend } from "@internationalized/date";
+import { useLocale } from "@react-aria/i18n";
 
 export default function App() {
   let [date, setDate] = React.useState({
     start: today(getLocalTimeZone()),
-    end: today(getLocalTimeZone()).add({weeks: 1}),
+    end: today(getLocalTimeZone()).add({ weeks: 1 }),
   });
-  let {locale} = useLocale();
+  let { locale } = useLocale();
   let isInvalid = isWeekend(date.start, locale) || isWeekend(date.end, locale);
 
   return (

@@ -1,6 +1,6 @@
-import {Badge, Avatar} from "@heroui/react";
+import { Badge, Avatar } from "@heroui/react";
 
-export const NotificationIcon = ({size, height, width, ...props}) => {
+export const NotificationIcon = ({ size, height, width, ...props }) => {
   return (
     <svg
       fill="none"
@@ -20,7 +20,7 @@ export const NotificationIcon = ({size, height, width, ...props}) => {
   );
 };
 
-export const CheckIcon = ({size, height, width, ...props}) => {
+export const CheckIcon = ({ size, height, width, ...props }) => {
   return (
     <svg
       fill="none"

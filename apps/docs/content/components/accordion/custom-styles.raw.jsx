@@ -1,4 +1,4 @@
-import {Accordion, AccordionItem} from "@heroui/react";
+import { Accordion, AccordionItem } from "@heroui/react";
 
 const MonitorMobileIcon = (props) => {
   return (
@@ -236,7 +236,7 @@ export default function App() {
       <AccordionItem
         key="3"
         aria-label="Pending tasks"
-        classNames={{subtitle: "text-warning"}}
+        classNames={{ subtitle: "text-warning" }}
         startContent={<InfoIcon className="text-warning" />}
         subtitle="Complete your profile"
         title="Pending tasks"
@@ -246,7 +246,7 @@ export default function App() {
       <AccordionItem
         key="4"
         aria-label="Card expired"
-        classNames={{subtitle: "text-danger"}}
+        classNames={{ subtitle: "text-danger" }}
         startContent={<InvalidCardIcon className="text-danger" />}
         subtitle="Please, update now"
         title={

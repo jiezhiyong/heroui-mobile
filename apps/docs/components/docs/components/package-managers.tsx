@@ -1,14 +1,14 @@
 "use client";
 
-import type {Key} from "react";
+import type { Key } from "react";
 
-import {Tabs, Tab, Snippet, Code} from "@heroui/react";
-import {useState} from "react";
+import { Tabs, Tab, Snippet, Code } from "@heroui/react";
+import { useState } from "react";
 
 import Codeblock from "./codeblock";
-import {Blockquote} from "./blockquote";
+import { Blockquote } from "./blockquote";
 
-import {YarnIcon, NpmSmallIcon, PnpmIcon, BunIcon, CLIBoldIcon} from "@/components/icons";
+import { YarnIcon, NpmSmallIcon, PnpmIcon, BunIcon, CLIBoldIcon } from "@/components/icons";
 
 type PackageManagerName = "cli" | "npm" | "yarn" | "pnpm" | "bun";
 
@@ -25,16 +25,16 @@ const packageManagers: PackageManager[] = [
     icon: <CLIBoldIcon className="text-lg text-default-600 dark:text-default-400" />,
   },
   {
-    name: "pnpm",
-    icon: <PnpmIcon className="text-[#F69220]" />,
-  },
-  {
     name: "npm",
     icon: <NpmSmallIcon className="text-[#E53E3E]" />,
   },
   {
     name: "yarn",
     icon: <YarnIcon className="text-[#2C8EBB]" />,
+  },
+  {
+    name: "pnpm",
+    icon: <PnpmIcon className="text-[#F69220]" />,
   },
   {
     name: "bun",
@@ -71,7 +71,7 @@ export const PackageManagers = ({
         variant="underlined"
         onSelectionChange={handleSelectionChange}
       >
-        {packageManagers.map(({name, label, icon}) => {
+        {packageManagers.map(({ name, label, icon }) => {
           if (!commands[name]) return null;
 
           return (

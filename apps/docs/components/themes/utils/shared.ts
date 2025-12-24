@@ -1,4 +1,4 @@
-import type {Border} from "../types";
+import type { Border } from "../types";
 
 /**
  * Copy data to clipboard

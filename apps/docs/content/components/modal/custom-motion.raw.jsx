@@ -9,7 +9,7 @@ import {
 } from "@heroui/react";
 
 export default function App() {
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <>

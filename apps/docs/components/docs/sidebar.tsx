@@ -1,6 +1,6 @@
 "use client";
 
-import type {FC} from "react";
+import type { FC } from "react";
 import type {
   CollectionBase,
   Expandable,
@@ -8,28 +8,28 @@ import type {
   Node,
   ItemProps,
 } from "@react-types/shared";
-import type {TreeState} from "@react-stately/tree";
-import type {SpacerProps} from "@heroui/react";
-import type {Route} from "@/libs/docs/page";
+import type { TreeState } from "@react-stately/tree";
+import type { SpacerProps } from "@heroui/react";
+import type { Route } from "@/libs/docs/page";
 
-import {useEffect, useState, useRef, useMemo, useLayoutEffect} from "react";
-import {usePostHog} from "posthog-js/react";
-import {ChevronIcon} from "@heroui/shared-icons";
-import {BaseItem} from "@heroui/aria-utils";
-import {useFocusRing} from "@react-aria/focus";
-import {useTreeState} from "@react-stately/tree";
-import {useSelectableCollection} from "@react-aria/selection";
-import {usePress} from "@react-aria/interactions";
-import {dataAttr, debounce, isEmpty} from "@heroui/shared-utils";
-import {Spacer, Link as HeroUILink, Chip, dataFocusVisibleClasses, cn} from "@heroui/react";
+import { useEffect, useState, useRef, useMemo, useLayoutEffect } from "react";
+import { usePostHog } from "posthog-js/react";
+import { ChevronIcon } from "@heroui/shared-icons";
+import { BaseItem } from "@heroui/aria-utils";
+import { useFocusRing } from "@react-aria/focus";
+import { useTreeState } from "@react-stately/tree";
+import { useSelectableCollection } from "@react-aria/selection";
+import { usePress } from "@react-aria/interactions";
+import { clsx, dataAttr, debounce, isEmpty } from "@heroui/shared-utils";
+import { Spacer, Link as HeroUILink, Chip, dataFocusVisibleClasses } from "@heroui/react";
 import Link from "next/link";
-import {usePathname, useRouter} from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
-import {ScrollArea} from "../scroll-area";
+import { ScrollArea } from "../scroll-area";
 
-import {getRoutePaths} from "./utils";
+import { getRoutePaths } from "./utils";
 
-import {TreeKeyboardDelegate} from "@/utils/tree-keyboard-delegate";
+import { TreeKeyboardDelegate } from "@/utils/tree-keyboard-delegate";
 import emitter from "@/libs/emitter";
 
 export interface Props<T> extends Omit<ItemProps<T>, "title">, Route {
@@ -59,8 +59,8 @@ const spacesByLevel: Record<number, SpacerProps["x"]> = {
 };
 
 function TreeItem<T>(props: TreeItemProps<T>) {
-  const {item, state, level = 1, spaceLeft = 0} = props;
-  const {key, rendered, childNodes} = item;
+  const { item, state, level = 1, spaceLeft = 0 } = props;
+  const { key, rendered, childNodes } = item;
 
   const router = useRouter();
   const pathname = usePathname();
@@ -89,7 +89,7 @@ function TreeItem<T>(props: TreeItemProps<T>) {
 
   const Component = hasChildNodes ? "ul" : "li";
 
-  const classNames = cn(
+  const cn = clsx(
     "w-full",
     "font-normal",
     "before:mr-4",
@@ -101,7 +101,7 @@ function TreeItem<T>(props: TreeItemProps<T>) {
     "before:rounded-full",
   );
 
-  const {pressProps} = usePress({
+  const { pressProps } = usePress({
     onPress: () => {
       if (hasChildNodes) {
         state.toggleKey(item.key);
@@ -117,7 +117,7 @@ function TreeItem<T>(props: TreeItemProps<T>) {
     },
   });
 
-  const {focusProps, isFocused, isFocusVisible} = useFocusRing();
+  const { focusProps, isFocused, isFocusVisible } = useFocusRing();
 
   const renderComponent = () => {
     if (hasChildNodes) {
@@ -125,7 +125,7 @@ function TreeItem<T>(props: TreeItemProps<T>) {
         <span className="flex items-center gap-3">
           <span className="font-medium sm:text-sm">{rendered}</span>
           <ChevronIcon
-            className={cn("transition-transform", {
+            className={clsx("transition-transform", {
               "-rotate-90": isExpanded,
             })}
           />
@@ -136,14 +136,14 @@ function TreeItem<T>(props: TreeItemProps<T>) {
     return (
       <HeroUILink
         as={item.props?.comingSoon ? "div" : Link}
-        className={cn(classNames, {
+        className={clsx(cn, {
           "pointer-events-none": item.props?.comingSoon,
         })}
         color="foreground"
         href={item.props?.comingSoon ? "#" : paths.pathname}
       >
         <span
-          className={cn(
+          className={clsx(
             "sm:text-sm",
             isSelected
               ? "text-primary font-medium dark:text-foreground"
@@ -195,8 +195,8 @@ function TreeItem<T>(props: TreeItemProps<T>) {
       ref={ref}
       aria-expanded={dataAttr(hasChildNodes ? isExpanded : undefined)}
       aria-selected={dataAttr(isSelected)}
-      className={cn(
-        "flex flex-col outline-solid outline-transparent w-full tap-highlight-transparent",
+      className={clsx(
+        "flex flex-col outline-none w-full tap-highlight-transparent",
         hasChildNodes ? "mb-4" : "first:mt-4",
         // focus ring
         ...dataFocusVisibleClasses,
@@ -206,7 +206,7 @@ function TreeItem<T>(props: TreeItemProps<T>) {
       role="treeitem"
     >
       <div
-        className={cn("flex items-center gap-3 cursor-pointer", {
+        className={clsx("flex items-center gap-3 cursor-pointer", {
           "pointer-events-none": item.props?.comingSoon,
         })}
         {...(item.props?.comingSoon ? {} : pressProps)}
@@ -236,7 +236,7 @@ function TreeItem<T>(props: TreeItemProps<T>) {
   );
 }
 
-function TreeHeading({item}: {item: any}) {
+function TreeHeading({ item }: { item: any }) {
   return <div>{item.rendered}</div>;
 }
 
@@ -253,7 +253,7 @@ function Tree<T extends object>(props: CollectionBase<T> & Expandable & Multiple
     [state.collection, state.disabledKeys],
   );
 
-  let {collectionProps} = useSelectableCollection({
+  let { collectionProps } = useSelectableCollection({
     ref,
     selectionManager: state.selectionManager,
     keyboardDelegate,
@@ -284,7 +284,7 @@ function Tree<T extends object>(props: CollectionBase<T> & Expandable & Multiple
   return (
     <ScrollArea
       ref={ref}
-      className="h-full max-w-full lg:max-h-[calc(100vh_-_64px)]"
+      className="h-full max-w-[90%] lg:max-h-[calc(100vh_-_64px)]"
       role="tree"
       {...collectionProps}
       scrollViewPortRef={scrollViewPortRef}
@@ -308,7 +308,7 @@ export interface DocsSidebarProps {
   className?: string;
 }
 
-export const DocsSidebar: FC<DocsSidebarProps> = ({routes, slug, tag, className}) => {
+export const DocsSidebar: FC<DocsSidebarProps> = ({ routes, slug, tag, className }) => {
   const [isProBannerVisible, setIsProBannerVisible] = useState(true);
 
   const expandedKeys = routes?.reduce((keys, route) => {
@@ -349,7 +349,7 @@ export const DocsSidebar: FC<DocsSidebarProps> = ({routes, slug, tag, className}
 
   return (
     <div
-      className={cn(
+      className={clsx(
         "lg:fixed mt-2 z-0 lg:h-[calc(100vh-121px)]",
         isProBannerVisible ? "lg:top-32" : "lg:top-20",
         className,

@@ -1,18 +1,18 @@
 "use client";
 
-import type {FC} from "react";
-import type {Heading} from "@/libs/docs/utils";
+import type { FC } from "react";
+import type { Heading } from "@/libs/docs/utils";
 
-import {useRef, useEffect, useState} from "react";
-import {cn} from "@heroui/theme";
-import {Divider, Spacer} from "@heroui/react";
-import {ChevronCircleTopLinearIcon} from "@heroui/shared-icons";
+import { useRef, useEffect, useState } from "react";
+import { clsx } from "@heroui/shared-utils";
+import { Divider, Spacer } from "@heroui/react";
+import { ChevronCircleTopLinearIcon } from "@heroui/shared-icons";
 import scrollIntoView from "scroll-into-view-if-needed";
 
-import {HeroUIProCallout} from "./heroui-pro-callout";
+import { HeroUIProCallout } from "./heroui-pro-callout";
 
-import {useScrollSpy} from "@/hooks/use-scroll-spy";
-import {useScrollPosition} from "@/hooks/use-scroll-position";
+import { useScrollSpy } from "@/hooks/use-scroll-spy";
+import { useScrollPosition } from "@/hooks/use-scroll-position";
 import emitter from "@/libs/emitter";
 
 export interface DocsTocProps {
@@ -26,7 +26,7 @@ const paddingLeftByLevel: Record<number, string> = {
   4: "pl-6",
 };
 
-export const DocsToc: FC<DocsTocProps> = ({headings}) => {
+export const DocsToc: FC<DocsTocProps> = ({ headings }) => {
   const [isProBannerVisible, setIsProBannerVisible] = useState(true);
 
   const tocRef = useRef<HTMLDivElement>(null);
@@ -34,13 +34,13 @@ export const DocsToc: FC<DocsTocProps> = ({headings}) => {
   const scrollPosition = useScrollPosition(tocRef);
 
   const activeId = useScrollSpy(
-    headings.map(({id}) => `[id="${id}"]`),
+    headings.map(({ id }) => `[id="${id}"]`),
     {
       rootMargin: "0% 0% -80% 0%",
     },
   );
 
-  const activeIndex = headings.findIndex(({id}) => id == activeId);
+  const activeIndex = headings.findIndex(({ id }) => id == activeId);
   const firstId = headings[0].id;
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export const DocsToc: FC<DocsTocProps> = ({headings}) => {
   }, []);
 
   return (
-    <div className={cn("fixed", isProBannerVisible ? "top-32" : "top-20")}>
+    <div className={clsx("fixed", isProBannerVisible ? "top-32" : "top-20")}>
       <div
         ref={tocRef}
         className="w-full max-w-[12rem] max-h-[calc(100vh-500px)] flex flex-col gap-4 text-left pb-16 scrollbar-hide overflow-y-scroll"
@@ -86,11 +86,10 @@ export const DocsToc: FC<DocsTocProps> = ({headings}) => {
               heading.level > 1 && (
                 <li
                   key={i}
-                  className={cn(
-                    "relative",
+                  className={clsx(
                     "transition-colors",
                     "font-normal",
-                    "flex items-center text-tiny font-normal text-default-500",
+                    "flex items-center text-tiny font-normal text-default-500 dark:text-default-300",
                     "data-[active=true]:text-foreground",
                     "dark:data-[active=true]:text-foreground",
                     "before:content-['']",

@@ -1,7 +1,7 @@
-import type {Selection} from "@react-types/shared";
+import type { Selection } from "@react-types/shared";
 
 import React from "react";
-import {Listbox, ListboxItem, Chip, ScrollShadow, Avatar} from "@heroui/react";
+import { Listbox, ListboxItem, Chip, ScrollShadow, Avatar } from "@heroui/react";
 
 export const users = [
   {
@@ -206,7 +206,7 @@ export const users = [
   },
 ];
 
-export const ListboxWrapper = ({children}: {children: React.ReactNode}) => (
+export const ListboxWrapper = ({ children }: { children: React.ReactNode }) => (
   <div className="w-full max-w-[260px] border-small px-1 py-2 rounded-small border-default-200 dark:border-default-100">
     {children}
   </div>
@@ -253,7 +253,7 @@ export default function App() {
         {(item) => (
           <ListboxItem key={item.id} textValue={item.name}>
             <div className="flex gap-2 items-center">
-              <Avatar alt={item.name} className="shrink-0" size="sm" src={item.avatar} />
+              <Avatar alt={item.name} className="flex-shrink-0" size="sm" src={item.avatar} />
               <div className="flex flex-col">
                 <span className="text-small">{item.name}</span>
                 <span className="text-tiny text-default-400">{item.email}</span>

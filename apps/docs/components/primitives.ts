@@ -1,4 +1,4 @@
-import {tv} from "tailwind-variants";
+import { tv } from "tailwind-variants";
 
 export const titleWrapper = tv({
   base: "flex flex-col gap-2 items-start justify-center w-full",
@@ -32,7 +32,7 @@ export const title = tv({
   compoundVariants: [
     {
       color: ["violet", "yellow", "blue", "cyan", "green", "pink", "foreground"],
-      class: "bg-clip-text text-transparent bg-linear-to-b",
+      class: "bg-clip-text text-transparent bg-gradient-to-b",
     },
   ],
 });
@@ -41,7 +41,7 @@ export const subtitle = tv({
   base: "w-full md:w-1/2 my-2 text-medium lg:text-large font-normal text-default-500 block max-w-full",
   variants: {
     fullWidth: {
-      true: "w-full!",
+      true: "!w-full",
     },
   },
 });

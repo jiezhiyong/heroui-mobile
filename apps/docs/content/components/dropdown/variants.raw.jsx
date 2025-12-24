@@ -13,7 +13,7 @@ export default function App() {
 
   const variants = ["solid", "bordered", "light", "flat", "faded", "shadow"];
 
-  const DropdownContent = ({variant, color}) => (
+  const DropdownContent = ({ variant, color }) => (
     <Dropdown>
       <DropdownTrigger>
         <Button className="capitalize" color={color} variant={variant}>

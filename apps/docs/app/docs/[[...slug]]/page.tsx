@@ -1,25 +1,26 @@
-import type {Metadata} from "next";
-import type {Route} from "@/libs/docs/page";
+import type { Metadata } from "next";
+import type { Route } from "@/libs/docs/page";
 
-import {notFound} from "next/navigation";
-import {allDocs} from "contentlayer2/generated";
-import {Link, ToastProvider} from "@heroui/react";
+import { notFound } from "next/navigation";
+import { allDocs } from "contentlayer2/generated";
+import { Link, ToastProvider } from "@heroui/react";
 
-import {MDXContent} from "@/components/mdx-content";
-import {siteConfig} from "@/config/site";
-import {DocsPager, DocsToc} from "@/components/docs";
-import {GITHUB_URL, REPO_NAME} from "@/libs/github/constants";
-import {CONTENT_PATH, TAG} from "@/libs/docs/config";
-import {getHeadings} from "@/libs/docs/utils";
+import { MDXContent } from "@/components/mdx-content";
+import { siteConfig } from "@/config/site";
+import { DocsPager, DocsToc } from "@/components/docs";
+import { GITHUB_URL, REPO_NAME } from "@/libs/github/constants";
+import { CONTENT_PATH, TAG } from "@/libs/docs/config";
+import { getHeadings } from "@/libs/docs/utils";
 
 interface DocPageProps {
-  params: Promise<{slug: string[]}>;
+  params: {
+    slug: string[];
+  };
 }
 
-async function getDocFromParams({params}: DocPageProps) {
-  const {slug} = await params;
-  const paramsSlug = slug?.join("/") || "";
-  const doc = allDocs.find((doc) => doc.slugAsParams === paramsSlug);
+async function getDocFromParams({ params }: DocPageProps) {
+  const slug = params.slug?.join("/") || "";
+  const doc = allDocs.find((doc) => doc.slugAsParams === slug);
 
   if (!doc) {
     null;
@@ -33,11 +34,11 @@ async function getDocFromParams({params}: DocPageProps) {
     path: `/${doc?._raw?.sourceFilePath}`,
   };
 
-  return {doc, headings, currentRoute};
+  return { doc, headings, currentRoute };
 }
 
-export async function generateMetadata({params}: DocPageProps): Promise<Metadata> {
-  const {doc} = await getDocFromParams({params});
+export async function generateMetadata({ params }: DocPageProps): Promise<Metadata> {
+  const { doc } = await getDocFromParams({ params });
 
   if (!doc) {
     return {};
@@ -71,15 +72,13 @@ export async function generateMetadata({params}: DocPageProps): Promise<Metadata
 }
 
 export async function generateStaticParams(): Promise<DocPageProps["params"][]> {
-  return allDocs.map((doc) =>
-    Promise.resolve({
-      slug: doc.slugAsParams.split("/"),
-    }),
-  );
+  return allDocs.map((doc) => ({
+    slug: doc.slugAsParams.split("/"),
+  }));
 }
 
-export default async function DocPage({params}: DocPageProps) {
-  const {doc, headings, currentRoute} = await getDocFromParams({params});
+export default async function DocPage({ params }: DocPageProps) {
+  const { doc, headings, currentRoute } = await getDocFromParams({ params });
 
   if (!doc) {
     notFound();

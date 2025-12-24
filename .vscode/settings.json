@@ -9,7 +9,10 @@
   },
   "tailwindCSS.experimental.configFile": {
     "apps/docs/styles/globals.css": "apps/docs/**/*",
-    "packages/storybook/.storybook/style.css": ["packages/core/theme/**/*", "packages/components/**/*"],
+    "packages/storybook/.storybook/style.css": [
+      "packages/core/theme/**/*",
+      "packages/components/**/*"
+    ]
   },
   "tailwindCSS.experimental.classRegex": [
     ["([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*).*?[\"'`]"]
@@ -19,6 +22,7 @@
     "algoliasearch",
     "argstable",
     "Cancelation",
+    "carbonads",
     "chakra",
     "cmdk",
     "codesandbox",
@@ -41,5 +45,5 @@
     "turborepo",
     "usehooks",
     "vercel"
-  ],
+  ]
 }

@@ -1,4 +1,4 @@
-import {NumberInput} from "@heroui/react";
+import { NumberInput } from "@heroui/react";
 
 export default function App() {
   const radius = ["full", "lg", "md", "sm", "none"];

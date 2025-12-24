@@ -1,4 +1,4 @@
-import {Switch} from "@heroui/react";
+import { Switch } from "@heroui/react";
 
 export const MoonIcon = (props) => {
   return (
@@ -44,7 +44,7 @@ export default function App() {
       defaultSelected
       color="secondary"
       size="lg"
-      thumbIcon={({isSelected, className}) =>
+      thumbIcon={({ isSelected, className }) =>
         isSelected ? <SunIcon className={className} /> : <MoonIcon className={className} />
       }
     >

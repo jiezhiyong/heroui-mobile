@@ -1,13 +1,13 @@
-import type {DateValue} from "@react-types/calendar";
+import type { DateValue } from "@react-types/calendar";
 
 import React from "react";
-import {Calendar} from "@heroui/react";
-import {today, getLocalTimeZone, isWeekend} from "@internationalized/date";
-import {useLocale} from "@react-aria/i18n";
+import { Calendar } from "@heroui/react";
+import { today, getLocalTimeZone, isWeekend } from "@internationalized/date";
+import { useLocale } from "@react-aria/i18n";
 
 export default function App() {
   let [date, setDate] = React.useState<DateValue | null>(today(getLocalTimeZone()));
-  let {locale} = useLocale();
+  let { locale } = useLocale();
   let isInvalid = isWeekend(date!, locale);
 
   return (

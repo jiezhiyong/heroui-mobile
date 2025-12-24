@@ -1,5 +1,5 @@
-import {forwardRef} from "react";
-import {cn} from "@heroui/theme";
+import { forwardRef } from "react";
+import { clsx } from "@heroui/shared-utils";
 
 export interface PreProps {
   className?: string;
@@ -8,13 +8,13 @@ export interface PreProps {
 }
 
 export const Pre = forwardRef<HTMLPreElement, PreProps>(
-  ({className = "", children, isScrollable = true, ...props}, forwardedRef) => {
+  ({ className = "", children, isScrollable = true, ...props }, forwardedRef) => {
     const scrollClass = isScrollable ? "overflow-scroll" : "overflow-hidden";
 
     return (
       <pre
         ref={forwardedRef}
-        className={cn(
+        className={clsx(
           "relative w-full h-full box-border shadow-md text-white/80 leading-5 whitespace-pre text-sm font-mono bg-code-background rounded-xl [&>code]:transition-transform",
           scrollClass,
           className,

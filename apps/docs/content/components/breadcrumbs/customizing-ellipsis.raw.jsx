@@ -14,7 +14,7 @@ export default function App() {
       itemsAfterCollapse={2}
       itemsBeforeCollapse={1}
       maxItems={3}
-      renderEllipsis={({items, ellipsisIcon, separator}) => (
+      renderEllipsis={({ items, ellipsisIcon, separator }) => (
         <div className="flex items-center">
           <Dropdown>
             <DropdownTrigger>

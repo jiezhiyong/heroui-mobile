@@ -1,21 +1,21 @@
-import type {ReactNode} from "react";
-import type {VariantProps} from "tailwind-variants";
+import type { ReactNode } from "react";
+import type { VariantProps } from "tailwind-variants";
 
-import {forwardRef} from "react";
-import {tv} from "tailwind-variants";
+import { forwardRef } from "react";
+import { tv } from "tailwind-variants";
 
 const styles = tv({
   base: "flex relative w-full h-auto",
   variants: {
     to: {
-      top: "bg-linear-to-t",
-      right: "bg-linear-to-r",
-      left: "bg-linear-to-l",
-      bottom: "bg-linear-to-b",
-      "top-right": "bg-linear-to-tr",
-      "top-left": "bg-linear-to-tl",
-      "bottom-right": "bg-linear-to-br",
-      "bottom-left": "bg-linear-to-bl",
+      top: "bg-gradient-to-t",
+      right: "bg-gradient-to-r",
+      left: "bg-gradient-to-l",
+      bottom: "bg-gradient-to-b",
+      "top-right": "bg-gradient-to-tr",
+      "top-left": "bg-gradient-to-tl",
+      "bottom-right": "bg-gradient-to-br",
+      "bottom-left": "bg-gradient-to-bl",
     },
     color: {
       orange: "from-[#FFB457] to-[#FF705B]",
@@ -55,12 +55,12 @@ export interface GradientBoxProps extends VariantProps<typeof styles> {
 }
 
 export const GradientBox = forwardRef<HTMLDivElement, GradientBoxProps>((props, ref) => {
-  const {children, className, to, color, radius, shadow, isCentered, ...rest} = props;
+  const { children, className, to, color, radius, shadow, isCentered, ...rest } = props;
 
   return (
     <div
       ref={ref}
-      className={styles({to, color, radius, shadow, isCentered, class: className})}
+      className={styles({ to, color, radius, shadow, isCentered, class: className })}
       {...rest}
     >
       {children}

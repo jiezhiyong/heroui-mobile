@@ -1,4 +1,4 @@
-import {useCheckbox, Chip, VisuallyHidden, tv} from "@heroui/react";
+import { useCheckbox, Chip, VisuallyHidden, tv } from "@heroui/react";
 
 export const CheckIcon = (props) => {
   return (
@@ -21,7 +21,7 @@ export const CheckIcon = (props) => {
 };
 
 export default function App() {
-  const {children, isSelected, isFocusVisible, getBaseProps, getLabelProps, getInputProps} =
+  const { children, isSelected, isFocusVisible, getBaseProps, getLabelProps, getInputProps } =
     useCheckbox({
       defaultSelected: true,
     });
@@ -40,13 +40,13 @@ export default function App() {
       },
       isFocusVisible: {
         true: {
-          base: "outline-solid outline-transparent ring-2 ring-focus ring-offset-2 ring-offset-background",
+          base: "outline-none ring-2 ring-focus ring-offset-2 ring-offset-background",
         },
       },
     },
   });
 
-  const styles = checkbox({isSelected, isFocusVisible});
+  const styles = checkbox({ isSelected, isFocusVisible });
 
   return (
     <label {...getBaseProps()}>

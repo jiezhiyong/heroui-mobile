@@ -1,9 +1,9 @@
-import type {HeroUIPluginConfig} from "@heroui/theme";
-import type {Config, ThemeType} from "../types";
+import type { HeroUIPluginConfig } from "@heroui/theme";
+import type { Config, ThemeType } from "../types";
 
-import {readableColor} from "color2k";
+import { readableColor } from "color2k";
 
-import {generateThemeColor} from "./colors";
+import { generateThemeColor } from "./colors";
 function generateLayoutConfig(config: Config): HeroUIPluginConfig["layout"] {
   return {
     disabledOpacity: config.layout.otherParams.disabledOpacity,

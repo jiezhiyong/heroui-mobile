@@ -1,4 +1,4 @@
-import {Listbox, ListboxItem, cn} from "@heroui/react";
+import { Listbox, ListboxItem, cn } from "@heroui/react";
 
 export const BugIcon = (props) => {
   return (
@@ -131,13 +131,13 @@ export const ChevronRightIcon = (props) => {
   );
 };
 
-export const IconWrapper = ({children, className}) => (
+export const IconWrapper = ({ children, className }) => (
   <div className={cn(className, "flex items-center rounded-small justify-center w-7 h-7")}>
     {children}
   </div>
 );
 
-export const ItemCounter = ({number}) => (
+export const ItemCounter = ({ number }) => (
   <div className="flex items-center gap-1 text-default-400">
     <span className="text-small">{number}</span>
     <ChevronRightIcon className="text-xl" />

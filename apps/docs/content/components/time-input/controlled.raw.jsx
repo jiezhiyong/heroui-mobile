@@ -1,11 +1,11 @@
-import {TimeInput} from "@heroui/react";
-import {parseAbsoluteToLocal, Time, ZonedDateTime} from "@internationalized/date";
-import {useDateFormatter} from "@react-aria/i18n";
+import { TimeInput } from "@heroui/react";
+import { parseAbsoluteToLocal, Time, ZonedDateTime } from "@internationalized/date";
+import { useDateFormatter } from "@react-aria/i18n";
 
 export default function App() {
   let [value, setValue] = React.useState(parseAbsoluteToLocal("2024-04-08T18:45:22Z"));
 
-  let formatter = useDateFormatter({dateStyle: "short", timeStyle: "long"});
+  let formatter = useDateFormatter({ dateStyle: "short", timeStyle: "long" });
 
   return (
     <div className="w-full flex flex-row gap-2">

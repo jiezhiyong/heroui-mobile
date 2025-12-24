@@ -1,6 +1,6 @@
-import type {IconSvgProps} from "@/types";
+import type { IconSvgProps } from "@/types";
 
-export const BugIcon = ({size = 24, width, height, ...props}: IconSvgProps) => (
+export const BugIcon = ({ size = 24, width, height, ...props }: IconSvgProps) => (
   <svg
     height={height || size}
     viewBox="0 0 24 24"

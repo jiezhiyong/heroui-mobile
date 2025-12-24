@@ -1,7 +1,7 @@
-import {Tooltip} from "@heroui/react";
-import {cn} from "@heroui/theme";
+import { Tooltip } from "@heroui/react";
+import { clsx } from "@heroui/shared-utils";
 
-import {CircleInfo} from "@/components/icons";
+import { CircleInfo } from "@/components/icons";
 
 interface ConfigurationSectionProps {
   children: React.ReactNode;
@@ -25,7 +25,7 @@ export function ConfigSection({
         <div>{title}</div>
         {visualPurposeOnly && (
           <Tooltip
-            classNames={{content: "text-tiny text-default-600"}}
+            classNames={{ content: "text-tiny text-default-600" }}
             content="For visual purpose only"
             placement="right"
           >
@@ -35,7 +35,7 @@ export function ConfigSection({
           </Tooltip>
         )}
       </div>
-      <div className={cn("flex flex-wrap gap-2 mt-3")}>{children}</div>
+      <div className={clsx("flex flex-wrap gap-2 mt-3")}>{children}</div>
     </div>
   );
 }

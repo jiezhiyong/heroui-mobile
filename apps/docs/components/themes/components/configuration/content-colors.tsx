@@ -1,23 +1,23 @@
-import type {Config, ThemeType} from "../../types";
+import type { Config, ThemeType } from "../../types";
 
-import {Tooltip} from "@heroui/react";
+import { Tooltip } from "@heroui/react";
 
-import {baseColorsId} from "../../constants";
-import {setCssContentColor} from "../../css-vars";
-import {useThemeBuilder} from "../../provider";
-import {templates} from "../../templates";
-import {ColorPicker} from "../color-picker";
-import {ConfigSection} from "../config-section";
+import { baseColorsId } from "../../constants";
+import { setCssContentColor } from "../../css-vars";
+import { useThemeBuilder } from "../../provider";
+import { templates } from "../../templates";
+import { ColorPicker } from "../color-picker";
+import { ConfigSection } from "../config-section";
 
-import {PaletteRound} from "@/components/icons";
+import { PaletteRound } from "@/components/icons";
 
 interface BaseColorsProps {
   config: Config;
   theme: ThemeType;
 }
 
-export function ContentColors({config, theme}: BaseColorsProps) {
-  const {setContentColor} = useThemeBuilder();
+export function ContentColors({ config, theme }: BaseColorsProps) {
+  const { setContentColor } = useThemeBuilder();
 
   return (
     <ConfigSection
@@ -33,7 +33,7 @@ export function ContentColors({config, theme}: BaseColorsProps) {
             onChange={(hexColor) =>
               setCssContentColor(1, hexColor, templates[0].value[theme].contentColor.content1)
             }
-            onClose={(hexColor) => setContentColor({content1: hexColor}, theme)}
+            onClose={(hexColor) => setContentColor({ content1: hexColor }, theme)}
           />
         </div>
       </Tooltip>
@@ -45,7 +45,7 @@ export function ContentColors({config, theme}: BaseColorsProps) {
             onChange={(hexColor) =>
               setCssContentColor(2, hexColor, templates[0].value[theme].contentColor.content2)
             }
-            onClose={(hexColor) => setContentColor({content2: hexColor}, theme)}
+            onClose={(hexColor) => setContentColor({ content2: hexColor }, theme)}
           />
         </div>
       </Tooltip>
@@ -57,7 +57,7 @@ export function ContentColors({config, theme}: BaseColorsProps) {
             onChange={(hexColor) =>
               setCssContentColor(3, hexColor, templates[0].value[theme].contentColor.content3)
             }
-            onClose={(hexColor) => setContentColor({content3: hexColor}, theme)}
+            onClose={(hexColor) => setContentColor({ content3: hexColor }, theme)}
           />
         </div>
       </Tooltip>
@@ -69,7 +69,7 @@ export function ContentColors({config, theme}: BaseColorsProps) {
             onChange={(hexColor) =>
               setCssContentColor(4, hexColor, templates[0].value[theme].contentColor.content4)
             }
-            onClose={(hexColor) => setContentColor({content4: hexColor}, theme)}
+            onClose={(hexColor) => setContentColor({ content4: hexColor }, theme)}
           />
         </div>
       </Tooltip>

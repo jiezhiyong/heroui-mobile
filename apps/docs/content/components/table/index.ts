@@ -13,7 +13,6 @@ import disabledRows from "./disabled-rows";
 import selectionBehavior from "./selection-behavior";
 import rowActions from "./row-actions";
 import sorting from "./sorting";
-import sortIcon from "./sort-icon";
 import loadMore from "./load-more";
 import paginated from "./paginated";
 import asyncPagination from "./async-pagination";
@@ -41,7 +40,6 @@ export const tableContent = {
   selectionBehavior,
   rowActions,
   sorting,
-  sortIcon,
   loadMore,
   paginated,
   asyncPagination,

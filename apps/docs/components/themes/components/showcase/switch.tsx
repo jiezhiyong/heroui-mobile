@@ -1,11 +1,11 @@
-import type {SwitchProps} from "@heroui/react";
-import type {HeroUIScaling} from "../../types";
+import type { SwitchProps } from "@heroui/react";
+import type { HeroUIScaling } from "../../types";
 
-import {cloneElement} from "react";
-import {Switch} from "@heroui/react";
+import { cloneElement } from "react";
+import { Switch } from "@heroui/react";
 
-import {ShowcaseComponent} from "../showcase-component";
-import {useThemeBuilder} from "../../provider";
+import { ShowcaseComponent } from "../showcase-component";
+import { useThemeBuilder } from "../../provider";
 
 type Color = SwitchProps["color"];
 
@@ -32,7 +32,7 @@ const SectionBase = ({
   );
 };
 
-const Section = ({color, scaling}: {color: Color; scaling: HeroUIScaling}) => {
+const Section = ({ color, scaling }: { color: Color; scaling: HeroUIScaling }) => {
   let classNames = {
     wrapper: "w-12 h-7",
     thumb: "w-5 h-5",
@@ -78,15 +78,15 @@ const Section = ({color, scaling}: {color: Color; scaling: HeroUIScaling}) => {
 
   return (
     <div key={color} className="flex flex-col gap-y-4">
-      {cloneElement(<SectionBase />, {color, classNames, isDisabled: false})}
-      {cloneElement(<SectionBase />, {color, classNames, isDisabled: true})}
+      {cloneElement(<SectionBase />, { color, classNames, isDisabled: false })}
+      {cloneElement(<SectionBase />, { color, classNames, isDisabled: true })}
     </div>
   );
 };
 
 export const SwitchComponent = () => {
   const colors: Color[] = ["default", "primary", "secondary", "success", "warning", "danger"];
-  const {scaling} = useThemeBuilder();
+  const { scaling } = useThemeBuilder();
 
   return (
     <ShowcaseComponent name="Switch">

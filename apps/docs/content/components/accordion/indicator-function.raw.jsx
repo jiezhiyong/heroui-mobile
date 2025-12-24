@@ -1,4 +1,4 @@
-import {Accordion, AccordionItem} from "@heroui/react";
+import { Accordion, AccordionItem } from "@heroui/react";
 
 const AnchorIcon = (props) => {
   return (
@@ -88,7 +88,7 @@ export default function App() {
       <AccordionItem
         key="theme"
         aria-label="Theme"
-        indicator={({isOpen}) => (isOpen ? <SunIcon /> : <MoonIcon />)}
+        indicator={({ isOpen }) => (isOpen ? <SunIcon /> : <MoonIcon />)}
         title="Theme"
       >
         {defaultContent}

@@ -1,10 +1,10 @@
-import type {ColorPickerType, Config, ConfigLayout, ThemeType, ThemeColor} from "./types";
+import type { ColorPickerType, Config, ConfigLayout, ThemeType, ThemeColor } from "./types";
 
-import {readableColor} from "color2k";
+import { readableColor } from "color2k";
 
-import {colorsId, baseColorsId, showcaseId, otherColorsId, defaultColorsId} from "./constants";
-import {generateThemeColor, hexToHsl} from "./utils/colors";
-import {templates} from "./templates";
+import { colorsId, baseColorsId, showcaseId, otherColorsId, defaultColorsId } from "./constants";
+import { generateThemeColor, hexToHsl } from "./utils/colors";
+import { templates } from "./templates";
 
 export function setCssColor(
   colorType: ColorPickerType,

@@ -1,15 +1,15 @@
-import {showcaseId} from "../../constants";
+import { showcaseId } from "../../constants";
 
-import {Avatar} from "./avatar";
-import {BreadCrumbs} from "./breadcrumbs";
-import {Button} from "./button";
-import {Checkbox} from "./checkbox";
-import {Chip} from "./chip";
-import {Code} from "./code";
-import {InputComponent} from "./input";
-import {PopoverComponent} from "./popover";
-import {SwitchComponent} from "./switch";
-import {TabsComponent} from "./tabs";
+import { Avatar } from "./avatar";
+import { BreadCrumbs } from "./breadcrumbs";
+import { Button } from "./button";
+import { Checkbox } from "./checkbox";
+import { Chip } from "./chip";
+import { Code } from "./code";
+import { InputComponent } from "./input";
+import { PopoverComponent } from "./popover";
+import { SwitchComponent } from "./switch";
+import { TabsComponent } from "./tabs";
 
 export function Showcase() {
   return (

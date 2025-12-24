@@ -1,15 +1,15 @@
-import type {Config, ThemeType} from "../../types";
+import type { Config, ThemeType } from "../../types";
 
-import {Tooltip} from "@heroui/react";
+import { Tooltip } from "@heroui/react";
 
-import {colorsId} from "../../constants";
-import {setCssColor} from "../../css-vars";
-import {useThemeBuilder} from "../../provider";
-import {ColorPicker} from "../color-picker";
-import {ConfigSection} from "../config-section";
-import {templates} from "../../templates";
+import { colorsId } from "../../constants";
+import { setCssColor } from "../../css-vars";
+import { useThemeBuilder } from "../../provider";
+import { ColorPicker } from "../color-picker";
+import { ConfigSection } from "../config-section";
+import { templates } from "../../templates";
 
-import {Filters} from "@/components/icons";
+import { Filters } from "@/components/icons";
 
 interface BrandColorsProps {
   config: Config;
@@ -18,8 +18,8 @@ interface BrandColorsProps {
   theme: ThemeType;
 }
 
-export function BaseColors({config, syncThemes, theme}: BrandColorsProps) {
-  const {setBaseColor} = useThemeBuilder();
+export function BaseColors({ config, syncThemes, theme }: BrandColorsProps) {
+  const { setBaseColor } = useThemeBuilder();
 
   return (
     <ConfigSection icon={<Filters className="h-4 w-4" />} id={colorsId} title="Base colors">
@@ -31,7 +31,7 @@ export function BaseColors({config, syncThemes, theme}: BrandColorsProps) {
             onChange={(hexColor) =>
               setCssColor("primary", hexColor, templates[0].value[theme].baseColor.primary, theme)
             }
-            onClose={(hexColor) => setBaseColor({primary: hexColor}, theme, syncThemes)}
+            onClose={(hexColor) => setBaseColor({ primary: hexColor }, theme, syncThemes)}
           />
         </div>
       </Tooltip>
@@ -48,7 +48,7 @@ export function BaseColors({config, syncThemes, theme}: BrandColorsProps) {
                 theme,
               )
             }
-            onClose={(hexColor) => setBaseColor({secondary: hexColor}, theme, syncThemes)}
+            onClose={(hexColor) => setBaseColor({ secondary: hexColor }, theme, syncThemes)}
           />
         </div>
       </Tooltip>
@@ -60,7 +60,7 @@ export function BaseColors({config, syncThemes, theme}: BrandColorsProps) {
             onChange={(hexColor) =>
               setCssColor("success", hexColor, templates[0].value[theme].baseColor.success, theme)
             }
-            onClose={(hexColor) => setBaseColor({success: hexColor}, theme, syncThemes)}
+            onClose={(hexColor) => setBaseColor({ success: hexColor }, theme, syncThemes)}
           />
         </div>
       </Tooltip>
@@ -72,7 +72,7 @@ export function BaseColors({config, syncThemes, theme}: BrandColorsProps) {
             onChange={(hexColor) =>
               setCssColor("warning", hexColor, templates[0].value[theme].baseColor.warning, theme)
             }
-            onClose={(hexColor) => setBaseColor({warning: hexColor}, theme, syncThemes)}
+            onClose={(hexColor) => setBaseColor({ warning: hexColor }, theme, syncThemes)}
           />
         </div>
       </Tooltip>
@@ -84,7 +84,7 @@ export function BaseColors({config, syncThemes, theme}: BrandColorsProps) {
             onChange={(hexColor) =>
               setCssColor("danger", hexColor, templates[0].value[theme].baseColor.danger, theme)
             }
-            onClose={(hexColor) => setBaseColor({danger: hexColor}, theme, syncThemes)}
+            onClose={(hexColor) => setBaseColor({ danger: hexColor }, theme, syncThemes)}
           />
         </div>
       </Tooltip>

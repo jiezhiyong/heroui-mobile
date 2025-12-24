@@ -1,7 +1,7 @@
-import type {SliderValue} from "@heroui/react";
+import type { SliderValue } from "@heroui/react";
 
 import React from "react";
-import {Slider} from "@heroui/react";
+import { Slider } from "@heroui/react";
 
 export default function App() {
   const [value, setValue] = React.useState<SliderValue>([100, 300]);
@@ -10,7 +10,7 @@ export default function App() {
     <div className="flex flex-col gap-2 w-full h-full max-w-md items-start justify-center">
       <Slider
         className="max-w-md"
-        formatOptions={{style: "currency", currency: "USD"}}
+        formatOptions={{ style: "currency", currency: "USD" }}
         label="Select a budget"
         maxValue={1000}
         minValue={0}

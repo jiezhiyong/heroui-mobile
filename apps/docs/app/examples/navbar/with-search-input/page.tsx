@@ -14,7 +14,7 @@ import {
   Avatar,
 } from "@heroui/react";
 
-import {SearchLinearIcon} from "@/components/icons";
+import { SearchLinearIcon } from "@/components/icons";
 
 const AcmeLogo = () => (
   <svg fill="none" height="36" viewBox="0 0 32 32" width="36">

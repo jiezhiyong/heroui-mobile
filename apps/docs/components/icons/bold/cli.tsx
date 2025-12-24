@@ -1,6 +1,6 @@
-import type {IconSvgProps} from "@/types";
+import type { IconSvgProps } from "@/types";
 
-export const CLIBoldIcon = ({...props}: IconSvgProps) => (
+export const CLIBoldIcon = ({ ...props }: IconSvgProps) => (
   <svg
     aria-hidden="true"
     fill="none"

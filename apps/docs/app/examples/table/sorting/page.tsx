@@ -10,8 +10,8 @@ import {
   getKeyValue,
   Spinner,
 } from "@heroui/react";
-import {useAsyncList} from "@react-stately/data";
-import {useState} from "react";
+import { useAsyncList } from "@react-stately/data";
+import { useState } from "react";
 
 type SWCharacter = {
   name: string;
@@ -24,7 +24,7 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
 
   let list = useAsyncList<SWCharacter>({
-    async load({signal}) {
+    async load({ signal }) {
       let res = await fetch(`https://swapi.py4e.com/api/people/?search`, {
         signal,
       });
@@ -36,7 +36,7 @@ export default function Page() {
         items: json.results,
       };
     },
-    async sort({items, sortDescriptor}) {
+    async sort({ items, sortDescriptor }) {
       return {
         items: items.sort((a, b) => {
           let first = a[sortDescriptor.column as keyof SWCharacter];

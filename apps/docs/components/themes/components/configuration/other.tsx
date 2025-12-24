@@ -1,19 +1,19 @@
-import type {Config} from "../../types";
+import type { Config } from "../../types";
 
-import {setOtherCssParams} from "../../css-vars";
-import {useThemeBuilder} from "../../provider";
-import {ConfigSection} from "../config-section";
-import {NumberInput} from "../number-input";
+import { setOtherCssParams } from "../../css-vars";
+import { useThemeBuilder } from "../../provider";
+import { ConfigSection } from "../config-section";
+import { NumberInput } from "../number-input";
 
 interface OtherProps {
   config: Config;
 }
 
-export function Other({config}: OtherProps) {
-  const {setOtherParams} = useThemeBuilder();
+export function Other({ config }: OtherProps) {
+  const { setOtherParams } = useThemeBuilder();
 
   const handleChange = (key: keyof Config["layout"]["otherParams"], value: string) => {
-    setOtherParams({[key]: value});
+    setOtherParams({ [key]: value });
     setOtherCssParams(key, value);
   };
 

@@ -1,4 +1,4 @@
-import {__PREVIEW__} from "@/utils";
+import { __PREVIEW__ } from "@/utils";
 
 export const GITHUB_URL = "https://github.com";
 

@@ -44,9 +44,6 @@ pnpm install
 ### 启动开发环境
 
 ```bash
-# 启动 Storybook（组件开发预览）
-pnpm sb
-# 或
 pnpm dev
 
 # 启动文档站点
@@ -140,7 +137,9 @@ npm login
 # 创建变更集（描述你的更改）
 pnpm changeset:canary
 ```
+
 在heroui的基础上，扩展自己的包
+
 #### 版本管理
 
 ```bash
@@ -194,6 +193,7 @@ npm publish
 ### Q: 构建失败怎么办？
 
 A:
+
 1. 清理缓存：`pnpm clean`
 2. 重新安装依赖：`pnpm install`
 3. 检查 TypeScript 错误：`pnpm typecheck`
@@ -201,6 +201,7 @@ A:
 ### Q: 如何保持与上游同步？
 
 A:
+
 ```bash
 # 添加上游仓库
 git remote add upstream https://github.com/heroui-inc/heroui.git

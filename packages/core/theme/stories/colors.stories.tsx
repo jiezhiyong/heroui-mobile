@@ -1,14 +1,13 @@
-import type {Meta} from "@storybook/react";
+import type { Meta } from "@storybook/react";
 
 import React from "react";
-import {parseToRgba, readableColor} from "color2k";
-
-import {commonColors} from "@heroui/theme";
+import { parseToRgba, readableColor } from "color2k";
+import { commonColors } from "@heroui/theme";
 
 type ColorsItem = {
   color: string;
   className?: string;
-  textClassName?:string;
+  textClassName?: string;
 };
 
 type SwatchColors = {
@@ -21,7 +20,7 @@ type SwatchSetProps = {
   isSemantic?: boolean;
 };
 
-const Swatch = ({color}: {color: string}) => {
+const Swatch = ({ color }: { color: string }) => {
   const colorText = color
     ? `#${parseToRgba(color)
         .slice(0, 3)
@@ -66,9 +65,9 @@ const SemanticSwatch = ({
   );
 };
 
-const SwatchSet = ({colors, isSemantic = false}: SwatchSetProps) => (
+const SwatchSet = ({ colors, isSemantic = false }: SwatchSetProps) => (
   <div className="flex flex-row flex-wrap items-center justify-center w-full h-full p-2">
-    {colors.map(({title, items}) => (
+    {colors.map(({ title, items }) => (
       <div key={title} className="flex flex-col items-start w-full h-full">
         <h2 className="text-xl font-bold text-foreground">{title}</h2>
         <div className="flex flex-row flex-wrap items-center justify-start w-full h-full p-4">

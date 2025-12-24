@@ -1,6 +1,6 @@
 import type { UseSafeAreaInsertTopProps } from "./use-safe-area-insert-top";
 
-import { forwardRef } from "@heroui-mobile/system";
+import { forwardRef } from "@heroui/system";
 
 import { useSafeAreaInsertTop } from "./use-safe-area-insert-top";
 

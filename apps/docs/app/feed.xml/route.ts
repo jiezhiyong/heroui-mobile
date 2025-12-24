@@ -1,8 +1,8 @@
 import Rss from "rss";
-import {allBlogPosts} from "contentlayer2/generated";
+import { allBlogPosts } from "contentlayer2/generated";
 
-import {siteConfig} from "@/config/site";
-import {allCoreContent} from "@/libs/contentlayer";
+import { siteConfig } from "@/config/site";
+import { allCoreContent } from "@/libs/contentlayer";
 
 export async function GET() {
   const feed = new Rss({

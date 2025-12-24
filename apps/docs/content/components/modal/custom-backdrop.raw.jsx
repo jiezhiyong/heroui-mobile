@@ -9,7 +9,7 @@ import {
 } from "@heroui/react";
 
 export default function App() {
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <>
@@ -17,7 +17,7 @@ export default function App() {
       <Modal
         backdrop="opaque"
         classNames={{
-          backdrop: "bg-linear-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20",
+          backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20",
         }}
         isOpen={isOpen}
         onOpenChange={onOpenChange}

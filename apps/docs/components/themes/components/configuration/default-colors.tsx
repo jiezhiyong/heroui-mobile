@@ -1,21 +1,21 @@
-import type {Config, ThemeType} from "../../types";
+import type { Config, ThemeType } from "../../types";
 
-import {defaultColorsId} from "../../constants";
-import {setCssColor} from "../../css-vars";
-import {useThemeBuilder} from "../../provider";
-import {templates} from "../../templates";
-import {ColorPicker} from "../color-picker";
-import {ConfigSection} from "../config-section";
+import { defaultColorsId } from "../../constants";
+import { setCssColor } from "../../css-vars";
+import { useThemeBuilder } from "../../provider";
+import { templates } from "../../templates";
+import { ColorPicker } from "../color-picker";
+import { ConfigSection } from "../config-section";
 
-import {PaletteRound} from "@/components/icons";
+import { PaletteRound } from "@/components/icons";
 
 interface DefaultColorsProp {
   config: Config;
   theme: ThemeType;
 }
 
-export function DefaultColors({config, theme}: DefaultColorsProp) {
-  const {setDefaultColor} = useThemeBuilder();
+export function DefaultColors({ config, theme }: DefaultColorsProp) {
+  const { setDefaultColor } = useThemeBuilder();
 
   return (
     <ConfigSection
@@ -29,7 +29,7 @@ export function DefaultColors({config, theme}: DefaultColorsProp) {
         onChange={(hexColor) =>
           setCssColor("default", hexColor, templates[0].value[theme].defaultColor.default, theme)
         }
-        onClose={(hexColor) => setDefaultColor({default: hexColor}, theme, false)}
+        onClose={(hexColor) => setDefaultColor({ default: hexColor }, theme, false)}
       />
     </ConfigSection>
   );

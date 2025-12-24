@@ -9,8 +9,8 @@ import {
   Spinner,
   getKeyValue,
 } from "@heroui/react";
-import {useInfiniteScroll} from "@heroui/use-infinite-scroll";
-import {useAsyncList} from "@react-stately/data";
+import { useInfiniteScroll } from "@heroui/use-infinite-scroll";
+import { useAsyncList } from "@react-stately/data";
 
 interface SWCharacter {
   name: string;
@@ -24,14 +24,14 @@ export default function App() {
   const [hasMore, setHasMore] = React.useState<boolean>(false);
 
   let list = useAsyncList<SWCharacter>({
-    async load({signal, cursor}) {
+    async load({ signal, cursor }) {
       if (cursor) {
         setIsLoading(false);
       }
 
       // If no cursor is available, then we're loading the first page.
       // Otherwise, the cursor is the next URL to load, as returned from the previous page.
-      const res = await fetch(cursor || "https://swapi.py4e.com/api/people/?search=", {signal});
+      const res = await fetch(cursor || "https://swapi.py4e.com/api/people/?search=", { signal });
       let json = await res.json();
 
       setHasMore(json.next !== null);

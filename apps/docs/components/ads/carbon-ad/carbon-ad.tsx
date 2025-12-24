@@ -1,14 +1,14 @@
 "use client";
 
-import React, {useCallback, useEffect} from "react";
+import React, { useCallback, useEffect } from "react";
 import Script from "next/script";
-import {Image} from "@heroui/react";
+import { Image } from "@heroui/react";
 
 import carbonOptimize from "./carbon-optimize";
 
-import {loadScript} from "@/utils/scripts";
-import {useIsMounted} from "@/hooks/use-is-mounted";
-import {__PROD__, __ENABLE_ADS__} from "@/utils";
+import { loadScript } from "@/utils/scripts";
+import { useIsMounted } from "@/hooks/use-is-mounted";
+import { __PROD__, __ENABLE_ADS__ } from "@/utils";
 
 const EA_PROVIDER_RATIO = 0.85;
 const PRODUCT_HUNT_ENABLED = false;
@@ -142,12 +142,12 @@ export const CarbonAd: React.FC<unknown> = () => {
           data-ea-campaign-types="paid|publisher-house|community"
           data-ea-publisher="nextuiorg"
           data-ea-type="image"
-          style={{display: showEthicalAds ? "block" : "none"}}
+          style={{ display: showEthicalAds ? "block" : "none" }}
         />
       </>
       <div
         className="carbon-ad-container max-h-[120px] p-0"
-        style={{display: showEthicalAds ? "none" : "block"}}
+        style={{ display: showEthicalAds ? "none" : "block" }}
       >
         <span ref={carbonRef} id="carbon-ad" />
       </div>

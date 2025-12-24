@@ -1,11 +1,11 @@
 "use client";
 
-import {usePathname} from "next/navigation";
-import {Link} from "@heroui/react";
+import { usePathname } from "next/navigation";
+import { Link } from "@heroui/react";
 
-import {getCurrentYear} from "@/utils/time";
-import {XIcon, GithubIcon, DiscordIcon} from "@/components/icons";
-import {siteConfig} from "@/config/site";
+import { getCurrentYear } from "@/utils/time";
+import { XIcon, GithubIcon, DiscordIcon } from "@/components/icons";
+import { siteConfig } from "@/config/site";
 
 export const Footer = () => {
   const pathname = usePathname();

@@ -1,4 +1,4 @@
-import {Tabs, Tab} from "@heroui/react";
+import { Tabs, Tab } from "@heroui/react";
 
 export const GalleryIcon = (props) => {
   return (

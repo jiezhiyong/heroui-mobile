@@ -1,22 +1,22 @@
-import type {Config} from "../../types";
+import type { Config } from "../../types";
 
-import {setOtherCssParams} from "../../css-vars";
-import {useThemeBuilder} from "../../provider";
-import {ConfigSection} from "../config-section";
+import { setOtherCssParams } from "../../css-vars";
+import { useThemeBuilder } from "../../provider";
+import { ConfigSection } from "../config-section";
 
 import ValueButton from "./value-button";
 
-import {RadialBlur} from "@/components/icons/radial-blur";
+import { RadialBlur } from "@/components/icons/radial-blur";
 
 interface DisableOpacityProps {
   config: Config;
 }
 
-export function DisableOpacity({config}: DisableOpacityProps) {
-  const {setOtherParams} = useThemeBuilder();
+export function DisableOpacity({ config }: DisableOpacityProps) {
+  const { setOtherParams } = useThemeBuilder();
 
   const handleChange = (key: keyof Config["layout"]["otherParams"], value: string) => {
-    setOtherParams({[key]: value});
+    setOtherParams({ [key]: value });
     setOtherCssParams(key, value);
   };
 

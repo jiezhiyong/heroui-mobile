@@ -1,4 +1,4 @@
-import type {Selection} from "@heroui/react";
+import type { Selection } from "@heroui/react";
 
 import React from "react";
 import {

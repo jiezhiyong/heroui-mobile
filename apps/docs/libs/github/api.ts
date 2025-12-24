@@ -1,5 +1,5 @@
-import {GITHUB_API_URL, REPO_NAME} from "./constants";
-import {getError} from "./utils";
+import { GITHUB_API_URL, REPO_NAME } from "./constants";
+import { getError } from "./utils";
 
 export async function getLatestTag() {
   let latestTag: string;

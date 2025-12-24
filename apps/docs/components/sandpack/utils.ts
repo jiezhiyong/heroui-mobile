@@ -1,5 +1,5 @@
-import type {SandpackPredefinedTemplate, SandpackFiles} from "@codesandbox/sandpack-react";
-import type {HighlightedLines, HighlightedLine} from "./types";
+import type { SandpackPredefinedTemplate, SandpackFiles } from "@codesandbox/sandpack-react";
+import type { HighlightedLines, HighlightedLine } from "./types";
 
 const getLines = (lines?: string): HighlightedLine => {
   const [start, end] = lines?.includes("-") ? lines?.split("-") : [0, 0];
@@ -56,7 +56,7 @@ export const getHighlightedLines = (
   }
 
   // map linesCount to { className: 'sp-highlight', line: 1 }
-  return Array.from({length: lines.count}, (_, i) => ({
+  return Array.from({ length: lines.count }, (_, i) => ({
     className: "sp-highlight",
     line: parseInt(`${lines.start}`, 10) + i,
   }));
@@ -70,8 +70,8 @@ export const getId = () => {
   return Math.random().toString(32).slice(2, 10);
 };
 
-export function getHeroUIComponents(files: SandpackFiles): {[filePath: string]: string} {
-  const output: {[filePath: string]: string} = {};
+export function getHeroUIComponents(files: SandpackFiles): { [filePath: string]: string } {
+  const output: { [filePath: string]: string } = {};
 
   for (const filePath in files) {
     const file = files[filePath];

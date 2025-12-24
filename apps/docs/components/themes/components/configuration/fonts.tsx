@@ -1,12 +1,12 @@
-import {useThemeBuilder} from "../../provider";
-import {ConfigSection} from "../config-section";
+import { useThemeBuilder } from "../../provider";
+import { ConfigSection } from "../config-section";
 
 import FontButton from "./font-button";
 
-import {TextSquare} from "@/components/icons/text-square";
+import { TextSquare } from "@/components/icons/text-square";
 
 export function Fonts() {
-  const {font, setFont} = useThemeBuilder();
+  const { font, setFont } = useThemeBuilder();
 
   return (
     <ConfigSection visualPurposeOnly icon={<TextSquare className="h-4 w-4" />} title="Font Family">

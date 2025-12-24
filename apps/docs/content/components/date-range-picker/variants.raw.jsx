@@ -1,4 +1,4 @@
-import {DateRangePicker} from "@heroui/react";
+import { DateRangePicker } from "@heroui/react";
 
 export default function App() {
   const variants = ["flat", "bordered", "underlined", "faded"];

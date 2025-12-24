@@ -1,6 +1,6 @@
 import type { UseButtonGroupProps } from "./use-button-group";
 
-import { forwardRef } from "@heroui-mobile/system";
+import { forwardRef } from "@heroui/system";
 
 import { ButtonGroupProvider } from "./button-group-context";
 import { useButtonGroup } from "./use-button-group";

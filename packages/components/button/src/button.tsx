@@ -2,7 +2,7 @@ import type { UseButtonProps } from "./use-button";
 
 import { Spinner } from "@heroui/spinner";
 import { Ripple } from "@heroui/ripple";
-import { forwardRef } from "@heroui-mobile/system";
+import { forwardRef } from "@heroui/system";
 
 import { useButton } from "./use-button";
 

@@ -1,4 +1,4 @@
-import {Breadcrumbs, BreadcrumbItem} from "@heroui/react";
+import { Breadcrumbs, BreadcrumbItem } from "@heroui/react";
 
 export default function App() {
   const colors = ["foreground", "primary", "secondary", "success", "warning", "danger"];

@@ -1,4 +1,4 @@
-import {ThemeBuilder} from "@/components/themes";
+import { ThemeBuilder } from "@/components/themes";
 
 export default function ThemesPage() {
   return (

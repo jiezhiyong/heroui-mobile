@@ -1,11 +1,11 @@
 "use client";
 
-import type {ReactNode} from "react";
-import type {ScrollShadowProps} from "@heroui/react";
+import type { ReactNode } from "react";
+import type { ScrollShadowProps } from "@heroui/react";
 
-import {Children, cloneElement} from "react";
-import {ScrollShadow} from "@heroui/react";
-import {cn} from "@heroui/react";
+import { Children, cloneElement } from "react";
+import { ScrollShadow } from "@heroui/react";
+import { cn } from "@heroui/react";
 
 interface MarqueeProps {
   className?: string;
@@ -40,7 +40,7 @@ export const Marquee = ({
 
   const Wrapper = shadow ? ScrollShadow : "div";
 
-  const componentProps = shadow ? {...props, ...shadowProps} : props;
+  const componentProps = shadow ? { ...props, ...shadowProps } : props;
 
   return (
     <Wrapper
@@ -62,7 +62,7 @@ export const Marquee = ({
     >
       <div
         className={cn(
-          "flex w-max items-stretch gap-(--gap)",
+          "flex w-max items-stretch gap-[--gap]",
           {
             "flex-col": vertical,
             "h-full": vertical,

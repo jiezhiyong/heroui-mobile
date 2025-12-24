@@ -1,4 +1,4 @@
-import {Breadcrumbs, BreadcrumbItem} from "@heroui/react";
+import { Breadcrumbs, BreadcrumbItem } from "@heroui/react";
 
 export default function App() {
   const underlines = ["none", "hover", "always", "active", "focus"];

@@ -1,5 +1,5 @@
-import React, {forwardRef, useMemo} from "react";
-import {useAlert} from "@heroui/react";
+import React, { forwardRef, useMemo } from "react";
+import { useAlert } from "@heroui/react";
 
 export const InfoCircleIcon = (props) => {
   return (
@@ -41,13 +41,13 @@ const styles = {
   base: [
     "bg-slate-100",
     "border",
-    "shadow-sm",
+    "shadow",
     "hover:bg-slate-200",
-    "focus-within:bg-slate-100!",
+    "focus-within:!bg-slate-100",
     "dark:bg-slate-900",
     "dark:hover:bg-slate-800",
     "dark:border-slate-800",
-    "dark:focus-within:bg-slate-900!",
+    "dark:focus-within:!bg-slate-900",
     "cursor-pointer",
   ],
   title: ["text-base", "text-slate-500", "font-bold"],

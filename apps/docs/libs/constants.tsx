@@ -1,5 +1,5 @@
-import {DiscordIcon, GithubIcon, XIcon} from "@/components/icons";
-import {siteConfig} from "@/config/site";
+import { DiscordIcon, GithubIcon, XIcon } from "@/components/icons";
+import { siteConfig } from "@/config/site";
 
 export const TWITTER_USER_NAME = "hero_ui";
 export const SITE_URL = "https://heroui.com";

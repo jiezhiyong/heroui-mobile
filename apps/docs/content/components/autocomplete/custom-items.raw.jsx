@@ -1,4 +1,4 @@
-import {Autocomplete, AutocompleteItem, Avatar} from "@heroui/react";
+import { Autocomplete, AutocompleteItem, Avatar } from "@heroui/react";
 
 export const users = [
   {
@@ -216,7 +216,7 @@ export default function App() {
       {(user) => (
         <AutocompleteItem key={user.id} textValue={user.name}>
           <div className="flex gap-2 items-center">
-            <Avatar alt={user.name} className="shrink-0" size="sm" src={user.avatar} />
+            <Avatar alt={user.name} className="flex-shrink-0" size="sm" src={user.avatar} />
             <div className="flex flex-col">
               <span className="text-small">{user.name}</span>
               <span className="text-tiny text-default-400">{user.email}</span>

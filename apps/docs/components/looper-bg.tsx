@@ -1,8 +1,8 @@
-import type {IconSvgProps} from "@/types";
+import type { IconSvgProps } from "@/types";
 
 import * as React from "react";
 
-export const LooperBg: React.FC<IconSvgProps> = ({width = 1440, height = 1343, ...props}) => (
+export const LooperBg: React.FC<IconSvgProps> = ({ width = 1440, height = 1343, ...props }) => (
   <svg
     fill="none"
     height={height}

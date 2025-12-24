@@ -1,7 +1,7 @@
 // Inspired by https://github.dev/modulz/stitches-site
 
-import {unified} from "unified";
-import {toHtml} from "hast-util-to-html";
+import { unified } from "unified";
+import { toHtml } from "hast-util-to-html";
 import rehypeParse from "rehype-parse";
 
 const lineNumberify = function lineNumberify(ast, lineNum = 1) {
@@ -49,7 +49,7 @@ const lineNumberify = function lineNumberify(ast, lineNum = 1) {
 
       return result;
     },
-    {nodes: [], lineNumber: lineNumber},
+    { nodes: [], lineNumber: lineNumber },
   );
 };
 
@@ -108,7 +108,7 @@ const applyMultilineFix = function (ast) {
   );
 
   // HTML to AST
-  const hast = unified().use(rehypeParse, {emitParseErrors: true, fragment: true}).parse(html);
+  const hast = unified().use(rehypeParse, { emitParseErrors: true, fragment: true }).parse(html);
 
   return hast.children;
 };

@@ -1,21 +1,20 @@
-import type {Language} from "prism-react-renderer";
+import type { Language } from "prism-react-renderer";
 
-import {cn} from "@heroui/theme";
+import { clsx } from "@heroui/shared-utils";
 import * as Components from "@heroui/react";
 import NextImage from "next/image";
-import {usePostHog} from "posthog-js/react";
+import { usePostHog } from "posthog-js/react";
 
-import {ThemeSwitch} from "./theme-switch";
-import {InfoCircle} from "./icons/info-circle";
-import {FigmaButton} from "./figma-button";
+import { ThemeSwitch } from "./theme-switch";
+import { InfoCircle } from "./icons/info-circle";
+import { FigmaButton } from "./figma-button";
 
-import {Sandpack} from "@/components/sandpack";
-import {CarbonAd} from "@/components/ads/carbon-ad";
+import { Sandpack } from "@/components/sandpack";
+import { CarbonAd } from "@/components/ads/carbon-ad";
 import * as DocsComponents from "@/components/docs/components";
 import * as BlogComponents from "@/components/blog/components";
-import {Codeblock} from "@/components/docs/components";
-import {DeprecationMessage} from "@/components/docs/deprecation-message";
-import {VirtualAnchor, virtualAnchorEncode} from "@/components/virtual-anchor";
+import { Codeblock } from "@/components/docs/components";
+import { VirtualAnchor, virtualAnchorEncode } from "@/components/virtual-anchor";
 import {
   Table as StaticTable,
   TableHeader,
@@ -26,7 +25,7 @@ import {
   TableRoot,
 } from "@/components/static-table";
 
-const Table: React.FC<{children?: React.ReactNode}> = ({children}) => {
+const Table: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return (
     <div className="overflow-x-auto overflow-y-hidden">
       <table className="border-collapse border-spacing-0 w-full">{children}</table>
@@ -34,10 +33,10 @@ const Table: React.FC<{children?: React.ReactNode}> = ({children}) => {
   );
 };
 
-const Thead: React.FC<{children?: React.ReactNode}> = ({children}) => {
+const Thead: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return (
     <thead
-      className={cn(
+      className={clsx(
         "[&>tr]:h-12",
         "[&>tr>th]:py-0",
         "[&>tr>th]:align-middle",
@@ -53,11 +52,11 @@ const Thead: React.FC<{children?: React.ReactNode}> = ({children}) => {
     </thead>
   );
 };
-const Trow: React.FC<{children?: React.ReactNode}> = ({children}) => {
+const Trow: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return <tr>{children}</tr>;
 };
 
-const Tcol: React.FC<{children?: React.ReactNode}> = ({children}) => {
+const Tcol: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return (
     <td className="text-sm p-2 max-w-[200px] overflow-auto whitespace-normal break-normal">
       {children}
@@ -95,7 +94,7 @@ const LinkedHeading: React.FC<LinkedHeadingProps> = ({
 
   return (
     <Component
-      className={cn({"linked-heading": linked}, linked ? {} : className)}
+      className={clsx({ "linked-heading": linked }, linked ? {} : className)}
       data-id={id}
       data-level={level}
       data-name={props.children}
@@ -107,7 +106,7 @@ const LinkedHeading: React.FC<LinkedHeadingProps> = ({
   );
 };
 
-const List: React.FC<{children?: React.ReactNode}> = ({children}) => {
+const List: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return (
     <ul className="list-disc flex flex-col gap-2 ml-4 mt-2 [&>li>strong]:text-foreground [&>li>strong]:font-medium">
       {children}
@@ -115,10 +114,16 @@ const List: React.FC<{children?: React.ReactNode}> = ({children}) => {
   );
 };
 
-const InlineCode = ({children, className}: {children?: React.ReactNode; className?: string}) => {
+const InlineCode = ({
+  children,
+  className,
+}: {
+  children?: React.ReactNode;
+  className?: string;
+}) => {
   return (
     <Components.Code
-      className={cn(
+      className={clsx(
         'p-0 relative before:content-["`"] after:content-["`"] font-semibold font-mono text-small rounded-md text-default-900 dark:text-default-500 bg-transparent',
         className,
       )}
@@ -152,7 +157,7 @@ const Code = ({
       fullWidth
       hideSymbol
       classNames={{
-        base: cn(
+        base: clsx(
           "px-0 bg-code-background text-code-foreground",
           {
             "items-start": isMultiLine,
@@ -180,7 +185,7 @@ const Code = ({
   );
 };
 
-const Link = ({href, children}: {href?: string; children?: React.ReactNode}) => {
+const Link = ({ href, children }: { href?: string; children?: React.ReactNode }) => {
   const isExternal = href?.startsWith("http") || href?.startsWith("https");
   const posthog = usePostHog();
 
@@ -192,7 +197,7 @@ const Link = ({href, children}: {href?: string; children?: React.ReactNode}) => 
     });
   };
 
-  const externalProps = isExternal ? {target: "_blank", rel: "noopener noreferrer"} : {};
+  const externalProps = isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {};
 
   return (
     <Components.Link
@@ -220,7 +225,7 @@ const InlineCodeChip = ({
 }) => {
   return (
     <InlineCode
-      className={cn(
+      className={clsx(
         "before:hidden after:hidden text-tiny rounded-md text-default-600 bg-default-100 dark:bg-default-100/80 px-1.5 py-0.5",
         className,
       )}
@@ -240,7 +245,7 @@ interface APITableProps {
   }[];
 }
 
-export const APITable: React.FC<APITableProps> = ({data}) => {
+export const APITable: React.FC<APITableProps> = ({ data }) => {
   return (
     <TableRoot className="overflow-x-auto overflow-y-hidden">
       <StaticTable aria-label="API table" className="w-full" layout="auto">
@@ -253,7 +258,7 @@ export const APITable: React.FC<APITableProps> = ({data}) => {
         </TableHeader>
         <TableBody>
           {data.map((item, index) => (
-            <TableRow key={index} className="[&>td]:px-2 [&>td]:py-1.5 first:[&>td]:pt-4">
+            <TableRow key={index} className="[&>td]:px-2 [&>td]:py-1.5 [&>td]:first:pt-4">
               <TableCell className="flex items-center gap-1 font-mono text-small whitespace-nowrap">
                 <InlineCodeChip className={item.deprecated ? "line-through" : ""}>
                   {item.attribute}
@@ -276,7 +281,7 @@ export const APITable: React.FC<APITableProps> = ({data}) => {
                     {/* Mobile popover */}
                     <Components.Popover placement="top">
                       <Components.PopoverTrigger>
-                        <button className="flex items-center gap-1 sm:hidden outline-solid outline-transparent">
+                        <button className="flex items-center gap-1 sm:hidden outline-none">
                           <InfoCircle className="text-default-400" size={16} />
                         </button>
                       </Components.PopoverTrigger>
@@ -363,7 +368,6 @@ export const MDXComponents = {
   tr: Trow,
   td: Tcol,
   CarbonAd,
-  DeprecationMessage,
   code: Code,
   ul: List,
   a: (props: React.HTMLAttributes<HTMLAnchorElement>) => <Link {...props} />,
@@ -373,7 +377,7 @@ export const MDXComponents = {
   kbd: (props: React.HTMLAttributes<HTMLElement>) => (
     <Components.Kbd {...props} className="py-0.5 px-1.5" />
   ),
-  Steps: ({...props}) => (
+  Steps: ({ ...props }) => (
     <div
       className="[&>h3]:step [&>h3>a]:pt-0.5 [&>h4]:step [&>h4>a]:pt-0.5 mb-12 ml-4 relative border-l border-default-100 pl-[1.625rem] [counter-reset:step]"
       {...props}

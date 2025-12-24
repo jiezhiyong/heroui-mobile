@@ -1,8 +1,8 @@
-import type {ButtonProps} from "@heroui/react";
+import type { ButtonProps } from "@heroui/react";
 
-import {forwardRef} from "react";
-import {Button} from "@heroui/react";
-import {cn} from "@heroui/theme";
+import { forwardRef } from "react";
+import { Button } from "@heroui/react";
+import { clsx } from "@heroui/shared-utils";
 
 export interface PreviewButtonProps extends ButtonProps {
   icon: React.ReactNode;
@@ -10,13 +10,13 @@ export interface PreviewButtonProps extends ButtonProps {
 
 export const PreviewButton = forwardRef<HTMLButtonElement | null, PreviewButtonProps>(
   (props, ref) => {
-    const {icon, className, ...buttonProps} = props;
+    const { icon, className, ...buttonProps } = props;
 
     return (
       <Button
         ref={ref}
         isIconOnly
-        className={cn(
+        className={clsx(
           "relative z-50 text-zinc-300 top-8 border-1 border-transparent bg-transparent before:bg-white/10 before:content-[''] before:block before:z-[-1] before:absolute before:inset-0 before:backdrop-blur-md before:backdrop-saturate-100 before:rounded-lg",
           className,
         )}

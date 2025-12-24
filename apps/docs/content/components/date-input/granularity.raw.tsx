@@ -1,8 +1,8 @@
-import type {DateValue} from "@internationalized/date";
+import type { DateValue } from "@internationalized/date";
 
 import React from "react";
-import {DateInput} from "@heroui/react";
-import {now, parseAbsoluteToLocal} from "@internationalized/date";
+import { DateInput } from "@heroui/react";
+import { now, parseAbsoluteToLocal } from "@internationalized/date";
 
 export default function App() {
   let [date, setDate] = React.useState<DateValue | null>(

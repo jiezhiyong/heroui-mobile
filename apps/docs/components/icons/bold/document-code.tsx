@@ -1,6 +1,6 @@
-import type {IconSvgProps} from "@/types";
+import type { IconSvgProps } from "@/types";
 
-export const DocumentCodeBoldIcon = ({size = 24, width, height, ...props}: IconSvgProps) => (
+export const DocumentCodeBoldIcon = ({ size = 24, width, height, ...props }: IconSvgProps) => (
   <svg
     aria-hidden="true"
     fill="none"

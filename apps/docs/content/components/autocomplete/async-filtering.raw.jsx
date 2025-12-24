@@ -1,10 +1,10 @@
-import {Autocomplete, AutocompleteItem} from "@heroui/react";
-import {useAsyncList} from "@react-stately/data";
+import { Autocomplete, AutocompleteItem } from "@heroui/react";
+import { useAsyncList } from "@react-stately/data";
 
 export default function App() {
   let list = useAsyncList({
-    async load({signal, filterText}) {
-      let res = await fetch(`https://swapi.py4e.com/api/people/?search=${filterText}`, {signal});
+    async load({ signal, filterText }) {
+      let res = await fetch(`https://swapi.py4e.com/api/people/?search=${filterText}`, { signal });
       let json = await res.json();
 
       return {

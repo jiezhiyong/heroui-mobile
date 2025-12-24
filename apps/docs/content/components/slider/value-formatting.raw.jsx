@@ -1,14 +1,14 @@
-import {Slider} from "@heroui/react";
+import { Slider } from "@heroui/react";
 
 export default function App() {
   return (
     <Slider
       className="max-w-md"
       defaultValue={40}
-      formatOptions={{style: "currency", currency: "JPY"}}
+      formatOptions={{ style: "currency", currency: "JPY" }}
       label="Currency"
       showTooltip={true}
-      tooltipValueFormatOptions={{style: "currency", currency: "JPY"}}
+      tooltipValueFormatOptions={{ style: "currency", currency: "JPY" }}
     />
   );
 }

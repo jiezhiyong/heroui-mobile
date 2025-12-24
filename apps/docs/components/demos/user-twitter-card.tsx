@@ -1,18 +1,18 @@
 "use client";
 
-import {useState} from "react";
-import {Card, CardHeader, Button, Avatar, CardBody, CardFooter} from "@heroui/react";
-import {cn} from "@heroui/theme";
+import { useState } from "react";
+import { Card, CardHeader, Button, Avatar, CardBody, CardFooter } from "@heroui/react";
+import { clsx } from "@heroui/shared-utils";
 
 interface UserTwitterCardProps {
   className?: string;
 }
 
-export const UserTwitterCard = ({className}: UserTwitterCardProps) => {
+export const UserTwitterCard = ({ className }: UserTwitterCardProps) => {
   const [isFollowed, setIsFollowed] = useState(false);
 
   return (
-    <Card className={cn("max-w-[300px]", className)}>
+    <Card className={clsx("max-w-[300px]", className)}>
       <CardHeader className="justify-between">
         <div className="flex gap-5">
           <Avatar

@@ -1,19 +1,19 @@
-import type {SandpackFiles} from "@codesandbox/sandpack-react/types";
-import type {GradientBoxProps} from "@/components/gradient-box";
+import type { SandpackFiles } from "@codesandbox/sandpack-react/types";
+import type { GradientBoxProps } from "@/components/gradient-box";
 
 import React from "react";
-import {LivePreview, LiveProvider, LiveError} from "react-live";
-import {cn} from "@heroui/theme";
+import { LivePreview, LiveProvider, LiveError } from "react-live";
+import { clsx } from "@heroui/shared-utils";
 import * as HeroUI from "@heroui/react";
 import * as intlDateUtils from "@internationalized/date";
 import * as reactAriaI18n from "@react-aria/i18n";
 import * as reactHookFormBase from "react-hook-form";
 
-import {BgGridContainer} from "@/components/bg-grid-container";
-import {GradientBox} from "@/components/gradient-box";
-import {CopyButton} from "@/components/copy-button";
-import {StackblitzButton} from "@/components/stackblitz-button";
-import {PreviewButton} from "@/components/preview-button";
+import { BgGridContainer } from "@/components/bg-grid-container";
+import { GradientBox } from "@/components/gradient-box";
+import { CopyButton } from "@/components/copy-button";
+import { StackblitzButton } from "@/components/stackblitz-button";
+import { PreviewButton } from "@/components/preview-button";
 
 export interface ReactLiveDemoProps {
   code: string;
@@ -73,10 +73,10 @@ export const ReactLiveDemo: React.FC<ReactLiveDemoProps> = ({
         </div>
       )}
       <LivePreview
-        className={cn("live-preview flex h-full w-full not-prose ", {
+        className={clsx("live-preview flex h-full w-full not-prose ", {
           "justify-center items-center": isCentered,
         })}
-        style={{height}}
+        style={{ height }}
       />
       <LiveError />
     </>
@@ -87,7 +87,7 @@ export const ReactLiveDemo: React.FC<ReactLiveDemoProps> = ({
       {isGradientBox ? (
         <GradientBox
           isCentered
-          className={cn(
+          className={clsx(
             className,
             "relative overflow-y-hidden flex items-center border border-default-200 dark:border-default-100 px-2 py-4 rounded-lg overflow-hidden",
           )}
@@ -99,7 +99,7 @@ export const ReactLiveDemo: React.FC<ReactLiveDemoProps> = ({
           </div>
         </GradientBox>
       ) : (
-        <BgGridContainer className={cn(className, "group/code-demo")}>{content}</BgGridContainer>
+        <BgGridContainer className={clsx(className, "group/code-demo")}>{content}</BgGridContainer>
       )}
     </LiveProvider>
   );

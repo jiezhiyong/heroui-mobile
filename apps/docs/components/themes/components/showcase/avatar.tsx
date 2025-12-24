@@ -1,13 +1,13 @@
-import type {AvatarProps} from "@heroui/react";
-import type {Border, HeroUIScaling} from "../../types";
+import type { AvatarProps } from "@heroui/react";
+import type { Border, HeroUIScaling } from "../../types";
 
-import {cloneElement} from "react";
-import {Avatar as HeroUIAvatar} from "@heroui/react";
-import {cn} from "@heroui/theme";
+import { cloneElement } from "react";
+import { Avatar as HeroUIAvatar } from "@heroui/react";
+import { clsx } from "@heroui/shared-utils";
 
-import {ShowcaseComponent} from "../showcase-component";
-import {useThemeBuilder} from "../../provider";
-import {getBorderWidth} from "../../utils/shared";
+import { ShowcaseComponent } from "../showcase-component";
+import { useThemeBuilder } from "../../provider";
+import { getBorderWidth } from "../../utils/shared";
 
 type Color = AvatarProps["color"];
 type Radius = AvatarProps["radius"];
@@ -55,38 +55,38 @@ const Section = ({
 
   switch (scaling) {
     case 90: {
-      className = cn("h-6 w-6", borderClassName) as string;
+      className = clsx("h-6 w-6", borderClassName);
       break;
     }
     case 95: {
-      className = cn("h-8 w-8", borderClassName) as string;
+      className = clsx("h-8 w-8", borderClassName);
       break;
     }
     case 100: {
-      className = cn("h-10 w-10", borderClassName) as string;
+      className = clsx("h-10 w-10", borderClassName);
       break;
     }
     case 105: {
-      className = cn("h-12 w-12", borderClassName) as string;
+      className = clsx("h-12 w-12", borderClassName);
       break;
     }
     case 110: {
-      className = cn("h-14 w-14", borderClassName) as string;
+      className = clsx("h-14 w-14", borderClassName);
       break;
     }
   }
 
   return (
     <div key={color} className="flex flex-col gap-y-4">
-      {cloneElement(<SectionBase />, {color, radius, className, isDisabled: false})}
-      {cloneElement(<SectionBase />, {color, radius, className, isDisabled: true})}
+      {cloneElement(<SectionBase />, { color, radius, className, isDisabled: false })}
+      {cloneElement(<SectionBase />, { color, radius, className, isDisabled: true })}
     </div>
   );
 };
 
 export const Avatar = () => {
   const colors: Color[] = ["default", "primary", "secondary", "success", "warning", "danger"];
-  const {radiusValue, scaling, borderWidthValue} = useThemeBuilder();
+  const { radiusValue, scaling, borderWidthValue } = useThemeBuilder();
 
   return (
     <ShowcaseComponent name="Avatar">

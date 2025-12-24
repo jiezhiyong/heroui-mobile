@@ -1,13 +1,13 @@
-import {DateRangePicker} from "@heroui/react";
-import {today, getLocalTimeZone} from "@internationalized/date";
+import { DateRangePicker } from "@heroui/react";
+import { today, getLocalTimeZone } from "@internationalized/date";
 
 export default function App() {
   let now = today(getLocalTimeZone());
 
   let disabledRanges = [
-    [now, now.add({days: 5})],
-    [now.add({days: 14}), now.add({days: 16})],
-    [now.add({days: 23}), now.add({days: 24})],
+    [now, now.add({ days: 5 })],
+    [now.add({ days: 14 }), now.add({ days: 16 })],
+    [now.add({ days: 23 }), now.add({ days: 24 })],
   ];
 
   return (

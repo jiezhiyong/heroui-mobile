@@ -1,7 +1,7 @@
-import React, {useEffect, useRef, useState} from "react";
-import {Link} from "@heroui/react";
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "@heroui/react";
 
-import {HashLinearIcon} from "@/components/icons";
+import { HashLinearIcon } from "@/components/icons";
 
 export interface Props {
   id?: string;
@@ -14,7 +14,7 @@ export const virtualAnchorEncode = (text?: string) => {
   return text.toLowerCase().replace(/ /g, "-");
 };
 
-export const VirtualAnchor: React.FC<Props> = ({children, id}) => {
+export const VirtualAnchor: React.FC<Props> = ({ children, id }) => {
   const ref = useRef<HTMLAnchorElement>(null);
   const [anchorId, setAnchorId] = useState<string | undefined>();
 

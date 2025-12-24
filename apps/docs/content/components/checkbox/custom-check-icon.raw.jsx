@@ -1,9 +1,9 @@
-import {Checkbox} from "@heroui/react";
+import { Checkbox } from "@heroui/react";
 
-export const HeartIcon = ({size, height, width, ...props}) => {
+export const HeartIcon = ({ size, height, width, ...props }) => {
   // avoid passing non-DOM attributes to svg
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const {isSelected, isIndeterminate, disableAnimation, ...otherProps} = props;
+  const { isSelected, isIndeterminate, disableAnimation, ...otherProps } = props;
 
   return (
     <svg
@@ -22,10 +22,10 @@ export const HeartIcon = ({size, height, width, ...props}) => {
   );
 };
 
-export const PlusIcon = ({size, height, width, ...props}) => {
+export const PlusIcon = ({ size, height, width, ...props }) => {
   // avoid passing non-DOM attributes to svg
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const {isSelected, isIndeterminate, disableAnimation, ...otherProps} = props;
+  const { isSelected, isIndeterminate, disableAnimation, ...otherProps } = props;
 
   return (
     <svg

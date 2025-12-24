@@ -1,4 +1,4 @@
-import {RadioGroup, useRadio, VisuallyHidden, cn} from "@heroui/react";
+import { RadioGroup, useRadio, VisuallyHidden, cn } from "@heroui/react";
 
 export const CustomRadio = (props) => {
   const {
@@ -15,13 +15,12 @@ export const CustomRadio = (props) => {
 
   return (
     <Component
-      {...getBaseProps({
-        className: cn(
-          "group inline-flex items-center hover:opacity-70 active:opacity-50 justify-between flex-row-reverse tap-highlight-transparent m-0",
-          "max-w-[300px] cursor-pointer border-2 border-default rounded-lg gap-4 p-4",
-          "data-[selected=true]:border-primary",
-        ),
-      })}
+      {...getBaseProps()}
+      className={cn(
+        "group inline-flex items-center hover:opacity-70 active:opacity-50 justify-between flex-row-reverse tap-highlight-transparent",
+        "max-w-[300px] cursor-pointer border-2 border-default rounded-lg gap-4 p-4",
+        "data-[selected=true]:border-primary",
+      )}
     >
       <VisuallyHidden>
         <input {...getInputProps()} />

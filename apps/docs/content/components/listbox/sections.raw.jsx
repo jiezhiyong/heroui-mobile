@@ -1,4 +1,4 @@
-import {Listbox, ListboxItem, ListboxSection, cn} from "@heroui/react";
+import { Listbox, ListboxItem, ListboxSection, cn } from "@heroui/react";
 
 export const AddNoteIcon = (props) => {
   return (
@@ -110,14 +110,14 @@ export const DeleteDocumentIcon = (props) => {
   );
 };
 
-export const ListboxWrapper = ({children}) => (
+export const ListboxWrapper = ({ children }) => (
   <div className="w-full max-w-[260px] border-small px-1 py-2 rounded-small border-default-200 dark:border-default-100">
     {children}
   </div>
 );
 
 export default function App() {
-  const iconClasses = "text-xl text-default-500 pointer-events-none shrink-0";
+  const iconClasses = "text-xl text-default-500 pointer-events-none flex-shrink-0";
 
   return (
     <ListboxWrapper>

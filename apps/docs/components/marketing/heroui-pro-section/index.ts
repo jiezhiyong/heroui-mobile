@@ -1,1 +1,1 @@
-export {HeroUIProSection} from "./heroui-pro-section";
+export { HeroUIProSection } from "./heroui-pro-section";

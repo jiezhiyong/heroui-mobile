@@ -1,4 +1,4 @@
-import {Tabs, Tab, Snippet} from "@heroui/react";
+import { Tabs, Tab, Snippet } from "@heroui/react";
 
 import Codeblock from "./codeblock";
 
@@ -22,7 +22,7 @@ export interface ImportTabsProps {
   commands: Record<string, string>;
 }
 
-export const ImportTabs = ({commands}: ImportTabsProps) => {
+export const ImportTabs = ({ commands }: ImportTabsProps) => {
   return (
     <Tabs
       disableAnimation
@@ -33,7 +33,7 @@ export const ImportTabs = ({commands}: ImportTabsProps) => {
       }}
       variant="underlined"
     >
-      {importTabs.map(({key, name}) => {
+      {importTabs.map(({ key, name }) => {
         if (!commands[key]) return null;
 
         return (

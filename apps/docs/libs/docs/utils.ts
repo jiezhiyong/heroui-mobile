@@ -1,10 +1,10 @@
-import type {ParsedUrlQuery} from "querystring";
+import type { ParsedUrlQuery } from "querystring";
 
-import {marked} from "marked";
+import { marked } from "marked";
 import Slugger from "github-slugger";
 
 export type SlugParams = ParsedUrlQuery | undefined;
-export type Heading = {level: number; text: string; id: string};
+export type Heading = { level: number; text: string; id: string };
 
 export interface SlugResponse {
   slug: string;
@@ -29,10 +29,10 @@ export function getSlug(params: SlugParams): SlugResponse {
     };
   }
 
-  return {slug: `/docs/${slug.join("/")}`};
+  return { slug: `/docs/${slug.join("/")}` };
 }
 
-export function getAppSlug(params: {slug: string[]}) {
+export function getAppSlug(params: { slug: string[] }) {
   // Handle optional catch all route for `/docs`
   const slug = getDocsSlug(params?.slug);
 
@@ -43,7 +43,7 @@ export function getAppSlug(params: {slug: string[]}) {
     };
   }
 
-  return {slug: `/docs/${slug.join("/")}`};
+  return { slug: `/docs/${slug.join("/")}` };
 }
 
 export function getHeadings(markdownText: string | undefined): Heading[] {
@@ -57,7 +57,7 @@ export function getHeadings(markdownText: string | undefined): Heading[] {
 
   tokens.forEach((token) => {
     if (token.type === "heading") {
-      headings.push({level: token.depth, text: token.text, id: slugger.slug(token.text)});
+      headings.push({ level: token.depth, text: token.text, id: slugger.slug(token.text) });
     }
   });
 

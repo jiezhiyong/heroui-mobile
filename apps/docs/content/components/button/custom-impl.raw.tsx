@@ -1,7 +1,7 @@
-import type {ButtonProps as BaseButtonProps} from "@heroui/react";
+import type { ButtonProps as BaseButtonProps } from "@heroui/react";
 
-import {forwardRef} from "react";
-import {useButton, Ripple, Spinner} from "@heroui/react";
+import { forwardRef } from "react";
+import { useButton, Ripple, Spinner } from "@heroui/react";
 
 export interface ButtonProps extends BaseButtonProps {}
 
@@ -23,7 +23,7 @@ const MyButton = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     ...props,
   });
 
-  const {ripples, onClear} = getRippleProps();
+  const { ripples, onClear } = getRippleProps();
 
   return (
     <button ref={domRef} {...getButtonProps()}>

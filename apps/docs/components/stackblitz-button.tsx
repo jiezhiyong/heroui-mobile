@@ -1,14 +1,13 @@
-import type {SandpackFiles} from "@codesandbox/sandpack-react/types";
-import type {ButtonProps} from "@/../../packages/components/button/src";
+import type { SandpackFiles } from "@codesandbox/sandpack-react/types";
+import type { ButtonProps } from "@heroui/react";
 
-import React, {forwardRef} from "react";
+import React, { forwardRef } from "react";
 import stackblitzSdk from "@stackblitz/sdk";
+import { Tooltip, Button } from "@heroui/react";
 
-import {StackblitzIcon} from "./icons";
+import { StackblitzIcon } from "./icons";
 
-import {useStackblitz} from "@/hooks/use-stackblitz";
-import {Tooltip} from "@/../../packages/components/tooltip/src";
-import {Button} from "@/../../packages/components/button/src";
+import { useStackblitz } from "@/hooks/use-stackblitz";
 
 export interface StackblitzButtonProps extends ButtonProps {
   files: SandpackFiles;
@@ -33,7 +32,7 @@ export const StackblitzButton = forwardRef<HTMLButtonElement, StackblitzButtonPr
       ),
       ...rest
     } = props;
-    const {stackblitzPrefillConfig, entryFile} = useStackblitz({
+    const { stackblitzPrefillConfig, entryFile } = useStackblitz({
       files,
       typescriptStrict,
     });

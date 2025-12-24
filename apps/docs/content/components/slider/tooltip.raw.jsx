@@ -1,11 +1,11 @@
-import {Slider} from "@heroui/react";
+import { Slider } from "@heroui/react";
 
 export default function App() {
   return (
     <Slider
       className="max-w-md"
       defaultValue={0.2}
-      formatOptions={{style: "percent"}}
+      formatOptions={{ style: "percent" }}
       label="Select a value"
       marks={[
         {

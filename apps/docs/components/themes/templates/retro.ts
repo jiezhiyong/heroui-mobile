@@ -1,6 +1,8 @@
-import type {Config} from "../types";
+import type { Config } from "../types";
 
-import {initialDarkTheme, initialLayout, initialLightTheme} from "../constants";
+import { colors } from "@heroui/theme";
+
+import { initialLayout } from "../constants";
 
 export const retro: Config = {
   name: "retro",
@@ -18,7 +20,7 @@ export const retro: Config = {
     layoutColor: {
       foreground: "#5A4A42",
       background: "#F4E8D1",
-      overlay: initialLightTheme.layoutColor.overlay,
+      overlay: colors.black,
       focus: "#FFD34E",
     },
     contentColor: {
@@ -42,7 +44,7 @@ export const retro: Config = {
     layoutColor: {
       foreground: "#000000",
       background: "#E1CA9E",
-      overlay: initialDarkTheme.layoutColor.overlay,
+      overlay: colors.white,
       focus: "#FFD34E",
     },
     contentColor: {

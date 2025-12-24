@@ -1,12 +1,12 @@
-import type {SandpackInitMode} from "@codesandbox/sandpack-react";
-import type {Language} from "prism-react-renderer";
-import type {HighlightedLines} from "./types";
-import type {Decorators} from "./types";
+import type { SandpackInitMode } from "@codesandbox/sandpack-react";
+import type { Language } from "prism-react-renderer";
+import type { HighlightedLines } from "./types";
+import type { Decorators } from "./types";
 
-import {FileTabs, useSandpack, useActiveCode, SandpackStack} from "@codesandbox/sandpack-react";
+import { FileTabs, useSandpack, useActiveCode, SandpackStack } from "@codesandbox/sandpack-react";
 import * as React from "react";
 
-import {Codeblock} from "@/components/docs/components";
+import { Codeblock } from "@/components/docs/components";
 
 export interface CodeViewerProps {
   showTabs?: boolean;
@@ -30,11 +30,11 @@ export interface CodeViewerProps {
 }
 
 export const SandpackCodeViewer = React.forwardRef<any, CodeViewerProps>(
-  ({showTabs, code: propCode, highlightedLines, containerRef}, ref) => {
-    const {sandpack} = useSandpack();
-    const {code} = useActiveCode();
+  ({ showTabs, code: propCode, highlightedLines, containerRef }, ref) => {
+    const { sandpack } = useSandpack();
+    const { code } = useActiveCode();
 
-    const {activeFile} = sandpack;
+    const { activeFile } = sandpack;
 
     // const id = React.useId();
     // hack to make sure we re-render the code editor and change current file

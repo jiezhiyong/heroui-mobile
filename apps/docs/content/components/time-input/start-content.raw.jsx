@@ -1,5 +1,5 @@
-import {TimeInput} from "@heroui/react";
-import {Time} from "@internationalized/date";
+import { TimeInput } from "@heroui/react";
+import { Time } from "@internationalized/date";
 
 export const ClockCircleLinearIcon = (props) => {
   return (
@@ -28,7 +28,7 @@ export default function App() {
       label="Event Time"
       labelPlacement="outside"
       startContent={
-        <ClockCircleLinearIcon className="text-xl text-default-400 pointer-events-none shrink-0" />
+        <ClockCircleLinearIcon className="text-xl text-default-400 pointer-events-none flex-shrink-0" />
       }
     />
   );

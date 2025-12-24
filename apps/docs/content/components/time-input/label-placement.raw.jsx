@@ -1,5 +1,5 @@
-import {TimeInput} from "@heroui/react";
-import {Time} from "@internationalized/date";
+import { TimeInput } from "@heroui/react";
+import { Time } from "@internationalized/date";
 
 export default function App() {
   return (
@@ -21,12 +21,6 @@ export default function App() {
         description="outside-left"
         label="Event Time"
         labelPlacement="outside-left"
-      />
-      <TimeInput
-        defaultValue={new Time(11, 45)}
-        description="outside-top"
-        label="Event Time"
-        labelPlacement="outside-top"
       />
     </div>
   );

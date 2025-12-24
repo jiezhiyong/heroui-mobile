@@ -1,8 +1,8 @@
-import type {TimeInputValue} from "@heroui/react";
+import type { TimeInputValue } from "@heroui/react";
 
 import React from "react";
-import {TimeInput} from "@heroui/react";
-import {parseAbsoluteToLocal} from "@internationalized/date";
+import { TimeInput } from "@heroui/react";
+import { parseAbsoluteToLocal } from "@internationalized/date";
 
 export default function App() {
   let [date, setDate] = React.useState<TimeInputValue | null>(

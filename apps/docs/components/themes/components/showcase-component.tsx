@@ -1,13 +1,13 @@
-import type {FontName, TemplateType} from "../types";
+import type { FontName, TemplateType } from "../types";
 
-import {cn, Divider} from "@heroui/react";
+import { cn, Divider } from "@heroui/react";
 import Link from "next/link";
-import {Inter, Roboto, Outfit, Lora} from "next/font/google";
+import { Inter, Roboto, Outfit, Lora } from "next/font/google";
 import get from "lodash/get";
-import {useTheme} from "next-themes";
-import {readableColor} from "color2k";
+import { useTheme } from "next-themes";
+import { readableColor } from "color2k";
 
-import {useThemeBuilder} from "../provider";
+import { useThemeBuilder } from "../provider";
 
 interface ShowcaseComponentProps {
   children: React.ReactElement | React.ReactElement[];
@@ -15,16 +15,16 @@ interface ShowcaseComponentProps {
   name: string;
 }
 
-const inter = Inter({subsets: ["latin"], weight: ["400", "700"]});
-const roboto = Roboto({subsets: ["latin"], weight: ["400", "700"]});
-const outfit = Outfit({subsets: ["latin"], weight: ["400", "700"]});
-const lora = Lora({subsets: ["latin"], weight: ["400", "700"]});
+const inter = Inter({ subsets: ["latin"], weight: ["400", "700"] });
+const roboto = Roboto({ subsets: ["latin"], weight: ["400", "700"] });
+const outfit = Outfit({ subsets: ["latin"], weight: ["400", "700"] });
+const lora = Lora({ subsets: ["latin"], weight: ["400", "700"] });
 
-const FONT_CONFIGS: Record<FontName, {className: string}> = {
-  Inter: {className: inter.className},
-  Roboto: {className: roboto.className},
-  Outfit: {className: outfit.className},
-  Lora: {className: lora.className},
+const FONT_CONFIGS: Record<FontName, { className: string }> = {
+  Inter: { className: inter.className },
+  Roboto: { className: roboto.className },
+  Outfit: { className: outfit.className },
+  Lora: { className: lora.className },
 };
 
 const getFontClass = (templateTheme: TemplateType) => {
@@ -35,10 +35,10 @@ const getFontClass = (templateTheme: TemplateType) => {
   return FONT_CONFIGS["Inter"]?.className || "";
 };
 
-export function ShowcaseComponent({children, id, name}: ShowcaseComponentProps) {
-  const {font, templateTheme, config} = useThemeBuilder();
+export function ShowcaseComponent({ children, id, name }: ShowcaseComponentProps) {
+  const { font, templateTheme, config } = useThemeBuilder();
   const fontClass = font ? FONT_CONFIGS[font]?.className || "" : getFontClass(templateTheme);
-  const {theme} = useTheme();
+  const { theme } = useTheme();
 
   const defaultColor = get(config, `${theme}.layoutColor.background`);
 

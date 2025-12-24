@@ -1,12 +1,12 @@
-import type {ButtonProps} from "@heroui/react";
-import type {ReactNode} from "react";
+import type { ButtonProps } from "@heroui/react";
+import type { ReactNode } from "react";
 
-import {Button, Code, Link, Tooltip} from "@heroui/react";
+import { Button, Code, Link, Tooltip } from "@heroui/react";
 import Balancer from "react-wrap-balancer";
-import {usePostHog} from "posthog-js/react";
+import { usePostHog } from "posthog-js/react";
 
-import {GithubIcon, NpmIcon, AdobeIcon, StorybookIcon, NextJsIcon} from "@/components/icons";
-import {COMPONENT_PATH, COMPONENT_THEME_PATH} from "@/libs/github/constants";
+import { GithubIcon, NpmIcon, AdobeIcon, StorybookIcon, NextJsIcon } from "@/components/icons";
+import { COMPONENT_PATH, COMPONENT_THEME_PATH } from "@/libs/github/constants";
 
 export interface ComponentLinksProps {
   component: string;
@@ -44,7 +44,7 @@ const ButtonLink = ({
     <Button
       isExternal
       as={Link}
-      className="text-small! py-4 bg-default-100 dark:bg-default-50 text-default-700"
+      className="!text-small py-4 bg-default-100 dark:bg-default-50 text-default-700"
       href={href}
       size="sm"
       startContent={startContent}

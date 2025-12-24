@@ -1,7 +1,7 @@
-import type {SwitchProps} from "@heroui/react";
+import type { SwitchProps } from "@heroui/react";
 
 import React from "react";
-import {useSwitch, VisuallyHidden} from "@heroui/react";
+import { useSwitch, VisuallyHidden } from "@heroui/react";
 
 export const MoonIcon = (props) => {
   return (
@@ -42,7 +42,7 @@ export const SunIcon = (props) => {
 };
 
 const ThemeSwitch = (props: SwitchProps) => {
-  const {Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps} =
+  const { Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps } =
     useSwitch(props);
 
   return (

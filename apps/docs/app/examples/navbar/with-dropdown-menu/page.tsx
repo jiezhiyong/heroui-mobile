@@ -12,7 +12,7 @@ import {
   Dropdown,
   DropdownMenu,
 } from "@heroui/react";
-import {ChevronDown, Lock, Activity, Flash, Server, TagUser, Scale} from "@heroui/shared-icons";
+import { ChevronDown, Lock, Activity, Flash, Server, TagUser, Scale } from "@heroui/shared-icons";
 
 const AcmeLogo = () => (
   <svg fill="none" height="36" viewBox="0 0 32 32" width="36">

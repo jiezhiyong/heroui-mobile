@@ -1,13 +1,13 @@
 "use client";
 
-import type {Language, PrismTheme} from "prism-react-renderer";
+import type { Language, PrismTheme } from "prism-react-renderer";
 
-import {useIntersectionObserver} from "usehooks-ts";
-import React, {forwardRef, useEffect} from "react";
-import {dataAttr, getUniqueID} from "@heroui/shared-utils";
-import BaseHighlight, {defaultProps} from "prism-react-renderer";
-import {debounce, omit} from "@heroui/shared-utils";
-import {cn} from "@heroui/react";
+import { useIntersectionObserver } from "usehooks-ts";
+import React, { forwardRef, useEffect } from "react";
+import { clsx, dataAttr, getUniqueID } from "@heroui/shared-utils";
+import BaseHighlight, { defaultProps } from "prism-react-renderer";
+import { debounce, omit } from "@heroui/shared-utils";
+import { cn } from "@heroui/react";
 
 import defaultTheme from "@/libs/prism-theme";
 
@@ -113,7 +113,7 @@ const CodeBlockHighlight = ({
           theme={theme}
           {...props}
         >
-          {({className, style, tokens, getLineProps, getTokenProps}) => (
+          {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre
               ref={(element) => {
                 // Merge the refs
@@ -124,21 +124,27 @@ const CodeBlockHighlight = ({
                   preRef.current = element;
                 }
               }}
-              className={cn(className, classNameProp, `language-${codeLang}`, "max-w-full", {
-                "flex-col": isMultiLine,
-                "overflow-x-scroll scrollbar-hide": hideScrollBar,
-              })}
+              className={clsx(
+                className,
+                classNameProp,
+                `language-${codeLang}`,
+                "max-w-full contents",
+                {
+                  "flex-col": isMultiLine,
+                  "overflow-x-scroll scrollbar-hide": hideScrollBar,
+                },
+              )}
               data-language={language}
               style={style}
             >
               {tokens.map((line, i) => {
-                const lineProps = getLineProps({line, key: i});
+                const lineProps = getLineProps({ line, key: i });
 
                 return (
                   <div
                     {...omit(lineProps, ["key"])}
                     key={`${i}-${getUniqueID("line-wrapper")}`}
-                    className={cn(
+                    className={clsx(
                       lineProps.className,
                       removeIndent ? "pr-4" : "px-4",
                       "relative [&>span]:relative [&>span]:z-10",
@@ -167,7 +173,7 @@ const CodeBlockHighlight = ({
                     )}
 
                     {line.map((token, key) => {
-                      const props = getTokenProps({token, key}) || {};
+                      const props = getTokenProps({ token, key }) || {};
 
                       return (
                         <span
@@ -183,7 +189,7 @@ const CodeBlockHighlight = ({
 
                               return regex.test(content);
                             })
-                              ? {color: "rgb(var(--code-function))"}
+                              ? { color: "rgb(var(--code-function))" }
                               : {}),
                           }}
                         />
@@ -196,7 +202,7 @@ const CodeBlockHighlight = ({
           )}
         </BaseHighlight>
       ) : (
-        <div className={cn(classNameProp, "w-full bg-code-background rounded-lg")} />
+        <div className={clsx(classNameProp, "w-full bg-code-background rounded-lg")} />
       )}
     </div>
   );

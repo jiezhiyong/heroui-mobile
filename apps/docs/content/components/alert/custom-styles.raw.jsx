@@ -1,8 +1,16 @@
-import {Alert, Button} from "@heroui/react";
+import { Alert, Button } from "@heroui/react";
 
 const CustomAlert = React.forwardRef(
   (
-    {title, children, variant = "faded", color = "secondary", className, classNames = {}, ...props},
+    {
+      title,
+      children,
+      variant = "faded",
+      color = "secondary",
+      className,
+      classNames = {},
+      ...props
+    },
     ref,
   ) => {
     const colorClass = React.useMemo(() => {

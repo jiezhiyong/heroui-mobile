@@ -1,8 +1,8 @@
 "use client";
 
-import type {FC} from "react";
+import type { FC } from "react";
 
-import {useState} from "react";
+import { useState } from "react";
 import {
   Modal,
   Button,
@@ -15,8 +15,8 @@ import {
 } from "@heroui/react";
 import Link from "next/link";
 
-import {CodeWindow} from "@/components/code-window";
-import {useIsMobile} from "@/hooks/use-media-query";
+import { CodeWindow } from "@/components/code-window";
+import { useIsMobile } from "@/hooks/use-media-query";
 
 export interface DemoCodeModalProps {
   isOpen: boolean;
@@ -26,7 +26,13 @@ export interface DemoCodeModalProps {
   onClose: () => void;
 }
 
-export const DemoCodeModal: FC<DemoCodeModalProps> = ({isOpen, code, title, subtitle, onClose}) => {
+export const DemoCodeModal: FC<DemoCodeModalProps> = ({
+  isOpen,
+  code,
+  title,
+  subtitle,
+  onClose,
+}) => {
   const [isCodeVisible, setIsCodeVisible] = useState(false);
 
   const isMobile = useIsMobile();
@@ -37,8 +43,8 @@ export const DemoCodeModal: FC<DemoCodeModalProps> = ({isOpen, code, title, subt
   return (
     <Modal
       classNames={{
-        backdrop: "z-100002", // to appear above the navbar
-        wrapper: "z-100003", // to appear above the backdrop
+        backdrop: "z-[100002]", // to appear above the navbar
+        wrapper: "z-[100003]", // to appear above the backdrop
       }}
       isOpen={isOpen}
       motionProps={{
@@ -71,7 +77,7 @@ export const DemoCodeModal: FC<DemoCodeModalProps> = ({isOpen, code, title, subt
             <CodeWindow
               showCopy
               showWindowIcons
-              className="min-h-[320px] h-[60vh]! max-h-full"
+              className="min-h-[320px] !h-[60vh] max-h-full"
               language="jsx"
               title={fileName}
               value={code}

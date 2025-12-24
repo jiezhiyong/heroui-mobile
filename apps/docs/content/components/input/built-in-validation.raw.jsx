@@ -1,4 +1,4 @@
-import {Button, Form, Input} from "@heroui/react";
+import { Button, Form, Input } from "@heroui/react";
 
 export default function App() {
   const [submitted, setSubmitted] = React.useState(null);
@@ -14,7 +14,7 @@ export default function App() {
     <Form className="w-full max-w-xs" onSubmit={onSubmit}>
       <Input
         isRequired
-        errorMessage={({validationDetails, validationErrors}) => {
+        errorMessage={({ validationDetails, validationErrors }) => {
           if (validationDetails.typeMismatch) {
             return "Please enter a valid email address";
           }

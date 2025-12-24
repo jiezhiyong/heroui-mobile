@@ -1,4 +1,4 @@
-import {Input} from "@heroui/react";
+import { Input } from "@heroui/react";
 
 export default function App() {
   return (

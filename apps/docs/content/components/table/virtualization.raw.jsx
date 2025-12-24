@@ -1,7 +1,7 @@
-import {Table, TableBody, TableCell, TableColumn, TableHeader, TableRow} from "@heroui/react";
+import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
 
 function generateRows(count) {
-  return Array.from({length: count}, (_, index) => ({
+  return Array.from({ length: count }, (_, index) => ({
     key: index.toString(),
     name: `Item ${index + 1}`,
     value: `Value ${index + 1}`,
@@ -11,8 +11,8 @@ function generateRows(count) {
 export default function App() {
   const rows = generateRows(500);
   const columns = [
-    {key: "name", label: "Name"},
-    {key: "value", label: "Value"},
+    { key: "name", label: "Name" },
+    { key: "value", label: "Value" },
   ];
 
   return (

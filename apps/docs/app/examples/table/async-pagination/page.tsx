@@ -11,7 +11,7 @@ import {
   Spinner,
   Pagination,
 } from "@heroui/react";
-import {useMemo, useState} from "react";
+import { useMemo, useState } from "react";
 import useSWR from "swr";
 
 type SWCharacter = {
@@ -26,7 +26,7 @@ const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then((res)
 export default function Page() {
   const [page, setPage] = useState(1);
 
-  const {data, isLoading} = useSWR<{
+  const { data, isLoading } = useSWR<{
     count: number;
     results: SWCharacter[];
   }>(`https://swapi.py4e.com/api/people?page=${page}`, fetcher, {

@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 "use client";
 
-import {Select, SelectItem} from "@heroui/react";
-import {useEffect, useState} from "react";
-import {useInfiniteScroll} from "@heroui/use-infinite-scroll";
+import { Select, SelectItem } from "@heroui/react";
+import { useEffect, useState } from "react";
+import { useInfiniteScroll } from "@heroui/use-infinite-scroll";
 
 type Pokemon = {
   name: string;
@@ -15,7 +15,7 @@ type UsePokemonListProps = {
   fetchDelay?: number;
 };
 
-function usePokemonList({fetchDelay = 0}: UsePokemonListProps = {}) {
+function usePokemonList({ fetchDelay = 0 }: UsePokemonListProps = {}) {
   const [items, setItems] = useState<Pokemon[]>([]);
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +24,7 @@ function usePokemonList({fetchDelay = 0}: UsePokemonListProps = {}) {
 
   const loadPokemon = async (currentOffset: number) => {
     const controller = new AbortController();
-    const {signal} = controller;
+    const { signal } = controller;
 
     try {
       setIsLoading(true);
@@ -36,7 +36,7 @@ function usePokemonList({fetchDelay = 0}: UsePokemonListProps = {}) {
 
       let res = await fetch(
         `https://pokeapi.co/api/v2/pokemon?offset=${currentOffset}&limit=${limit}`,
-        {signal},
+        { signal },
       );
 
       if (!res.ok) {
@@ -81,7 +81,7 @@ function usePokemonList({fetchDelay = 0}: UsePokemonListProps = {}) {
 
 export default function Page() {
   const [isOpen, setIsOpen] = useState(false);
-  const {items, hasMore, isLoading, onLoadMore} = usePokemonList({fetchDelay: 1500});
+  const { items, hasMore, isLoading, onLoadMore } = usePokemonList({ fetchDelay: 1500 });
 
   const [, scrollerRef] = useInfiniteScroll({
     hasMore,

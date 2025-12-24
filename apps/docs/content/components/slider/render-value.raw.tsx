@@ -1,7 +1,7 @@
-import type {SliderValue} from "@heroui/react";
+import type { SliderValue } from "@heroui/react";
 
 import React from "react";
-import {Tooltip, Slider} from "@heroui/react";
+import { Tooltip, Slider } from "@heroui/react";
 
 export default function App() {
   const [value, setValue] = React.useState<SliderValue>(0.2);
@@ -25,7 +25,7 @@ export default function App() {
       maxValue={1}
       minValue={0}
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      renderValue={({children, ...props}) => (
+      renderValue={({ children, ...props }) => (
         <output {...props}>
           <Tooltip
             className="text-tiny text-default-500 rounded-md"
@@ -34,7 +34,7 @@ export default function App() {
           >
             <input
               aria-label="Temperature value"
-              className="px-1 py-0.5 w-12 text-right text-small text-default-700 font-medium bg-default-100 outline-solid outline-transparent transition-colors rounded-small border-medium border-transparent hover:border-primary focus:border-primary"
+              className="px-1 py-0.5 w-12 text-right text-small text-default-700 font-medium bg-default-100 outline-none transition-colors rounded-small border-medium border-transparent hover:border-primary focus:border-primary"
               type="text"
               value={inputValue}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {

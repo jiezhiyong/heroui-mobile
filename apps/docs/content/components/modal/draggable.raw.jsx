@@ -10,9 +10,9 @@ import {
 } from "@heroui/react";
 
 export default function App() {
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const targetRef = React.useRef(null);
-  const {moveProps} = useDraggable({targetRef, isDisabled: !isOpen});
+  const { moveProps } = useDraggable({ targetRef, isDisabled: !isOpen });
 
   return (
     <>

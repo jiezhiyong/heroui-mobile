@@ -1,6 +1,6 @@
-import {Checkbox, CheckboxGroup, Link, User, Chip, cn} from "@heroui/react";
+import { Checkbox, CheckboxGroup, Link, User, Chip, cn } from "@heroui/react";
 
-export const CustomCheckbox = ({user, statusColor, value}) => {
+export const CustomCheckbox = ({ user, statusColor, value }) => {
   return (
     <Checkbox
       aria-label={user.name}
@@ -17,7 +17,7 @@ export const CustomCheckbox = ({user, statusColor, value}) => {
     >
       <div className="w-full flex justify-between gap-2">
         <User
-          avatarProps={{size: "md", src: user.avatar}}
+          avatarProps={{ size: "md", src: user.avatar }}
           description={
             <Link isExternal href={user.url} size="sm">
               @{user.username}

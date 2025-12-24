@@ -1,5 +1,5 @@
-import {RangeCalendar} from "@heroui/react";
-import {today, getLocalTimeZone} from "@internationalized/date";
+import { RangeCalendar } from "@heroui/react";
+import { today, getLocalTimeZone } from "@internationalized/date";
 
 export default function App() {
   return (
@@ -8,7 +8,7 @@ export default function App() {
       aria-label="Date (Read Only)"
       value={{
         start: today(getLocalTimeZone()),
-        end: today(getLocalTimeZone()).add({weeks: 1}),
+        end: today(getLocalTimeZone()).add({ weeks: 1 }),
       }}
     />
   );

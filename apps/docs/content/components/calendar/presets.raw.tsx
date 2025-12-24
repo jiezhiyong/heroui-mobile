@@ -1,21 +1,21 @@
-import type {DateValue} from "@react-types/calendar";
+import type { DateValue } from "@react-types/calendar";
 
 import React from "react";
-import {Calendar, Radio, RadioGroup, Button, ButtonGroup, cn} from "@heroui/react";
-import {today, getLocalTimeZone, startOfWeek, startOfMonth} from "@internationalized/date";
-import {useLocale} from "@react-aria/i18n";
+import { Calendar, Radio, RadioGroup, Button, ButtonGroup, cn } from "@heroui/react";
+import { today, getLocalTimeZone, startOfWeek, startOfMonth } from "@internationalized/date";
+import { useLocale } from "@react-aria/i18n";
 
 export default function App() {
   let defaultDate = today(getLocalTimeZone());
   let [value, setValue] = React.useState<DateValue | null>(defaultDate);
-  let {locale} = useLocale();
+  let { locale } = useLocale();
 
   let now = today(getLocalTimeZone());
-  let nextWeek = startOfWeek(now.add({weeks: 1}), locale);
-  let nextMonth = startOfMonth(now.add({months: 1}));
+  let nextWeek = startOfWeek(now.add({ weeks: 1 }), locale);
+  let nextMonth = startOfMonth(now.add({ months: 1 }));
 
   const CustomRadio = (props) => {
-    const {children, ...otherProps} = props;
+    const { children, ...otherProps } = props;
 
     return (
       <Radio

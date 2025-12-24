@@ -1,12 +1,12 @@
-import type {ChipProps} from "@heroui/react";
-import type {Border, HeroUIScaling} from "../../types";
+import type { ChipProps } from "@heroui/react";
+import type { Border, HeroUIScaling } from "../../types";
 
-import {cloneElement} from "react";
-import {Chip as HeroUIChip} from "@heroui/react";
-import {cn} from "@heroui/theme";
+import { cloneElement } from "react";
+import { Chip as HeroUIChip } from "@heroui/react";
+import { clsx } from "@heroui/shared-utils";
 
-import {ShowcaseComponent} from "../showcase-component";
-import {useThemeBuilder} from "../../provider";
+import { ShowcaseComponent } from "../showcase-component";
+import { useThemeBuilder } from "../../provider";
 
 type Color = ChipProps["color"];
 type Radius = ChipProps["radius"];
@@ -28,7 +28,7 @@ const SectionBase = ({
   return (
     <HeroUIChip
       key={radius}
-      className={cn(className, "capitalize")}
+      className={clsx(className, "capitalize")}
       color={color}
       isDisabled={isDisabled}
       radius={radius}
@@ -90,7 +90,7 @@ const Section = ({
       {variants.map((variant, idx) =>
         cloneElement(<SectionBase key={idx} />, {
           color,
-          className: cn(
+          className: clsx(
             className,
             variant === "bordered" || variant === "faded" ? borderClass : "",
           ),
@@ -112,7 +112,7 @@ const Section = ({
 
 export const Chip = () => {
   const colors: Color[] = ["default", "primary", "secondary", "success", "warning", "danger"];
-  const {radiusValue, scaling, borderWidthValue} = useThemeBuilder();
+  const { radiusValue, scaling, borderWidthValue } = useThemeBuilder();
 
   return (
     <ShowcaseComponent name="Chip">

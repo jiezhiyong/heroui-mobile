@@ -1,10 +1,10 @@
 import React from "react";
-import {usePathname} from "next/navigation";
-import {Tooltip, Button} from "@heroui/react";
-import {capitalize} from "@heroui/shared-utils";
+import { usePathname } from "next/navigation";
+import { Tooltip, Button } from "@heroui/react";
+import { capitalize } from "@heroui/shared-utils";
 
-import {BugIcon} from "@/components/icons";
-import {ISSUE_REPORT_URL} from "@/libs/github/constants";
+import { BugIcon } from "@/components/icons";
+import { ISSUE_REPORT_URL } from "@/libs/github/constants";
 
 export const BugReportButton = () => {
   const pathname = usePathname();

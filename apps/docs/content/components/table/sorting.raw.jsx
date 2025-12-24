@@ -8,13 +8,13 @@ import {
   getKeyValue,
   Spinner,
 } from "@heroui/react";
-import {useAsyncList} from "@react-stately/data";
+import { useAsyncList } from "@react-stately/data";
 
 export default function App() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   let list = useAsyncList({
-    async load({signal}) {
+    async load({ signal }) {
       let res = await fetch("https://swapi.py4e.com/api/people/?search", {
         signal,
       });
@@ -26,7 +26,7 @@ export default function App() {
         items: json.results,
       };
     },
-    async sort({items, sortDescriptor}) {
+    async sort({ items, sortDescriptor }) {
       return {
         items: items.sort((a, b) => {
           let first = a[sortDescriptor.column];

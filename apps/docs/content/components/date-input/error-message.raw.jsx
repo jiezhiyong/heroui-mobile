@@ -1,5 +1,5 @@
-import {DateInput} from "@heroui/react";
-import {CalendarDate, parseDate} from "@internationalized/date";
+import { DateInput } from "@heroui/react";
+import { CalendarDate, parseDate } from "@internationalized/date";
 
 export default function App() {
   return (

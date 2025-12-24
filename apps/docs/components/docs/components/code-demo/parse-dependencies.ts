@@ -4,7 +4,7 @@ import * as HeroUI from "@heroui/react";
 const importRegex = /^(import\s+(?!type\s+\{)[\s\S]*?;)/gm;
 
 export const parseDependencies = (content: string) => {
-  const dependencies: {name: string; version: string}[] = [];
+  const dependencies: { name: string; version: string }[] = [];
 
   // by default, react and heroui packages are installed already
   const installedPackages = {
@@ -19,7 +19,7 @@ export const parseDependencies = (content: string) => {
 
       return acc;
     },
-    {React: "React"} as Record<string, string>,
+    { React: "React" } as Record<string, string>,
   );
 
   // match all imports from the file content
@@ -52,6 +52,6 @@ export const parseDependencies = (content: string) => {
 };
 
 const fixedVersions = {
-  "@internationalized/date": "3.10.1",
-  "@react-aria/i18n": "3.12.14",
+  "@internationalized/date": "3.8.2",
+  "@react-aria/i18n": "3.12.10",
 };

@@ -10,19 +10,19 @@ import {
   Spinner,
   Pagination,
 } from "@heroui/react";
-import {MoonFilledIcon, SunFilledIcon} from "@heroui/shared-icons";
-import {useTheme} from "next-themes";
+import { MoonFilledIcon, SunFilledIcon } from "@heroui/shared-icons";
+import { useTheme } from "next-themes";
 import NextImage from "next/image";
 
-import {FloatingTabs} from "./floating-tabs";
+import { FloatingTabs } from "./floating-tabs";
 
-import {UserTwitterCard} from "@/components/demos/user-twitter-card";
-import {useIsMounted} from "@/hooks/use-is-mounted";
-import {useMediaQuery} from "@/hooks/use-media-query";
-import {SmallLogo} from "@/components/heroui-logo";
+import { UserTwitterCard } from "@/components/demos/user-twitter-card";
+import { useIsMounted } from "@/hooks/use-is-mounted";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { HeroUILogo } from "@/components/heroui-logo";
 
 export const FloatingComponents: React.FC<{}> = () => {
-  const {theme, setTheme} = useTheme();
+  const { theme, setTheme } = useTheme();
 
   const isMounted = useIsMounted();
   const isSelected = theme === "dark" && isMounted;
@@ -86,7 +86,7 @@ export const FloatingComponents: React.FC<{}> = () => {
           shadow="lg"
         >
           <CardBody>
-            <SmallLogo size={60} />
+            <HeroUILogo small size={60} />
           </CardBody>
         </Card>
 

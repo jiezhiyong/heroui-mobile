@@ -10,8 +10,8 @@ import {
   DropdownItem,
   Tooltip,
 } from "@heroui/react";
-import {useInView} from "framer-motion";
-import {cn} from "@heroui/theme";
+import { useInView } from "framer-motion";
+import { clsx } from "@heroui/shared-utils";
 import {
   AddNoteBulkIcon,
   CopyDocumentBulkIcon,
@@ -20,12 +20,12 @@ import {
 } from "@heroui/shared-icons";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import {Fragment, useEffect, useRef, useState} from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 
-import {FeaturesGrid} from "./features-grid";
+import { FeaturesGrid } from "./features-grid";
 
 import landingContent from "@/content/landing";
-import {GradientBox} from "@/components";
+import { GradientBox } from "@/components";
 import {
   KeyboardBoldIcon,
   MouseCircleBoldIcon,
@@ -35,8 +35,8 @@ import {
   KeyboardOpenBoldIcon,
   InfoBoldIcon,
 } from "@/components/icons";
-import {title, subtitle, titleWrapper, sectionWrapper} from "@/components/primitives";
-import {useIsMobile} from "@/hooks/use-media-query";
+import { title, subtitle, titleWrapper, sectionWrapper } from "@/components/primitives";
+import { useIsMobile } from "@/hooks/use-media-query";
 
 const DemoCodeModal = dynamic(() => import("../demo-code-modal").then((mod) => mod.DemoCodeModal), {
   ssr: false,
@@ -69,7 +69,7 @@ const a11yItems = [
   },
 ];
 
-const iconClasses = "text-2xl text-default-500 pointer-events-none shrink-0";
+const iconClasses = "text-2xl text-default-500 pointer-events-none flex-shrink-0";
 
 export const A11yOtb = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -90,14 +90,14 @@ export const A11yOtb = () => {
   }, [isMobile, isInView]);
 
   return (
-    <section className={sectionWrapper({class: "z-20 mt-16 lg:mt-44"})}>
+    <section className={sectionWrapper({ class: "z-20 mt-16 lg:mt-44" })}>
       <div className="flex flex-col gap-8">
         <div>
           <div className={titleWrapper()}>
-            <h1 className={title({size: "lg"})}>Accessibility</h1>
+            <h1 className={title({ size: "lg" })}>Accessibility</h1>
             <div>
-              <h1 className={title({color: "green", size: "lg"})}>out of the&nbsp;</h1>
-              <h1 className={title({size: "lg"})}>box.</h1>
+              <h1 className={title({ color: "green", size: "lg" })}>out of the&nbsp;</h1>
+              <h1 className={title({ size: "lg" })}>box.</h1>
             </div>
           </div>
           <p className={subtitle()}>
@@ -147,7 +147,7 @@ export const A11yOtb = () => {
               <Button
                 isIconOnly
                 aria-label="Show code"
-                className="absolute top-1 right-1 text-success-50 data-hover:bg-foreground/10"
+                className="absolute top-1 right-1 text-success-50 data-[hover]:bg-foreground/10"
                 radius="full"
                 variant="light"
                 onPress={() => setIsModalOpen(true)}
@@ -217,7 +217,7 @@ export const A11yOtb = () => {
                       description="Permanently delete the file"
                       shortcut="⌘⇧D"
                       startContent={
-                        <DeleteDocumentBulkIcon className={cn(iconClasses, "text-danger!")} />
+                        <DeleteDocumentBulkIcon className={clsx(iconClasses, "!text-danger")} />
                       }
                     >
                       Delete file

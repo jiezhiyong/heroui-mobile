@@ -1,17 +1,17 @@
-import {DatePicker} from "@heroui/react";
-import {today, isWeekend, getLocalTimeZone} from "@internationalized/date";
-import {useLocale} from "@react-aria/i18n";
+import { DatePicker } from "@heroui/react";
+import { today, isWeekend, getLocalTimeZone } from "@internationalized/date";
+import { useLocale } from "@react-aria/i18n";
 
 export default function App() {
   let now = today(getLocalTimeZone());
 
   let disabledRanges = [
-    [now, now.add({days: 5})],
-    [now.add({days: 14}), now.add({days: 16})],
-    [now.add({days: 23}), now.add({days: 24})],
+    [now, now.add({ days: 5 })],
+    [now.add({ days: 14 }), now.add({ days: 16 })],
+    [now.add({ days: 23 }), now.add({ days: 24 })],
   ];
 
-  let {locale} = useLocale();
+  let { locale } = useLocale();
 
   let isDateUnavailable = (date) =>
     isWeekend(date, locale) ||

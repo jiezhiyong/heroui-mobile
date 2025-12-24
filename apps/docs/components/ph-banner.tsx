@@ -1,10 +1,10 @@
 "use client";
 
-import {Icon} from "@iconify/react/dist/offline";
+import { Icon } from "@iconify/react/dist/offline";
 import arrowRightIcon from "@iconify/icons-solar/arrow-right-linear";
-import {usePathname} from "next/navigation";
-import {useEffect} from "react";
-import {usePostHog} from "posthog-js/react";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
+import { usePostHog } from "posthog-js/react";
 
 import emitter from "@/libs/emitter";
 
@@ -97,7 +97,7 @@ export const PhBanner = () => {
             Get 30% off
             <Icon
               aria-hidden="true"
-              className="outline-solid outline-transparent transition-transform group-hover:translate-x-0.5 [&>path]:stroke-[2px]"
+              className="outline-none transition-transform group-hover:translate-x-0.5 [&>path]:stroke-[2px]"
               icon={arrowRightIcon}
               width={16}
             />

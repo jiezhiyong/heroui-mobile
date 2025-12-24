@@ -1,9 +1,9 @@
-import type {SandpackPredefinedTemplate} from "@codesandbox/sandpack-react";
+import type { SandpackPredefinedTemplate } from "@codesandbox/sandpack-react";
 
-import React, {useCallback} from "react";
-import {Tabs, Tab} from "@heroui/react";
+import React, { useCallback } from "react";
+import { Tabs, Tab } from "@heroui/react";
 
-import {TypescriptIcon, JavascriptIcon} from "@/components/icons";
+import { TypescriptIcon, JavascriptIcon } from "@/components/icons";
 
 interface Props {
   template: SandpackPredefinedTemplate;
@@ -12,7 +12,7 @@ interface Props {
 
 export type LanguageSelectorProps = Props;
 
-export const LanguageSelector: React.FC<LanguageSelectorProps> = ({template, onChange}) => {
+export const LanguageSelector: React.FC<LanguageSelectorProps> = ({ template, onChange }) => {
   const [selectedTemplate, setSelectedTemplate] = React.useState(template);
 
   const handleToggle = useCallback(() => {
@@ -32,7 +32,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({template, onC
         base: "absolute z-10 right-3 bottom-4",
         cursor: "bg-default-600 dark:bg-default-300",
         tabList:
-          "bg-transparent relative before:bg-white/5 before:w-full before:rounded-lg before:h-full before:content-[''] before:block before:absolute before:inset-0 before:backdrop-blur-md before:backdrop-saturate-100",
+          "bg-transparent relative before:bg-white/5 before:w-full before:rounded-lg before:h-full before:content-[''] before:block before:z-1 before:absolute before:inset-0 before:backdrop-blur-md before:backdrop-saturate-100",
       }}
       radius="md"
       selectedKey={selectedTemplate}

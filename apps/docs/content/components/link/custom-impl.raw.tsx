@@ -1,9 +1,9 @@
-import type {LinkProps} from "@heroui/react";
+import type { LinkProps } from "@heroui/react";
 
-import React, {forwardRef} from "react";
-import {LinkIcon} from "@heroui/shared-icons";
-import {linkAnchorClasses} from "@heroui/theme";
-import {useLink} from "@heroui/react";
+import React, { forwardRef } from "react";
+import { LinkIcon } from "@heroui/shared-icons";
+import { linkAnchorClasses } from "@heroui/theme";
+import { useLink } from "@heroui/react";
 
 export interface MyLinkProps extends LinkProps {}
 

@@ -1,6 +1,6 @@
-import {Avatar} from "@heroui/react";
+import { Avatar } from "@heroui/react";
 
-export const CameraIcon = ({fill, size, height, width, ...props}) => {
+export const CameraIcon = ({ fill, size, height, width, ...props }) => {
   return (
     <svg
       fill="none"

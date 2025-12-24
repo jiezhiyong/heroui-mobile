@@ -25,7 +25,7 @@ export const AcmeLogo = () => {
   );
 };
 
-export const SearchIcon = ({size = 24, strokeWidth = 1.5, width, height, ...props}) => {
+export const SearchIcon = ({ size = 24, strokeWidth = 1.5, width, height, ...props }) => {
   return (
     <svg
       aria-hidden="true"

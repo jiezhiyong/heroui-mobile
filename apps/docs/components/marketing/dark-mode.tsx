@@ -1,17 +1,17 @@
 "use client";
 
-import {Code, Button, Tooltip} from "@heroui/react";
-import {useState} from "react";
+import { Code, Button, Tooltip } from "@heroui/react";
+import { useState } from "react";
 import NextLink from "next/link";
 import dynamic from "next/dynamic";
 
-import {MusicPlayer} from "@/components/demos";
-import {title, subtitle, titleWrapper, sectionWrapper} from "@/components/primitives";
-import {ThemeSwitch} from "@/components/theme-switch";
-import {CodeWindow} from "@/components/code-window";
+import { MusicPlayer } from "@/components/demos";
+import { title, subtitle, titleWrapper, sectionWrapper } from "@/components/primitives";
+import { ThemeSwitch } from "@/components/theme-switch";
+import { CodeWindow } from "@/components/code-window";
 import landingContent from "@/content/landing";
-import {GradientBox} from "@/components";
-import {InfoBoldIcon} from "@/components/icons";
+import { GradientBox } from "@/components";
+import { InfoBoldIcon } from "@/components/icons";
 
 const DemoCodeModal = dynamic(() => import("../demo-code-modal").then((mod) => mod.DemoCodeModal), {
   ssr: false,
@@ -21,14 +21,14 @@ export const DarkMode = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className={sectionWrapper({class: "mt-16 lg:mt-44"})}>
+    <section className={sectionWrapper({ class: "mt-16 lg:mt-44" })}>
       <div className="flex flex-col gap-8">
         <div>
           <div className={titleWrapper()}>
-            <h1 className={title({size: "lg"})}>Dark mode</h1>
+            <h1 className={title({ size: "lg" })}>Dark mode</h1>
             <div>
-              <h1 className={title({size: "lg"})}>is&nbsp;</h1>
-              <h1 className={title({color: "yellow", size: "lg"})}>effortless.</h1>
+              <h1 className={title({ size: "lg" })}>is&nbsp;</h1>
+              <h1 className={title({ color: "yellow", size: "lg" })}>effortless.</h1>
             </div>
           </div>
           <p className={subtitle()}>
@@ -45,7 +45,7 @@ export const DarkMode = () => {
                   <Button
                     isIconOnly
                     aria-label="Show code"
-                    className="text-white/70 dark:text-black/70 data-hover:bg-foreground/10"
+                    className="text-white/70 dark:text-black/70 data-[hover]:bg-foreground/10"
                     radius="full"
                     variant="light"
                     onPress={() => setIsModalOpen(true)}
@@ -56,7 +56,7 @@ export const DarkMode = () => {
                 <ThemeSwitch
                   classNames={{
                     base: "mt-1 bg-transparent rounded-xl",
-                    wrapper: "text-white/70! dark:text-black/70!",
+                    wrapper: "!text-white/70 dark:!text-black/70",
                   }}
                 />
               </div>

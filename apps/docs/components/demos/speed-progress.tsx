@@ -1,7 +1,7 @@
-import type {VariantProps, CircularProgressProps} from "@heroui/react";
-import type {FC} from "react";
+import type { VariantProps, CircularProgressProps } from "@heroui/react";
+import type { FC } from "react";
 
-import {tv, CircularProgress, circularProgress} from "@heroui/react";
+import { tv, CircularProgress, circularProgress } from "@heroui/react";
 
 const speedProgress = tv({
   extend: circularProgress,
@@ -58,8 +58,8 @@ export interface SpeedProgressProps extends Omit<CircularProgressProps, "color" 
   size?: SpeedProgressVariants["size"];
 }
 
-export const SpeedProgress: FC<SpeedProgressProps> = ({color, size, ...otherProps}) => {
-  const slots = speedProgress({size, color});
+export const SpeedProgress: FC<SpeedProgressProps> = ({ color, size, ...otherProps }) => {
+  const slots = speedProgress({ size, color });
 
   return (
     <CircularProgress
@@ -69,7 +69,7 @@ export const SpeedProgress: FC<SpeedProgressProps> = ({color, size, ...otherProp
         value: slots.value(),
       }}
       // color={color} // not needed because is being passed from slots
-      formatOptions={{style: "unit", unit: "kilometer"}}
+      formatOptions={{ style: "unit", unit: "kilometer" }}
       label="Speed"
       showValueLabel={true}
       // size={size}

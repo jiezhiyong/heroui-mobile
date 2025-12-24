@@ -1,4 +1,4 @@
-import type {Route, RouteContext} from "@/libs/docs/page";
+import type { Route, RouteContext } from "@/libs/docs/page";
 
 const getRouteContext = (
   routes: Route[],
@@ -6,7 +6,7 @@ const getRouteContext = (
   ctx: RouteContext = {},
 ): RouteContext => {
   const path = currentRoute?.path;
-  const {parent} = ctx;
+  const { parent } = ctx;
 
   for (let i = 0; i < routes?.length; i += 1) {
     const route = routes[i];
@@ -20,7 +20,7 @@ const getRouteContext = (
     if (!route.path) continue;
     if (ctx.route) {
       ctx.nextRoute =
-        parent && i === 0 ? {...route, title: `${parent.title}: ${route.title}`} : route;
+        parent && i === 0 ? { ...route, title: `${parent.title}: ${route.title}` } : route;
 
       return ctx;
     }
@@ -37,7 +37,7 @@ const getRouteContext = (
     }
     ctx.prevRoute =
       parent && !parent.heading && !routes[i + 1]?.path
-        ? {...route, title: `${parent.title}: ${route.title}`}
+        ? { ...route, title: `${parent.title}: ${route.title}` }
         : route;
   }
 

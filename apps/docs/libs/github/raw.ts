@@ -1,5 +1,5 @@
-import {RAW_GITHUB_URL, REPO_NAME} from "./constants";
-import {getError} from "./utils";
+import { RAW_GITHUB_URL, REPO_NAME } from "./constants";
+import { getError } from "./utils";
 
 export async function getRawFileFromGitHub(path: string) {
   const res = await fetch(RAW_GITHUB_URL + path);

@@ -1,23 +1,23 @@
 "use client";
 
-import {Button, Link} from "@heroui/react";
+import { Button, Link } from "@heroui/react";
 import NextLink from "next/link";
 
-import {title, subtitle, titleWrapper, sectionWrapper} from "@/components/primitives";
-import {CodeWindow} from "@/components/code-window";
+import { title, subtitle, titleWrapper, sectionWrapper } from "@/components/primitives";
+import { CodeWindow } from "@/components/code-window";
 import landingContent from "@/content/landing";
-import {GradientBox} from "@/components/gradient-box";
-import {CustomButton} from "@/components/demos";
+import { GradientBox } from "@/components/gradient-box";
+import { CustomButton } from "@/components/demos";
 
 export const Customization = () => {
   return (
-    <section className={sectionWrapper({class: "mt-16 lg:mt-44"})}>
+    <section className={sectionWrapper({ class: "mt-16 lg:mt-44" })}>
       <div className="flex flex-col gap-8">
         <div>
-          <div className={titleWrapper({class: "inline md:block"})}>
-            <h1 className={title({size: "lg"})}>Customization made</h1>
+          <div className={titleWrapper({ class: "inline md:block" })}>
+            <h1 className={title({ size: "lg" })}>Customization made</h1>
             <div>
-              <h1 className={title({size: "lg", color: "pink"})}>easy.</h1>
+              <h1 className={title({ size: "lg", color: "pink" })}>easy.</h1>
             </div>
           </div>
           <p className={subtitle()}>

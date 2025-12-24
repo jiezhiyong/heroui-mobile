@@ -1,5 +1,5 @@
-import {DatePicker} from "@heroui/react";
-import {getLocalTimeZone, today} from "@internationalized/date";
+import { DatePicker } from "@heroui/react";
+import { getLocalTimeZone, today } from "@internationalized/date";
 
 export default function App() {
   return (
@@ -7,7 +7,7 @@ export default function App() {
       <div className="w-full flex flex-col gap-1">
         <h3>Min date</h3>
         <DatePicker
-          defaultValue={today(getLocalTimeZone()).subtract({days: 1})}
+          defaultValue={today(getLocalTimeZone()).subtract({ days: 1 })}
           label="Date"
           minValue={today(getLocalTimeZone())}
         />
@@ -15,7 +15,7 @@ export default function App() {
       <div className="w-full flex flex-col gap-1">
         <h3>Max date</h3>
         <DatePicker
-          defaultValue={today(getLocalTimeZone()).add({days: 1})}
+          defaultValue={today(getLocalTimeZone()).add({ days: 1 })}
           label="Date"
           maxValue={today(getLocalTimeZone())}
         />

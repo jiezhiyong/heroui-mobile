@@ -1,11 +1,11 @@
-import type {TabsProps} from "@heroui/react";
-import type {Border, HeroUIScaling} from "../../types";
+import type { TabsProps } from "@heroui/react";
+import type { Border, HeroUIScaling } from "../../types";
 
-import {cloneElement} from "react";
-import {Tabs, Tab} from "@heroui/react";
+import { cloneElement } from "react";
+import { Tabs, Tab } from "@heroui/react";
 
-import {ShowcaseComponent} from "../showcase-component";
-import {useThemeBuilder} from "../../provider";
+import { ShowcaseComponent } from "../showcase-component";
+import { useThemeBuilder } from "../../provider";
 
 type Color = TabsProps["color"];
 type Radius = TabsProps["radius"];
@@ -62,27 +62,27 @@ const Section = ({
     borderClass = "border-large";
   }
 
-  let classNames = {tab: "text-tiny px-2 h-6"};
+  let classNames = { tab: "text-tiny px-2 h-6" };
 
   switch (scaling) {
     case 90: {
-      classNames = {tab: "text-tiny px-2 h-6"};
+      classNames = { tab: "text-tiny px-2 h-6" };
       break;
     }
     case 95: {
-      classNames = {tab: "text-tiny px-2 h-7"};
+      classNames = { tab: "text-tiny px-2 h-7" };
       break;
     }
     case 100: {
-      classNames = {tab: "text-tiny px-3 h-7"};
+      classNames = { tab: "text-tiny px-3 h-7" };
       break;
     }
     case 105: {
-      classNames = {tab: "text-medium px-3 h-8"};
+      classNames = { tab: "text-medium px-3 h-8" };
       break;
     }
     case 110: {
-      classNames = {tab: "text-medium px-4 h-9"};
+      classNames = { tab: "text-medium px-4 h-9" };
       break;
     }
   }
@@ -114,7 +114,7 @@ const Section = ({
 
 export const TabsComponent = () => {
   const colors: Color[] = ["default", "primary", "secondary", "success", "warning", "danger"];
-  const {radiusValue, scaling, borderWidthValue} = useThemeBuilder();
+  const { radiusValue, scaling, borderWidthValue } = useThemeBuilder();
 
   return (
     <ShowcaseComponent name="Tabs">

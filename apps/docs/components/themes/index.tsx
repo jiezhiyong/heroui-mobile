@@ -1,9 +1,9 @@
 "use client";
 
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 import Configuration from "./components/configuration";
-import {Showcase} from "./components/showcase";
+import { Showcase } from "./components/showcase";
 import ThemeBuilderProvider from "./provider";
 
 export function ThemeBuilder() {

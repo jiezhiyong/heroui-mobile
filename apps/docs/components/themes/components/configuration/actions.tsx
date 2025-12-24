@@ -1,7 +1,7 @@
-import type {ThemeType} from "../../types";
+import type { ThemeType } from "../../types";
 
-import {Button, Tooltip} from "@heroui/react";
-import {Icon} from "@iconify/react/dist/offline";
+import { Button, Tooltip } from "@heroui/react";
+import { Icon } from "@iconify/react/dist/offline";
 import SunIcon from "@iconify/icons-solar/sun-linear";
 import MoonIcon from "@iconify/icons-solar/moon-linear";
 import UndoLeftIcon from "@iconify/icons-solar/undo-left-linear";
@@ -13,7 +13,7 @@ interface ActionsProps {
   onToggleTheme: () => void;
 }
 
-export function Actions({theme, onCopy, onResetTheme, onToggleTheme}: ActionsProps) {
+export function Actions({ theme, onCopy, onResetTheme, onToggleTheme }: ActionsProps) {
   const isLight = theme === "light";
 
   /**

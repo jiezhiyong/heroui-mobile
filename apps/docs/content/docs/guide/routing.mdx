@@ -309,13 +309,12 @@ export default function App() {
 
 ## TanStack
 
-To use [TanStack Router](https://tanstack.com/router/latest), use the [createLink](https://tanstack.com/router/latest/docs/framework/react/guide/custom-link) function to wrap each HeroUI component as a link. `RouterProvider` is not needed.
+To use [TanStack Router](https://tanstack.com/router/latest) with HeroUI, render HeroUI's RouterProvider inside your root route. 
+Use `router.navigate` in the `navigate` prop, and `router.buildLocation` in the `useHref` prop.
 
 ```tsx
 // app/root.tsx
-import {createLink} from '@tanstack/react-router';
-import {Link as HeroUILink, DropdownItem} from '@heroui/react';
-
+import type {NavigateOptions, ToOptions} from '@tanstack/react-router';
 
 import {useRouter} from '@tanstack/react-router';
 import {HeroUIProvider} from "@heroui/react";
@@ -402,3 +401,7 @@ function App() {
   );
 }
 ```
+
+<Spacer y={2} />
+
+> For more information about routing in React Aria, visit the [React Aria Routing Guide](https://react-spectrum.adobe.com/react-aria/routing.html).

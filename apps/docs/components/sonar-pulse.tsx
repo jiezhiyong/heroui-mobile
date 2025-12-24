@@ -1,9 +1,9 @@
-import type {FC, ReactNode} from "react";
+import type { FC, ReactNode } from "react";
 
-import {useMemo} from "react";
-import {parseToRgba} from "color2k";
-import {cn} from "@heroui/theme";
-import {useIsSSR} from "@react-aria/ssr";
+import { useMemo } from "react";
+import { parseToRgba } from "color2k";
+import { clsx } from "@heroui/shared-utils";
+import { useIsSSR } from "@react-aria/ssr";
 export interface SonarPulseProps {
   children: ReactNode;
   icon?: ReactNode;
@@ -31,7 +31,7 @@ export const SonarPulse: FC<SonarPulseProps> = ({
     const length = circlesCount;
     const factor = alpha / circlesCount;
 
-    return Array.from({length}).map((_, i) => {
+    return Array.from({ length }).map((_, i) => {
       const alphaFactor = alpha - i * factor;
       let rgbaColor = parseToRgba(color);
 
@@ -49,7 +49,7 @@ export const SonarPulse: FC<SonarPulseProps> = ({
       circles.push(
         <div
           key={i}
-          className={cn("circle", `circle-${i}`, "absolute", {
+          className={clsx("circle", `circle-${i}`, "absolute", {
             "animate-expand-opacity": playState === "running",
           })}
           style={{
@@ -78,7 +78,7 @@ export const SonarPulse: FC<SonarPulseProps> = ({
     <div className="relative inline-block">
       <div
         className="relative flex items-center justify-center text-center rounded-full bg-transparent"
-        style={{width: `${size}px`, height: `${size}px`}}
+        style={{ width: `${size}px`, height: `${size}px` }}
       >
         {icon}
       </div>
