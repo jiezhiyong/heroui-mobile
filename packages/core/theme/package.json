@@ -2,17 +2,6 @@
   "name": "@heroui-mobile/theme",
   "version": "2.4.25",
   "description": "The default theme for HeroUI components",
-  "keywords": [
-    "theme",
-    "theming",
-    "design",
-    "ui",
-    "components",
-    "classNames",
-    "css"
-  ],
-  "author": "jiezhiyong <vopjie@gmail.com>",
-  "homepage": "https://github.com/jiezhiyong/heroui-mobile",
   "license": "MIT",
   "main": "src/index.ts",
   "sideEffects": false,
@@ -27,14 +16,6 @@
   ],
   "publishConfig": {
     "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jiezhiyong/heroui-mobile.git",
-    "directory": "packages/core/theme"
-  },
-  "bugs": {
-    "url": "https://github.com/jiezhiyong/heroui-mobile/issues"
   },
   "scripts": {
     "build": "tsup src --dts",
@@ -55,12 +36,13 @@
     "@heroui-mobile/shared-utils": "workspace:*"
   },
   "peerDependencies": {
-    "tailwindcss": ">=4.0.0"
+    "tailwindcss": ">=3.0.0",
+    "@heroui/theme": "^2.4.25"
   },
   "devDependencies": {
     "@types/color": "^4.2.0",
     "@types/flat": "^5.0.2",
-    "tailwindcss": "4.1.11",
+    "tailwindcss": "3.4.17",
     "clean-package": "2.2.0"
   },
   "tsup": {

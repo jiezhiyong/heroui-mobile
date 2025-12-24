@@ -1,8 +1,11 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
   },
   "tailwindCSS.experimental.configFile": {
     "apps/docs/styles/globals.css": "apps/docs/**/*",
@@ -11,7 +14,32 @@
   "tailwindCSS.experimental.classRegex": [
     ["([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ],
+  "prettier.bracketSpacing": true,
   "cSpell.words": [
-    "heroui"
+    "algoliasearch",
+    "argstable",
+    "Cancelation",
+    "chakra",
+    "cmdk",
+    "codesandbox",
+    "commitlintrc",
+    "contentlayer",
+    "datepicker",
+    "heroui",
+    "iconify",
+    "lintstagedrc",
+    "messageformat",
+    "plopfile",
+    "postbuild",
+    "postpack",
+    "rehooks",
+    "sandpack",
+    "sbdocs",
+    "screencasts",
+    "stackblitz",
+    "Tsup",
+    "turborepo",
+    "usehooks",
+    "vercel"
   ],
 }

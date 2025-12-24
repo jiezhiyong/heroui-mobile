@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
   "changelog": [
     "@changesets/changelog-github",
-    { "repo": "jiezhiyong/heroui-mobile" }
+    { "repo": "nobody/heroui-mobile" }
   ],
   "commit": false,
   "fixed": [],

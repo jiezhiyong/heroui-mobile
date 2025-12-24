@@ -1,7 +1,11 @@
 import type { VariantProps } from "tailwind-variants";
 
-import { tv } from "../utils/tv";
-import { collapseAdjacentVariantBorders, colorVariants, dataFocusVisibleClasses } from "../utils";
+import { tv } from "@heroui/theme";
+import {
+  collapseAdjacentVariantBorders,
+  colorVariants,
+  dataFocusVisibleClasses,
+} from "@heroui/theme";
 
 /**
  * Button wrapper **Tailwind Variants** component

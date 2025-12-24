@@ -9,5 +9,5 @@
     }
   },
   "include": ["src", "index.ts"],
-  "exclude": ["src/scripts/**", "src/index.ts.backup"]
+  "exclude": ["src/scripts/**"]
 }

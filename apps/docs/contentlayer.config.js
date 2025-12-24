@@ -84,7 +84,7 @@ export default makeSource({
     esbuildOptions(options) {
       options.plugins ||= [];
       options.plugins.unshift(RawPlugin());
- 
+
       return options;
     },
     rehypePlugins: [
