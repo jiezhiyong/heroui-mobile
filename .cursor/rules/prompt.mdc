@@ -1,0 +1,41 @@
+---
+alwaysApply: true
+---
+
+# HeroUI Mobile 项目开发规范
+
+## 项目概述
+
+基于 **HeroUI 2.7.11** 的移动端组件库扩展，使用 **Tailwind CSS 3** 管理样式。Monorepo 架构（pnpm workspace + Turbo）。
+
+**核心栈**: React 18.3.0, TypeScript ^5.7.3, HeroUI 2.7.11, Tailwind CSS 3.4.16, tsup 8.3.5
+
+## 代码生成器
+
+```bash
+pnpm create:cmp   # 创建组件
+pnpm create:hook  # 创建 Hook
+pnpm create:pkg   # 创建工具包
+```
+
+创建组件后，添加到主包：
+
+1. `packages/core/react/package.json` - 添加依赖
+2. `packages/core/react/src/index.ts` - 添加导出
+
+## 开发工作流
+
+```bash
+pnpm dev          # Storybook
+pnpm dev:docs     # 文档站点
+pnpm typecheck    # 类型检查
+pnpm lint         # 代码检查
+pnpm test         # 运行测试
+pnpm build        # 完整构建
+pnpm build:fast   # 快速构建
+```
+
+## Heroui 组件依赖
+
+扩展包 @heroui-mobile/react、 @heroui-mobile/theme
+其他 HeroUIProvider 以及 Spinner 等基础组件，以及相关的 hooks、system、system-rsc、utilities 均服用 @heroui

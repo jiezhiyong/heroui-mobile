@@ -26,8 +26,6 @@ import {
 const button = tv({
   base: [
     "z-0",
-    "animate-spinner-ease-spin",
-    "animate-ping",
     "group",
     "relative",
     "inline-flex",
@@ -35,7 +33,7 @@ const button = tv({
     "justify-center",
     "box-border",
     "appearance-none",
-    "outline-solid outline-transparent",
+    "outline-none",
     "select-none",
     "whitespace-nowrap",
     "min-w-max",
@@ -44,7 +42,6 @@ const button = tv({
     "overflow-hidden",
     "tap-highlight-transparent",
     "transform-gpu data-[pressed=true]:scale-[0.97]",
-    "cursor-pointer",
     // focus ring
     ...dataFocusVisibleClasses,
   ],

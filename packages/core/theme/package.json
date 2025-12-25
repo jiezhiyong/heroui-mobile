@@ -34,7 +34,7 @@
     "flat": "^5.0.2",
     "tailwind-variants": "3.2.2",
     "tailwind-merge": "3.4.0",
-    "@heroui-mobile/shared-utils": "workspace:*"
+    "@heroui/shared-utils": "2.1.9"
   },
   "peerDependencies": {
     "tailwindcss": ">=3.4.0",
