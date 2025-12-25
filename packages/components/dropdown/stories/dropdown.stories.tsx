@@ -12,7 +12,7 @@ import {
   EditDocumentBulkIcon,
   DeleteDocumentBulkIcon,
 } from "@heroui/shared-icons";
-import {cn} from "@heroui/theme";
+import {clsx} from "@heroui/shared-utils";
 
 import {Dropdown, DropdownSection, DropdownTrigger, DropdownMenu, DropdownItem} from "../src";
 
@@ -362,7 +362,7 @@ const WithStartContentTemplate = ({
   disableAnimation,
   ...args
 }: DropdownProps & DropdownMenuProps) => {
-  const iconClasses = "text-2xl text-secondary pointer-events-none shrink-0";
+  const iconClasses = "text-2xl text-secondary pointer-events-none flex-shrink-0";
 
   return (
     <Dropdown {...args} disableAnimation={disableAnimation}>
@@ -398,7 +398,7 @@ const WithStartContentTemplate = ({
           className="text-danger"
           color="danger"
           shortcut="⌘⇧D"
-          startContent={<DeleteDocumentBulkIcon className={cn(iconClasses, "!text-danger")} />}
+          startContent={<DeleteDocumentBulkIcon className={clsx(iconClasses, "!text-danger")} />}
         >
           Delete file
         </DropdownItem>
@@ -408,7 +408,7 @@ const WithStartContentTemplate = ({
 };
 
 const WithEndContentTemplate = ({color, variant, disableAnimation, ...args}) => {
-  const iconClasses = "text-2xl text-default-500 pointer-events-none shrink-0";
+  const iconClasses = "text-2xl text-default-500 pointer-events-none flex-shrink-0";
 
   return (
     <Dropdown {...args} disableAnimation={disableAnimation}>
@@ -431,7 +431,7 @@ const WithEndContentTemplate = ({color, variant, disableAnimation, ...args}) => 
           key="delete"
           className="text-danger"
           color="danger"
-          endContent={<DeleteDocumentBulkIcon className={cn(iconClasses, "!text-danger")} />}
+          endContent={<DeleteDocumentBulkIcon className={clsx(iconClasses, "!text-danger")} />}
         >
           Delete file
         </DropdownItem>
@@ -441,7 +441,7 @@ const WithEndContentTemplate = ({color, variant, disableAnimation, ...args}) => 
 };
 
 const WithDescriptionTemplate = ({color, variant, disableAnimation, ...args}) => {
-  const iconClasses = "text-2xl text-secondary pointer-events-none shrink-0";
+  const iconClasses = "text-2xl text-secondary pointer-events-none flex-shrink-0";
 
   return (
     <Dropdown {...args} disableAnimation={disableAnimation}>
@@ -481,7 +481,7 @@ const WithDescriptionTemplate = ({color, variant, disableAnimation, ...args}) =>
           color="danger"
           description="Permanently delete the file"
           shortcut="⌘⇧D"
-          startContent={<DeleteDocumentBulkIcon className={cn(iconClasses, "!text-danger")} />}
+          startContent={<DeleteDocumentBulkIcon className={clsx(iconClasses, "!text-danger")} />}
         >
           Delete file
         </DropdownItem>
@@ -491,7 +491,7 @@ const WithDescriptionTemplate = ({color, variant, disableAnimation, ...args}) =>
 };
 
 const WithSectionsTemplate = ({color, variant, disableAnimation, ...args}) => {
-  const iconClasses = "text-2xl text-secondary pointer-events-none shrink-0";
+  const iconClasses = "text-2xl text-secondary pointer-events-none flex-shrink-0";
 
   return (
     <Dropdown {...args} disableAnimation={disableAnimation}>
@@ -540,7 +540,7 @@ const WithSectionsTemplate = ({color, variant, disableAnimation, ...args}) => {
             color="danger"
             description="Permanently delete the file"
             shortcut="⌘⇧D"
-            startContent={<DeleteDocumentBulkIcon className={cn(iconClasses, "!text-danger")} />}
+            startContent={<DeleteDocumentBulkIcon className={clsx(iconClasses, "!text-danger")} />}
           >
             Delete file
           </DropdownItem>

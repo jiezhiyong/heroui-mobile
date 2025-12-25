@@ -13,9 +13,10 @@ import {useCallback} from "react";
 import {useTableState} from "@react-stately/table";
 import {useTable as useReactAriaTable} from "@react-aria/table";
 import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {table, cn} from "@heroui/theme";
+import {table} from "@heroui/theme";
 import {useDOMRef, filterDOMProps} from "@heroui/react-utils";
-import {objectToDeps, mergeProps} from "@heroui/shared-utils";
+import {mergeProps} from "@react-aria/utils";
+import {clsx, objectToDeps} from "@heroui/shared-utils";
 import {useMemo} from "react";
 
 type TableContentPlacement = "inside" | "outside";
@@ -91,10 +92,6 @@ interface Props<T> extends HTMLHeroUIProps<"table"> {
    * Props to be passed to the checkboxes.
    */
   checkboxesProps?: CheckboxProps;
-  /**
-   * Custom Icon to be displayed in the table header - overrides the default chevron one
-   */
-  sortIcon?: ReactNode | ((props: any) => ReactNode);
   /** Handler that is called when a user performs an action on the row. */
   onRowAction?: (key: Key) => void;
   /** Handler that is called when a user performs an action on the cell. */
@@ -170,7 +167,6 @@ export function useTable<T extends object>(originalProps: UseTableProps<T>) {
     checkboxesProps,
     topContent,
     bottomContent,
-    sortIcon,
     onRowAction,
     onCellAction,
     ...otherProps
@@ -212,7 +208,7 @@ export function useTable<T extends object>(originalProps: UseTableProps<T>) {
     [objectToDeps(variantProps), isSelectable, isMultiSelectable],
   );
 
-  const baseStyles = cn(classNames?.base, className);
+  const baseStyles = clsx(classNames?.base, className);
 
   const values = useMemo<ValuesType<T>>(
     () => ({
@@ -255,7 +251,7 @@ export function useTable<T extends object>(originalProps: UseTableProps<T>) {
     (props) => ({
       ...props,
       ref: domBaseRef,
-      className: slots.base({class: cn(baseStyles, props?.className)}),
+      className: slots.base({class: clsx(baseStyles, props?.className)}),
     }),
     [baseStyles, slots],
   );
@@ -264,7 +260,7 @@ export function useTable<T extends object>(originalProps: UseTableProps<T>) {
     (props) => ({
       ...props,
       ref: domBaseRef,
-      className: slots.wrapper({class: cn(classNames?.wrapper, props?.className)}),
+      className: slots.wrapper({class: clsx(classNames?.wrapper, props?.className)}),
     }),
     [classNames?.wrapper, slots],
   );
@@ -282,7 +278,7 @@ export function useTable<T extends object>(originalProps: UseTableProps<T>) {
       // so that typing with space won't be blocked
       onKeyDownCapture: undefined,
       ref: domRef,
-      className: slots.table({class: cn(classNames?.table, props?.className)}),
+      className: slots.table({class: clsx(classNames?.table, props?.className)}),
     }),
     [classNames?.table, shouldFilterDOMProps, slots, gridProps, otherProps],
   );
@@ -299,7 +295,6 @@ export function useTable<T extends object>(originalProps: UseTableProps<T>) {
     removeWrapper,
     topContentPlacement,
     bottomContentPlacement,
-    sortIcon,
     getBaseProps,
     getWrapperProps,
     getTableProps,

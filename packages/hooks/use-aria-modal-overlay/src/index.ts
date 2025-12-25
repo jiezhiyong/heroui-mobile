@@ -2,10 +2,14 @@ import type {AriaModalOverlayProps, ModalOverlayAria} from "@react-aria/overlays
 import type {OverlayTriggerState} from "@react-stately/overlays";
 import type {RefObject} from "react";
 
-import {ariaHideOutside, usePreventScroll, useOverlayFocusContain} from "@react-aria/overlays";
+import {
+  ariaHideOutside,
+  useOverlay,
+  usePreventScroll,
+  useOverlayFocusContain,
+} from "@react-aria/overlays";
 import {mergeProps} from "@react-aria/utils";
 import {useEffect} from "react";
-import {useAriaOverlay} from "@heroui/use-aria-overlay";
 
 export interface UseAriaModalOverlayProps extends AriaModalOverlayProps {}
 
@@ -26,7 +30,7 @@ export function useAriaModalOverlay(
   state: OverlayTriggerState,
   ref: RefObject<HTMLElement>,
 ): ModalOverlayAria {
-  let {overlayProps, underlayProps} = useAriaOverlay(
+  let {overlayProps, underlayProps} = useOverlay(
     {
       ...props,
       isOpen: state.isOpen,

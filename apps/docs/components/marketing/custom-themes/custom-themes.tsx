@@ -9,7 +9,7 @@ import {shopCartStyles} from "./styles";
 
 import {title, subtitle, titleWrapper, sectionWrapper} from "@/components/primitives";
 import {PaletteIcon, MagicIcon, GamingConsoleIcon, StarIcon} from "@/components/icons";
-import {SmallLogoOutlined, CodeWindow} from "@/components";
+import {HeroUILogo, CodeWindow} from "@/components";
 import landingContent from "@/content/landing";
 import {useIsMobile} from "@/hooks/use-media-query";
 
@@ -22,7 +22,8 @@ const themesTabs = (isMobile: boolean) => [
       </p>
     ),
     icon: () => (
-      <SmallLogoOutlined
+      <HeroUILogo
+        outlined
         className="text-default-400 group-data-[selected=true]:text-foreground"
         size={isMobile ? 34 : 44}
       />
@@ -259,7 +260,7 @@ export const CustomThemes = () => {
           />
         </div>
       </div>
-      <div className="h-full dark:md:block absolute hidden -bottom-[10%] -left-[15%] -z-1">
+      <div className="h-full dark:md:block absolute hidden -bottom-[10%] -left-[15%] -z-[1]">
         <Image
           removeWrapper
           alt="custom themes background"

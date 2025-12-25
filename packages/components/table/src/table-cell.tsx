@@ -7,10 +7,10 @@ import type {ValuesType} from "./use-table";
 import {useMemo} from "react";
 import {forwardRef} from "@heroui/system";
 import {useDOMRef, filterDOMProps} from "@heroui/react-utils";
-import {dataAttr, mergeProps} from "@heroui/shared-utils";
+import {clsx, dataAttr} from "@heroui/shared-utils";
 import {useTableCell} from "@react-aria/table";
+import {mergeProps} from "@react-aria/utils";
 import {useFocusRing} from "@react-aria/focus";
-import {cn} from "@heroui/theme";
 
 // @internal
 export interface TableCellProps<T = object> extends HTMLHeroUIProps<"td"> {
@@ -37,7 +37,7 @@ const TableCell = forwardRef<"td", TableCellProps>((props, ref) => {
 
   const {gridCellProps} = useTableCell({node}, state, domRef);
 
-  const tdStyles = cn(classNames?.td, className, node.props?.className);
+  const tdStyles = clsx(classNames?.td, className, node.props?.className);
   const {isFocusVisible, focusProps} = useFocusRing();
   const isRowSelected = state.selectionManager.isSelected(rowKey);
 

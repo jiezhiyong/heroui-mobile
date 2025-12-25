@@ -1,7 +1,7 @@
 import type {Meta} from "@storybook/react";
 import type {ToastProps} from "../src";
 
-import {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {cn, toast} from "@heroui/theme";
 import {Button} from "@heroui/button";
 import {
@@ -13,10 +13,9 @@ import {
   useDisclosure,
 } from "@heroui/modal";
 import {Drawer, DrawerContent} from "@heroui/drawer";
-import {Spinner} from "@heroui/spinner";
-import {AvatarIcon, CloseIcon} from "@heroui/shared-icons";
+import {LoadingIcon, AvatarIcon, CloseIcon} from "@heroui/shared-icons";
 
-import {Toast, ToastProvider, addToast, closeToast, closeAll} from "../src";
+import {Toast, ToastProvider, addToast, closeAll} from "../src";
 
 export default {
   title: "Components/Toast",
@@ -309,8 +308,8 @@ const CustomToastComponent = (args) => {
         variant="bordered"
         onPress={() => {
           addToast({
-            title: "Successful!",
-            description: "Document uploaded to cloud successfully.",
+            title: "Sucessful!",
+            description: "Document uploaded to cloud successful.",
             classNames: {
               base: cn([
                 "bg-default-50 dark:bg-background shadow-sm",
@@ -379,48 +378,6 @@ const CustomCloseIconTemplate = (args) => {
       >
         Toast
       </Button>
-    </>
-  );
-};
-
-const CloseToastTemplate = (args: ToastProps) => {
-  const [toastKey, setToastKey] = useState<string[]>([]);
-
-  return (
-    <>
-      <ToastProvider maxVisibleToasts={args.maxVisibleToasts} placement={args.placement} />
-      <div className="flex flex-wrap gap-2">
-        <Button
-          onPress={() => {
-            const key = addToast({
-              title: "New Toast",
-              timeout: Infinity,
-            });
-
-            if (!key) return;
-            setToastKey((prev) => [...prev, key]);
-          }}
-        >
-          Add Toast
-        </Button>
-        <Button
-          onPress={() => {
-            if (toastKey.length == 0) return;
-            closeToast(toastKey[toastKey.length - 1]);
-            setToastKey((prev) => prev.slice(0, prev.length - 1));
-          }}
-        >
-          Close The Last Toast
-        </Button>
-        <Button
-          onPress={() => {
-            closeAll();
-            setToastKey([]);
-          }}
-        >
-          Close All Toasts
-        </Button>
-      </div>
     </>
   );
 };
@@ -506,24 +463,17 @@ export const CustomIcon = {
   },
 };
 
-export const CustomLoadingComponent = {
+export const CustomLoadingIcon = {
   render: PromiseToastTemplate,
   args: {
     ...defaultProps,
     title: "Custom Loading Icon",
-    loadingComponent: <Spinner variant="spinner" />,
+    loadingIcon: LoadingIcon,
   },
 };
 
 export const CustomCloseIcon = {
   render: CustomCloseIconTemplate,
-  args: {
-    ...defaultProps,
-  },
-};
-
-export const CloseToast = {
-  render: CloseToastTemplate,
   args: {
     ...defaultProps,
   },

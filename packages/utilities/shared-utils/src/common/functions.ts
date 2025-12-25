@@ -353,9 +353,9 @@ export const intersectionBy = <T>(...args: [...arrays: T[][], iteratee: Iteratee
 
   const getIterateeValue = (item: T): unknown => {
     if (typeof iteratee === "function") {
-      return iteratee(item);
+      return (iteratee as (value: T) => any)(item);
     } else if (typeof iteratee === "string") {
-      return item[iteratee];
+      return (item as any)[iteratee];
     } else {
       throw new Error("Iteratee must be a function or a string key of the array elements");
     }

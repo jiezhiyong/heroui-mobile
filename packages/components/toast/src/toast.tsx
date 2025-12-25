@@ -33,7 +33,7 @@ const Toast = forwardRef<"div", ToastProps>((props, ref) => {
     severity,
     Component,
     icon,
-    loadingComponent,
+    loadingIcon,
     domRef,
     endContent,
     color,
@@ -53,8 +53,7 @@ const Toast = forwardRef<"div", ToastProps>((props, ref) => {
     getIconProps,
     getMotionDivProps,
     getCloseIconProps,
-    getLoadingComponentProps,
-    getSpinnerComponentProps,
+    getLoadingIconProps,
     isLoading,
   } = useToast({
     ...props,
@@ -68,13 +67,20 @@ const Toast = forwardRef<"div", ToastProps>((props, ref) => {
 
   const IconComponent = severity ? iconMap[severity] : iconMap[color] || iconMap.default;
 
-  const customLoadingComponent =
-    loadingComponent && isValidElement(loadingComponent)
-      ? cloneElement(loadingComponent, getLoadingComponentProps())
-      : null;
+  const customLoadingIcon =
+    typeof loadingIcon === "function"
+      ? loadingIcon(getLoadingIconProps())
+      : isValidElement(loadingIcon) &&
+        cloneElement(loadingIcon as ReactElement, getLoadingIconProps());
 
   const loadingIconComponent = isLoading
-    ? customLoadingComponent || <Spinner {...getSpinnerComponentProps()} />
+    ? customLoadingIcon || (
+        <Spinner
+          aria-label="loadingIcon"
+          classNames={{wrapper: getLoadingIconProps().className}}
+          color={"current"}
+        />
+      )
     : null;
 
   const customCloseIcon =
@@ -109,7 +115,23 @@ const Toast = forwardRef<"div", ToastProps>((props, ref) => {
   );
 
   return (
-    <>{disableAnimation ? toastContent : <m.div {...getMotionDivProps()}>{toastContent}</m.div>}</>
+    <>
+      {disableAnimation ? (
+        toastContent
+      ) : (
+        <m.div {...getMotionDivProps()}>
+          <m.div
+            key={"inner-div"}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+            initial={{opacity: 0}}
+            transition={{duration: 0.25, ease: "easeOut", delay: 0.1}}
+          >
+            {toastContent}
+          </m.div>
+        </m.div>
+      )}
+    </>
   );
 });
 

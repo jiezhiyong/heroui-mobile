@@ -50,14 +50,9 @@ export default {
       control: {
         type: "select",
       },
-      options: ["inside", "outside", "outside-left", "outside-top"],
+      options: ["inside", "outside", "outside-left"],
     },
     isDisabled: {
-      control: {
-        type: "boolean",
-      },
-    },
-    isClearable: {
       control: {
         type: "boolean",
       },
@@ -412,15 +407,6 @@ const LabelPlacementTemplate = ({color, variant, ...args}: SelectProps) => (
         >
           {items}
         </Select>
-        <Select
-          color={color}
-          label="Select an animal"
-          variant={variant}
-          {...args}
-          labelPlacement="outside-top"
-        >
-          {items}
-        </Select>
       </div>
     </div>
     <div className="w-full max-w-5xl flex flex-col gap-3">
@@ -452,16 +438,6 @@ const LabelPlacementTemplate = ({color, variant, ...args}: SelectProps) => (
           variant={variant}
           {...args}
           labelPlacement="outside-left"
-        >
-          {items}
-        </Select>
-        <Select
-          color={color}
-          label="Favorite Animal"
-          placeholder="Select an animal"
-          variant={variant}
-          {...args}
-          labelPlacement="outside-top"
         >
           {items}
         </Select>
@@ -502,17 +478,6 @@ const LabelPlacementTemplate = ({color, variant, ...args}: SelectProps) => (
         >
           {items}
         </Select>
-        <Select
-          color={color}
-          description="Select your favorite animal"
-          label="Favorite Animal"
-          placeholder="Select an animal"
-          variant={variant}
-          {...args}
-          labelPlacement="outside-top"
-        >
-          {items}
-        </Select>
       </div>
     </div>
   </div>
@@ -525,20 +490,6 @@ const StartContentTemplate = ({color, variant, ...args}: SelectProps) => (
     defaultSelectedKeys={["cat"]}
     label="Favorite Animal"
     startContent={<PetBoldIcon />}
-    variant={variant}
-    {...args}
-  >
-    {items}
-  </Select>
-);
-
-const EndContentTemplate = ({color, variant, ...args}: SelectProps) => (
-  <Select
-    className="max-w-xs"
-    color={color}
-    defaultSelectedKeys={["cat"]}
-    endContent={<PetBoldIcon />}
-    label="Favorite Animal"
     variant={variant}
     {...args}
   >
@@ -584,7 +535,7 @@ const CustomItemsTemplate = ({color, variant, ...args}: SelectProps<User>) => (
       {(item) => (
         <SelectItem key={item.id} textValue={item.name}>
           <div className="flex gap-2 items-center">
-            <Avatar alt={item.name} className="shrink-0" size="sm" src={item.avatar} />
+            <Avatar alt={item.name} className="flex-shrink-0" size="sm" src={item.avatar} />
             <div className="flex flex-col">
               <span className="text-small">{item.name}</span>
               <span className="text-tiny text-default-400">{item.email}</span>
@@ -605,7 +556,7 @@ const CustomItemsTemplate = ({color, variant, ...args}: SelectProps<User>) => (
       {(item) => (
         <SelectItem key={item.id} textValue={item.name}>
           <div className="flex gap-2 items-center">
-            <Avatar alt={item.name} className="shrink-0" size="sm" src={item.avatar} />
+            <Avatar alt={item.name} className="flex-shrink-0" size="sm" src={item.avatar} />
             <div className="flex flex-col">
               <span className="text-small">{item.name}</span>
               <span className="text-tiny text-default-400">{item.email}</span>
@@ -736,7 +687,7 @@ const CustomStylesTemplate = ({color, variant, ...args}: SelectProps<User>) => {
       {(item) => (
         <SelectItem key={item.id} textValue={item.name}>
           <div className="flex gap-2 items-center">
-            <Avatar alt={item.name} className="shrink-0" size="sm" src={item.avatar} />
+            <Avatar alt={item.name} className="flex-shrink-0" size="sm" src={item.avatar} />
             <div className="flex flex-col">
               <span className="text-small">{item.name}</span>
               <span className="text-tiny text-default-400">{item.email}</span>
@@ -1129,14 +1080,6 @@ export const StartContent = {
   },
 };
 
-export const EndContent = {
-  render: EndContentTemplate,
-
-  args: {
-    ...defaultProps,
-  },
-};
-
 export const EmptyContent = {
   render: EmptyTemplate,
 
@@ -1353,7 +1296,12 @@ export const CustomRenderValue = {
     renderValue: (items: SelectedItems<User>) => {
       return items.map((item) => (
         <div key={item.key} className="flex items-center gap-2">
-          <Avatar alt={item.data?.name} className="shrink-0" size="sm" src={item.data?.avatar} />
+          <Avatar
+            alt={item.data?.name}
+            className="flex-shrink-0"
+            size="sm"
+            src={item.data?.avatar}
+          />
           <div className="flex flex-col">
             <span>{item.data?.name}</span>
             <span className="text-default-500 text-tiny">({item.data?.email})</span>
@@ -1373,7 +1321,12 @@ export const CustomStyles = {
     renderValue: (items: SelectedItems<User>) => {
       return items.map((item) => (
         <div key={item.key} className="flex items-center gap-2">
-          <Avatar alt={item.data?.name} className="shrink-0" size="sm" src={item.data?.avatar} />
+          <Avatar
+            alt={item.data?.name}
+            className="flex-shrink-0"
+            size="sm"
+            src={item.data?.avatar}
+          />
           <div className="flex flex-col">
             <span>{item.data?.name}</span>
             <span className="text-default-500 text-tiny">({item.data?.email})</span>
@@ -1424,14 +1377,6 @@ export const CustomItemHeight = {
     isVirtualized: true,
     maxListboxHeight: 400,
     itemHeight: 40,
-  },
-};
-
-export const Clearable = {
-  render: Template,
-  args: {
-    ...defaultProps,
-    isClearable: true,
   },
 };
 

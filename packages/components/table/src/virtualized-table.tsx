@@ -1,6 +1,7 @@
 import type {UseTableProps} from "./use-table";
 
 import {useCallback, useLayoutEffect, useRef, useState} from "react";
+import {Spacer} from "@heroui/spacer";
 import {forwardRef} from "@heroui/system";
 import {useVirtualizer} from "@tanstack/react-virtual";
 
@@ -28,6 +29,7 @@ const VirtualizedTable = forwardRef<"table", TableProps>((props, ref) => {
     topContentPlacement,
     bottomContentPlacement,
     bottomContent,
+    removeWrapper,
     getBaseProps,
     getWrapperProps,
     getTableProps,
@@ -40,6 +42,10 @@ const VirtualizedTable = forwardRef<"table", TableProps>((props, ref) => {
 
   const Wrapper = useCallback(
     ({children}: {children: JSX.Element}) => {
+      if (removeWrapper) {
+        return children;
+      }
+
       return (
         <BaseComponent
           {...getWrapperProps()}
@@ -51,7 +57,7 @@ const VirtualizedTable = forwardRef<"table", TableProps>((props, ref) => {
         </BaseComponent>
       );
     },
-    [getWrapperProps, maxTableHeight],
+    [removeWrapper, getWrapperProps, maxTableHeight],
   );
 
   const items = [...collection.body.childNodes];
@@ -127,6 +133,7 @@ const VirtualizedTable = forwardRef<"table", TableProps>((props, ref) => {
                   )}
                 </TableHeaderRow>
               ))}
+              <Spacer as="tr" tabIndex={-1} y={1} />
             </TableRowGroup>
             <VirtualizedTableBody
               checkboxesProps={values.checkboxesProps}

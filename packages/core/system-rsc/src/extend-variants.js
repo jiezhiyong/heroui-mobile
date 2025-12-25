@@ -1,5 +1,6 @@
 import * as React from "react";
-import {tv, cn} from "@heroui/theme";
+import {tv} from "@heroui/theme";
+import clsx from "clsx";
 
 import {mapPropsVariants} from "./utils";
 
@@ -68,11 +69,7 @@ function getClassNamesWithProps({
 
   const [baseProps, variantProps] = mapPropsVariants(props, customTv.variantKeys, false);
 
-  const newProps = {
-    ...defaultVariants,
-    ...baseProps,
-    className: cn(defaultVariants?.className, baseProps.className),
-  };
+  const newProps = {...defaultVariants, ...baseProps};
 
   let classNames = {};
 
@@ -80,7 +77,7 @@ function getClassNamesWithProps({
 
   // if no slots, the result is a string
   if (!hasSlots) {
-    newProps.className = cn(result, newProps.className);
+    newProps.className = clsx(result, props.className);
   }
   // if has slots, the result is an object with keys as slots functions
   else {
@@ -93,7 +90,7 @@ function getClassNamesWithProps({
     });
 
     Object.entries(props.classNames ?? {}).forEach(([key, value]) => {
-      classNames[key] = cn(classNames[key], value);
+      classNames[key] = clsx(classNames[key], value);
     });
   }
 
@@ -105,12 +102,9 @@ function getClassNamesWithProps({
 }
 
 export function extendVariants(BaseComponent, styles = {}, opts = {}) {
-  const {variants, defaultVariants, compoundVariants, slots: directSlots} = styles || {};
+  const {variants, defaultVariants, compoundVariants} = styles || {};
 
-  const inferredSlots = getSlots(variants);
-
-  const slots = directSlots ? {...inferredSlots, ...directSlots} : inferredSlots;
-
+  const slots = getSlots(variants);
   const hasSlots = typeof slots === "object" && Object.keys(slots).length !== 0;
 
   const ForwardedComponent = React.forwardRef((originalProps = {}, ref) => {

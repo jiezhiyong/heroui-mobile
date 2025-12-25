@@ -1,11 +1,10 @@
 import type {UserEvent} from "@testing-library/user-event";
 
 import * as React from "react";
-import {render, fireEvent, act} from "@testing-library/react";
+import {render, renderHook, fireEvent, act} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {useForm} from "react-hook-form";
 import {Form} from "@heroui/form";
-import {HeroUIProvider} from "@heroui/system";
 
 import {NumberInput} from "../src";
 
@@ -331,85 +330,59 @@ describe("NumberInput", () => {
 });
 
 describe("NumberInput with React Hook Form", () => {
-  let hiddenInput1: HTMLInputElement;
-  let hiddenInput2: HTMLInputElement;
-  let hiddenInput3: HTMLInputElement;
-  let visibleInput3: HTMLInputElement;
+  let input1: HTMLInputElement;
+  let input2: HTMLInputElement;
+  let input3: HTMLInputElement;
   let submitButton: HTMLButtonElement;
   let onSubmit: () => void;
 
   beforeEach(() => {
+    const {result} = renderHook(() =>
+      useForm({
+        defaultValues: {
+          withDefaultValue: 1234,
+          withoutDefaultValue: undefined,
+          requiredField: undefined,
+        },
+      }),
+    );
+
+    const {
+      handleSubmit,
+      register,
+      formState: {errors},
+    } = result.current;
+
     onSubmit = jest.fn();
 
-    function TestForm() {
-      const {
-        handleSubmit,
-        setValue,
-        watch,
-        register,
-        formState: {errors},
-      } = useForm<{
-        withDefaultValue: number;
-        withoutDefaultValue?: number;
-        requiredField?: number;
-      }>();
+    render(
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+        <NumberInput isClearable label="With default value" {...register("withDefaultValue")} />
+        <NumberInput
+          data-testid="input-2"
+          label="Without default value"
+          {...register("withoutDefaultValue")}
+        />
+        <NumberInput
+          data-testid="input-3"
+          label="Required"
+          {...register("requiredField", {required: true})}
+        />
+        {errors.requiredField && <span className="text-danger">This field is required</span>}
+        <button type="submit">Submit</button>
+      </form>,
+    );
 
-      React.useEffect(() => {
-        register("withDefaultValue");
-        register("withoutDefaultValue");
-        register("requiredField", {required: true});
-      }, [register]);
-
-      const requiredFieldValue = watch("requiredField");
-
-      return (
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-          <NumberInput
-            isClearable
-            data-testid="input-1"
-            defaultValue={1234}
-            label="With default value"
-            name="withDefaultValue"
-            onValueChange={(value) => setValue("withDefaultValue", value)}
-          />
-          <NumberInput
-            data-testid="input-2"
-            label="Without default value"
-            name="withoutDefaultValue"
-            onValueChange={(value) => setValue("withoutDefaultValue", value)}
-          />
-          <NumberInput
-            data-testid="input-3"
-            label="Required"
-            name="requiredField"
-            value={requiredFieldValue}
-            onValueChange={(value) =>
-              setValue("requiredField", value, {shouldValidate: true, shouldDirty: true})
-            }
-          />
-          {errors.requiredField && <span className="text-danger">This field is required</span>}
-          <button type="submit">Submit</button>
-        </form>
-      );
-    }
-
-    const {getByTestId} = render(<TestForm />);
-
-    hiddenInput1 = document.querySelector("input[name=withDefaultValue][type=hidden]")!;
-    hiddenInput2 = document.querySelector("input[name=withoutDefaultValue][type=hidden]")!;
-    hiddenInput3 = document.querySelector("input[name=requiredField][type=hidden]")!;
-    visibleInput3 = getByTestId("input-3") as HTMLInputElement;
+    input1 = document.querySelector("input[name=withDefaultValue]")!;
+    input2 = document.querySelector("input[name=withoutDefaultValue]")!;
+    input3 = document.querySelector("input[name=requiredField]")!;
     submitButton = document.querySelector('button[type="submit"]')!;
   });
 
   it("should work with defaultValues", () => {
-    expect(hiddenInput1).toHaveValue("1234");
-    expect(hiddenInput2).not.toHaveValue();
-    expect(hiddenInput3).not.toHaveValue();
-
-    expect(document.querySelectorAll('input[name="requiredField"]')).toHaveLength(1);
-    expect(visibleInput3).not.toHaveAttribute("name");
-    expect(hiddenInput3).toHaveAttribute("name", "requiredField");
+    expect(input1).toHaveValue("1234");
+    expect(input2).not.toHaveValue();
+    expect(input3).not.toHaveValue();
   });
 
   it("should not submit form when required field is empty", async () => {
@@ -421,12 +394,9 @@ describe("NumberInput with React Hook Form", () => {
   });
 
   it("should submit form when required field is not empty", async () => {
+    fireEvent.change(input3, {target: {value: 123}});
+
     const user = userEvent.setup();
-
-    await user.click(visibleInput3);
-    await user.keyboard("123");
-
-    expect(hiddenInput3).toHaveValue("123");
 
     await user.click(submitButton);
 
@@ -621,108 +591,6 @@ describe("NumberInput with React Hook Form", () => {
         await user.tab();
         await user.keyboard("1234");
       });
-    });
-
-    describe("Backspace behavior with formatted numbers", () => {
-      it("should handle backspace when cursor is between first digit and comma", async () => {
-        const {container} = render(
-          <NumberInput
-            defaultValue={1234}
-            formatOptions={{
-              style: "decimal",
-              useGrouping: true,
-            }}
-            label="test number input"
-          />,
-        );
-
-        const input = container.querySelector("input[type='text']") as HTMLInputElement;
-
-        expect(input.value).toBe("1,234");
-
-        act(() => {
-          input.focus();
-          input.setSelectionRange(1, 1);
-        });
-
-        act(() => {
-          fireEvent.keyDown(input, {key: "Backspace", code: "Backspace"});
-        });
-
-        expect(input.value).toBe("234");
-      });
-
-      it("should handle backspace for other formatted number scenarios", async () => {
-        const {container} = render(
-          <NumberInput
-            defaultValue={1234567}
-            formatOptions={{
-              style: "decimal",
-              useGrouping: true,
-            }}
-            label="test number input"
-          />,
-        );
-
-        const input = container.querySelector("input[type='text']") as HTMLInputElement;
-
-        expect(input.value).toBe("1,234,567");
-
-        act(() => {
-          input.focus();
-          input.setSelectionRange(5, 5);
-        });
-
-        act(() => {
-          fireEvent.keyDown(input, {key: "Backspace", code: "Backspace"});
-        });
-
-        expect(input.value).toBe("123,567");
-      });
-    });
-  });
-
-  describe("NumberInput with HeroUIProvider context", () => {
-    it("should inherit labelPlacement from HeroUIProvider", () => {
-      const {container} = render(
-        <HeroUIProvider labelPlacement="outside">
-          <NumberInput label="Test number input" />
-        </HeroUIProvider>,
-      );
-
-      const label = container.querySelector("label");
-
-      expect(label).toBeTruthy();
-      expect(label?.className).toMatch(/translate-y.*100%/);
-    });
-
-    it("should prioritize labelPlacement prop over HeroUIProvider context", () => {
-      const {container} = render(
-        <HeroUIProvider labelPlacement="outside">
-          <NumberInput label="Test number input" labelPlacement="inside" />
-        </HeroUIProvider>,
-      );
-
-      const label = container.querySelector("label");
-
-      expect(label).toBeTruthy();
-      expect(label?.className).not.toMatch(/translate-y.*100%/);
-    });
-
-    it("should inherit labelPlacement='outside-top' from HeroUIProvider", () => {
-      const {container} = render(
-        <HeroUIProvider labelPlacement="outside-top">
-          <NumberInput label="Test number input" />
-        </HeroUIProvider>,
-      );
-
-      const label = container.querySelector("label");
-      const mainWrapper = container.querySelector("[data-slot=main-wrapper]");
-
-      expect(label).toBeTruthy();
-      // outside-top uses flex-col on mainWrapper and relative label (no translate-y)
-      expect(mainWrapper).toHaveClass("flex-col");
-      expect(label?.className).not.toMatch(/translate-y.*100%/);
     });
   });
 });

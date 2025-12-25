@@ -2,7 +2,7 @@ import type {InputProps} from "@heroui/react";
 import type {Border, HeroUIScaling} from "../../types";
 
 import {Input} from "@heroui/react";
-import {cn} from "@heroui/theme";
+import {clsx} from "@heroui/shared-utils";
 
 import {ShowcaseComponent} from "../showcase-component";
 import {useThemeBuilder} from "../../provider";
@@ -88,7 +88,7 @@ const Section = ({
           key={idx}
           classNames={{
             ...classNames,
-            inputWrapper: cn(cn(variant === "bordered" && borderClass)),
+            inputWrapper: clsx(clsx(variant === "bordered" && borderClass)),
           }}
           color={color}
           isDisabled={false}

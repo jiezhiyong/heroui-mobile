@@ -28,11 +28,9 @@ export interface UseDraggableProps {
 export function useDraggable(props: UseDraggableProps): MoveResult {
   const {targetRef, isDisabled = false, canOverflow = false} = props;
   const boundary = useRef({minLeft: 0, minTop: 0, maxLeft: 0, maxTop: 0});
-  const isDragging = useRef(false);
   let transform = {offsetX: 0, offsetY: 0};
 
   const onMoveStart = useCallback(() => {
-    isDragging.current = true;
     const {offsetX, offsetY} = transform;
 
     const targetRect = targetRef?.current?.getBoundingClientRect();
@@ -84,35 +82,27 @@ export function useDraggable(props: UseDraggableProps): MoveResult {
     [isDisabled, transform, boundary.current, canOverflow, targetRef?.current],
   );
 
-  const onMoveEnd = useCallback(() => {
-    isDragging.current = false;
-  }, []);
-
   const {moveProps} = useMove({
     onMoveStart,
     onMove,
-    onMoveEnd,
   });
 
   const preventDefault = useCallback((e: TouchEvent) => {
-    // Only prevent touchmove events if we're actively dragging
-    if (isDragging.current) {
-      e.preventDefault();
-    }
+    e.preventDefault();
   }, []);
 
   // NOTE: This process is due to the modal being displayed at the bottom instead of the center when opened on mobile sizes.
   // It will become unnecessary once the modal is centered properly.
   useEffect(() => {
     if (!isDisabled) {
-      // Prevent body scroll when dragging at mobile, but only during active dragging.
+      // Prevent body scroll when dragging at mobile.
       document.body.addEventListener("touchmove", preventDefault, {passive: false});
     }
 
     return () => {
       document.body.removeEventListener("touchmove", preventDefault);
     };
-  }, [isDisabled, preventDefault]);
+  }, [isDisabled]);
 
   return {
     moveProps: {

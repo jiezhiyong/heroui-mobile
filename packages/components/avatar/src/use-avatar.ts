@@ -2,10 +2,11 @@ import type {AvatarSlots, AvatarVariantProps, SlotsToClasses} from "@heroui/them
 import type {DOMElement, DOMAttributes, HTMLHeroUIProps, PropGetter} from "@heroui/system";
 import type {ReactRef} from "@heroui/react-utils";
 
-import {avatar, cn} from "@heroui/theme";
+import {avatar} from "@heroui/theme";
 import {useProviderContext} from "@heroui/system";
+import {mergeProps} from "@react-aria/utils";
 import {useDOMRef, filterDOMProps} from "@heroui/react-utils";
-import {dataAttr, mergeProps, safeInitials} from "@heroui/shared-utils";
+import {clsx, safeText, dataAttr} from "@heroui/shared-utils";
 import {useFocusRing} from "@react-aria/focus";
 import {useMemo, useCallback} from "react";
 import {useImage} from "@heroui/use-image";
@@ -117,7 +118,7 @@ export function useAvatar(originalProps: UseAvatarProps = {}) {
     isBordered = groupContext?.isBordered ?? false,
     isDisabled = groupContext?.isDisabled ?? false,
     isFocusable = false,
-    getInitials = safeInitials,
+    getInitials = safeText,
     ignoreFallback = false,
     showFallback: showFallbackProp = false,
     ImgComponent = "img",
@@ -137,21 +138,11 @@ export function useAvatar(originalProps: UseAvatarProps = {}) {
   const {isHovered, hoverProps} = useHover({isDisabled});
   const disableAnimation = disableAnimationProp ?? globalContext?.disableAnimation ?? false;
 
-  const isHeroImage =
-    (typeof ImgComponent === "object" && (ImgComponent as any)?.displayName?.includes("HeroUI")) ??
-    false;
-
-  const imageStatus = useImage({
-    src,
-    onError,
-    ignoreFallback,
-    shouldBypassImageLoad: as !== undefined || (ImgComponent !== "img" && !isHeroImage),
-  });
+  const imageStatus = useImage({src, onError, ignoreFallback});
 
   const isImgLoaded = imageStatus === "loaded";
 
-  // if the ImgComponent is not a HeroUI component, we need to filter out `disableAnimation`
-  const shouldFilterDOMProps = !isHeroImage;
+  const shouldFilterDOMProps = typeof ImgComponent === "string";
 
   /**
    * Fallback avatar applies under 2 conditions:
@@ -186,7 +177,7 @@ export function useAvatar(originalProps: UseAvatarProps = {}) {
     ],
   );
 
-  const baseStyles = cn(classNames?.base, className);
+  const baseStyles = clsx(classNames?.base, className);
 
   const canBeFocused = useMemo(() => {
     return isFocusable || as === "button";
@@ -200,7 +191,7 @@ export function useAvatar(originalProps: UseAvatarProps = {}) {
       "data-focus": dataAttr(isFocused),
       "data-focus-visible": dataAttr(isFocusVisible),
       className: slots.base({
-        class: cn(baseStyles, props?.className),
+        class: clsx(baseStyles, props?.className),
       }),
       ...mergeProps(otherProps, hoverProps, canBeFocused ? focusProps : {}),
     }),

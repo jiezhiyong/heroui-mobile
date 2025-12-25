@@ -9,8 +9,8 @@ import {filterDOMProps} from "@heroui/react-utils";
 import {useCalendar as useAriaCalendar} from "@react-aria/calendar";
 import {useCalendarState} from "@react-stately/calendar";
 import {createCalendar} from "@internationalized/date";
-import {chain, mergeProps} from "@heroui/shared-utils";
-import {cn} from "@heroui/theme";
+import {clsx} from "@heroui/shared-utils";
+import {chain, mergeProps} from "@react-aria/utils";
 
 import {useCalendarBase} from "./use-calendar-base";
 
@@ -68,7 +68,7 @@ export function useCalendar<T extends DateValue>({
   const {title, calendarProps, prevButtonProps, nextButtonProps, errorMessageProps} =
     useAriaCalendar(originalProps, state);
 
-  const baseStyles = cn(classNames?.base, className);
+  const baseStyles = clsx(classNames?.base, className);
 
   const buttonPickerProps: ButtonProps = {
     ...mergeProps(buttonPickerPropsProp, {isDisabled: originalProps.isDisabled}),

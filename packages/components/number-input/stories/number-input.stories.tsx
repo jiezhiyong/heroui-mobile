@@ -41,7 +41,7 @@ export default {
       control: {
         type: "select",
       },
-      options: ["inside", "outside", "outside-left", "outside-top"],
+      options: ["inside", "outside", "outside-left"],
     },
     isDisabled: {
       control: {
@@ -109,7 +109,6 @@ const LabelPlacementTemplate = (args) => (
         <NumberInput {...args} description="inside" />
         <NumberInput {...args} description="outside" labelPlacement="outside" />
         <NumberInput {...args} description="outside-left" labelPlacement="outside-left" />
-        <NumberInput {...args} description="outside-top" labelPlacement="outside-top" />
       </div>
     </div>
     <div className="flex flex-col gap-3">
@@ -126,12 +125,6 @@ const LabelPlacementTemplate = (args) => (
           {...args}
           description="outside-left"
           labelPlacement="outside-left"
-          placeholder="Enter a number"
-        />
-        <NumberInput
-          {...args}
-          description="outside-top"
-          labelPlacement="outside-top"
           placeholder="Enter a number"
         />
       </div>
@@ -379,7 +372,7 @@ export const StartAndEndContent = {
           Currency
         </label>
         <select
-          className="outline-solid outline-transparent border-0 bg-transparent text-default-400 text-sm"
+          className="outline-none border-0 bg-transparent text-default-400 text-sm"
           id="currency"
           name="currency"
         >

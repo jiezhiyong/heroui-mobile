@@ -25,7 +25,7 @@ const card = tv({
       "relative",
       "overflow-hidden",
       "h-auto",
-      "outline-solid outline-transparent",
+      "outline-none",
       "text-foreground",
       "box-border",
       "bg-content1",

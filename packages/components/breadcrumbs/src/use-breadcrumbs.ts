@@ -7,11 +7,12 @@ import type {BreadcrumbItemProps} from "./breadcrumb-item";
 
 import {Children} from "react";
 import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {breadcrumbs, cn} from "@heroui/theme";
+import {breadcrumbs} from "@heroui/theme";
 import {filterDOMProps, pickChildren, useDOMRef} from "@heroui/react-utils";
+import {mergeProps} from "@react-aria/utils";
 import {useBreadcrumbs as useAriaBreadcrumbs} from "@react-aria/breadcrumbs";
 import {useMemo} from "react";
-import {dataAttr, objectToDeps, mergeProps} from "@heroui/shared-utils";
+import {clsx, dataAttr, objectToDeps} from "@heroui/shared-utils";
 
 import BreadcrumbItem from "./breadcrumb-item";
 
@@ -152,7 +153,7 @@ export function useBreadcrumbs(originalProps: UseBreadcrumbsProps) {
     [objectToDeps(variantProps)],
   );
 
-  const baseStyles = cn(classNames?.base, className);
+  const baseStyles = clsx(classNames?.base, className);
 
   const itemProps: Partial<BreadcrumbItemProps> = {
     color,

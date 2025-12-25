@@ -4,7 +4,6 @@ import type {HighlightedLines} from "./types";
 import {useMemo} from "react";
 import {useTheme} from "next-themes";
 import {useLocalStorage} from "usehooks-ts";
-import {omit} from "lodash";
 
 import {getHighlightedLines, getFileName} from "./utils";
 import {
@@ -14,7 +13,6 @@ import {
   npmrcConfig,
   getHtmlFile,
   rootFile,
-  viteConfig,
 } from "./entries";
 
 export interface UseSandpackProps {
@@ -187,49 +185,11 @@ export const useSandpack = ({
     dependencies,
     entry: entryFile,
     devDependencies: {
-      postcss: "^8.4.21",
-      tailwindcss: "4.1.11",
-      "@tailwindcss/postcss": "4.1.11",
-      "@tailwindcss/vite": "4.1.11",
-      vite: "6.0.6",
+      autoprefixer: "10.4.20",
+      postcss: "8.4.49",
+      tailwindcss: "3.4.17",
     },
   };
-
-  const packageJson = `{
-    "type": "module",
-    "scripts": {
-      "dev": "vite",
-      "build": "vite build",
-      "preview": "vite preview"
-    },
-    "dependencies": {
-      "react": "18.3.1",
-      "react-dom": "18.3.1",
-      ${Object.entries(
-        omit(dependencies, [
-          "react",
-          "react-dom",
-          "react-dom/client",
-          "@vitejs/plugin-react",
-          "vite",
-          "postcss",
-          "tailwindcss",
-          "@tailwindcss/vite",
-          "@tailwindcss/postcss",
-        ]),
-      )
-        .map(([key, value]) => `"${key}": "${value}"`)
-        .join(",\n      ")}
-    },
-    "devDependencies": {
-      "@vitejs/plugin-react": "4.3.4",
-      ${Object.entries(customSetup.devDependencies)
-        .map(([key, value]) => `"${key}": "${value}"`)
-        .join(",\n      ")}
-    },
-    "main": "/index.jsx",
-    "packageManager": "pnpm@9.6.0"
-  }`;
 
   return {
     customSetup,
@@ -247,7 +207,7 @@ export const useSandpack = ({
         code: tailwindConfig,
         hidden: true,
       },
-      "postcss.config.cjs": {
+      "postcss.config.js": {
         code: postcssConfig,
         hidden: true,
       },
@@ -257,14 +217,6 @@ export const useSandpack = ({
       },
       ".npmrc": {
         code: npmrcConfig,
-        hidden: true,
-      },
-      "vite.config.js": {
-        code: viteConfig,
-        hidden: true,
-      },
-      "package.json": {
-        code: packageJson,
         hidden: true,
       },
     },

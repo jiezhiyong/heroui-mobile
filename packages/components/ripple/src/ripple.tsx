@@ -28,16 +28,10 @@ const Ripple: FC<RippleProps> = (props) => {
           <LazyMotion key={ripple.key} features={domAnimation}>
             <AnimatePresence mode="popLayout">
               <m.span
-                animate={{
-                  transform: `translate(${ripple.x}px, ${ripple.y}px) scale(2)`,
-                  opacity: 0,
-                }}
+                animate={{transform: "scale(2)", opacity: 0}}
                 className="heroui-ripple"
                 exit={{opacity: 0}}
-                initial={{
-                  transform: `translate(${ripple.x}px, ${ripple.y}px) scale(0)`,
-                  opacity: 0.35,
-                }}
+                initial={{transform: "scale(0)", opacity: 0.35}}
                 style={{
                   position: "absolute",
                   backgroundColor: color,
@@ -47,6 +41,8 @@ const Ripple: FC<RippleProps> = (props) => {
                   overflow: "hidden",
                   inset: 0,
                   zIndex: 0,
+                  top: ripple.y,
+                  left: ripple.x,
                   width: `${ripple.size}px`,
                   height: `${ripple.size}px`,
                   ...style,

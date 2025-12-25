@@ -9,7 +9,6 @@ import variants from "./variants";
 import radius from "./radius";
 import labelPlacements from "./label-placements";
 import startContent from "./start-content";
-import endContent from "./end-content";
 import itemStartContent from "./item-start-content";
 import asyncLoadingItems from "./async-loading-items";
 import withoutScrollShadow from "./without-scroll-shadow";
@@ -32,7 +31,6 @@ import virtualization from "./virtualization";
 import virtualizationTenThousand from "./virtualization-ten-thousand";
 import virtualizationCustomItemHeight from "./virtualization-custom-item-height";
 import virtualizationMaxListboxHeight from "./virtualization-max-listbox-height";
-import isClearable from "./is-clearable";
 
 export const selectContent = {
   usage,
@@ -48,7 +46,6 @@ export const selectContent = {
   asyncLoadingItems,
   description,
   startContent,
-  endContent,
   itemStartContent,
   withoutScrollShadow,
   errorMessage,
@@ -69,5 +66,4 @@ export const selectContent = {
   virtualizationTenThousand,
   virtualizationCustomItemHeight,
   virtualizationMaxListboxHeight,
-  isClearable,
 };

@@ -13,13 +13,14 @@ import {CONTENT_PATH, TAG} from "@/libs/docs/config";
 import {getHeadings} from "@/libs/docs/utils";
 
 interface DocPageProps {
-  params: Promise<{slug: string[]}>;
+  params: {
+    slug: string[];
+  };
 }
 
 async function getDocFromParams({params}: DocPageProps) {
-  const {slug} = await params;
-  const paramsSlug = slug?.join("/") || "";
-  const doc = allDocs.find((doc) => doc.slugAsParams === paramsSlug);
+  const slug = params.slug?.join("/") || "";
+  const doc = allDocs.find((doc) => doc.slugAsParams === slug);
 
   if (!doc) {
     null;
@@ -71,11 +72,9 @@ export async function generateMetadata({params}: DocPageProps): Promise<Metadata
 }
 
 export async function generateStaticParams(): Promise<DocPageProps["params"][]> {
-  return allDocs.map((doc) =>
-    Promise.resolve({
-      slug: doc.slugAsParams.split("/"),
-    }),
-  );
+  return allDocs.map((doc) => ({
+    slug: doc.slugAsParams.split("/"),
+  }));
 }
 
 export default async function DocPage({params}: DocPageProps) {

@@ -4,7 +4,7 @@ import type {ToastProps, ToastPlacement} from "./use-toast";
 
 import {ToastQueue, useToastQueue} from "@react-stately/toast";
 import {useProviderContext} from "@heroui/system";
-import {LazyMotion} from "framer-motion";
+import {AnimatePresence, LazyMotion} from "framer-motion";
 
 import {ToastRegion} from "./toast-region";
 
@@ -45,46 +45,28 @@ export const ToastProvider = ({
 
   return (
     <LazyMotion features={loadFeatures}>
-      {toastQueue.visibleToasts.length > 0 && (
-        <ToastRegion
-          disableAnimation={disableAnimation}
-          maxVisibleToasts={maxVisibleToasts}
-          placement={placement}
-          toastOffset={toastOffset}
-          toastProps={toastProps}
-          toastQueue={toastQueue}
-          {...regionProps}
-        />
-      )}
+      <AnimatePresence>
+        {toastQueue.visibleToasts.length > 0 ? (
+          <ToastRegion
+            disableAnimation={disableAnimation}
+            maxVisibleToasts={maxVisibleToasts}
+            placement={placement}
+            toastOffset={toastOffset}
+            toastProps={toastProps}
+            toastQueue={toastQueue}
+            {...regionProps}
+          />
+        ) : null}
+      </AnimatePresence>
     </LazyMotion>
   );
 };
 
 export const addToast = ({...props}: ToastProps & ToastOptions) => {
   if (!globalToastQueue) {
-    return null;
-  }
-
-  return globalToastQueue.add(props);
-};
-
-const closingToasts = new Map<string, ReturnType<typeof setTimeout>>();
-
-export const closeToast = (key: string) => {
-  if (!globalToastQueue) {
     return;
   }
-
-  if (closingToasts.has(key)) {
-    return;
-  }
-
-  const timeoutId = setTimeout(() => {
-    closingToasts.delete(key);
-    globalToastQueue?.close(key);
-  }, 300);
-
-  closingToasts.set(key, timeoutId);
+  globalToastQueue.add(props);
 };
 
 export const closeAll = () => {
@@ -92,11 +74,9 @@ export const closeAll = () => {
     return;
   }
 
-  const toasts = [...globalToastQueue.visibleToasts];
+  const keys = globalToastQueue.visibleToasts.map((toast) => toast.key);
 
-  toasts.forEach((toast) => {
-    closeToast(toast.key);
+  keys.map((key) => {
+    globalToastQueue?.close(key);
   });
 };
-
-export const isToastClosing = (key: string) => closingToasts.has(key);

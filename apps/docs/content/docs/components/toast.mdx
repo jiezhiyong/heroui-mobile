@@ -47,7 +47,7 @@ The `ToastProvider` must be added to the application before using the `addToast`
 import {HeroUIProvider} from '@heroui/react'
 import {ToastProvider} from "@heroui/toast";
 
-export function Providers({children}) {
+export default function Providers({children}) {
   return (
     <HeroUIProvider>
       <ToastProvider />
@@ -109,13 +109,6 @@ Toast comes with 6 color variants to convey different meanings.
   files={toastContent.placement}
 />
 
-### Close Toast
-
-<CodeDemo
-    title="Close"
-    files={toastContent.close}
-/>
-
 ### Custom Styles
 
 You can customize the alert by passing custom Tailwind CSS classes to the component slots.
@@ -175,7 +168,7 @@ Toast has the following slots:
 - `title`: The title element
 - `description`: The description element
 - `icon`: The icon element
-- `loadingComponent`: The component to be displayed until `promise` is resolved/rejected.
+- `loadingIcon`: The icon to be displayed until `promise` is resolved/rejected.
 - `content`: The wrapper for the title, description and icon content.
 - `motionDiv`: The motion.div for the FramerMotion.
 - `progressTrack`: The track of the progressBar.
@@ -260,9 +253,9 @@ Toast has the following slots:
       default: "undefined"
     },
     {
-      attribute: "loadingComponent", 
+      attribute: "loadingIcon", 
       type: "ReactNode",
-      description: "The loading component for toasts with promise prop - overrides the default loading component",
+      description: "The loading icon for toasts with promise prop - overrides the default loading icon",
       default: "-"
     },
     {
@@ -291,7 +284,7 @@ Toast has the following slots:
     },
     {
       attribute: "classNames",
-      type: "Partial<Record<\"base\" | \"content\" | \"wrapper\" | \"title\" | \"description\" | \"icon\" | \"loadingComponent\" | \"progressTrack\" | \"progressIndicator\" | \"motionDiv\" | \"closeButton\" | \"closeIcon\", string>>",
+      type: "Partial<Record<\"base\" | \"content\" | \"wrapper\" | \"title\" | \"description\" | \"icon\" | \"loadingIcon\" | \"progressTrack\" | \"progressIndicator\ | \"motionDiv\" | \"closeButton\" | \"closeIcon\", string>>",
       description: "Allows to set custom class names for the toast slots.",
       default: "-"
     }

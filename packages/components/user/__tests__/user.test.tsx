@@ -94,12 +94,12 @@ describe("User", () => {
       <User
         avatarProps={{
           icon: <AvatarIcon />,
-          name: "Marcus Wong",
+          name: "WK",
         }}
         name="test"
       />,
     );
 
-    expect(getByRole("img")).toHaveTextContent("MW");
+    expect(getByRole("img")).toHaveTextContent("WK");
   });
 });

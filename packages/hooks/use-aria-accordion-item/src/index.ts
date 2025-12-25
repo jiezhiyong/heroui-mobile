@@ -49,7 +49,7 @@ export function useAriaAccordionItem<T>(
       if (!manager.canSelectItem(key)) {
         return;
       }
-      manager.select(key, e);
+      manager.select(key, e as any);
       state.toggleKey(key);
     },
     [key, manager],

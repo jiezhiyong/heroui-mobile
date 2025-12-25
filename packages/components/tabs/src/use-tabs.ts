@@ -5,22 +5,28 @@ import type {TabListState, TabListStateOptions} from "@react-stately/tabs";
 import type {AriaTabListProps} from "@react-aria/tabs";
 import type {CollectionProps} from "@heroui/aria-utils";
 import type {CollectionChildren} from "@react-types/shared";
+import type {HTMLMotionProps} from "framer-motion";
 import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
 
 import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {tabs, cn} from "@heroui/theme";
+import {tabs} from "@heroui/theme";
 import {useDOMRef} from "@heroui/react-utils";
-import {objectToDeps, mergeProps} from "@heroui/shared-utils";
+import {clsx, objectToDeps} from "@heroui/shared-utils";
 import {filterDOMProps} from "@heroui/react-utils";
 import {useMemo, useCallback} from "react";
 import {useTabListState} from "@react-stately/tabs";
 import {useTabList} from "@react-aria/tabs";
+import {mergeProps} from "@react-aria/utils";
 
 export interface Props extends Omit<HTMLHeroUIProps, "children"> {
   /**
    * Ref to the DOM node.
    */
   ref?: ReactRef<HTMLElement | null>;
+  /**
+   * The props to modify the cursor motion animation. Use the `variants` API to create your own animation.
+   */
+  motionProps?: Omit<HTMLMotionProps<"span">, "ref">;
   /**
    * Whether the tabs selection should occur on press up instead of press down.
    * @default true
@@ -76,6 +82,7 @@ export type ValuesType<T = object> = {
   listRef?: RefObject<HTMLElement>;
   shouldSelectOnPressUp?: boolean;
   classNames?: SlotsToClasses<TabsSlots>;
+  motionProps?: Omit<HTMLMotionProps<"span">, "ref">;
   disableAnimation?: boolean;
   isDisabled?: boolean;
 };
@@ -92,6 +99,7 @@ export function useTabs<T extends object>(originalProps: UseTabsProps<T>) {
     classNames,
     children,
     disableCursorAnimation,
+    motionProps,
     isVertical = false,
     shouldSelectOnPressUp = true,
     destroyInactiveTabPanel = true,
@@ -106,19 +114,11 @@ export function useTabs<T extends object>(originalProps: UseTabsProps<T>) {
   const disableAnimation =
     originalProps?.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
-  const placement = (variantProps as Props).placement ?? (isVertical ? "start" : "top");
-  const orientation =
-    isVertical || placement === "start" || placement === "end" ? "vertical" : "horizontal";
-
   const state = useTabListState<T>({
     children: children as CollectionChildren<T>,
     ...otherProps,
   });
-  const {tabListProps} = useTabList<T>(
-    {...otherProps, orientation} as AriaTabListProps<T>,
-    state,
-    domRef,
-  );
+  const {tabListProps} = useTabList<T>(otherProps as AriaTabListProps<T>, state, domRef);
 
   const slots = useMemo(
     () =>
@@ -130,13 +130,14 @@ export function useTabs<T extends object>(originalProps: UseTabsProps<T>) {
     [objectToDeps(variantProps), disableAnimation, isVertical],
   );
 
-  const baseStyles = cn(classNames?.base, className);
+  const baseStyles = clsx(classNames?.base, className);
 
   const values = useMemo<ValuesType<T>>(
     () => ({
       state,
       slots,
       classNames,
+      motionProps,
       disableAnimation,
       listRef: domRef,
       shouldSelectOnPressUp,
@@ -147,6 +148,7 @@ export function useTabs<T extends object>(originalProps: UseTabsProps<T>) {
       state,
       slots,
       domRef,
+      motionProps,
       disableAnimation,
       disableCursorAnimation,
       shouldSelectOnPressUp,
@@ -158,7 +160,7 @@ export function useTabs<T extends object>(originalProps: UseTabsProps<T>) {
   const getBaseProps: PropGetter = useCallback(
     (props) => ({
       "data-slot": "base",
-      className: slots.base({class: cn(baseStyles, props?.className)}),
+      className: slots.base({class: clsx(baseStyles, props?.className)}),
       ...mergeProps(
         filterDOMProps(otherProps, {
           enabled: shouldFilterDOMProps,
@@ -169,10 +171,11 @@ export function useTabs<T extends object>(originalProps: UseTabsProps<T>) {
     [baseStyles, otherProps, slots],
   );
 
+  const placement = (variantProps as Props).placement ?? (isVertical ? "start" : "top");
   const getWrapperProps: PropGetter = useCallback(
     (props) => ({
       "data-slot": "tabWrapper",
-      className: slots.tabWrapper({class: cn(classNames?.tabWrapper, props?.className)}),
+      className: slots.tabWrapper({class: clsx(classNames?.tabWrapper, props?.className)}),
       "data-placement": placement,
       "data-vertical":
         isVertical || placement === "start" || placement === "end" ? "vertical" : "horizontal",
@@ -184,20 +187,10 @@ export function useTabs<T extends object>(originalProps: UseTabsProps<T>) {
     (props) => ({
       ref: domRef,
       "data-slot": "tabList",
-      className: slots.tabList({class: cn(classNames?.tabList, props?.className)}),
+      className: slots.tabList({class: clsx(classNames?.tabList, props?.className)}),
       ...mergeProps(tabListProps, props),
     }),
     [domRef, tabListProps, classNames, slots],
-  );
-
-  const getTabCursorProps: PropGetter = useCallback(
-    (props) => ({
-      "data-slot": "cursor",
-      className: slots.cursor({
-        class: cn(classNames?.cursor, props?.className),
-      }),
-    }),
-    [classNames, slots],
   );
 
   return {
@@ -209,7 +202,6 @@ export function useTabs<T extends object>(originalProps: UseTabsProps<T>) {
     getBaseProps,
     getTabListProps,
     getWrapperProps,
-    getTabCursorProps,
   };
 }
 

@@ -2,7 +2,7 @@ import type {HTMLHeroUIProps} from "@heroui/system";
 
 import {forwardRef} from "@heroui/system";
 import {useDOMRef} from "@heroui/react-utils";
-import {cn} from "@heroui/theme";
+import {clsx} from "@heroui/shared-utils";
 
 import {useModalContext} from "./modal-context";
 
@@ -20,7 +20,7 @@ const ModalFooter = forwardRef<"footer", ModalFooterProps>((props, ref) => {
   return (
     <Component
       ref={domRef}
-      className={slots.footer({class: cn(classNames?.footer, className)})}
+      className={slots.footer({class: clsx(classNames?.footer, className)})}
       {...otherProps}
     >
       {children}

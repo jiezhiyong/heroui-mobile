@@ -3,11 +3,11 @@ import type {HTMLMotionProps} from "framer-motion";
 
 import {forwardRef} from "@heroui/system";
 import {useDOMRef} from "@heroui/react-utils";
-import {dataAttr, mergeProps} from "@heroui/shared-utils";
+import {clsx, dataAttr} from "@heroui/shared-utils";
 import {AnimatePresence, LazyMotion, m} from "framer-motion";
+import {mergeProps} from "@react-aria/utils";
 import {Overlay} from "@react-aria/overlays";
 import React from "react";
-import {cn} from "@heroui/theme";
 
 import {menuVariants} from "./navbar-menu-transitions";
 import {useNavbarContext} from "./navbar-context";
@@ -33,7 +33,7 @@ const NavbarMenu = forwardRef<"ul", NavbarMenuProps>((props, ref) => {
 
   const {slots, isMenuOpen, height, disableAnimation, classNames} = useNavbarContext();
 
-  const styles = cn(classNames?.menu, className);
+  const styles = clsx(classNames?.menu, className);
 
   if (disableAnimation) {
     if (!isMenuOpen) return null;

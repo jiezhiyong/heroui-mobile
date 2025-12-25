@@ -51,7 +51,7 @@ export default {
       control: {
         type: "select",
       },
-      options: ["inside", "outside", "outside-left", "outside-top"],
+      options: ["inside", "outside", "outside-left"],
     },
     isDisabled: {
       control: {
@@ -96,7 +96,6 @@ const LabelPlacementTemplate = (args: DateInputProps) => (
     <DateInput {...args} description="inside" />
     <DateInput {...args} description="outside" labelPlacement="outside" />
     <DateInput {...args} description="outside-left" labelPlacement="outside-left" />
-    <DateInput {...args} description="outside-top" labelPlacement="outside-top" />
   </div>
 );
 
@@ -240,7 +239,7 @@ export const StartContent = {
     ...defaultProps,
     labelPlacement: "outside",
     startContent: (
-      <CalendarBoldIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />
+      <CalendarBoldIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
     ),
   },
 };
@@ -252,7 +251,7 @@ export const EndContent = {
     ...defaultProps,
     labelPlacement: "outside",
     endContent: (
-      <CalendarBoldIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />
+      <CalendarBoldIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
     ),
   },
 };

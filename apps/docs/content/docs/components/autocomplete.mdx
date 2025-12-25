@@ -102,7 +102,7 @@ all available options, but users won't be able to select any of the listed optio
 
 ### Label Placements
 
-You can change the position of the label by setting the `labelPlacement` property to `inside`, `outside`, `outside-left` or `outside-top`.
+You can change the position of the label by setting the `labelPlacement` property to `inside`, `outside` or `outside-left`.
 
 <CodeDemo
   title="Label Placements"
@@ -365,6 +365,7 @@ properties to customize the popover, listbox and input components.
 
 - **base**: The main wrapper of the autocomplete. This wraps the input and popover components.
 - **listboxWrapper**: The wrapper of the listbox. This wraps the listbox component, this slot is used on top of the scroll shadow component.
+- **listbox**: The listbox component. This is the component that wraps the autocomplete items.
 - **popoverContent**: The popover content slot. Use this to modify the popover content styles.
 - **endContentWrapper**: The wrapper of the end content. This wraps the clear button and selector button.
 - **clearButton**: The clear button slot.
@@ -542,7 +543,7 @@ properties to customize the popover, listbox and input components.
     },
     {
       attribute: "labelPlacement",
-      type: "inside | outside | outside-left | outside-top",
+      type: "inside | outside | outside-left",
       description: "The position of the label.",
       default: "inside"
     },
@@ -725,6 +726,12 @@ properties to customize the popover, listbox and input components.
       type: "boolean",
       description: "Whether the clear button should be shown.",
       default: "true"
+    },
+    {
+      attribute: "disableClearable",
+      type: "boolean",
+      description: "Whether the clear button should be hidden. (Deprecated) Use isClearable instead.",
+      default: "false"
     },
     {
       attribute: "disableAnimation",

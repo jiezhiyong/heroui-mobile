@@ -4,12 +4,14 @@ import type {ValuesType} from "./use-tabs";
 
 import {forwardRef} from "@heroui/system";
 import {useDOMRef, filterDOMProps, mergeRefs} from "@heroui/react-utils";
-import {dataAttr, chain, mergeProps} from "@heroui/shared-utils";
+import {clsx, dataAttr} from "@heroui/shared-utils";
+import {chain, mergeProps} from "@react-aria/utils";
 import scrollIntoView from "scroll-into-view-if-needed";
 import {useFocusRing} from "@react-aria/focus";
 import {useTab} from "@react-aria/tabs";
 import {useHover} from "@react-aria/interactions";
-import {cn} from "@heroui/theme";
+import {m, domMax, LazyMotion} from "framer-motion";
+import {useIsMounted} from "@heroui/use-is-mounted";
 
 export interface TabItemProps<T extends object = object> extends BaseTabItemProps<T> {
   item: Node<T>;
@@ -18,6 +20,9 @@ export interface TabItemProps<T extends object = object> extends BaseTabItemProp
   listRef?: ValuesType["listRef"];
   classNames?: ValuesType["classNames"];
   isDisabled?: ValuesType["isDisabled"];
+  motionProps?: ValuesType["motionProps"];
+  disableAnimation?: ValuesType["disableAnimation"];
+  disableCursorAnimation?: ValuesType["disableCursorAnimation"];
 }
 
 /**
@@ -33,7 +38,11 @@ const Tab = forwardRef<"button", TabItemProps>((props, ref) => {
     isDisabled: isDisabledProp,
     listRef,
     slots,
+    motionProps,
+    disableAnimation,
+    disableCursorAnimation,
     shouldSelectOnPressUp,
+    onClick,
     tabRef,
     ...otherProps
   } = props;
@@ -63,7 +72,11 @@ const Tab = forwardRef<"button", TabItemProps>((props, ref) => {
     isDisabled,
   });
 
-  const tabStyles = cn(classNames?.tab, className);
+  const tabStyles = clsx(classNames?.tab, className);
+
+  const [, isMounted] = useIsMounted({
+    rerender: true,
+  });
 
   const handleClick = () => {
     if (!domRef?.current || !listRef?.current) return;
@@ -85,7 +98,6 @@ const Tab = forwardRef<"button", TabItemProps>((props, ref) => {
       data-focus-visible={dataAttr(isFocusVisible)}
       data-hover={dataAttr(isHovered)}
       data-hover-unselected={dataAttr((isHovered || isPressed) && !isSelected)}
-      data-key={key}
       data-pressed={dataAttr(isPressed)}
       data-selected={dataAttr(isSelected)}
       data-slot="tab"
@@ -100,16 +112,31 @@ const Tab = forwardRef<"button", TabItemProps>((props, ref) => {
         filterDOMProps(otherProps, {
           enabled: shouldFilterDOMProps,
           omitPropNames: new Set(["title"]),
-          // onClick is now from `tabProps`.
-          // omit it to avoid executing onClick it twice.
-          omitEventNames: new Set(["onClick"]),
         }),
-        {onClick: chain(handleClick, tabProps.onClick)},
+        {onClick: chain(handleClick, onClick, tabProps.onClick)},
       )}
       className={slots.tab?.({class: tabStyles})}
       title={otherProps?.titleValue}
       type={Component === "button" ? "button" : undefined}
     >
+      {isSelected && !disableAnimation && !disableCursorAnimation && isMounted ? (
+        // use synchronous loading for domMax here
+        // since lazy loading produces different behaviour
+        <LazyMotion features={domMax}>
+          <m.span
+            className={slots.cursor({class: classNames?.cursor})}
+            data-slot="cursor"
+            layoutDependency={false}
+            layoutId="cursor"
+            transition={{
+              type: "spring",
+              bounce: 0.15,
+              duration: 0.5,
+            }}
+            {...motionProps}
+          />
+        </LazyMotion>
+      ) : null}
       <div
         className={slots.tabContent({
           class: classNames?.tabContent,

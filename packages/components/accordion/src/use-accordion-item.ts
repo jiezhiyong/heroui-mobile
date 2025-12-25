@@ -7,11 +7,12 @@ import type {AccordionItemBaseProps} from "./base/accordion-item-base";
 
 import {useProviderContext} from "@heroui/system";
 import {useFocusRing} from "@react-aria/focus";
-import {cn, accordionItem} from "@heroui/theme";
-import {callAllHandlers, dataAttr, objectToDeps, chain, mergeProps} from "@heroui/shared-utils";
+import {accordionItem} from "@heroui/theme";
+import {clsx, callAllHandlers, dataAttr, objectToDeps} from "@heroui/shared-utils";
 import {useDOMRef, filterDOMProps} from "@heroui/react-utils";
 import {useReactAriaAccordionItem} from "@heroui/use-aria-accordion";
 import {useCallback, useMemo} from "react";
+import {chain, mergeProps} from "@react-aria/utils";
 import {useHover, usePress} from "@react-aria/interactions";
 
 export interface Props<T extends object> extends HTMLHeroUIProps<"div"> {
@@ -134,7 +135,7 @@ export function useAccordionItem<T extends object = {}>(props: UseAccordionItemP
     [isCompact, isDisabled, hideIndicator, disableAnimation, disableIndicatorAnimation, variant],
   );
 
-  const baseStyles = cn(classNames?.base, className);
+  const baseStyles = clsx(classNames?.base, className);
 
   const getBaseProps = useCallback<PropGetter>(
     (props = {}) => {

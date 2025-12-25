@@ -5,12 +5,13 @@ import type {TreeState} from "@react-stately/tree";
 import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
 
 import {useMemo, useRef, useCallback} from "react";
-import {menuItem, cn} from "@heroui/theme";
+import {menuItem} from "@heroui/theme";
 import {mapPropsVariants, useProviderContext} from "@heroui/system";
 import {useFocusRing} from "@react-aria/focus";
-import {dataAttr, objectToDeps, removeEvents, mergeProps} from "@heroui/shared-utils";
+import {clsx, dataAttr, objectToDeps, removeEvents} from "@heroui/shared-utils";
 import {useMenuItem as useAriaMenuItem} from "@react-aria/menu";
 import {isFocusVisible as AriaIsFocusVisible, useHover} from "@react-aria/interactions";
+import {mergeProps} from "@react-aria/utils";
 import {useIsMobile} from "@heroui/use-is-mobile";
 import {filterDOMProps} from "@heroui/react-utils";
 
@@ -142,7 +143,7 @@ export function useMenuItem<T extends object>(originalProps: UseMenuItemProps<T>
     [objectToDeps(variantProps), isDisabled, disableAnimation, rendered, description],
   );
 
-  const baseStyles = cn(classNames?.base, className);
+  const baseStyles = clsx(classNames?.base, className);
 
   if (isReadOnly) {
     itemProps = removeEvents(itemProps);
@@ -166,7 +167,7 @@ export function useMenuItem<T extends object>(originalProps: UseMenuItemProps<T>
     "data-selected": dataAttr(isSelected),
     "data-pressed": dataAttr(isPressed),
     "data-focus-visible": dataAttr(isFocusVisible),
-    className: slots.base({class: cn(baseStyles, props.className)}),
+    className: slots.base({class: clsx(baseStyles, props.className)}),
   });
 
   const getLabelProps: PropGetter = (props = {}) => ({

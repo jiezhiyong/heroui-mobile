@@ -6,11 +6,12 @@ import type {ReactRef} from "@heroui/react-utils";
 
 import {mapPropsVariants} from "@heroui/system";
 import {useFocusRing} from "@react-aria/focus";
-import {breadcrumbItem, cn} from "@heroui/theme";
+import {breadcrumbItem} from "@heroui/theme";
 import {filterDOMProps, useDOMRef} from "@heroui/react-utils";
 import {useBreadcrumbItem as useAriaBreadcrumbItem} from "@react-aria/breadcrumbs";
-import {dataAttr, objectToDeps, mergeProps} from "@heroui/shared-utils";
+import {clsx, dataAttr, objectToDeps} from "@heroui/shared-utils";
 import {useMemo} from "react";
+import {mergeProps} from "@react-aria/utils";
 
 interface Props
   extends Omit<HTMLHeroUIProps<"li">, keyof AriaBreadcrumbItemProps>,
@@ -94,7 +95,7 @@ export function useBreadcrumbItem(originalProps: UseBreadcrumbItemProps) {
     [objectToDeps(variantProps), isCurrent, className],
   );
 
-  const baseStyles = cn(classNames?.base, className);
+  const baseStyles = clsx(classNames?.base, className);
 
   const getBaseProps = () => ({
     ref: domRef,

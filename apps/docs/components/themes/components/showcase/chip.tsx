@@ -3,7 +3,7 @@ import type {Border, HeroUIScaling} from "../../types";
 
 import {cloneElement} from "react";
 import {Chip as HeroUIChip} from "@heroui/react";
-import {cn} from "@heroui/theme";
+import {clsx} from "@heroui/shared-utils";
 
 import {ShowcaseComponent} from "../showcase-component";
 import {useThemeBuilder} from "../../provider";
@@ -28,7 +28,7 @@ const SectionBase = ({
   return (
     <HeroUIChip
       key={radius}
-      className={cn(className, "capitalize")}
+      className={clsx(className, "capitalize")}
       color={color}
       isDisabled={isDisabled}
       radius={radius}
@@ -90,7 +90,7 @@ const Section = ({
       {variants.map((variant, idx) =>
         cloneElement(<SectionBase key={idx} />, {
           color,
-          className: cn(
+          className: clsx(
             className,
             variant === "bordered" || variant === "faded" ? borderClass : "",
           ),

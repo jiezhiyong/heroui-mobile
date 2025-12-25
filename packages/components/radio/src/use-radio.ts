@@ -7,11 +7,12 @@ import {useCallback, useId} from "react";
 import {useMemo, useRef} from "react";
 import {useFocusRing} from "@react-aria/focus";
 import {useHover} from "@react-aria/interactions";
-import {radio, cn} from "@heroui/theme";
+import {radio} from "@heroui/theme";
 import {useRadio as useReactAriaRadio} from "@react-aria/radio";
 import {useProviderContext} from "@heroui/system";
-import {__DEV__, warn, dataAttr, chain, mergeProps} from "@heroui/shared-utils";
+import {__DEV__, warn, clsx, dataAttr} from "@heroui/shared-utils";
 import {useDOMRef} from "@heroui/react-utils";
+import {chain, mergeProps} from "@react-aria/utils";
 
 import {useRadioGroupContext} from "./radio-group-context";
 
@@ -149,14 +150,14 @@ export function useRadio(props: UseRadioProps) {
     [color, size, isDisabled, isInvalid, disableAnimation],
   );
 
-  const baseStyles = cn(classNames?.base, className);
+  const baseStyles = clsx(classNames?.base, className);
 
   const getBaseProps: PropGetter = useCallback(
     (props = {}) => {
       return {
         ...props,
         ref: domRef,
-        className: slots.base({class: cn(baseStyles, props?.className)}),
+        className: slots.base({class: baseStyles}),
         "data-disabled": dataAttr(isDisabled),
         "data-focus": dataAttr(isFocused),
         "data-focus-visible": dataAttr(isFocusVisible),
@@ -192,7 +193,7 @@ export function useRadio(props: UseRadioProps) {
       return {
         ...props,
         "aria-hidden": true,
-        className: slots.wrapper({class: cn(classNames?.wrapper, props.className)}),
+        className: clsx(slots.wrapper({class: clsx(classNames?.wrapper, props.className)})),
       };
     },
     [slots, classNames?.wrapper],

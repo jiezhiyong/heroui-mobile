@@ -3,12 +3,11 @@ import type {UserEvent} from "@testing-library/user-event";
 import type {AutocompleteProps} from "../src";
 
 import * as React from "react";
-import {within, render, renderHook, act, waitFor} from "@testing-library/react";
+import {within, render, renderHook, act} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {spy, shouldIgnoreReactWarning} from "@heroui/test-utils";
 import {useForm} from "react-hook-form";
 import {Form} from "@heroui/form";
-import {HeroUIProvider} from "@heroui/system";
 
 import {Autocomplete, AutocompleteItem, AutocompleteSection} from "../src";
 import {Modal, ModalContent, ModalBody, ModalHeader, ModalFooter} from "../../modal/src";
@@ -412,25 +411,21 @@ describe("Autocomplete", () => {
 
   it("should close listbox when clicking outside autocomplete", async () => {
     const wrapper = render(
-      <Autocomplete aria-label="Favorite Animal" data-testid="autocomplete" label="Favorite Animal">
+      <Autocomplete
+        aria-label="Favorite Animal"
+        data-testid="close-when-clicking-outside-test"
+        label="Favorite Animal"
+      >
         <AutocompleteItem key="penguin">Penguin</AutocompleteItem>
         <AutocompleteItem key="zebra">Zebra</AutocompleteItem>
         <AutocompleteItem key="shark">Shark</AutocompleteItem>
       </Autocomplete>,
     );
 
-    const {container} = wrapper;
+    const autocomplete = wrapper.getByTestId("close-when-clicking-outside-test");
 
-    const selectorButton = container.querySelector(
-      "[data-slot='inner-wrapper'] button:nth-of-type(2)",
-    )!;
-
-    expect(selectorButton).not.toBeNull();
-
-    const autocomplete = wrapper.getByTestId("autocomplete");
-
-    // open the select listbox by clicking selector button
-    await user.click(selectorButton);
+    // open the select listbox
+    await user.click(autocomplete);
 
     // assert that the autocomplete listbox is open
     expect(autocomplete).toHaveAttribute("aria-expanded", "true");
@@ -453,7 +448,7 @@ describe("Autocomplete", () => {
           <ModalBody>
             <Autocomplete
               aria-label="Favorite Animal"
-              data-testid="autocomplete"
+              data-testid="close-when-clicking-outside-test"
               label="Favorite Animal"
             >
               <AutocompleteItem key="penguin">Penguin</AutocompleteItem>
@@ -465,24 +460,18 @@ describe("Autocomplete", () => {
         </ModalContent>
       </Modal>,
     );
-    const modal = wrapper.getByRole("dialog");
 
-    const selectorButton = modal.querySelector(
-      "[data-slot='inner-wrapper'] button:nth-of-type(2)",
-    )!;
-
-    expect(selectorButton).not.toBeNull();
-
-    const autocomplete = wrapper.getByTestId("autocomplete");
+    const autocomplete = wrapper.getByTestId("close-when-clicking-outside-test");
 
     // open the autocomplete listbox
-    await user.click(selectorButton);
+
+    await user.click(autocomplete);
 
     // assert that the autocomplete listbox is open
     expect(autocomplete).toHaveAttribute("aria-expanded", "true");
 
     // click outside the autocomplete component
-    await user.click(modal);
+    await user.click(document.body);
 
     // assert that the autocomplete listbox is closed
     expect(autocomplete).toHaveAttribute("aria-expanded", "false");
@@ -588,7 +577,7 @@ describe("Autocomplete", () => {
     const wrapper = render(
       <Autocomplete
         aria-label="Favorite Animal"
-        data-testid="autocomplete"
+        data-testid="when-key-equals-textValue"
         defaultSelectedKey="cat"
         items={itemsData}
         label="Favorite Animal"
@@ -597,7 +586,7 @@ describe("Autocomplete", () => {
       </Autocomplete>,
     );
 
-    const autocomplete = wrapper.getByTestId("autocomplete");
+    const autocomplete = wrapper.getByTestId("when-key-equals-textValue");
 
     const user = userEvent.setup();
 
@@ -616,12 +605,12 @@ describe("Autocomplete", () => {
 
   it("should work when key equals textValue (controlled)", async () => {
     const wrapper = render(
-      <ControlledAutocomplete data-testid="autocomplete" items={itemsData}>
+      <ControlledAutocomplete data-testid="when-key-equals-textValue" items={itemsData}>
         {(item) => <AutocompleteItem key={item.value}>{item.value}</AutocompleteItem>}
       </ControlledAutocomplete>,
     );
 
-    const autocomplete = wrapper.getByTestId("autocomplete");
+    const autocomplete = wrapper.getByTestId("when-key-equals-textValue");
 
     const user = userEvent.setup();
 
@@ -861,55 +850,6 @@ describe("Autocomplete", () => {
       });
     });
   });
-
-  describe("Autocomplete with HeroUIProvider context", () => {
-    it("should inherit labelPlacement from HeroUIProvider", () => {
-      const {container} = render(
-        <HeroUIProvider labelPlacement="outside">
-          <Autocomplete defaultItems={itemsData} label="Test autocomplete">
-            {(item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
-          </Autocomplete>
-        </HeroUIProvider>,
-      );
-
-      const label = container.querySelector("label");
-
-      expect(label).toBeTruthy();
-      expect(label?.className).toMatch(/translate-y.*100%/);
-    });
-
-    it("should prioritize labelPlacement prop over HeroUIProvider context", () => {
-      const {container} = render(
-        <HeroUIProvider labelPlacement="outside">
-          <Autocomplete defaultItems={itemsData} label="Test autocomplete" labelPlacement="inside">
-            {(item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
-          </Autocomplete>
-        </HeroUIProvider>,
-      );
-
-      const label = container.querySelector("label");
-
-      expect(label?.className).not.toMatch(/translate-y.*100%/);
-    });
-
-    it("should inherit labelPlacement='outside-top' from HeroUIProvider", () => {
-      const {container} = render(
-        <HeroUIProvider labelPlacement="outside-top">
-          <Autocomplete defaultItems={itemsData} label="Test autocomplete">
-            {(item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
-          </Autocomplete>
-        </HeroUIProvider>,
-      );
-
-      const label = container.querySelector("label");
-      const mainWrapper = container.querySelector("[data-slot=main-wrapper]");
-
-      expect(label).toBeTruthy();
-      // outside-top uses flex-col on mainWrapper and relative label (no translate-y)
-      expect(mainWrapper).toHaveClass("flex-col");
-      expect(label?.className).not.toMatch(/translate-y.*100%/);
-    });
-  });
 });
 
 describe("Autocomplete with React Hook Form", () => {
@@ -1137,65 +1077,5 @@ describe("focusedKey management with selected key", () => {
     const optionItem = options[1];
 
     expect(optionItem).toHaveAttribute("data-focus", "true");
-  });
-});
-
-describe("Autocomplete with allowsCustomValue", () => {
-  let user: UserEvent;
-
-  beforeEach(() => {
-    user = userEvent.setup();
-  });
-
-  it("should show the empty content when allowsCustomValue is true and a custom emptyContent is provided", async () => {
-    const wrapper = render(
-      <Autocomplete
-        allowsCustomValue
-        aria-label="Favorite Animal"
-        data-testid="autocomplete"
-        defaultItems={[]}
-        label="Favorite Animal"
-        listboxProps={{
-          emptyContent: <div data-testid="empty-content">No animals found</div>,
-        }}
-      >
-        {(item: Item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
-      </Autocomplete>,
-    );
-
-    const input = wrapper.getByTestId("autocomplete");
-
-    await user.click(input);
-
-    act(() => {
-      jest.runAllTimers();
-    });
-
-    const emptyContent = wrapper.getByTestId("empty-content");
-
-    await waitFor(() => {
-      expect(emptyContent).toBeVisible();
-    });
-  });
-
-  it("should not show the empty content when allowsCustomValue is true and no custom emptyContent is provided", async () => {
-    const wrapper = render(
-      <Autocomplete
-        allowsCustomValue
-        aria-label="Favorite Animal"
-        defaultItems={[]}
-        label="Favorite Animal"
-      >
-        {(item: Item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
-      </Autocomplete>,
-    );
-
-    const input = wrapper.getByRole("combobox");
-
-    await user.click(input);
-
-    const listbox = wrapper.queryByRole("listbox");
-
-    expect(listbox).toBeNull();
   });
 });

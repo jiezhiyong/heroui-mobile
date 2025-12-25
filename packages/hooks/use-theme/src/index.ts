@@ -55,14 +55,8 @@ export function useTheme(defaultTheme: Theme = ThemeProps.SYSTEM) {
 
       localStorage.setItem(ThemeProps.KEY, newTheme);
 
-      document.documentElement.classList.remove(
-        ThemeProps.LIGHT,
-        ThemeProps.DARK,
-        ThemeProps.SYSTEM,
-      );
-
+      document.documentElement.classList.remove(theme);
       document.documentElement.classList.add(targetTheme);
-
       setThemeState(newTheme);
     },
     [theme],

@@ -678,15 +678,23 @@ describe("Dropdown", () => {
     });
 
     it("should press the item on keyDown (Enter)", async () => {
-      const onAction = jest.fn();
+      const logSpy = jest.spyOn(console, "log").mockImplementation(() => {});
 
       const wrapper = render(
         <Dropdown disableAnimation>
           <DropdownTrigger>
             <Button data-testid="trigger-test">Trigger</Button>
           </DropdownTrigger>
-          <DropdownMenu aria-label="Actions" selectionMode="single" onAction={onAction}>
-            <DropdownItem key="new">New file</DropdownItem>
+          <DropdownMenu aria-label="Actions" selectionMode="single">
+            <DropdownItem
+              key="new"
+              onPress={() => {
+                /* eslint-disable no-console */
+                console.log("ENTER");
+              }}
+            >
+              New file
+            </DropdownItem>
             <DropdownItem key="copy">Copy link</DropdownItem>
             <DropdownItem key="edit">Edit file</DropdownItem>
             <DropdownItem key="delete" color="danger">
@@ -716,21 +724,33 @@ describe("Dropdown", () => {
 
       expect(menuItems[0]).toHaveFocus();
 
-      await user.keyboard("{Enter}");
+      await act(async () => {
+        await user.keyboard("[Enter]");
+      });
 
-      expect(onAction).toHaveBeenCalledWith("new");
+      expect(logSpy).toHaveBeenCalledWith("ENTER");
+
+      logSpy.mockRestore();
     });
 
     it("should press the item on keyDown (Space)", async () => {
-      const onAction = jest.fn();
+      const logSpy = jest.spyOn(console, "log").mockImplementation(() => {});
 
       const wrapper = render(
         <Dropdown disableAnimation>
           <DropdownTrigger>
             <Button data-testid="trigger-test">Trigger</Button>
           </DropdownTrigger>
-          <DropdownMenu aria-label="Actions" selectionMode="single" onAction={onAction}>
-            <DropdownItem key="new">New file</DropdownItem>
+          <DropdownMenu aria-label="Actions" selectionMode="single">
+            <DropdownItem
+              key="new"
+              onPress={() => {
+                /* eslint-disable no-console */
+                console.log("SPACE");
+              }}
+            >
+              New file
+            </DropdownItem>
             <DropdownItem key="copy">Copy link</DropdownItem>
             <DropdownItem key="edit">Edit file</DropdownItem>
             <DropdownItem key="delete" color="danger">
@@ -760,9 +780,13 @@ describe("Dropdown", () => {
 
       expect(menuItems[0]).toHaveFocus();
 
-      await user.keyboard(" ");
+      await act(async () => {
+        await user.keyboard("[Space]");
+      });
 
-      expect(onAction).toHaveBeenCalledWith("new");
+      expect(logSpy).toHaveBeenCalledWith("SPACE");
+
+      logSpy.mockRestore();
     });
 
     it("should respect closeOnSelect setting of DropdownItem (static)", async () => {

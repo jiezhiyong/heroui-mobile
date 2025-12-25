@@ -22,12 +22,6 @@ export default function App() {
         label="Event Time"
         labelPlacement="outside-left"
       />
-      <TimeInput
-        defaultValue={new Time(11, 45)}
-        description="outside-top"
-        label="Event Time"
-        labelPlacement="outside-top"
-      />
     </div>
   );
 }

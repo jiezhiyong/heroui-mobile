@@ -8,11 +8,12 @@ import type {MotionProps} from "framer-motion";
 import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
 
 import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {toast as toastTheme, cn} from "@heroui/theme";
+import {toast as toastTheme} from "@heroui/theme";
 import {useDOMRef} from "@heroui/react-utils";
-import {dataAttr, isEmpty, objectToDeps, mergeProps} from "@heroui/shared-utils";
+import {clsx, dataAttr, isEmpty, objectToDeps} from "@heroui/shared-utils";
 import {useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState} from "react";
 import {useToast as useToastAria} from "@react-aria/toast";
+import {chain, mergeProps} from "@react-aria/utils";
 import {useHover} from "@react-aria/interactions";
 import {useIsMobile} from "@heroui/use-is-mobile";
 
@@ -53,7 +54,7 @@ export interface ToastProps extends ToastVariantProps {
    *    content: "content-classes"
    *    description: "description-classes"
    *    title: "title-classes"
-   *    loadingComponent: "loading-component-classes",
+   *    loadingIcon: "loading-icon-classes",
    *    icon: "icon-classes",
    *    progressTrack: "progress-track-classes",
    *    progressIndicator: "progress-indicator-classes",
@@ -77,9 +78,9 @@ export interface ToastProps extends ToastVariantProps {
    */
   closeIcon?: ReactNode | ((props: DOMAttributes<HTMLElement>) => ReactNode);
   /**
-   * Component to be displayed in the loading toast - overrides the default loading component
+   * Icon to be displayed in the loading toast - overrides the loading icon
    */
-  loadingComponent?: ReactNode;
+  loadingIcon?: ReactNode | ((props: DOMAttributes<HTMLElement>) => ReactNode);
   /**
    * Whether the toast-icon should be hidden.
    * @default false
@@ -110,10 +111,6 @@ export interface ToastProps extends ToastVariantProps {
    * @default "default"
    */
   severity?: "default" | "primary" | "secondary" | "success" | "warning" | "danger";
-  /**
-   * Whether the toast is being closed programmatically
-   */
-  isClosing?: boolean;
 }
 
 interface Props<T> extends Omit<HTMLHeroUIProps<"div">, "title">, ToastProps {
@@ -165,11 +162,10 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
     timeout = 6000,
     shouldShowTimeoutProgress = false,
     icon,
+    loadingIcon,
     onClose,
     severity,
     maxVisibleToasts,
-    loadingComponent,
-    isClosing = false,
     ...otherProps
   } = props;
 
@@ -206,8 +202,6 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
   }, []);
 
   const [isLoading, setIsLoading] = useState<boolean>(!!promiseProp);
-  const [isToastExiting, setIsToastExiting] = useState(false);
-  const hasCalledOnCloseRef = useRef(false);
 
   useEffect(() => {
     if (!promiseProp) return;
@@ -215,22 +209,6 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
       setIsLoading(false);
     });
   }, [promiseProp]);
-
-  useEffect(() => {
-    if (isClosing && !isToastExiting) {
-      setIsToastExiting(true);
-    }
-  }, [isClosing, isToastExiting]);
-
-  useEffect(() => {
-    if (isToastExiting && disableAnimation) {
-      state.close(toast.key);
-      if (!hasCalledOnCloseRef.current) {
-        hasCalledOnCloseRef.current = true;
-        onClose?.();
-      }
-    }
-  }, [isToastExiting, disableAnimation, state, toast.key, onClose]);
 
   useEffect(() => {
     const updateProgress = (timestamp: number) => {
@@ -242,7 +220,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
         startTime.current = timestamp;
       }
 
-      if (isToastHovered || isRegionExpanded) {
+      if (isToastHovered || isRegionExpanded || index != total - 1) {
         pausedTime.current += timestamp - startTime.current;
         startTime.current = null;
         animationRef.current = requestAnimationFrame(updateProgress);
@@ -254,7 +232,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
 
       timeElapsed.current = elapsed;
       if (timeElapsed.current >= timeout) {
-        setIsToastExiting(true);
+        state.close(toast.key);
       }
 
       progressRef.current = Math.min((elapsed / timeout) * 100, 100);
@@ -286,13 +264,12 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
     total,
     isRegionExpanded,
     isLoading,
-    setIsToastExiting,
   ]);
 
   const Component = as || "div";
 
   const domRef = useDOMRef(ref);
-  const baseStyles = cn(className, classNames?.base);
+  const baseStyles = clsx(className, classNames?.base);
   const {toastProps, contentProps, titleProps, descriptionProps} = useToastAria(
     props,
     state,
@@ -306,13 +283,13 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
   }, []);
 
   const [initialHeight, setInitialHeight] = useState<number>(0);
+  const [isToastExiting, setIsToastExiting] = useState(false);
 
   // Following was inspired from sonner ❤️
   useLayoutEffect(() => {
     if (!domRef.current || !mounted || isToastExiting) {
       return;
     }
-
     const toastNode = domRef.current;
     const originalHeight = toastNode.style.height;
 
@@ -338,7 +315,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
   let liftHeight = 4;
 
   for (let idx = index + 1; idx < total; idx++) {
-    liftHeight += heights[idx] || 0;
+    liftHeight += heights[idx];
   }
 
   const frontHeight = heights[heights.length - 1];
@@ -418,8 +395,11 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
 
   const getToastProps: PropGetter = useCallback(
     (props = {}) => {
-      const topExtension = 16;
-      const bottomExtension = 16;
+      const aboveToastHeight = index + 1 < total ? heights[index + 1] : 0;
+      const belowToastHeight = index - 1 >= 0 ? heights[index - 1] : 0;
+
+      const topExtension = aboveToastHeight ? Math.ceil(aboveToastHeight / 2) + 8 : 16;
+      const bottomExtension = belowToastHeight ? Math.ceil(belowToastHeight / 2) + 8 : 16;
 
       const pseudoElementStyles = {
         "--top-extension": `${topExtension}px`,
@@ -428,7 +408,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
 
       return {
         ref: domRef,
-        className: slots.base({class: cn(baseStyles, classNames?.base)}),
+        className: slots.base({class: clsx(baseStyles, classNames?.base)}),
         "data-has-title": dataAttr(!isEmpty(title)),
         "data-has-description": dataAttr(!isEmpty(description)),
         "data-placement": placement,
@@ -436,16 +416,16 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
         "data-toast": true,
         "aria-label": "toast",
         "data-toast-exiting": dataAttr(isToastExiting),
-        onTransitionEnd: disableAnimation
-          ? undefined
-          : () => {
-              if (!isToastExiting) return;
-              state.close(toast.key);
-              if (!hasCalledOnCloseRef.current) {
-                hasCalledOnCloseRef.current = true;
-                onClose?.();
-              }
-            },
+        onTransitionEnd: () => {
+          if (isToastExiting) {
+            const updatedHeights = heights;
+
+            updatedHeights.splice(index, 1);
+            setHeights([...updatedHeights]);
+
+            state.close(toast.key);
+          }
+        },
         style: {
           opacity: opacityValue,
           ...pseudoElementStyles,
@@ -464,7 +444,6 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
       isToastExiting,
       state,
       toast.key,
-      disableAnimation,
     ],
   );
 
@@ -485,21 +464,9 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
     [],
   );
 
-  const getLoadingComponentProps: PropGetter = useCallback(
+  const getLoadingIconProps: PropGetter = useCallback(
     (props = {}) => ({
-      className: slots.loadingComponent({class: classNames?.loadingComponent}),
-      "aria-label": "loadingIcon",
-      color: "current",
-      ...props,
-    }),
-    [],
-  );
-
-  const getSpinnerComponentProps: PropGetter = useCallback(
-    (props = {}) => ({
-      classNames: {wrapper: slots.loadingComponent({class: classNames?.loadingComponent})},
-      "aria-label": "loadingIcon",
-      color: "current",
+      className: slots.loadingIcon({class: classNames?.loadingIcon}),
       ...props,
     }),
     [],
@@ -535,17 +502,14 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
       "aria-label": "closeButton",
       "data-hidden": dataAttr(hideCloseButton),
       ...mergeProps(props, {
-        onPress: () => {
+        onPress: chain(() => {
           setIsToastExiting(true);
-          if (!hasCalledOnCloseRef.current) {
-            hasCalledOnCloseRef.current = true;
-            onClose?.();
-          }
+
           setTimeout(() => document.body.focus(), 0);
-        },
+        }, onClose),
       }),
     }),
-    [setIsToastExiting, onClose],
+    [setIsToastExiting, onClose, state, toast],
   );
 
   const getCloseIconProps: PropGetter = useCallback(
@@ -607,10 +571,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
         },
         drag: dragDirection,
         dragConstraints,
-        exit: {
-          opacity: 0,
-          transition: {duration: 0.3},
-        },
+        exit: {opacity: 0},
         initial: {opacity: 0, scale: 1, y: -40 * multiplier},
         transition: {duration: 0.3, ease: "easeOut"},
         variants: toastVariants,
@@ -621,7 +582,12 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
           setDrag(false);
 
           if (shouldCloseToast(offsetX, offsetY)) {
-            setIsToastExiting(true);
+            const updatedHeights = heights;
+
+            updatedHeights.splice(index, 1);
+            setHeights([...updatedHeights]);
+
+            state.close(toast.key);
 
             return;
           }
@@ -682,7 +648,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
     title,
     description,
     icon,
-    loadingComponent,
+    loadingIcon,
     domRef,
     severity,
     closeIcon,
@@ -705,8 +671,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
     getIconProps,
     getMotionDivProps,
     getCloseIconProps,
-    getLoadingComponentProps,
-    getSpinnerComponentProps,
+    getLoadingIconProps,
     progressBarRef,
     endContent,
     slots,

@@ -15,7 +15,7 @@ import {
 import {usersData} from "@heroui/stories-utils";
 import {Avatar} from "@heroui/avatar";
 import {Chip} from "@heroui/chip";
-import {cn} from "@heroui/theme";
+import {clsx} from "@heroui/shared-utils";
 import {ScrollShadow} from "@heroui/scroll-shadow";
 
 import {Listbox, ListboxItem, ListboxSection} from "../src";
@@ -273,7 +273,7 @@ const MultipleSelectionTemplate = ({color, variant, ...args}: ListboxProps) => {
 };
 
 const WithStartContentTemplate = ({color, variant, disableAnimation, ...args}: ListboxProps) => {
-  const iconClasses = "text-2xl text-secondary pointer-events-none shrink-0";
+  const iconClasses = "text-2xl text-secondary pointer-events-none flex-shrink-0";
 
   return (
     <Listbox
@@ -297,7 +297,7 @@ const WithStartContentTemplate = ({color, variant, disableAnimation, ...args}: L
         key="delete"
         className="text-danger"
         color="danger"
-        startContent={<DeleteDocumentBulkIcon className={cn(iconClasses, "!text-danger")} />}
+        startContent={<DeleteDocumentBulkIcon className={clsx(iconClasses, "!text-danger")} />}
       >
         Delete file
       </ListboxItem>
@@ -306,7 +306,7 @@ const WithStartContentTemplate = ({color, variant, disableAnimation, ...args}: L
 };
 
 const WithEndContentTemplate = ({color, variant, disableAnimation, ...args}) => {
-  const iconClasses = "text-2xl text-default-500 pointer-events-none shrink-0";
+  const iconClasses = "text-2xl text-default-500 pointer-events-none flex-shrink-0";
 
   return (
     <Listbox
@@ -330,7 +330,7 @@ const WithEndContentTemplate = ({color, variant, disableAnimation, ...args}) => 
         key="delete"
         className="text-danger"
         color="danger"
-        endContent={<DeleteDocumentBulkIcon className={cn(iconClasses, "!text-danger")} />}
+        endContent={<DeleteDocumentBulkIcon className={clsx(iconClasses, "!text-danger")} />}
       >
         Delete file
       </ListboxItem>
@@ -380,7 +380,7 @@ const WithTopContentTemplate = ({color, ...args}) => {
       {(item) => (
         <ListboxItem key={item.id} textValue={item.name}>
           <div className="flex gap-2 items-center">
-            <Avatar alt={item.name} className="shrink-0" size="sm" src={item.avatar} />
+            <Avatar alt={item.name} className="flex-shrink-0" size="sm" src={item.avatar} />
             <div className="flex flex-col">
               <span className="text-small">{item.name}</span>
               <span className="text-tiny text-default-400">{item.email}</span>
@@ -434,7 +434,7 @@ const WithBottomContentTemplate = ({color, ...args}) => {
       {(item) => (
         <ListboxItem key={item.id} textValue={item.name}>
           <div className="flex gap-2 items-center">
-            <Avatar alt={item.name} className="shrink-0" size="sm" src={item.avatar} />
+            <Avatar alt={item.name} className="flex-shrink-0" size="sm" src={item.avatar} />
             <div className="flex flex-col">
               <span className="text-small">{item.name}</span>
               <span className="text-tiny text-default-400">{item.email}</span>
@@ -447,7 +447,7 @@ const WithBottomContentTemplate = ({color, ...args}) => {
 };
 
 const WithDescriptionTemplate = ({color, variant, disableAnimation, ...args}) => {
-  const iconClasses = "text-2xl text-secondary pointer-events-none shrink-0";
+  const iconClasses = "text-2xl text-secondary pointer-events-none flex-shrink-0";
 
   return (
     <Listbox
@@ -484,7 +484,7 @@ const WithDescriptionTemplate = ({color, variant, disableAnimation, ...args}) =>
         className="text-danger"
         color="danger"
         description="Permanently delete the file"
-        startContent={<DeleteDocumentBulkIcon className={cn(iconClasses, "!text-danger")} />}
+        startContent={<DeleteDocumentBulkIcon className={clsx(iconClasses, "!text-danger")} />}
       >
         Delete file
       </ListboxItem>
@@ -493,7 +493,7 @@ const WithDescriptionTemplate = ({color, variant, disableAnimation, ...args}) =>
 };
 
 const WithSectionsTemplate = ({color, variant, disableAnimation, ...args}) => {
-  const iconClasses = "text-2xl text-secondary pointer-events-none shrink-0";
+  const iconClasses = "text-2xl text-secondary pointer-events-none flex-shrink-0";
 
   return (
     <Listbox
@@ -533,7 +533,7 @@ const WithSectionsTemplate = ({color, variant, disableAnimation, ...args}) => {
           className="text-danger"
           color="danger"
           description="Permanently delete the file"
-          startContent={<DeleteDocumentBulkIcon className={cn(iconClasses, "!text-danger")} />}
+          startContent={<DeleteDocumentBulkIcon className={clsx(iconClasses, "!text-danger")} />}
         >
           Delete file
         </ListboxItem>
@@ -544,7 +544,7 @@ const WithSectionsTemplate = ({color, variant, disableAnimation, ...args}) => {
 
 const CustomWithClassNamesTemplate = ({color, variant, disableAnimation, ...args}) => {
   const IconWrapper = ({children, className}) => (
-    <div className={cn(className, "flex items-center rounded-small justify-center w-7 h-7")}>
+    <div className={clsx(className, "flex items-center rounded-small justify-center w-7 h-7")}>
       {children}
     </div>
   );

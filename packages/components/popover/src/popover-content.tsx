@@ -15,7 +15,7 @@ import {usePopoverContext} from "./popover-context";
 export interface PopoverContentProps
   extends AriaDialogProps,
     Omit<HTMLHeroUIProps, "children" | "role"> {
-  children?: ReactNode | ((titleProps: DOMAttributes<HTMLElement>) => ReactNode);
+  children: ReactNode | ((titleProps: DOMAttributes<HTMLElement>) => ReactNode);
 }
 
 const domAnimation = () => import("@heroui/dom-animation").then((res) => res.default);
@@ -47,16 +47,14 @@ const PopoverContent = (props: PopoverContentProps) => {
 
   const Component = as || OverlayComponent || "div";
 
-  const content = children && (
+  const content = (
     <>
       {!isNonModal && <DismissButton onDismiss={onClose} />}
-      {
-        <Component {...dialogProps}>
-          <div {...getContentProps({className})}>
-            {typeof children === "function" ? children(titleProps) : children}
-          </div>
-        </Component>
-      }
+      <Component {...dialogProps}>
+        <div {...getContentProps({className})}>
+          {typeof children === "function" ? children(titleProps) : children}
+        </div>
+      </Component>
       <DismissButton onDismiss={onClose} />
     </>
   );

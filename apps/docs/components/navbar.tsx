@@ -20,7 +20,7 @@ import {
 } from "@heroui/react";
 import {dataFocusVisibleClasses} from "@heroui/theme";
 import {isAppleDevice} from "@react-aria/utils";
-import {cn} from "@heroui/theme";
+import {clsx} from "@heroui/shared-utils";
 import NextLink from "next/link";
 import {usePathname} from "next/navigation";
 import {motion, AnimatePresence} from "framer-motion";
@@ -33,7 +33,7 @@ import {FbRoadmapLink} from "./featurebase/fb-roadmap-link";
 
 import {currentVersion} from "@/utils/version";
 import {siteConfig} from "@/config/site";
-import {Logo, ThemeSwitch} from "@/components";
+import {LargeLogo, SmallLogo, ThemeSwitch} from "@/components";
 import {GithubIcon, SearchLinearIcon} from "@/components/icons";
 import {useIsMounted} from "@/hooks/use-is-mounted";
 import {DocsSidebar} from "@/components/docs/sidebar";
@@ -91,7 +91,7 @@ export const Navbar: FC<NavbarProps> = ({children, routes, mobileRoutes = [], sl
     "/docs/guide/upgrade-to-v2",
   ];
 
-  const navLinkClasses = cn(
+  const navLinkClasses = clsx(
     link({color: "foreground"}),
     "data-[active=true]:text-primary data-[active=true]:font-semibold",
   );
@@ -122,7 +122,7 @@ export const Navbar: FC<NavbarProps> = ({children, routes, mobileRoutes = [], sl
       }
       startContent={
         <SearchLinearIcon
-          className="text-base text-default-400 pointer-events-none shrink-0"
+          className="text-base text-default-400 pointer-events-none flex-shrink-0"
           size={16}
           strokeWidth={2}
         />
@@ -162,8 +162,8 @@ export const Navbar: FC<NavbarProps> = ({children, routes, mobileRoutes = [], sl
   return (
     <HeroUINavbar
       ref={ref}
-      className={cn({
-        "z-100001": isMenuOpen,
+      className={clsx({
+        "z-[100001]": isMenuOpen,
       })}
       classNames={{
         base: "bg-white/[.90] dark:bg-black/[.65]",
@@ -182,25 +182,26 @@ export const Navbar: FC<NavbarProps> = ({children, routes, mobileRoutes = [], sl
             href="/"
             onClick={() => handlePressNavbarItem("Home", "/")}
           >
-            <Logo className="h-6" />
+            <SmallLogo className="w-6 h-6 md:hidden" />
+            <LargeLogo className="h-5 md:h-6" />
           </NextLink>
           {versionChip}
-          {/* <Chip
+          <Chip
             as={NextLink}
             className="hidden sm:flex bg-default-200/50 border-1 hover:bg-default-200/80 border-default-400/50 cursor-pointer"
             classNames={{
               content: "font-semibold text-foreground text-xs ",
             }}
             color="primary"
-            href="/blog/v2.8.0"
+            href="/blog/v2.7.0"
             variant="flat"
-            onClick={() => handlePressNavbarItem("HeroUI v2.8.0", "/blog/v2.8.0")}
+            onClick={() => handlePressNavbarItem("HeroUI v2.7.0", "/blog/v2.7.0")}
           >
-            HeroUI v2.8.0&nbsp;
+            HeroUI v2.7.0&nbsp;
             <span aria-label="emoji" role="img">
               🔥
             </span>
-          </Chip> */}
+          </Chip>
         </NavbarBrand>
       </NavbarContent>
 
@@ -219,14 +220,14 @@ export const Navbar: FC<NavbarProps> = ({children, routes, mobileRoutes = [], sl
         <NavbarItem className="flex h-full items-center">
           <ThemeSwitch
             classNames={{
-              wrapper: "text-default-500! dark:text-default-500!",
+              wrapper: "!text-default-500 dark:!text-default-500",
             }}
           />
         </NavbarItem>
         <NavbarItem className="flex h-full items-center">
           <button
-            className={cn(
-              "transition-opacity p-1 hover:opacity-80 rounded-full cursor-pointer outline-solid outline-transparent",
+            className={clsx(
+              "transition-opacity p-1 hover:opacity-80 rounded-full cursor-pointer outline-none",
               // focus ring
               ...dataFocusVisibleClasses,
             )}
@@ -336,7 +337,7 @@ export const Navbar: FC<NavbarProps> = ({children, routes, mobileRoutes = [], sl
           <ThemeSwitch
             className="border-1 border-default-200 rounded-full h-full min-w-10 min-h-10 flex items-center justify-center"
             classNames={{
-              wrapper: "text-default-400! dark:text-default-500!",
+              wrapper: "!text-default-400 dark:!text-default-500",
             }}
           />
         </NavbarItem>

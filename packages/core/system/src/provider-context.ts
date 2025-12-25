@@ -14,7 +14,7 @@ export type ProviderContextProps = {
    *
    * @default undefined
    */
-  labelPlacement?: "inside" | "outside" | "outside-left" | "outside-top" | undefined;
+  labelPlacement?: "inside" | "outside" | "outside-left" | undefined;
   /**
   /**
    * Whether to disable the ripple effect in the whole application.

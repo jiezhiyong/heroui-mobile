@@ -1,7 +1,8 @@
 import type {UseInputProps} from "./use-input";
 
-import {dataAttr, mergeProps} from "@heroui/shared-utils";
+import {dataAttr} from "@heroui/shared-utils";
 import {forwardRef} from "@heroui/system";
+import {mergeProps} from "@react-aria/utils";
 import {useMemo, useState} from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import {CloseFilledIcon} from "@heroui/shared-icons";
@@ -24,7 +25,7 @@ export type TextareaHeightChangeMeta = {
 
 export interface TextAreaProps extends Omit<UseInputProps<HTMLTextAreaElement>, OmittedInputProps> {
   /**
-   * Whether the textarea should automatically grow vertically to accommodate content.
+   * Whether the textarea should automatically grow vertically to accomodate content.
    * @default false
    */
   disableAutosize?: boolean;

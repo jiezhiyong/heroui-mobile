@@ -2,7 +2,6 @@ import type {ButtonProps} from "@heroui/react";
 
 import {useClipboard} from "@heroui/use-clipboard";
 import {memo} from "react";
-import {Tooltip} from "@heroui/react";
 
 import {PreviewButton} from "./preview-button";
 
@@ -33,17 +32,7 @@ export const CopyButton = memo<CopyButtonProps>(({value, className, ...buttonPro
     copy(value);
   };
 
-  return (
-    <Tooltip
-      key={copied ? "copied" : "copy"}
-      className="text-xs px-2"
-      closeDelay={0}
-      content={copied ? "Copied!" : "Copy"}
-      radius="md"
-    >
-      <PreviewButton className={className} icon={icon} onPress={handleCopy} {...buttonProps} />
-    </Tooltip>
-  );
+  return <PreviewButton className={className} icon={icon} onPress={handleCopy} {...buttonProps} />;
 });
 
 CopyButton.displayName = "CopyButton";

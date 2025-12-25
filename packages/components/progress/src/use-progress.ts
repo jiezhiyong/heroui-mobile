@@ -5,9 +5,10 @@ import type {HTMLHeroUIProps} from "@heroui/system";
 import type {ReactRef} from "@heroui/react-utils";
 
 import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {progress, cn} from "@heroui/theme";
+import {progress} from "@heroui/theme";
 import {useDOMRef} from "@heroui/react-utils";
-import {clampPercentage, dataAttr, objectToDeps, mergeProps} from "@heroui/shared-utils";
+import {clampPercentage, clsx, dataAttr, objectToDeps} from "@heroui/shared-utils";
+import {mergeProps} from "@react-aria/utils";
 import {useMemo, useCallback} from "react";
 import {useIsMounted} from "@heroui/use-is-mounted";
 import {useProgressBar as useAriaProgress} from "@react-aria/progress";
@@ -69,7 +70,7 @@ export function useProgress(originalProps: UseProgressProps) {
 
   const domRef = useDOMRef(ref);
 
-  const baseStyles = cn(classNames?.base, className);
+  const baseStyles = clsx(classNames?.base, className);
   const [, isMounted] = useIsMounted({
     rerender: true,
     delay: 100,

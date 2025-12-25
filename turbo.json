@@ -1,13 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["tsconfig.json"],
-  "globalEnv": [
-    "IS_VERCEL_ENV",
-    "IS_PREVIEW",
-    "IS_VA_ENABLED",
-    "ENABLE_EXPERIMENTAL_COREPACK",
-    "PLAIN_USER_AUTHENTICATED"
-  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],

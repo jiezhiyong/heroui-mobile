@@ -6,10 +6,11 @@ import type {ReactRef} from "@heroui/react-utils";
 
 import {useMemo, useCallback} from "react";
 import {useFocusRing} from "@react-aria/focus";
-import {user, cn} from "@heroui/theme";
-import {dataAttr, mergeProps} from "@heroui/shared-utils";
+import {user} from "@heroui/theme";
+import {clsx, dataAttr} from "@heroui/shared-utils";
 import {filterDOMProps} from "@heroui/react-utils";
 import {useDOMRef} from "@heroui/react-utils";
+import {mergeProps} from "@react-aria/utils";
 interface Props {
   /**
    * Ref to the DOM node.
@@ -83,7 +84,7 @@ export function useUser(props: UseUserProps) {
 
   const slots = useMemo(() => user(), []);
 
-  const baseStyles = cn(classNames?.base, className);
+  const baseStyles = clsx(classNames?.base, className);
 
   const getUserProps = useCallback<PropGetter>(
     () => ({

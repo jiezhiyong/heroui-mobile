@@ -10,8 +10,8 @@ import {filterDOMProps} from "@heroui/react-utils";
 import {useRangeCalendar as useAriaRangeCalendar} from "@react-aria/calendar";
 import {useRangeCalendarState} from "@react-stately/calendar";
 import {createCalendar} from "@internationalized/date";
-import {chain} from "@heroui/shared-utils";
-import {cn} from "@heroui/theme";
+import {clsx} from "@heroui/shared-utils";
+import {chain} from "@react-aria/utils";
 
 import {useCalendarBase} from "./use-calendar-base";
 
@@ -76,7 +76,7 @@ export function useRangeCalendar<T extends DateValue>({
   const {title, calendarProps, prevButtonProps, nextButtonProps, errorMessageProps} =
     useAriaRangeCalendar(originalProps, state, domRef);
 
-  const baseStyles = cn(classNames?.base, className);
+  const baseStyles = clsx(classNames?.base, className);
 
   const buttonPickerProps: ButtonProps = {
     ...buttonPickerPropsProp,

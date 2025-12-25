@@ -109,7 +109,7 @@ const pagination = tv({
     },
     isCompact: {
       true: {
-        wrapper: "gap-0 shadow-xs",
+        wrapper: "gap-0 shadow-sm",
         item: [
           "shadow-none",
           "first-of-type:rounded-e-none",
@@ -344,7 +344,7 @@ const pagination = tv({
         "flex-wrap",
         "truncate",
         "box-border",
-        "outline-solid outline-transparent",
+        "outline-none",
         "items-center",
         "justify-center",
         "text-default-foreground",
@@ -358,7 +358,7 @@ const pagination = tv({
     {
       slots: ["item", "prev", "next"],
       variant: ["flat", "bordered", "faded"],
-      class: ["shadow-xs"],
+      class: ["shadow-sm"],
     },
     {
       slots: ["item", "prev", "next"],

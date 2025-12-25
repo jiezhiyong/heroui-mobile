@@ -11,16 +11,18 @@ import type {ScrollShadowProps} from "@heroui/scroll-shadow";
 import type {ButtonProps} from "@heroui/button";
 import type {AsyncLoadable, PressEvent} from "@react-types/shared";
 
-import {dataAttr, objectToDeps, chain, mergeProps} from "@heroui/shared-utils";
+import {chain, mergeProps} from "@react-aria/utils";
+import {clsx, dataAttr, objectToDeps} from "@heroui/shared-utils";
 import {useEffect, useMemo, useRef} from "react";
 import {useDOMRef} from "@heroui/react-utils";
 import {useComboBoxState} from "@react-stately/combobox";
 import {useFilter} from "@react-aria/i18n";
-import {autocomplete, cn} from "@heroui/theme";
+import {autocomplete} from "@heroui/theme";
 import {useSafeLayoutEffect} from "@heroui/use-safe-layout-effect";
 import {mapPropsVariants, useProviderContext} from "@heroui/system";
 import {useComboBox} from "@react-aria/combobox";
 import {FormContext, useSlottedContext} from "@heroui/form";
+import {ariaShouldCloseOnInteractOutside} from "@heroui/aria-utils";
 
 interface Props<T> extends Omit<HTMLHeroUIProps<"input">, keyof ComboBoxProps<T>> {
   /**
@@ -154,11 +156,9 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
   const isClearable =
     originalProps.disableClearable !== undefined
       ? !originalProps.disableClearable
-      : originalProps.isDisabled
+      : originalProps.isReadOnly
         ? false
-        : originalProps.isReadOnly
-          ? false
-          : originalProps.isClearable;
+        : originalProps.isClearable;
 
   const {
     ref,
@@ -297,7 +297,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
     ),
     listboxProps: mergeProps(
       {
-        hideEmptyContent: allowsCustomValue && !listboxProps?.emptyContent,
+        hideEmptyContent: allowsCustomValue,
         emptyContent: "No results found.",
         disableAnimation,
       },
@@ -328,7 +328,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
     ),
   };
 
-  const baseStyles = cn(classNames?.base, className);
+  const baseStyles = clsx(classNames?.base, className);
   const isOpen = slotsProps.listboxProps?.hideEmptyContent
     ? state.isOpen && !!state.collection.size
     : state.isOpen;
@@ -442,15 +442,13 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
       ...mergeProps(buttonProps, slotsProps.selectorButtonProps),
       "data-open": dataAttr(state.isOpen),
       className: slots.selectorButton({
-        class: cn(classNames?.selectorButton, slotsProps.selectorButtonProps?.className),
+        class: clsx(classNames?.selectorButton, slotsProps.selectorButtonProps?.className),
       }),
     }) as ButtonProps;
 
   const getClearButtonProps = () =>
     ({
-      ...slotsProps.clearButtonProps,
-      preventFocusOnPress: true,
-      excludeFromTabOrder: true,
+      ...mergeProps(buttonProps, slotsProps.clearButtonProps),
       // disable original focus and state toggle from react aria
       onPressStart: () => {
         // this is in PressStart for mobile so that touching the clear button doesn't remove focus from
@@ -468,7 +466,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
       },
       "data-visible": !!state.selectedItem || state.inputValue?.length > 0,
       className: slots.clearButton({
-        class: cn(classNames?.clearButton, slotsProps.clearButtonProps?.className),
+        class: clsx(classNames?.clearButton, slotsProps.clearButtonProps?.className),
       }),
     }) as ButtonProps;
 
@@ -527,13 +525,16 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
       classNames: {
         ...slotsProps.popoverProps?.classNames,
         content: slots.popoverContent({
-          class: cn(
+          class: clsx(
             classNames?.popoverContent,
             slotsProps.popoverProps?.classNames?.["content"],
             props.className,
           ),
         }),
       },
+      shouldCloseOnInteractOutside: popoverProps?.shouldCloseOnInteractOutside
+        ? popoverProps.shouldCloseOnInteractOutside
+        : (element: Element) => ariaShouldCloseOnInteractOutside(element, inputWrapperRef, state),
       // when the popover is open, the focus should be on input instead of dialog
       // therefore, we skip dialog focus here
       disableDialogFocus: true,
@@ -551,7 +552,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
   const getListBoxWrapperProps: PropGetter = (props: any = {}) => ({
     ...mergeProps(slotsProps.scrollShadowProps, props),
     className: slots.listboxWrapper({
-      class: cn(
+      class: clsx(
         classNames?.listboxWrapper,
         slotsProps.scrollShadowProps?.className,
         props?.className,
@@ -564,7 +565,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
 
   const getEndContentWrapperProps: PropGetter = (props: any = {}) => ({
     className: slots.endContentWrapper({
-      class: cn(classNames?.endContentWrapper, props?.className),
+      class: clsx(classNames?.endContentWrapper, props?.className),
     }),
     onPointerDown: chain(props.onPointerDown, (e: React.PointerEvent) => {
       if (e.button === 0 && e.currentTarget === e.target) {

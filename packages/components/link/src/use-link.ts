@@ -1,6 +1,6 @@
 import type {AriaLinkProps} from "@react-types/link";
 import type {LinkVariantProps} from "@heroui/theme";
-import type {MouseEventHandler, AnchorHTMLAttributes} from "react";
+import type {MouseEventHandler} from "react";
 import type {ReactRef} from "@heroui/react-utils";
 import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
 
@@ -9,8 +9,9 @@ import {useAriaLink} from "@heroui/use-aria-link";
 import {mapPropsVariants, useProviderContext} from "@heroui/system";
 import {useDOMRef} from "@heroui/react-utils";
 import {useFocusRing} from "@react-aria/focus";
-import {dataAttr, objectToDeps, mergeProps} from "@heroui/shared-utils";
+import {dataAttr, objectToDeps} from "@heroui/shared-utils";
 import {useMemo, useCallback} from "react";
+import {mergeProps} from "@react-aria/utils";
 
 interface Props extends HTMLHeroUIProps<"a">, LinkVariantProps {
   /**
@@ -110,9 +111,7 @@ export function useLink(originalProps: UseLinkProps) {
       "data-focus": dataAttr(isFocused),
       "data-disabled": dataAttr(originalProps.isDisabled),
       "data-focus-visible": dataAttr(isFocusVisible),
-      ...mergeProps(focusProps, linkProps, otherProps, {
-        href: (linkProps as AnchorHTMLAttributes<HTMLAnchorElement>).href,
-      }),
+      ...mergeProps(focusProps, linkProps, otherProps),
     };
   }, [styles, isFocused, isFocusVisible, focusProps, linkProps, otherProps]);
 

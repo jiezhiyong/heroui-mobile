@@ -1,6 +1,6 @@
 import type {Language} from "prism-react-renderer";
 
-import {cn} from "@heroui/theme";
+import {clsx} from "@heroui/shared-utils";
 import * as Components from "@heroui/react";
 import NextImage from "next/image";
 import {usePostHog} from "posthog-js/react";
@@ -14,7 +14,6 @@ import {CarbonAd} from "@/components/ads/carbon-ad";
 import * as DocsComponents from "@/components/docs/components";
 import * as BlogComponents from "@/components/blog/components";
 import {Codeblock} from "@/components/docs/components";
-import {DeprecationMessage} from "@/components/docs/deprecation-message";
 import {VirtualAnchor, virtualAnchorEncode} from "@/components/virtual-anchor";
 import {
   Table as StaticTable,
@@ -37,7 +36,7 @@ const Table: React.FC<{children?: React.ReactNode}> = ({children}) => {
 const Thead: React.FC<{children?: React.ReactNode}> = ({children}) => {
   return (
     <thead
-      className={cn(
+      className={clsx(
         "[&>tr]:h-12",
         "[&>tr>th]:py-0",
         "[&>tr>th]:align-middle",
@@ -95,7 +94,7 @@ const LinkedHeading: React.FC<LinkedHeadingProps> = ({
 
   return (
     <Component
-      className={cn({"linked-heading": linked}, linked ? {} : className)}
+      className={clsx({"linked-heading": linked}, linked ? {} : className)}
       data-id={id}
       data-level={level}
       data-name={props.children}
@@ -118,7 +117,7 @@ const List: React.FC<{children?: React.ReactNode}> = ({children}) => {
 const InlineCode = ({children, className}: {children?: React.ReactNode; className?: string}) => {
   return (
     <Components.Code
-      className={cn(
+      className={clsx(
         'p-0 relative before:content-["`"] after:content-["`"] font-semibold font-mono text-small rounded-md text-default-900 dark:text-default-500 bg-transparent',
         className,
       )}
@@ -152,7 +151,7 @@ const Code = ({
       fullWidth
       hideSymbol
       classNames={{
-        base: cn(
+        base: clsx(
           "px-0 bg-code-background text-code-foreground",
           {
             "items-start": isMultiLine,
@@ -220,7 +219,7 @@ const InlineCodeChip = ({
 }) => {
   return (
     <InlineCode
-      className={cn(
+      className={clsx(
         "before:hidden after:hidden text-tiny rounded-md text-default-600 bg-default-100 dark:bg-default-100/80 px-1.5 py-0.5",
         className,
       )}
@@ -253,7 +252,7 @@ export const APITable: React.FC<APITableProps> = ({data}) => {
         </TableHeader>
         <TableBody>
           {data.map((item, index) => (
-            <TableRow key={index} className="[&>td]:px-2 [&>td]:py-1.5 first:[&>td]:pt-4">
+            <TableRow key={index} className="[&>td]:px-2 [&>td]:py-1.5 [&>td]:first:pt-4">
               <TableCell className="flex items-center gap-1 font-mono text-small whitespace-nowrap">
                 <InlineCodeChip className={item.deprecated ? "line-through" : ""}>
                   {item.attribute}
@@ -276,7 +275,7 @@ export const APITable: React.FC<APITableProps> = ({data}) => {
                     {/* Mobile popover */}
                     <Components.Popover placement="top">
                       <Components.PopoverTrigger>
-                        <button className="flex items-center gap-1 sm:hidden outline-solid outline-transparent">
+                        <button className="flex items-center gap-1 sm:hidden outline-none">
                           <InfoCircle className="text-default-400" size={16} />
                         </button>
                       </Components.PopoverTrigger>
@@ -363,7 +362,6 @@ export const MDXComponents = {
   tr: Trow,
   td: Tcol,
   CarbonAd,
-  DeprecationMessage,
   code: Code,
   ul: List,
   a: (props: React.HTMLAttributes<HTMLAnchorElement>) => <Link {...props} />,

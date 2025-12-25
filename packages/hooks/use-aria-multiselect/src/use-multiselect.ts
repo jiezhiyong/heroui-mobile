@@ -113,12 +113,6 @@ export function useMultiSelect<T>(
   typeSelectProps.onKeyDown = typeSelectProps.onKeyDownCapture;
   delete typeSelectProps.onKeyDownCapture;
 
-  menuTriggerProps.onPressStart = (e) => {
-    if (e.pointerType !== "touch" && e.pointerType !== "keyboard" && !isDisabled) {
-      state.toggle(e.pointerType === "virtual" ? "first" : null);
-    }
-  };
-
   const domProps = filterDOMProps(props, {labelable: true});
   const triggerProps = mergeProps(typeSelectProps, menuTriggerProps, fieldProps);
 
@@ -142,8 +136,11 @@ export function useMultiSelect<T>(
       onKeyUp: props.onKeyUp,
       "aria-labelledby": [
         valueId,
-        triggerProps["aria-labelledby"],
-        triggerProps["aria-label"] && !triggerProps["aria-labelledby"] ? triggerProps.id : null,
+        domProps["aria-label"] !== undefined
+          ? domProps["aria-labelledby"] !== undefined
+            ? domProps["aria-labelledby"]
+            : triggerProps.id
+          : triggerProps["aria-labelledby"],
       ].join(" "),
       onFocus(e: FocusEvent) {
         if (state.isFocused) {

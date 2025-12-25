@@ -1,16 +1,7 @@
-export type ClassValue =
-  | ClassArray
-  | ClassDictionary
-  | string
-  | number
-  | bigint
-  | null
-  | boolean
-  | undefined;
-export type ClassDictionary = Record<string, any>;
-export type ClassArray = ClassValue[];
+import type {ClassValue} from "clsx";
 
-import {cnMerge} from "tailwind-variants";
+import clsx from "clsx";
+import {extendTailwindMerge} from "tailwind-merge";
 
 import {twMergeConfig} from "./tw-merge-config";
 
@@ -19,7 +10,8 @@ import {twMergeConfig} from "./tw-merge-config";
  *
  * So we can use classes like `text-small` or `text-default-500` and override them.
  */
+const twMerge = extendTailwindMerge({extend: twMergeConfig});
 
 export function cn(...inputs: ClassValue[]) {
-  return cnMerge(...inputs)({twMergeConfig});
+  return twMerge(clsx(inputs));
 }

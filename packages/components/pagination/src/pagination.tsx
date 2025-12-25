@@ -6,8 +6,7 @@ import {useLocale} from "@react-aria/i18n";
 import {forwardRef} from "@heroui/system";
 import {PaginationItemType} from "@heroui/use-pagination";
 import {ChevronIcon, EllipsisIcon, ForwardIcon} from "@heroui/shared-icons";
-import {dataAttr} from "@heroui/shared-utils";
-import {cn} from "@heroui/theme";
+import {clsx, dataAttr} from "@heroui/shared-utils";
 
 import {usePagination} from "./use-pagination";
 import PaginationItem from "./pagination-item";
@@ -90,7 +89,7 @@ const Pagination = forwardRef<"nav", PaginationProps>((props, ref) => {
         <PaginationItem
           key={PaginationItemType.NEXT}
           className={slots.next({
-            class: cn(classNames?.next),
+            class: clsx(classNames?.next),
           })}
           data-slot="next"
           getAriaLabel={getItemAriaLabel}
@@ -181,7 +180,7 @@ const Pagination = forwardRef<"nav", PaginationProps>((props, ref) => {
           <PaginationItem
             key={PaginationItemType.DOTS + isBefore}
             className={slots.item({
-              class: cn(classNames?.item, "group"),
+              class: clsx(classNames?.item, "group"),
             })}
             data-slot="item"
             getAriaLabel={getItemAriaLabel}

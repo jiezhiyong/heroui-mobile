@@ -5,8 +5,9 @@ import type {VirtualizationProps} from "./listbox";
 import type {UseListboxReturn} from "./use-listbox";
 
 import {useMemo, useRef, useState} from "react";
+import {mergeProps} from "@react-aria/utils";
 import {useVirtualizer} from "@tanstack/react-virtual";
-import {isEmpty, mergeProps} from "@heroui/shared-utils";
+import {isEmpty} from "@heroui/shared-utils";
 import {useScrollShadow} from "@heroui/scroll-shadow";
 import {filterDOMProps} from "@heroui/react-utils";
 

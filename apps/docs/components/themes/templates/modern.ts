@@ -1,6 +1,8 @@
 import type {Config} from "../types";
 
-import {initialDarkTheme, initialLayout, initialLightTheme} from "../constants";
+import {colors} from "@heroui/theme";
+
+import {initialLayout} from "../constants";
 
 export const modern: Config = {
   name: "modern",
@@ -18,7 +20,7 @@ export const modern: Config = {
     layoutColor: {
       foreground: "#4a3d77",
       background: "#f9f7fd",
-      overlay: initialLightTheme.layoutColor.overlay,
+      overlay: colors.black,
       focus: "#7828c8",
     },
     contentColor: {
@@ -42,7 +44,7 @@ export const modern: Config = {
     layoutColor: {
       foreground: "#d0aaff",
       background: "#1b1526",
-      overlay: initialDarkTheme.layoutColor.overlay,
+      overlay: colors.white,
       focus: "#9353d3",
     },
     contentColor: {

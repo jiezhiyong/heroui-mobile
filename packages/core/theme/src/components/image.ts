@@ -102,7 +102,7 @@ const image = tv({
           "before:absolute",
           "before:inset-0",
           "before:-translate-x-full",
-          "before:animate-shimmer",
+          "before:animate-[shimmer_2s_infinite]",
           "before:border-t",
           "before:border-content4/30",
           "before:bg-gradient-to-r",

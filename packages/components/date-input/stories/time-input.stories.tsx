@@ -47,7 +47,7 @@ export default {
       control: {
         type: "select",
       },
-      options: ["inside", "outside", "outside-left", "outside-top"],
+      options: ["inside", "outside", "outside-left"],
     },
     isDisabled: {
       control: {
@@ -90,7 +90,6 @@ const LabelPlacementTemplate = (args: TimeInputProps) => (
     <TimeInput {...args} description="inside" />
     <TimeInput {...args} description="outside" labelPlacement="outside" />
     <TimeInput {...args} description="outside-left" labelPlacement="outside-left" />
-    <TimeInput {...args} description="outside-top" labelPlacement="outside-top" />
   </div>
 );
 
@@ -235,7 +234,7 @@ export const StartContent = {
     ...defaultProps,
     labelPlacement: "outside",
     startContent: (
-      <ClockCircleLinearIcon className="text-xl text-default-400 pointer-events-none shrink-0" />
+      <ClockCircleLinearIcon className="text-xl text-default-400 pointer-events-none flex-shrink-0" />
     ),
   },
 };
@@ -247,7 +246,7 @@ export const EndContent = {
     ...defaultProps,
     labelPlacement: "outside",
     endContent: (
-      <ClockCircleLinearIcon className="text-xl text-default-400 pointer-events-none shrink-0" />
+      <ClockCircleLinearIcon className="text-xl text-default-400 pointer-events-none flex-shrink-0" />
     ),
   },
 };

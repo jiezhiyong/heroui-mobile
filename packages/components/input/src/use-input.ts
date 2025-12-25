@@ -4,22 +4,16 @@ import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
 import type {AriaTextFieldProps} from "@react-types/textfield";
 import type {Ref} from "react";
 
-import {mapPropsVariants, useProviderContext, useLabelPlacement} from "@heroui/system";
+import {mapPropsVariants, useLabelPlacement, useProviderContext} from "@heroui/system";
 import {useSafeLayoutEffect} from "@heroui/use-safe-layout-effect";
 import {useFocusRing} from "@react-aria/focus";
-import {input, cn} from "@heroui/theme";
+import {input} from "@heroui/theme";
 import {useDOMRef, filterDOMProps} from "@heroui/react-utils";
 import {useFocusWithin, useHover, usePress} from "@react-aria/interactions";
-import {
-  dataAttr,
-  isEmpty,
-  objectToDeps,
-  safeAriaLabel,
-  chain,
-  mergeProps,
-} from "@heroui/shared-utils";
+import {clsx, dataAttr, isEmpty, objectToDeps, safeAriaLabel} from "@heroui/shared-utils";
 import {useControlledState} from "@react-stately/utils";
 import {useMemo, useCallback, useState} from "react";
+import {chain, mergeProps} from "@react-aria/utils";
 import {useTextField} from "@react-aria/textfield";
 import {FormContext, useSlottedContext} from "@heroui/form";
 
@@ -156,7 +150,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
   const isHiddenType = type === "hidden";
   const isMultiline = originalProps.isMultiline;
 
-  const baseStyles = cn(classNames?.base, className, isFilled ? "is-filled" : "");
+  const baseStyles = clsx(classNames?.base, className, isFilled ? "is-filled" : "");
 
   const handleClear = useCallback(() => {
     if (isFileTypeInput) {
@@ -192,9 +186,11 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
       validationBehavior,
       autoCapitalize: originalProps.autoCapitalize as AutoCapitalize,
       value: inputValue,
-      "aria-label": originalProps.label
-        ? originalProps["aria-label"]
-        : safeAriaLabel(originalProps["aria-label"], originalProps.placeholder),
+      "aria-label": safeAriaLabel(
+        originalProps["aria-label"],
+        originalProps.label,
+        originalProps.placeholder,
+      ),
       inputElementType: isMultiline ? "textarea" : "input",
       onChange: setInputValue,
     },
@@ -247,26 +243,17 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
   const hasPlaceholder = !!props.placeholder;
   const hasLabel = !!label;
   const hasHelper = !!description || !!errorMessage;
-  const isOutsideLeft = labelPlacement === "outside-left";
-  const isOutsideTop = labelPlacement === "outside-top";
-
-  const shouldLabelBeOutside =
-    // label is outside only when some placeholder is there
-    labelPlacement === "outside" ||
-    // label is outside regardless of placeholder
-    isOutsideLeft ||
-    isOutsideTop;
-
+  const shouldLabelBeOutside = labelPlacement === "outside" || labelPlacement === "outside-left";
   const shouldLabelBeInside = labelPlacement === "inside";
   const isPlaceholderShown = domRef.current
     ? (!domRef.current.value || domRef.current.value === "" || !inputValue || inputValue === "") &&
       hasPlaceholder
     : false;
+  const isOutsideLeft = labelPlacement === "outside-left";
 
   const hasStartContent = !!startContent;
   const isLabelOutside = shouldLabelBeOutside
-    ? isOutsideLeft ||
-      isOutsideTop ||
+    ? labelPlacement === "outside-left" ||
       hasPlaceholder ||
       (labelPlacement === "outside" && hasStartContent)
     : false;
@@ -386,7 +373,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
         "data-has-end-content": dataAttr(!!endContent),
         "data-type": type,
         className: slots.input({
-          class: cn(
+          class: clsx(
             classNames?.input,
             isFilled ? "is-filled" : "",
             isMultiline ? "pe-0" : "",
@@ -436,7 +423,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
         "data-focus-visible": dataAttr(isFocusVisible),
         "data-focus": dataAttr(isFocused),
         className: slots.inputWrapper({
-          class: cn(classNames?.inputWrapper, isFilled ? "is-filled" : ""),
+          class: clsx(classNames?.inputWrapper, isFilled ? "is-filled" : ""),
         }),
         ...mergeProps(props, hoverProps),
         onClick: (e) => {
@@ -473,7 +460,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
           }
         },
         className: slots.innerWrapper({
-          class: cn(classNames?.innerWrapper, props?.className),
+          class: clsx(classNames?.innerWrapper, props?.className),
         }),
       };
     },
@@ -486,7 +473,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
         ...props,
         "data-slot": "main-wrapper",
         className: slots.mainWrapper({
-          class: cn(classNames?.mainWrapper, props?.className),
+          class: clsx(classNames?.mainWrapper, props?.className),
         }),
       };
     },
@@ -499,7 +486,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
         ...props,
         "data-slot": "helper-wrapper",
         className: slots.helperWrapper({
-          class: cn(classNames?.helperWrapper, props?.className),
+          class: clsx(classNames?.helperWrapper, props?.className),
         }),
       };
     },
@@ -512,7 +499,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
         ...props,
         ...descriptionProps,
         "data-slot": "description",
-        className: slots.description({class: cn(classNames?.description, props?.className)}),
+        className: slots.description({class: clsx(classNames?.description, props?.className)}),
       };
     },
     [slots, classNames?.description],
@@ -524,7 +511,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
         ...props,
         ...errorMessageProps,
         "data-slot": "error-message",
-        className: slots.errorMessage({class: cn(classNames?.errorMessage, props?.className)}),
+        className: slots.errorMessage({class: clsx(classNames?.errorMessage, props?.className)}),
       };
     },
     [slots, errorMessageProps, classNames?.errorMessage],
@@ -541,7 +528,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
         "data-slot": "clear-button",
         "data-focus-visible": dataAttr(isClearButtonFocusVisible),
         className: slots.clearButton({
-          class: cn(classNames?.clearButton, props?.className),
+          class: clsx(classNames?.clearButton, props?.className),
         }),
         ...mergeProps(clearPressProps, clearFocusProps),
       };
@@ -563,7 +550,6 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
     hasStartContent,
     isLabelOutside,
     isOutsideLeft,
-    isOutsideTop,
     isLabelOutsideAsPlaceholder,
     shouldLabelBeOutside,
     shouldLabelBeInside,

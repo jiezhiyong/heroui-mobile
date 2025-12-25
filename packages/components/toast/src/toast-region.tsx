@@ -6,12 +6,11 @@ import type {ToastProps, ToastPlacement} from "./use-toast";
 import {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import {useToastRegion} from "@react-aria/toast";
 import {useHover} from "@react-aria/interactions";
-import {toastRegion, cn} from "@heroui/theme";
-import {mergeProps} from "@heroui/shared-utils";
-import {AnimatePresence} from "framer-motion";
+import {mergeProps} from "@react-aria/utils";
+import {toastRegion} from "@heroui/theme";
+import {clsx} from "@heroui/shared-utils";
 
 import Toast from "./toast";
-import {isToastClosing} from "./toast-provider";
 
 export interface RegionProps {
   className?: string;
@@ -53,7 +52,7 @@ export function ToastRegion<T extends ToastProps>({
     [disableAnimation],
   );
 
-  const baseStyles = cn(classNames?.base, className);
+  const baseStyles = clsx(classNames?.base, className);
 
   useEffect(() => {
     function handleTouchOutside(event: TouchEvent) {
@@ -83,41 +82,37 @@ export function ToastRegion<T extends ToastProps>({
       data-placement={placement}
       onTouchStart={handleTouchStart}
     >
-      <AnimatePresence>
-        {[...toastQueue.visibleToasts].reverse().map((toast: QueuedToast<ToastProps>, index) => {
-          if (disableAnimation && total - index > maxVisibleToasts) {
-            return null;
-          }
-
-          if (
-            disableAnimation ||
-            total - index <= 4 ||
-            (isHovered && total - index <= maxVisibleToasts + 1)
-          ) {
-            const isClosing = isToastClosing(toast.key);
-
-            return (
-              <Toast
-                key={toast.key}
-                state={toastQueue}
-                toast={toast}
-                {...mergeProps(toastProps, toast.content, {isClosing})}
-                disableAnimation={disableAnimation}
-                heights={heights}
-                index={index}
-                isRegionExpanded={isHovered || isTouched}
-                maxVisibleToasts={maxVisibleToasts}
-                placement={placement}
-                setHeights={setHeights}
-                toastOffset={toastOffset}
-                total={total}
-              />
-            );
-          }
-
+      {[...toastQueue.visibleToasts].reverse().map((toast: QueuedToast<ToastProps>, index) => {
+        if (disableAnimation && total - index > maxVisibleToasts) {
           return null;
-        })}
-      </AnimatePresence>
+        }
+
+        if (
+          disableAnimation ||
+          total - index <= 4 ||
+          (isHovered && total - index <= maxVisibleToasts + 1)
+        ) {
+          return (
+            <Toast
+              key={toast.key}
+              state={toastQueue}
+              toast={toast}
+              {...mergeProps(toastProps, toast.content)}
+              disableAnimation={disableAnimation}
+              heights={heights}
+              index={index}
+              isRegionExpanded={isHovered || isTouched}
+              maxVisibleToasts={maxVisibleToasts}
+              placement={placement}
+              setHeights={setHeights}
+              toastOffset={toastOffset}
+              total={total}
+            />
+          );
+        }
+
+        return null;
+      })}
     </div>
   );
 }
