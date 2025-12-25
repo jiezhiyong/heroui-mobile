@@ -1,9 +1,9 @@
-import type { {{capitalize componentName}}VariantProps } from "@heroui-mobile/theme";
+import type { SafeAreaInsetBottomVariantProps } from "@heroui-mobile/theme";
 import type { HTMLHeroUIProps } from "@heroui/system";
 import type { ReactRef } from "@heroui/react-utils";
 
 import { mapPropsVariants } from "@heroui/system";
-import { {{camelCase componentName}} } from "@heroui-mobile/theme";
+import { safeAreaInsetBottom } from "@heroui-mobile/theme";
 import { useDOMRef } from "@heroui/react-utils";
 import { objectToDeps } from "@heroui/shared-utils";
 import { useMemo } from "react";
@@ -15,10 +15,10 @@ interface Props extends HTMLHeroUIProps<"div"> {
   ref?: ReactRef<HTMLElement | null>;
 }
 
-export type Use{{capitalize componentName}}Props = Props & {{capitalize componentName}}VariantProps;
+export type UseSafeAreaInsetBottomProps = Props & SafeAreaInsetBottomVariantProps;
 
-export function use{{capitalize componentName}}(originalProps: Use{{capitalize componentName}}Props) {
-  const [props, variantProps] = mapPropsVariants(originalProps, {{camelCase componentName}}.variantKeys);
+export function useSafeAreaInsetBottom(originalProps: UseSafeAreaInsetBottomProps) {
+  const [props, variantProps] = mapPropsVariants(originalProps, safeAreaInsetBottom.variantKeys);
 
   const { ref, as, className, ...otherProps } = props;
 
@@ -28,7 +28,7 @@ export function use{{capitalize componentName}}(originalProps: Use{{capitalize c
 
   const styles = useMemo(
     () =>
-      {{camelCase componentName}}({
+      safeAreaInsetBottom({
         ...variantProps,
         className,
       }),
@@ -38,4 +38,4 @@ export function use{{capitalize componentName}}(originalProps: Use{{capitalize c
   return { Component, styles, domRef, ...otherProps };
 }
 
-export type Use{{capitalize componentName}}Return = ReturnType<typeof use{{capitalize componentName}}>;
+export type UseSafeAreaInsetBottomReturn = ReturnType<typeof useSafeAreaInsetBottom>;

@@ -1,15 +1,15 @@
-# @heroui-mobile/button
+# @heroui-mobile/sms-ticker
 
-Buttons allow users to perform actions and choose with a single tap.
+短信验证码倒计时
 
-Please refer to the [documentation](https://heroui.com/docs/components/button) for more information.
+> This is an internal utility, not intended for public usage.
 
 ## Installation
 
 ```sh
-yarn add @heroui-mobile/button
+yarn add @heroui-mobile/sms-ticker
 # or
-npm i @heroui-mobile/button
+npm i @heroui-mobile/sms-ticker
 ```
 
 ## Contribution

@@ -9,15 +9,12 @@ export function swapColorValues<T extends Object>(colors: T) {
     const key1 = keys[i];
     const key2 = keys[length - 1 - i];
 
-    // @ts-ignore
     swappedColors[key1] = colors[key2];
-    // @ts-ignore
     swappedColors[key2] = colors[key1];
   }
   if (length % 2 !== 0) {
     const middleKey = keys[Math.floor(length / 2)];
 
-    // @ts-ignore
     swappedColors[middleKey] = colors[middleKey];
   }
 
@@ -29,7 +26,6 @@ export function removeDefaultKeys<T extends Object>(obj: T) {
 
   for (const key in obj) {
     if (key.endsWith("-DEFAULT")) {
-      // @ts-ignore
       newObj[key.replace("-DEFAULT", "")] = obj[key];
       continue;
     }

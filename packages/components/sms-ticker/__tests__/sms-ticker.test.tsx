@@ -1,19 +1,21 @@
+import type { SmsTickerRefApi } from "../src";
+
 import * as React from "react";
 import { render } from "@testing-library/react";
 
-import { {{capitalize componentName}} } from "../src";
+import { SmsTicker } from "../src";
 
-describe("{{capitalize componentName}}", () => {
+describe("SmsTicker", () => {
   it("should render correctly", () => {
-    const wrapper = render(<{{capitalize componentName}} />);
+    const wrapper = render(<SmsTicker />);
 
     expect(() => wrapper.unmount()).not.toThrow();
   });
 
   it("ref should be forwarded", () => {
-    const ref = React.createRef<HTMLDivElement>();
+    const ref = React.createRef<SmsTickerRefApi>();
 
-    render(<{{capitalize componentName}} ref={ref} />);
+    render(<SmsTicker ref={ref} />);
     expect(ref.current).not.toBeNull();
   });
 });

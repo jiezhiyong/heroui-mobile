@@ -80,7 +80,7 @@ export function useStackblitz(props: UseSandpackProps) {
   "devDependencies": {
     "@vitejs/plugin-react": "4.3.4",
     "vite": "6.0.6",
-    "autoprefixer": "10.4.20",
+    "autoprefixer": "10.4.23",
     "postcss": "8.4.49",
     "tailwindcss": "3.4.17"
   },

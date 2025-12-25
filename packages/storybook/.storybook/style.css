@@ -71,3 +71,20 @@ h3 {
 .dark #docs-root tbody tr:not(:first-child) {
   border-top: 1px solid #292929 !important;
 }
+
+@layer utilities {
+  .bg-stripes-sky {
+    background-color: #38bdf81a;
+    background-image: linear-gradient(
+      135deg,
+      #0ea5e980 10%,
+      #0000 0,
+      #0000 50%,
+      #0ea5e980 0,
+      #0ea5e980 60%,
+      #0000 0,
+      #0000
+    );
+    background-size: 7.07px 7.07px;
+  }
+}

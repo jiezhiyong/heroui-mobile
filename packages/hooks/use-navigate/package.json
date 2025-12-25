@@ -1,6 +1,6 @@
 {
   "name": "@heroui-mobile/use-navigate",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "包装 navigate 函数，自动保留已有的 query 参数",
   "keywords": [
     "use-navigate"

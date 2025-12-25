@@ -1,9 +1,9 @@
 {
-  "name": "@heroui-mobile/button",
-  "version": "2.2.22",
-  "description": "Buttons allow users to perform actions and choose with a single tap.",
+  "name": "@heroui-mobile/safe-area-inset-bottom",
+  "version": "1.0.0",
+  "description": "底部安全区域",
   "keywords": [
-    "button"
+    "safe-area-inset-bottom"
   ],
   "author": "nobody <nobody@abc.com>",
   "homepage": "https://github.com/nobody/heroui-mobile",
@@ -16,38 +16,33 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nobody/heroui-mobile.git",
+    "directory": "packages/components/safe-area-inset-bottom"
+  },
   "scripts": {
     "build": "tsup src --dts",
+    "build:fast": "tsup src",
     "dev": "pnpm build:fast --watch",
     "clean": "rimraf dist .turbo",
     "typecheck": "tsc --noEmit",
-    "build:fast": "tsup src",
     "prepack": "clean-package",
     "postpack": "clean-package restore"
   },
   "peerDependencies": {
     "react": ">=18 || >=19.0.0-rc.0",
     "react-dom": ">=18 || >=19.0.0-rc.0",
-    "framer-motion": ">=11.5.6 || >=12.0.0-alpha.1",
-    "@heroui-mobile/theme": "workspace:*",
+    "@heroui-mobile/theme": ">=1.0.0",
     "@heroui/system": ">=2.4.18"
   },
   "dependencies": {
     "@heroui/shared-utils": "2.1.9",
-    "@heroui/react-utils": "2.1.11",
-    "@heroui/use-aria-button": "2.2.21",
-    "@heroui/ripple": "2.2.17",
-    "@heroui/spinner": "2.2.19",
-    "@react-aria/interactions": "3.26.0",
-    "@react-aria/utils": "3.32.0",
-    "@react-aria/focus": "3.21.3",
-    "@react-types/shared": "3.32.1"
+    "@heroui/react-utils": "2.1.11"
   },
   "devDependencies": {
-    "framer-motion": "11.18.2",
     "@heroui-mobile/theme": "workspace:*",
     "@heroui/system": "2.4.18",
-    "@heroui/shared-icons": "2.1.9",
     "clean-package": "2.2.0",
     "react": "18.3.0",
     "react-dom": "18.3.0"

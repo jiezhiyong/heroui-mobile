@@ -1,15 +1,15 @@
-# @heroui-mobile/{{componentName}}
+# @heroui-mobile/safe-area-inset-bottom
 
-{{description}}
+A Quick description of the component
 
 > This is an internal utility, not intended for public usage.
 
 ## Installation
 
 ```sh
-yarn add @heroui-mobile/{{componentName}}
+yarn add @heroui-mobile/safe-area-inset-bottom
 # or
-npm i @heroui-mobile/{{componentName}}
+npm i @heroui-mobile/safe-area-inset-bottom
 ```
 
 ## Contribution

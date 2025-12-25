@@ -1,6 +1,6 @@
 {
   "name": "@heroui-mobile/react",
-  "version": "2.7.11",
+  "version": "1.0.0",
   "description": "🚀 Beautiful and modern React UI library.",
   "author": "nobody <nobody@abc.com>",
   "homepage": "https://github.com/nobody/heroui-mobile",
@@ -28,8 +28,9 @@
     "postpack": "clean-package restore"
   },
   "dependencies": {
-    "@heroui-mobile/button": "workspace:*",
-    "@heroui-mobile/safe-area-insert-top": "workspace:*"
+    "@heroui-mobile/safe-area-insert-top": "workspace:*",
+    "@heroui-mobile/safe-area-inset-bottom": "workspace:*",
+    "@heroui-mobile/sms-ticker": "workspace:*"
   },
   "peerDependencies": {
     "react": ">=18 || >=19.0.0-rc.0",

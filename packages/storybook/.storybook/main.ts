@@ -1,6 +1,7 @@
-import {dirname, join} from "path";
+import { dirname, join } from "path";
 import remarkGfm from "remark-gfm";
-import type {StorybookConfig} from "@storybook/react-vite";
+import type { StorybookConfig } from "@storybook/react-vite";
+import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: [

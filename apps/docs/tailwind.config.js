@@ -1,8 +1,8 @@
-const {heroui} = require("@heroui/theme/plugin");
-const {commonColors} = require("@heroui/theme/colors");
+const { heroui } = require("@heroui/theme/plugin");
+const { commonColors } = require("@heroui/theme/colors");
 const svgToDataUri = require("mini-svg-data-uri");
 const plugin = require("tailwindcss/plugin");
-const {default: flattenColorPalette} = require("tailwindcss/lib/util/flattenColorPalette");
+const { default: flattenColorPalette } = require("tailwindcss/lib/util/flattenColorPalette");
 
 // get tailwindcss default config
 const defaultTheme = require("tailwindcss/defaultTheme");
@@ -69,7 +69,7 @@ module.exports = {
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       spacing: {
-        'toast-gap': 'var(--toast-gap)',
+        "toast-gap": "var(--toast-gap)",
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -276,9 +276,9 @@ module.exports = {
       }),
       keyframes: {
         heartbeat: {
-          "0%": {transform: "scale(1)"},
-          "50%": {transform: "scale(1.2)"},
-          "100%": {transform: "scale(1)"},
+          "0%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.2)" },
+          "100%": { transform: "scale(1)" },
         },
         levitate: {
           "0%": {
@@ -298,9 +298,9 @@ module.exports = {
           },
         },
         expand: {
-          "0%": {transform: "scale(1)"},
-          "50%": {transform: "scale(1.2)"},
-          "100%": {transform: "scale(1)"},
+          "0%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.2)" },
+          "100%": { transform: "scale(1)" },
         },
         "expand-opacity": {
           "0%": {
@@ -322,12 +322,12 @@ module.exports = {
           },
         },
         "scrolling-banner": {
-          from: {transform: "translateX(0)"},
-          to: {transform: "translateX(calc(-50% - var(--gap)/2))"},
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-50% - var(--gap)/2))" },
         },
         "scrolling-banner-vertical": {
-          from: {transform: "translateY(0)"},
-          to: {transform: "translateY(calc(-50% - var(--gap)/2))"},
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-50% - var(--gap)/2))" },
         },
         fadeIn: {
           "0%": { opacity: 0 },
@@ -348,14 +348,14 @@ module.exports = {
         "8xl": "90rem", // 1440px
       },
       utilities: {
-        '.scrollbar-hide': {
-          'scrollbar-width': 'none',
-          '&::-webkit-scrollbar': {
-            display: 'none',
+        ".scrollbar-hide": {
+          "scrollbar-width": "none",
+          "&::-webkit-scrollbar": {
+            display: "none",
           },
-        }
+        },
       },
-    }
+    },
   },
   plugins: [
     heroui({
@@ -401,7 +401,7 @@ module.exports = {
       },
     }),
     require("@tailwindcss/typography"),
-    plugin(function ({matchUtilities, theme}) {
+    plugin(function ({ matchUtilities, theme }) {
       matchUtilities(
         {
           "bg-grid": (value) => ({
@@ -410,7 +410,7 @@ module.exports = {
             )}")`,
           }),
         },
-        {values: flattenColorPalette(theme("backgroundColor")), type: "color"},
+        { values: flattenColorPalette(theme("backgroundColor")), type: "color" },
       );
     }),
   ],

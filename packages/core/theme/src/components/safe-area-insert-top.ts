@@ -5,26 +5,21 @@ import { tv } from "tailwind-variants";
 /**
  * SafeAreaInsertTop wrapper **Tailwind Variants** component
  *
- * const classNames = safeAreaInsertTop({...})
- *
  * @example
  * <div
- *  className={classNames())}
+ *  className={safeAreaInsertTop({...}))}
  * />
  */
 const safeAreaInsertTop = tv({
-  base: ["z-0"],
+  base: ["h-[env(safe-area-inset-top)] min-h-[var(--safe-area-inset-top)] shrink-0"],
   variants: {
-    size: {
-      sm: "px-3 min-w-16 h-8 text-tiny gap-2 rounded-small",
-      md: "px-4 min-w-20 h-10 text-small gap-2 rounded-medium",
-      lg: "px-6 min-w-24 h-12 text-medium gap-3 rounded-large",
+    visible: {
+      true: "h-[68px] bg-stripes-sky",
     },
   },
   defaultVariants: {
-    size: "md",
+    visible: false,
   },
-  compoundVariants: [],
 });
 
 export type SafeAreaInsertTopVariantProps = VariantProps<typeof safeAreaInsertTop>;

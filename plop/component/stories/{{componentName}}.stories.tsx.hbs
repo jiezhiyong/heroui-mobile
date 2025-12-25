@@ -1,8 +1,9 @@
-import React from "react";
-import { Meta } from "@storybook/react";
-import { {{componentName}} } from "@heroui-mobile/theme";
+import type { Meta } from "@storybook/react";
+import type { {{capitalize componentName}}Props } from "../src";
 
-import { {{capitalize componentName}}, {{capitalize componentName}}Props } from "../src";
+import { {{camelCase componentName}} } from "@heroui-mobile/theme";
+
+import { {{capitalize componentName}} } from "../src";
 
 export default {
   title: "Components/{{capitalize componentName}}",
@@ -29,11 +30,10 @@ export default {
 } as Meta<typeof {{capitalize componentName}}>;
 
 const defaultProps = {
-  ...{{componentName}}.defaultVariants,
+  ...{{camelCase componentName}}.defaultVariants,
 };
 
 const Template = (args: {{capitalize componentName}}Props) => <{{capitalize componentName}} {...args} />;
-
 
 export const Default = {
   render: Template,
@@ -41,3 +41,4 @@ export const Default = {
     ...defaultProps,
   }
 }
+
