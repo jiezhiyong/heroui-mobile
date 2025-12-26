@@ -11,14 +11,14 @@ import { tv } from "../utils/tv";
  * />
  */
 const safeAreaTop = tv({
-  base: ["pt-[var(--safe-area-inset-top,env(safe-area-inset-top))] shrink-0"],
+  base: ["pt-[var(--safe-area-inset-top,env(safe-area-inset-top))]"],
   variants: {
-    visible: {
+    debug: {
       true: "pt-[44px] bg-stripes-sky",
     },
   },
   defaultVariants: {
-    visible: false,
+    debug: false,
   },
 });
 

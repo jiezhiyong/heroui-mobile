@@ -132,7 +132,7 @@ export function useSmsTicker(props: UseSmsTickerProps) {
     format = "{t}s",
     displayUnstarted = "获取验证码",
     displayEnded = "重新获取",
-    displayProcessing = "发送中 ...",
+    displayProcessing = "发送中",
     onTick,
     ...otherProps
   } = props;

@@ -11,14 +11,14 @@ import { tv } from "../utils/tv";
  * />
  */
 const safeAreaBottom = tv({
-  base: ["pb-[var(--safe-area-bottom,env(safe-area-bottom))] shrink-0"],
+  base: ["pb-[var(--safe-area-bottom,env(safe-area-bottom))]"],
   variants: {
-    visible: {
+    debug: {
       true: "pb-[34px] bg-stripes-sky",
     },
   },
   defaultVariants: {
-    visible: false,
+    debug: false,
   },
 });
 

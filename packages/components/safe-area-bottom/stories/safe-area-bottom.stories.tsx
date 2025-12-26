@@ -21,6 +21,6 @@ export const Default = {
   render: Template,
   args: {
     ...defaultProps,
-    visible: true,
+    debug: true,
   },
 };
