@@ -1,3 +1,3 @@
-export * from "./safe-area-insert-top";
-export * from "./safe-area-inset-bottom";
+export * from "./safe-area-top";
+export * from "./safe-area-bottom";
 export * from "./sms-ticker";

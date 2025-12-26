@@ -1,9 +1,9 @@
 {
-  "name": "@heroui-mobile/safe-area-inset-bottom",
+  "name": "@heroui-mobile/safe-area-top",
   "version": "1.0.0",
-  "description": "底部安全区域",
+  "description": "顶部安全区域",
   "keywords": [
-    "safe-area-inset-bottom"
+    "safe-area-top"
   ],
   "author": "nobody <nobody@abc.com>",
   "homepage": "https://github.com/nobody/heroui-mobile",
@@ -15,11 +15,6 @@
   ],
   "publishConfig": {
     "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nobody/heroui-mobile.git",
-    "directory": "packages/components/safe-area-inset-bottom"
   },
   "scripts": {
     "build": "tsup src --dts",

@@ -28,8 +28,8 @@
     "postpack": "clean-package restore"
   },
   "dependencies": {
-    "@heroui-mobile/safe-area-insert-top": "workspace:*",
-    "@heroui-mobile/safe-area-inset-bottom": "workspace:*",
+    "@heroui-mobile/safe-area-top": "workspace:*",
+    "@heroui-mobile/safe-area-bottom": "workspace:*",
     "@heroui-mobile/sms-ticker": "workspace:*"
   },
   "peerDependencies": {

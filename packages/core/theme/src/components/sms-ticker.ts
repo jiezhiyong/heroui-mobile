@@ -1,7 +1,8 @@
 import type { VariantProps } from "tailwind-variants";
 
 import { colorVariants, dataFocusVisibleClasses } from "@heroui/theme";
-import { tv } from "tailwind-variants";
+
+import { tv } from "../utils/tv";
 
 /**
  * SmsTicker wrapper **Tailwind Variants** component

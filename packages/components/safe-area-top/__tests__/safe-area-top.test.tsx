@@ -1,11 +1,11 @@
 import * as React from "react";
 import { render } from "@testing-library/react";
 
-import { SafeAreaInsertTop } from "../src";
+import { SafeAreaTop } from "../src";
 
-describe("SafeAreaInsertTop", () => {
+describe("SafeAreaTop", () => {
   it("should render correctly", () => {
-    const wrapper = render(<SafeAreaInsertTop />);
+    const wrapper = render(<SafeAreaTop />);
 
     expect(() => wrapper.unmount()).not.toThrow();
   });
@@ -13,7 +13,7 @@ describe("SafeAreaInsertTop", () => {
   it("ref should be forwarded", () => {
     const ref = React.createRef<HTMLDivElement>();
 
-    render(<SafeAreaInsertTop ref={ref} />);
+    render(<SafeAreaTop ref={ref} />);
     expect(ref.current).not.toBeNull();
   });
 });

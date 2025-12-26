@@ -582,7 +582,7 @@ importers:
         specifier: ^8.3.2
         version: 8.3.2
 
-  packages/components/safe-area-insert-top:
+  packages/components/safe-area-top:
     dependencies:
       '@heroui/react-utils':
         specifier: 2.1.11
@@ -607,7 +607,7 @@ importers:
         specifier: 18.3.0
         version: 18.3.0(react@18.3.0)
 
-  packages/components/safe-area-inset-bottom:
+  packages/components/safe-area-bottom:
     dependencies:
       '@heroui/react-utils':
         specifier: 2.1.11
@@ -683,12 +683,12 @@ importers:
 
   packages/core/react:
     dependencies:
-      '@heroui-mobile/safe-area-insert-top':
+      '@heroui-mobile/safe-area-top':
         specifier: workspace:*
-        version: link:../../components/safe-area-insert-top
-      '@heroui-mobile/safe-area-inset-bottom':
+        version: link:../../components/safe-area-top
+      '@heroui-mobile/safe-area-bottom':
         specifier: workspace:*
-        version: link:../../components/safe-area-inset-bottom
+        version: link:../../components/safe-area-bottom
       '@heroui-mobile/sms-ticker':
         specifier: workspace:*
         version: link:../../components/sms-ticker

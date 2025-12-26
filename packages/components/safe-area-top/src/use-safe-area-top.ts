@@ -1,9 +1,9 @@
-import type { SafeAreaInsetBottomVariantProps } from "@heroui-mobile/theme";
+import type { SafeAreaTopVariantProps } from "@heroui-mobile/theme";
 import type { HTMLHeroUIProps } from "@heroui/system";
 import type { ReactRef } from "@heroui/react-utils";
 
 import { mapPropsVariants } from "@heroui/system";
-import { safeAreaInsetBottom } from "@heroui-mobile/theme";
+import { safeAreaTop } from "@heroui-mobile/theme";
 import { useDOMRef } from "@heroui/react-utils";
 import { objectToDeps } from "@heroui/shared-utils";
 import { useMemo } from "react";
@@ -15,10 +15,10 @@ interface Props extends HTMLHeroUIProps<"div"> {
   ref?: ReactRef<HTMLElement | null>;
 }
 
-export type UseSafeAreaInsetBottomProps = Props & SafeAreaInsetBottomVariantProps;
+export type UseSafeAreaTopProps = Props & SafeAreaTopVariantProps;
 
-export function useSafeAreaInsetBottom(originalProps: UseSafeAreaInsetBottomProps) {
-  const [props, variantProps] = mapPropsVariants(originalProps, safeAreaInsetBottom.variantKeys);
+export function useSafeAreaTop(originalProps: UseSafeAreaTopProps) {
+  const [props, variantProps] = mapPropsVariants(originalProps, safeAreaTop.variantKeys);
 
   const { ref, as, className, ...otherProps } = props;
 
@@ -28,7 +28,7 @@ export function useSafeAreaInsetBottom(originalProps: UseSafeAreaInsetBottomProp
 
   const styles = useMemo(
     () =>
-      safeAreaInsetBottom({
+      safeAreaTop({
         ...variantProps,
         className,
       }),
@@ -38,4 +38,4 @@ export function useSafeAreaInsetBottom(originalProps: UseSafeAreaInsetBottomProp
   return { Component, styles, domRef, ...otherProps };
 }
 
-export type UseSafeAreaInsetBottomReturn = ReturnType<typeof useSafeAreaInsetBottom>;
+export type UseSafeAreaTopReturn = ReturnType<typeof useSafeAreaTop>;

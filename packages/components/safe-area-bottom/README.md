@@ -1,4 +1,4 @@
-# @heroui-mobile/safe-area-insert-top
+# @heroui-mobile/safe-area-bottom
 
 A Quick description of the component
 
@@ -7,9 +7,9 @@ A Quick description of the component
 ## Installation
 
 ```sh
-yarn add @heroui-mobile/safe-area-insert-top
+yarn add @heroui-mobile/safe-area-bottom
 # or
-npm i @heroui-mobile/safe-area-insert-top
+npm i @heroui-mobile/safe-area-bottom
 ```
 
 ## Contribution
