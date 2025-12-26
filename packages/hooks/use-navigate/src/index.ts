@@ -3,9 +3,6 @@ import type { NavigateOptions } from "react-router-dom";
 import React from "react";
 import { useLocation, useNavigate as useReactRouterNavigate } from "react-router-dom";
 
-/**
- * 包装 navigate 函数，自动保留已有的 query 参数
- */
 export function useNavigate() {
   const location = useLocation();
   const navigate = useReactRouterNavigate();
