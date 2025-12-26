@@ -1,5 +1,8 @@
 import type { UseSmsTickerProps, SmsTickerRefApi } from "./use-sms-ticker";
+import type { ReactRef } from "@heroui/react-utils";
 
+import { Spinner } from "@heroui/spinner";
+import { Ripple } from "@heroui/ripple";
 import { forwardRef, useImperativeHandle } from "react";
 
 import { useSmsTicker } from "./use-sms-ticker";
@@ -10,14 +13,17 @@ const SmsTicker = forwardRef<SmsTickerRefApi, SmsTickerProps>((props, ref) => {
   const {
     Component,
     domRef,
-    styles,
     children,
+    spinnerSize,
+    spinner = <Spinner color="current" size={spinnerSize} />,
+    spinnerPlacement,
+    isLoading,
+    disableRipple,
+    getButtonProps,
+    getRippleProps,
     handleStart,
-    isRunning,
-    isStarting,
     displayText,
-    ...otherProps
-  } = useSmsTicker({ ...props });
+  } = useSmsTicker({ ...props, ref: ref as ReactRef<HTMLButtonElement | null> });
 
   // 暴露 ref API
   useImperativeHandle(ref, () => ({
@@ -25,17 +31,12 @@ const SmsTicker = forwardRef<SmsTickerRefApi, SmsTickerProps>((props, ref) => {
   }));
 
   return (
-    <Component
-      ref={domRef}
-      aria-disabled={isRunning || isStarting}
-      className={styles}
-      role="button"
-      tabIndex={isRunning || isStarting ? -1 : 0}
-      onClick={handleStart}
-      {...otherProps}
-    >
+    <Component ref={domRef} {...getButtonProps()}>
+      {isLoading && spinnerPlacement === "start" && spinner}
       {displayText}
       {children}
+      {isLoading && spinnerPlacement === "end" && spinner}
+      {!disableRipple && <Ripple {...getRippleProps()} />}
     </Component>
   );
 });
