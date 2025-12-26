@@ -1,8 +1,6 @@
 # @heroui-mobile/safe-area-top
 
-A Quick description of the component
-
-> This is an internal utility, not intended for public usage.
+顶部安全区域
 
 ## Installation
 

@@ -2,8 +2,6 @@
 
 短信验证码倒计时
 
-> This is an internal utility, not intended for public usage.
-
 ## Installation
 
 ```sh
