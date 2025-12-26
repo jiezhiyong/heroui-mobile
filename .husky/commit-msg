@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# 暂时停用 husky 检查
-# pnpm commitlint --config .commitlintrc.cjs --edit ${1}
+pnpm commitlint --config .commitlintrc.cjs --edit ${1}
