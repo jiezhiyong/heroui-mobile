@@ -1,11 +1,10 @@
 import { dirname, join } from "path";
 import remarkGfm from "remark-gfm";
 import type { StorybookConfig } from "@storybook/react-vite";
-import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: [
-    "./welcome.mdx",
+    "./introduction.mdx",
     "../../components/**/stories/**/*.stories.@(js|jsx|ts|tsx)",
     "../../core/theme/stories/*.stories.@(js|jsx|ts|tsx)",
   ],
