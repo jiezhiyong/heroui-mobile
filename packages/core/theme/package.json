@@ -1,6 +1,6 @@
 {
   "name": "@heroui-mobile/theme",
-  "version": "2.4.17",
+  "version": "1.0.0",
   "description": "The default theme for HeroUI components",
   "license": "MIT",
   "main": "src/index.ts",

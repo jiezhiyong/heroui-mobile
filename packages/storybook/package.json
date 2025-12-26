@@ -2,6 +2,7 @@
   "name": "@heroui-mobile/storybook",
   "version": "1.0.0",
   "description": "The HeroUI react components storybook ",
+  "private": true,
   "keywords": [
     "storybook"
   ],
@@ -14,9 +15,6 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "dev": "pnpm storybook dev -p 6006",
     "build": "pnpm storybook build",
