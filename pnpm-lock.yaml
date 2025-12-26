@@ -582,7 +582,7 @@ importers:
         specifier: ^8.3.2
         version: 8.3.2
 
-  packages/components/safe-area-top:
+  packages/components/safe-area-bottom:
     dependencies:
       '@heroui/react-utils':
         specifier: 2.1.11
@@ -607,7 +607,7 @@ importers:
         specifier: 18.3.0
         version: 18.3.0(react@18.3.0)
 
-  packages/components/safe-area-bottom:
+  packages/components/safe-area-top:
     dependencies:
       '@heroui/react-utils':
         specifier: 2.1.11
@@ -683,12 +683,12 @@ importers:
 
   packages/core/react:
     dependencies:
-      '@heroui-mobile/safe-area-top':
-        specifier: workspace:*
-        version: link:../../components/safe-area-top
       '@heroui-mobile/safe-area-bottom':
         specifier: workspace:*
         version: link:../../components/safe-area-bottom
+      '@heroui-mobile/safe-area-top':
+        specifier: workspace:*
+        version: link:../../components/safe-area-top
       '@heroui-mobile/sms-ticker':
         specifier: workspace:*
         version: link:../../components/sms-ticker
@@ -754,6 +754,9 @@ importers:
       react:
         specifier: 18.3.0
         version: 18.3.0
+      react-router-dom:
+        specifier: ^7.11.0
+        version: 7.11.0(react-dom@18.3.0(react@18.3.0))(react@18.3.0)
 
   packages/storybook:
     dependencies:
@@ -7438,6 +7441,10 @@ packages:
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
 
+  cookie@1.1.1:
+    resolution: {integrity: sha512-ei8Aos7ja0weRpFzJnEA9UHJ/7XQmqglbRwnf2ATjcB9Wq874VKH9kfjjirM6UhU2/E5fFYadylyhFldcqSidQ==}
+    engines: {node: '>=18'}
+
   copy-descriptor@0.1.1:
     resolution: {integrity: sha512-XgZ0pFcakEUlbwQEVNg3+QAis1FyTL3Qel9FYy8pSkQqoG3PNoT0bOCQtOXcOkur21r2Eq2kI+IE+gsmAEVlYw==}
     engines: {node: '>=0.10.0'}
@@ -11418,6 +11425,23 @@ packages:
       '@types/react':
         optional: true
 
+  react-router-dom@7.11.0:
+    resolution: {integrity: sha512-e49Ir/kMGRzFOOrYQBdoitq3ULigw4lKbAyKusnvtDu2t4dBX4AGYPrzNvorXmVuOyeakai6FUPW5MmibvVG8g==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      react: 18.3.0
+      react-dom: 18.3.0
+
+  react-router@7.11.0:
+    resolution: {integrity: sha512-uI4JkMmjbWCZc01WVP2cH7ZfSzH91JAZUDd7/nIprDgWxBV1TkkmLToFh7EbMTcMak8URFRa2YoBL/W8GWnCTQ==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      react: 18.3.0
+      react-dom: 18.3.0
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+
   react-style-singleton@2.2.3:
     resolution: {integrity: sha512-b6jSvxvVnyptAiLjbkWLE/lOnR4lfTtDAl+eUC7RZy+QQWc6wRzIV2CE6xBuMmDxc2qIihtDCZD5NPOFl7fRBQ==}
     engines: {node: '>=10'}
@@ -11834,6 +11858,9 @@ packages:
 
   set-blocking@2.0.0:
     resolution: {integrity: sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw==}
+
+  set-cookie-parser@2.7.2:
+    resolution: {integrity: sha512-oeM1lpU/UvhTxw+g3cIfxXHyJRc/uidd3yK1P242gzHds0udQBYzs3y8j4gCCW+ZJ7ad0yctld8RYO+bdurlvw==}
 
   set-function-length@1.2.2:
     resolution: {integrity: sha512-pgRc4hJ4/sNjWCSS9AmnS40x3bNMDTknHgL5UaMBTMyJnU90EgWh1Rz+MC9eFu4BuN/UwZjKQuY/1v3rM7HMfg==}
@@ -21695,6 +21722,8 @@ snapshots:
 
   convert-source-map@2.0.0: {}
 
+  cookie@1.1.1: {}
+
   copy-descriptor@0.1.1: {}
 
   core-js-compat@3.47.0:
@@ -26840,6 +26869,20 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.2.8
 
+  react-router-dom@7.11.0(react-dom@18.3.0(react@18.3.0))(react@18.3.0):
+    dependencies:
+      react: 18.3.0
+      react-dom: 18.3.0(react@18.3.0)
+      react-router: 7.11.0(react-dom@18.3.0(react@18.3.0))(react@18.3.0)
+
+  react-router@7.11.0(react-dom@18.3.0(react@18.3.0))(react@18.3.0):
+    dependencies:
+      cookie: 1.1.1
+      react: 18.3.0
+      set-cookie-parser: 2.7.2
+    optionalDependencies:
+      react-dom: 18.3.0(react@18.3.0)
+
   react-style-singleton@2.2.3(@types/react@18.2.8)(react@18.3.0):
     dependencies:
       get-nonce: 1.0.1
@@ -27377,6 +27420,8 @@ snapshots:
       randombytes: 2.1.0
 
   set-blocking@2.0.0: {}
+
+  set-cookie-parser@2.7.2: {}
 
   set-function-length@1.2.2:
     dependencies:

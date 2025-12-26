@@ -6,7 +6,7 @@ on:
       - ".changeset/**"
       - "packages/**"
     branches:
-      - canary
+      - main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -51,13 +51,13 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Create canary release
+      - name: Create main release
         if: steps.build.outcome == 'success' && steps.changesets.outputs.published != 'true'
         timeout-minutes: 15
         run: |
-          git checkout canary
-          pnpm version:canary
-          pnpm release:canary
+          git checkout main
+          pnpm version
+          pnpm release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

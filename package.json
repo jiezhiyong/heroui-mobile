@@ -40,11 +40,9 @@
     "create:cmp": "plop component",
     "create:pkg": "plop package",
     "create:hook": "plop hook",
-    "changeset:canary": "changeset pre enter canary",
+    "changeset:beta": "changeset pre enter beta",
     "version": "changeset version",
     "release": "changeset publish",
-    "version:canary": "changeset version --snapshot canary",
-    "release:canary": "changeset publish --snapshot --no-git-tag --tag canary",
     "postinstall": "husky install && pnpm --filter @heroui-mobile/theme build"
   },
   "devDependencies": {

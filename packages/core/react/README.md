@@ -131,54 +131,29 @@ npm login
 
 项目使用 [Changesets](https://github.com/changesets/changesets) 管理版本和发布。
 
-#### 创建变更集
-
 ```bash
 # 创建变更集（描述你的更改）
-pnpm changeset:canary
-```
+pnpm changeset
 
-在heroui的基础上，扩展自己的包
-
-#### 版本管理
-
-```bash
-# 更新版本号（基于变更集）
-pnpm version:canary
-```
-
-#### 发布
-
-```bash
-# 发布到 npm
-pnpm release:canary
-```
-
-### 4. 发布流程示例
-
-```bash
-# 1. 创建变更集
-pnpm changeset:canary
-
-# 2. 提交变更
+# 提交变更
 git add .
 git commit -m "feat: 添加新组件"
 
-# 3. 更新版本号
-pnpm version:canary
+# 更新版本号（基于变更集）
+pnpm version
 
-# 4. 构建项目
+# 构建项目
 pnpm build
 
-# 5. 发布到 npm
-pnpm release:canary
+# 发布到 npm
+pnpm release
 
-# 6. 推送代码和标签
+# 推送代码和标签
 git push
 git push --tags
 ```
 
-### 5. 手动发布单个包
+### 4. 手动发布单个包
 
 如果需要单独发布某个组件：
 
@@ -186,31 +161,6 @@ git push --tags
 cd packages/components/your-component
 pnpm build
 npm publish
-```
-
-## 常见问题
-
-### Q: 构建失败怎么办？
-
-A:
-
-1. 清理缓存：`pnpm clean`
-2. 重新安装依赖：`pnpm install`
-3. 检查 TypeScript 错误：`pnpm typecheck`
-
-### Q: 如何保持与上游同步？
-
-A:
-
-```bash
-# 添加上游仓库
-git remote add upstream https://github.com/heroui-inc/heroui.git
-
-# 拉取上游更新
-git fetch upstream
-
-# 合并上游变更
-git merge upstream/canary
 ```
 
 ## 相关资源

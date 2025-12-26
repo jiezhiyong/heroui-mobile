@@ -3,7 +3,7 @@ name: Enter pre-release mode
 on: workflow_dispatch
 jobs:
   enter-pre-release-mode:
-    if: ${{ github.ref == 'refs/heads/beta/release-next' || github.ref == 'refs/heads/canary' }}
+    if: ${{ github.ref == 'refs/heads/beta/release-next' || github.ref == 'refs/heads/main' }}
     runs-on: heroui-runner
     permissions:
       contents: write
@@ -25,8 +25,8 @@ jobs:
         run: |
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
-          if [ ${{ github.ref }} == 'refs/heads/canary' ]; then
-            pnpm changeset:canary
+          if [ ${{ github.ref }} == 'refs/heads/main' ]; then
+            pnpm changeset
           else
             pnpm changeset:beta
           fi
