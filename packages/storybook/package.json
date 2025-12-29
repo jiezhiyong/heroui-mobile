@@ -7,8 +7,8 @@
     "storybook"
   ],
   "type": "module",
-  "author": "nobody <nobody@abc.com>",
-  "homepage": "https://github.com/nobody/heroui-mobile",
+  "author": "jiezhiyong <vopjie@gmail.com>",
+  "homepage": "https://github.com/jiezhiyong/heroui-mobile",
   "license": "MIT",
   "main": "src/index.ts",
   "sideEffects": true,

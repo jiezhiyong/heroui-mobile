@@ -3,10 +3,10 @@
   "private": true,
   "version": "1.0.0",
   "license": "MIT",
-  "author": "nobody <nobody@abc.com>",
+  "author": "jiezhiyong <vopjie@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nobody/heroui-mobile"
+    "url": "https://github.com/jiezhiyong/heroui-mobile"
   },
   "scripts": {
     "dev": "pnpm sb",
