@@ -1,3 +1,11 @@
 packages:
   - "apps/**/**"
   - "packages/**/**"
+
+strictPeerDependencies: false
+enablePrePostScripts: true
+publicHoistPattern:
+  - "*tailwind-variants*"
+  - "*framer-motion*"
+  - "*@react-aria/interactions*"
+  - "*@heroui-mobile/theme*"
