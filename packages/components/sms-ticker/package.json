@@ -1,8 +1,13 @@
 {
   "name": "@heroui-mobile/sms-ticker",
   "version": "1.0.0",
-  "description": "短信验证码倒计时",
+  "description": "SMS Countdown Ticker",
   "keywords": [
+    "react",
+    "heroui",
+    "sms",
+    "otp",
+    "countdown",
     "sms-ticker"
   ],
   "author": "jiezhiyong <vopjie@gmail.com>",

@@ -1,8 +1,9 @@
 {
   "name": "@heroui-mobile/use-navigate",
   "version": "1.0.0",
-  "description": "包装 navigate 函数，自动保留已有的 query 参数",
+  "description": "Navigate Hook with query parameters",
   "keywords": [
+    "react",
     "use-navigate"
   ],
   "author": "jiezhiyong <vopjie@gmail.com>",

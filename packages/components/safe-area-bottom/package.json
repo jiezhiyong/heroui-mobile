@@ -1,8 +1,10 @@
 {
   "name": "@heroui-mobile/safe-area-bottom",
   "version": "1.0.0",
-  "description": "底部安全区域",
+  "description": "Safe Area Bottom",
   "keywords": [
+    "react",
+    "heroui",
     "safe-area-bottom"
   ],
   "author": "jiezhiyong <vopjie@gmail.com>",
