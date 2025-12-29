@@ -1,0 +1,51 @@
+{
+  "name": "@heroui-mobile/__tmp_plop_test__",
+  "version": "1.0.0",
+  "description": "临时测试组件",
+  "keywords": [
+    "__tmp_plop_test__"
+  ],
+  "author": "nobody <nobody@abc.com>",
+  "homepage": "https://github.com/nobody/heroui-mobile",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nobody/heroui-mobile.git",
+    "directory": "packages/components/__tmp_plop_test__"
+  },
+  "scripts": {
+    "build": "tsup src --dts",
+    "build:fast": "tsup src",
+    "dev": "pnpm build:fast --watch",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "peerDependencies": {
+    "react": ">=18 || >=19.0.0-rc.0",
+    "react-dom": ">=18 || >=19.0.0-rc.0",
+    "@heroui-mobile/theme": ">=1.0.0",
+    "@heroui/system": ">=2.4.18"
+  },
+  "dependencies": {
+    "@heroui/shared-utils": "2.1.9",
+    "@heroui/react-utils": "2.1.11"
+  },
+  "devDependencies": {
+    "@heroui-mobile/theme": "workspace:*",
+    "@heroui/system": "2.4.18",
+    "clean-package": "2.2.0",
+    "react": "18.3.0",
+    "react-dom": "18.3.0"
+  },
+  "clean-package": "../../../clean-package.config.json"
+}

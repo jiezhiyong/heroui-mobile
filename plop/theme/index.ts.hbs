@@ -1,0 +1,21 @@
+import type { VariantProps } from "tailwind-variants";
+
+import { tv } from "../utils/tv";
+
+/**
+ * {{capitalize componentName}} wrapper **Tailwind Variants** component
+ *
+ * @example
+ * <div
+ *  className={{lbrace}}{{camelCase componentName}}({...}){{rbrace}}
+ * />
+ */
+const {{camelCase componentName}} = tv({
+  base: [],
+  variants: {},
+  defaultVariants: {},
+});
+
+export type {{capitalize componentName}}VariantProps = VariantProps<typeof {{camelCase componentName}}>;
+
+export { {{camelCase componentName}} };
