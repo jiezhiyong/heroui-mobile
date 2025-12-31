@@ -6,10 +6,10 @@ export default function Fruits({
   items: { title: string; img: string; price: string }[];
 }) {
   return (
-    <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
+    <div className="gap-4 grid sm:grid-cols-4">
       {items.map((item, index) => (
         <Card key={index} isPressable shadow="sm">
-          <CardBody className="overflow-visible p-0">
+          <CardBody className="overflow-visible pb-0">
             <Image
               alt={item.title}
               className="w-full object-cover h-[140px]"
@@ -20,7 +20,7 @@ export default function Fruits({
             />
           </CardBody>
           <CardFooter className="text-small justify-between">
-            <b>{item.title}</b>
+            <strong>{item.title}</strong>
             <p className="text-default-500">{item.price}</p>
           </CardFooter>
         </Card>

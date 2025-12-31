@@ -5,6 +5,8 @@ import type { Preview } from "@storybook/react";
 
 import "./style.css";
 import { withStrictModeSwitcher } from "./addons/react-strict-mode";
+import { Controls, Description, Primary, Stories, Subtitle, Title } from "@storybook/blocks";
+import { BlockCopyCli } from "./addons/block-copy-cli";
 
 const decorators: Preview["decorators"] = [
   (Story, { globals: { locale, disableAnimation, labelPlacement } }) => {
@@ -29,15 +31,31 @@ const decorators: Preview["decorators"] = [
 
 const commonTheme = {
   brandTitle: "HeroUI",
-  brandUrl: "https://heroui.com",
+  brandUrl: "/",
   brandTarget: "_self",
 };
 
 const parameters: Preview["parameters"] = {
+  docs: {
+    codePanel: true,
+    page: () => {
+      return (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <BlockCopyCli />
+          <Controls />
+          <Stories includePrimary={false} />
+        </>
+      );
+    },
+  },
   options: {
     storySort: {
       method: "alphabetical",
-      order: ["Foundations", "Components"],
+      order: ["Foundations", "Components", "Blocks"],
     },
   },
   controls: {

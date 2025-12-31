@@ -8,19 +8,20 @@
       "type": "registry:block",
       "title": "Example Fruits",
       "description": "Fruits 展示组件，包含 components、hooks、lib 等文件注册示例",
-      "registryDependencies": [
+      "dependencies": [
         "@heroui/react"
       ],
+      "registryDependencies": [],
       "files": [
         {
-          "path": "registry/blocks/example-fruits/page.tsx",
-          "type": "registry:page",
-          "target": "app/demo-fruits/index.tsx"
+          "path": "registry/blocks/example-fruits/index.tsx",
+          "type": "registry:file",
+          "target": "app/pages/demo-fruits/index.tsx"
         },
         {
-          "path": "registry/blocks/example-fruits/page.css",
-          "type": "registry:page",
-          "target": "app/demo-fruits/index.css"
+          "path": "registry/blocks/example-fruits/index.css",
+          "type": "registry:file",
+          "target": "app/pages/demo-fruits/index.css"
         },
         {
           "path": "registry/blocks/example-fruits/components/fruits.tsx",

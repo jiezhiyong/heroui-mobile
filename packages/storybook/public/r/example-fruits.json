@@ -3,21 +3,22 @@
   "name": "example-fruits",
   "title": "Example Fruits",
   "description": "Fruits 展示组件，包含 components、hooks、lib 等文件注册示例",
-  "registryDependencies": [
+  "dependencies": [
     "@heroui/react"
   ],
+  "registryDependencies": [],
   "files": [
     {
-      "path": "registry/blocks/example-fruits/page.tsx",
-      "content": "import type { Fruit } from \"@/registry/blocks/example-fruits/lib/fruits\";\n\nimport { useEffect, useState } from \"react\";\n\nimport Fruits from \"@/registry/blocks/example-fruits/components/fruits\";\nimport { getFruitList } from \"@/registry/blocks/example-fruits/lib/fruits\";\nimport \"./page.css\";\n\nexport default function ExampleFruits() {\n  const [fruits, setFruits] = useState<Fruit[]>([]);\n\n  useEffect(() => {\n    setFruits(getFruitList());\n  }, []);\n\n  return <Fruits items={fruits} />;\n}\n",
-      "type": "registry:page",
-      "target": "app/demo-fruits/index.tsx"
+      "path": "registry/blocks/example-fruits/index.tsx",
+      "content": "import type { Fruit } from \"@/registry/blocks/example-fruits/lib/fruits\";\n\nimport { useEffect, useState } from \"react\";\n\nimport Fruits from \"@/registry/blocks/example-fruits/components/fruits\";\nimport { getFruitList } from \"@/registry/blocks/example-fruits/lib/fruits\";\nimport \"./index.css\";\n\nexport default function ExampleFruits() {\n  const [fruits, setFruits] = useState<Fruit[]>([]);\n\n  useEffect(() => {\n    setFruits(getFruitList());\n  }, []);\n\n  return <Fruits items={fruits} />;\n}\n",
+      "type": "registry:file",
+      "target": "app/pages/demo-fruits/index.tsx"
     },
     {
-      "path": "registry/blocks/example-fruits/page.css",
+      "path": "registry/blocks/example-fruits/index.css",
       "content": ".abc {\n  color: red;\n}\n",
-      "type": "registry:page",
-      "target": "app/demo-fruits/index.css"
+      "type": "registry:file",
+      "target": "app/pages/demo-fruits/index.css"
     },
     {
       "path": "registry/blocks/example-fruits/components/fruits.tsx",
