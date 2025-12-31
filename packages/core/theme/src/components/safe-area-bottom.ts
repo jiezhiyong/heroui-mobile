@@ -12,14 +12,6 @@ import { tv } from "../utils/tv";
  */
 const safeAreaBottom = tv({
   base: ["pb-[var(--safe-area-bottom,env(safe-area-bottom))]"],
-  variants: {
-    debug: {
-      true: "pb-[34px] bg-stripes-sky",
-    },
-  },
-  defaultVariants: {
-    debug: false,
-  },
 });
 
 export type SafeAreaBottomVariantProps = VariantProps<typeof safeAreaBottom>;

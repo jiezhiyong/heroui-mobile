@@ -15,12 +15,13 @@ const defaultProps = {
   ...safeAreaTop.defaultVariants,
 };
 
-const Template = (args: SafeAreaTopProps) => <SafeAreaTop {...args} />;
+const Template = (args: SafeAreaTopProps) => (
+  <SafeAreaTop {...args} className="min-h-[44px] bg-stripes-sky" />
+);
 
 export const Default = {
   render: Template,
   args: {
     ...defaultProps,
-    debug: true,
   },
 };
