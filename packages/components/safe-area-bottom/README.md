@@ -1,6 +1,6 @@
 # @heroui-mobile/safe-area-bottom
 
-底部安全区域
+底部安全区域占位，默认使用 iOS 的 `env(safe-area-bottom)` CSS 变量， 在 Android 平台你可以手动设置 `--safe-area-bottom` CSS 变量。
 
 ## Installation
 
@@ -9,14 +9,3 @@ yarn add @heroui-mobile/safe-area-bottom
 # or
 npm i @heroui-mobile/safe-area-bottom
 ```
-
-## Contribution
-
-Yes please! See the
-[contributing guidelines](https://github.com/jiezhiyong/heroui-mobile/blob/main/CONTRIBUTING.md)
-for details.
-
-## License
-
-This project is licensed under the terms of the
-[MIT license](https://github.com/jiezhiyong/heroui-mobile/blob/main/LICENSE).
