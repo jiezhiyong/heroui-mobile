@@ -43,7 +43,8 @@
     "changeset:beta": "changeset pre enter beta",
     "version": "changeset version",
     "release": "changeset publish",
-    "postinstall": "husky install && pnpm --filter @heroui-mobile/theme build"
+    "postinstall": "husky install && pnpm --filter @heroui-mobile/theme build",
+    "build:registry": "pnpm --filter @heroui-mobile/storybook build:registry"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.5",

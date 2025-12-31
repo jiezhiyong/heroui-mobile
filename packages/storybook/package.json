@@ -8,7 +8,7 @@
   ],
   "type": "module",
   "author": "jiezhiyong <vopjie@gmail.com>",
-  "homepage": "https://github.com/jiezhiyong/heroui-mobile",
+  "homepage": "https://main--69549dc20eb3fc63d6bc3d0e.chromatic.com",
   "license": "MIT",
   "main": "src/index.ts",
   "sideEffects": true,
@@ -18,15 +18,20 @@
   "scripts": {
     "dev": "pnpm storybook dev -p 6006",
     "build": "pnpm storybook build",
-    "start": "pnpm dlx http-server storybook-static"
+    "build:registry": "shadcn build",
+    "start": "pnpm dlx http-server storybook-static",
+    "chromatic": "npx chromatic"
   },
   "dependencies": {
-    "@heroui/system": "2.4.18",
     "@heroui-mobile/theme": "workspace:*",
+    "@heroui/system": "2.4.18",
     "react": "18.3.0",
     "react-dom": "18.3.0"
   },
   "devDependencies": {
+    "shadcn": "^3.5.0",
+    "@heroui/react": "2.7.11",
+    "@chromatic-com/storybook": "^4.1.1",
     "@storybook/addon-a11y": "^8.6.15",
     "@storybook/addon-docs": "^8.6.15",
     "@storybook/addon-essentials": "^8.6.15",
@@ -39,6 +44,7 @@
     "@storybook/theming": "^8.6.15",
     "@vitejs/plugin-react": "^4.3.3",
     "autoprefixer": "^10.4.23",
+    "chromatic": "^13.3.4",
     "remark-gfm": "^4.0.0",
     "storybook": "^8.6.15",
     "storybook-dark-mode": "^4.0.2",

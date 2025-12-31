@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "tcsk",
+  "homepage": "https://main--69549dc20eb3fc63d6bc3d0e.chromatic.com",
+  "items": [
+    {
+      "name": "example-fruits",
+      "type": "registry:block",
+      "title": "Example Fruits",
+      "description": "Fruits 展示组件，包含 components、hooks、lib 等文件注册示例",
+      "registryDependencies": [
+        "@heroui/react"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/example-fruits/page.tsx",
+          "type": "registry:page",
+          "target": "app/demo-fruits/index.tsx"
+        },
+        {
+          "path": "registry/blocks/example-fruits/page.css",
+          "type": "registry:page",
+          "target": "app/demo-fruits/index.css"
+        },
+        {
+          "path": "registry/blocks/example-fruits/components/fruits.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/blocks/example-fruits/hooks/use-fruits.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/blocks/example-fruits/lib/fruits.ts",
+          "type": "registry:lib"
+        }
+      ]
+    }
+  ]
+}

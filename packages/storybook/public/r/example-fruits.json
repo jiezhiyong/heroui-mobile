@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "example-fruits",
+  "title": "Example Fruits",
+  "description": "Fruits 展示组件，包含 components、hooks、lib 等文件注册示例",
+  "registryDependencies": [
+    "@heroui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/blocks/example-fruits/page.tsx",
+      "content": "import type { Fruit } from \"@/registry/blocks/example-fruits/lib/fruits\";\n\nimport { useEffect, useState } from \"react\";\n\nimport Fruits from \"@/registry/blocks/example-fruits/components/fruits\";\nimport { getFruitList } from \"@/registry/blocks/example-fruits/lib/fruits\";\nimport \"./page.css\";\n\nexport default function ExampleFruits() {\n  const [fruits, setFruits] = useState<Fruit[]>([]);\n\n  useEffect(() => {\n    setFruits(getFruitList());\n  }, []);\n\n  return <Fruits items={fruits} />;\n}\n",
+      "type": "registry:page",
+      "target": "app/demo-fruits/index.tsx"
+    },
+    {
+      "path": "registry/blocks/example-fruits/page.css",
+      "content": ".abc {\n  color: red;\n}\n",
+      "type": "registry:page",
+      "target": "app/demo-fruits/index.css"
+    },
+    {
+      "path": "registry/blocks/example-fruits/components/fruits.tsx",
+      "content": "import { Card, CardBody, CardFooter, Image } from \"@heroui/react\";\n\nexport default function Fruits({\n  items = [],\n}: {\n  items: { title: string; img: string; price: string }[];\n}) {\n  return (\n    <div className=\"gap-2 grid grid-cols-2 sm:grid-cols-4\">\n      {items.map((item, index) => (\n        <Card key={index} isPressable shadow=\"sm\">\n          <CardBody className=\"overflow-visible p-0\">\n            <Image\n              alt={item.title}\n              className=\"w-full object-cover h-[140px]\"\n              radius=\"lg\"\n              shadow=\"sm\"\n              src={item.img}\n              width=\"100%\"\n            />\n          </CardBody>\n          <CardFooter className=\"text-small justify-between\">\n            <b>{item.title}</b>\n            <p className=\"text-default-500\">{item.price}</p>\n          </CardFooter>\n        </Card>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "registry/blocks/example-fruits/hooks/use-fruits.ts",
+      "content": "export function useFruits(number: number) {\n  return number;\n}\n",
+      "type": "registry:hook"
+    },
+    {
+      "path": "registry/blocks/example-fruits/lib/fruits.ts",
+      "content": "export type Fruit = {\n  title: string;\n  img: string;\n  price: string;\n};\n\nexport function getFruitList(): Fruit[] {\n  return [\n    {\n      title: \"Orange\",\n      img: \"/images/fruit-1.jpeg\",\n      price: \"$5.50\",\n    },\n    {\n      title: \"Tangerine\",\n      img: \"/images/fruit-2.jpeg\",\n      price: \"$3.00\",\n    },\n    {\n      title: \"Raspberry\",\n      img: \"/images/fruit-3.jpeg\",\n      price: \"$10.00\",\n    },\n    {\n      title: \"Lemon\",\n      img: \"/images/fruit-4.jpeg\",\n      price: \"$5.30\",\n    },\n    {\n      title: \"Avocado\",\n      img: \"/images/fruit-5.jpeg\",\n      price: \"$15.70\",\n    },\n    {\n      title: \"Lemon 2\",\n      img: \"/images/fruit-6.jpeg\",\n      price: \"$8.00\",\n    },\n    {\n      title: \"Banana\",\n      img: \"/images/fruit-7.jpeg\",\n      price: \"$7.50\",\n    },\n    {\n      title: \"Watermelon\",\n      img: \"/images/fruit-8.jpeg\",\n      price: \"$12.20\",\n    },\n  ];\n}\n",
+      "type": "registry:lib"
+    }
+  ],
+  "type": "registry:block"
+}

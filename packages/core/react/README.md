@@ -169,3 +169,9 @@ npm publish
 - [Changesets 文档](https://github.com/changesets/changesets)
 - [Turbo 文档](https://turbo.build/repo/docs)
 - [pnpm 文档](https://pnpm.io/)
+
+## TODO
+
+- llms-txt
+- mcp-server
+- code-registry

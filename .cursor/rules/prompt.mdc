@@ -38,4 +38,4 @@ pnpm build:fast   # 快速构建
 ## Heroui 组件依赖
 
 扩展包 @heroui-mobile/react、 @heroui-mobile/theme
-其他 HeroUIProvider 以及 Spinner 等基础组件，以及相关的 hooks、system、system-rsc、utilities 均服用 @heroui
+其他 HeroUIProvider 以及 Spinner 等基础组件，以及相关的 hooks、system、system-rsc、utilities 均复用 @heroui
