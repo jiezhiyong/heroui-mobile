@@ -5,7 +5,6 @@ import { ArrowRightIcon } from "@heroui/shared-icons";
 import { clsx } from "@heroui/shared-utils";
 import NextLink from "next/link";
 import { Code } from "@heroui/react";
-import { usePostHog } from "posthog-js/react";
 
 import { FeaturesGrid } from "./features-grid";
 
@@ -36,8 +35,6 @@ const bannerSuggestions = [
 
 export const InstallBanner = () => {
   const isMounted = useIsMounted();
-
-  const posthog = usePostHog();
 
   return (
     <section
@@ -73,13 +70,6 @@ export const InstallBanner = () => {
               href="/docs/guide/installation"
               radius="full"
               size="md"
-              onPress={() => {
-                posthog.capture("InstallBanner - Get Started", {
-                  action: "press",
-                  category: "landing-page",
-                  data: "/docs/guide/installation",
-                });
-              }}
             >
               Get Started
             </Button>
@@ -92,13 +82,6 @@ export const InstallBanner = () => {
               size="md"
               startContent={<GithubIcon />}
               variant="bordered"
-              onPress={() => {
-                posthog.capture("InstallBanner - Github", {
-                  action: "press",
-                  category: "landing-page",
-                  data: siteConfig.links.github,
-                });
-              }}
             >
               Github
             </Button>

@@ -3,7 +3,7 @@
 import type { FC, ReactNode } from "react";
 import type { Route } from "@/libs/docs/page";
 
-import { useRef, useState, useMemo, useCallback } from "react";
+import { useRef, useState, useMemo } from "react";
 import {
   link,
   Navbar as HeroUINavbar,
@@ -27,7 +27,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
 import { usePress } from "@react-aria/interactions";
 import { useFocusRing } from "@react-aria/focus";
-import { usePostHog } from "posthog-js/react";
 
 import { FbRoadmapLink } from "./featurebase/fb-roadmap-link";
 
@@ -59,8 +58,6 @@ export const Navbar: FC<NavbarProps> = ({ children, routes, mobileRoutes = [], s
 
   const cmdkStore = useCmdkStore();
 
-  const posthog = usePostHog();
-
   useEffect(() => {
     if (isMenuOpen) {
       setIsMenuOpen(false);
@@ -73,11 +70,6 @@ export const Navbar: FC<NavbarProps> = ({ children, routes, mobileRoutes = [], s
 
   const handleOpenCmdk = () => {
     cmdkStore.onOpen();
-    posthog.capture("Navbar - Search", {
-      name: "navbar - search",
-      action: "press",
-      category: "cmdk",
-    });
   };
 
   const { pressProps } = usePress({
@@ -94,18 +86,6 @@ export const Navbar: FC<NavbarProps> = ({ children, routes, mobileRoutes = [], s
   const navLinkClasses = clsx(
     link({ color: "foreground" }),
     "data-[active=true]:text-primary data-[active=true]:font-semibold",
-  );
-
-  const handlePressNavbarItem = useCallback(
-    (name: string, url: string) => {
-      posthog.capture("NavbarItem", {
-        name,
-        action: "press",
-        category: "navbar",
-        data: url,
-      });
-    },
-    [posthog],
   );
 
   const searchButton = (
@@ -180,7 +160,6 @@ export const Navbar: FC<NavbarProps> = ({ children, routes, mobileRoutes = [], s
             aria-label="Home"
             className="flex justify-start items-center gap-2 tap-highlight-transparent transition-opacity active:opacity-50"
             href="/"
-            onClick={() => handlePressNavbarItem("Home", "/")}
           >
             <SmallLogo className="w-6 h-6 md:hidden" />
             <LargeLogo className="h-5 md:h-6" />
@@ -195,7 +174,6 @@ export const Navbar: FC<NavbarProps> = ({ children, routes, mobileRoutes = [], s
             color="primary"
             href="/blog/v2.7.0"
             variant="flat"
-            onClick={() => handlePressNavbarItem("HeroUI v2.7.0", "/blog/v2.7.0")}
           >
             HeroUI v2.7.0&nbsp;
             <span aria-label="emoji" role="img">
@@ -207,13 +185,7 @@ export const Navbar: FC<NavbarProps> = ({ children, routes, mobileRoutes = [], s
 
       <NavbarContent className="flex w-full gap-2 sm:hidden " justify="end">
         <NavbarItem className="flex h-full items-center">
-          <Link
-            isExternal
-            aria-label="Github"
-            className="p-1"
-            href={siteConfig.links.github}
-            onPress={() => handlePressNavbarItem("Github", siteConfig.links.github)}
-          >
+          <Link isExternal aria-label="Github" className="p-1" href={siteConfig.links.github}>
             <GithubIcon className="text-default-600 dark:text-default-500" />
           </Link>
         </NavbarItem>
@@ -254,7 +226,6 @@ export const Navbar: FC<NavbarProps> = ({ children, routes, mobileRoutes = [], s
               color="foreground"
               data-active={docsPaths.includes(pathname)}
               href="/docs/guide/introduction"
-              onClick={() => handlePressNavbarItem("Docs", "/docs/guide/introduction")}
             >
               Docs
             </NextLink>
@@ -265,7 +236,6 @@ export const Navbar: FC<NavbarProps> = ({ children, routes, mobileRoutes = [], s
               color="foreground"
               data-active={pathname.includes("components")}
               href="/docs/components/accordion"
-              onClick={() => handlePressNavbarItem("Components", "/docs/components/accordion")}
             >
               Components
             </NextLink>
@@ -278,7 +248,6 @@ export const Navbar: FC<NavbarProps> = ({ children, routes, mobileRoutes = [], s
               color="foreground"
               data-active={pathname.includes("playground")}
               href="/playground"
-              onClick={() => handlePressNavbarItem("playground", "/playground")}
             >
               Playground
             </NextLink>
@@ -289,7 +258,6 @@ export const Navbar: FC<NavbarProps> = ({ children, routes, mobileRoutes = [], s
               color="foreground"
               data-active={pathname.includes("/docs/guide/figma")}
               href="/docs/guide/figma"
-              onClick={() => handlePressNavbarItem("Figma", "/docs/guide/figma")}
             >
               Figma
             </NextLink>
@@ -300,7 +268,6 @@ export const Navbar: FC<NavbarProps> = ({ children, routes, mobileRoutes = [], s
               color="foreground"
               data-active={pathname.includes("blog")}
               href="/blog"
-              onClick={() => handlePressNavbarItem("Blog", "/blog")}
             >
               Blog
             </NextLink>
@@ -312,7 +279,6 @@ export const Navbar: FC<NavbarProps> = ({ children, routes, mobileRoutes = [], s
               color="foreground"
               data-active={pathname.includes("themes")}
               href="/themes"
-              onClick={() => handlePressNavbarItem("Themes", "/themes")}
             >
               Theme
             </NextLink>
@@ -329,7 +295,6 @@ export const Navbar: FC<NavbarProps> = ({ children, routes, mobileRoutes = [], s
             aria-label="Github"
             className="flex gap-0.5 items-center h-10 px-2 border-1 border-default-200 rounded-full text-default-600 dark:text-default-500"
             href={siteConfig.links.github}
-            onPress={() => handlePressNavbarItem("Github", siteConfig.links.github)}
           >
             <GithubIcon />
             <span className="text-xs font-medium">{githubInfo.stars.formatted}</span>
@@ -351,7 +316,6 @@ export const Navbar: FC<NavbarProps> = ({ children, routes, mobileRoutes = [], s
               <HeartFilledIcon className="text-danger group-data-[hover=true]:animate-heartbeat" />
             }
             variant="flat"
-            onPress={() => handlePressNavbarItem("Sponsor", siteConfig.links.sponsor)}
           >
             Sponsor
           </Button>

@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 import type { LinkProps, SlotsToClasses } from "@heroui/react";
 
 import React from "react";
-import { usePostHog } from "posthog-js/react";
 import { tv } from "tailwind-variants";
 import { Card, CardHeader, CardBody } from "@heroui/react";
 import { useRouter } from "next/navigation";
@@ -39,18 +38,9 @@ interface FeaturesGridProps {
 export const FeaturesGrid: React.FC<FeaturesGridProps> = ({ features, classNames, ...props }) => {
   const router = useRouter();
 
-  const posthog = usePostHog();
-
   const slots = styles();
 
   const handleClick = (feat: Feature) => {
-    posthog.capture("FeaturesGrid - Click", {
-      name: feat.title,
-      action: "click",
-      category: "docs",
-      data: feat.href ?? "",
-    });
-
     if (!feat.href) {
       return;
     }

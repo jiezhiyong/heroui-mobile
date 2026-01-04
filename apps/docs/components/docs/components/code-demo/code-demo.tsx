@@ -4,19 +4,13 @@ import type { UseCodeDemoProps } from "./use-code-demo";
 import type { WindowResizerProps } from "./window-resizer";
 import type { GradientBoxProps } from "@/components/gradient-box";
 
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, { useCallback, useMemo, useRef } from "react";
 import dynamic from "next/dynamic";
-import { addToast, Button, Skeleton, Spinner, Tab, Tabs } from "@heroui/react";
+import { Skeleton, Tab, Tabs } from "@heroui/react";
 import { useInView } from "framer-motion";
-import { usePostHog } from "posthog-js/react";
-import { usePathname } from "next/navigation";
 
 import { useCodeDemo } from "./use-code-demo";
 import WindowResizer from "./window-resizer";
-import { parseDependencies } from "./parse-dependencies";
-
-import { SmallLogo } from "@/components/heroui-logo";
-import { openInChat } from "@/actions/open-in-chat";
 
 const DynamicReactLiveDemo = dynamic(
   () => import("./react-live-demo").then((m) => m.ReactLiveDemo),
@@ -83,10 +77,8 @@ export const CodeDemo: React.FC<CodeDemoProps> = ({
     margin: "600px",
   });
 
-  const pathname = usePathname();
-  const posthog = usePostHog();
-
-  const [isLoading, setIsLoading] = useState(false);
+  // const pathname = usePathname();
+  // const [isLoading, setIsLoading] = useState(false);
 
   const { noInline, code } = useCodeDemo({
     files,
@@ -179,91 +171,80 @@ export const CodeDemo: React.FC<CodeDemoProps> = ({
     return true;
   }, [showTabs, showPreview, showEditor]);
 
-  const isComponentsPage = pathname.includes("/components/");
+  // const isComponentsPage = pathname.includes("/components/");
 
-  const handleOpenInChat = useCallback(async () => {
-    setIsLoading(true);
+  // const handleOpenInChat = useCallback(async () => {
+  //   setIsLoading(true);
 
-    const normalizeError = (err: unknown) => {
-      if (err instanceof Error) return err.message;
-      if (typeof err === "string") return err;
+  //   const normalizeError = (err: unknown) => {
+  //     if (err instanceof Error) return err.message;
+  //     if (typeof err === "string") return err;
 
-      try {
-        return JSON.stringify(err);
-      } catch {
-        return String(err);
-      }
-    };
+  //     try {
+  //       return JSON.stringify(err);
+  //     } catch {
+  //       return String(err);
+  //     }
+  //   };
 
-    let newTab: Window | null = null;
+  //   let newTab: Window | null = null;
 
-    try {
-      // assume doc demo files are all App.jsx
-      const content = files["/App.jsx"];
+  //   try {
+  //     // assume doc demo files are all App.jsx
+  //     const content = files["/App.jsx"];
 
-      if (!content || typeof content !== "string") {
-        addToast({
-          title: "Error",
-          description: "Invalid demo content",
-          color: "danger",
-        });
+  //     if (!content || typeof content !== "string") {
+  //       addToast({
+  //         title: "Error",
+  //         description: "Invalid demo content",
+  //         color: "danger",
+  //       });
 
-        return;
-      }
+  //       return;
+  //     }
 
-      const component = pathname.split("/components/")[1];
-      const dependencies = parseDependencies(content);
+  //     const component = pathname.split("/components/")[1];
+  //     const dependencies = parseDependencies(content);
 
-      posthog.capture("CodeDemo - Open in Chat", {
-        component,
-        demo: title,
-      });
+  //     newTab = window.open(undefined, "_blank");
 
-      newTab = window.open(undefined, "_blank");
+  //     const { data, error } = await openInChat({
+  //       component,
+  //       title,
+  //       content,
+  //       dependencies,
+  //       useWrapper: !asIframe,
+  //     });
 
-      const { data, error } = await openInChat({
-        component,
-        title,
-        content,
-        dependencies,
-        useWrapper: !asIframe,
-      });
+  //     if (error || !data) {
+  //       const message = normalizeError(error ?? "Unknown error");
 
-      if (error || !data) {
-        const message = normalizeError(error ?? "Unknown error");
+  //       if (newTab) newTab.close();
 
-        if (newTab) newTab.close();
+  //       addToast({
+  //         title: "Error",
+  //         description: message,
+  //         color: "danger",
+  //       });
 
-        posthog.capture("CodeDemo - Open in Chat Error", {
-          component,
-          demo: title,
-          error: message,
-        });
+  //       return;
+  //     }
 
-        addToast({
-          title: "Error",
-          description: message,
-          color: "danger",
-        });
+  //     if (newTab) newTab.location.href = data;
+  //   } catch (err) {
+  //     const message = normalizeError(err);
 
-        return;
-      }
+  //     if (newTab) newTab.close();
 
-      if (newTab) newTab.location.href = data;
-    } catch (err) {
-      const message = normalizeError(err);
-
-      if (newTab) newTab.close();
-
-      addToast({
-        title: "Error",
-        description: message,
-        color: "danger",
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  }, [pathname, title, files, posthog, asIframe]);
+  //     addToast({
+  //       title: "Error",
+  //       description: message,
+  //       color: "danger",
+  //     });
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // }, [pathname, title, files, asIframe]);
 
   return (
     <div ref={ref} className="flex flex-col gap-2 relative">
@@ -273,7 +254,7 @@ export const CodeDemo: React.FC<CodeDemoProps> = ({
             disableAnimation
             aria-label="Code demo tabs"
             classNames={{
-              panel: "pt-0",
+              panel: "pt-0 px-0",
             }}
             variant="underlined"
           >
@@ -284,7 +265,8 @@ export const CodeDemo: React.FC<CodeDemoProps> = ({
               {editorContent}
             </Tab>
           </Tabs>
-          {isComponentsPage && (
+
+          {/* {isComponentsPage && (
             <Button
               disableRipple
               className="absolute rounded-[9px] right-1 top-1 border-1 border-default-200 dark:border-default-100 data-[hover=true]:bg-default-50/80"
@@ -305,7 +287,7 @@ export const CodeDemo: React.FC<CodeDemoProps> = ({
                 <SmallLogo className="w-4 h-4" />
               )}
             </Button>
-          )}
+          )} */}
         </>
       ) : (
         <>

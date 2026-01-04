@@ -4,7 +4,6 @@ import NextLink from "next/link";
 import { Button, Link, Chip, Snippet } from "@heroui/react";
 import { ArrowRightIcon } from "@heroui/shared-icons";
 import dynamic from "next/dynamic";
-import { usePostHog } from "posthog-js/react";
 
 import { FloatingComponents } from "./floating-components";
 
@@ -17,17 +16,6 @@ const BgLooper = dynamic(() => import("./bg-looper").then((mod) => mod.BgLooper)
 });
 
 export const Hero = () => {
-  const posthog = usePostHog();
-
-  const handlePressAnnouncement = (name: string, url: string) => {
-    posthog.capture("NavbarItem", {
-      name,
-      action: "press",
-      category: "home - hero",
-      data: url,
-    });
-  };
-
   return (
     <section className="flex relative overflow-hidden lg:overflow-visible w-full flex-nowrap justify-between items-center h-[calc(100vh_-_64px)] 2xl:h-[calc(84vh_-_64px)]">
       <div className="relative z-20 flex flex-col w-full gap-6 lg:w-1/2 xl:mt-10">
@@ -41,7 +29,6 @@ export const Hero = () => {
             color="primary"
             href="/blog/v2.7.0"
             variant="flat"
-            onClick={() => handlePressAnnouncement("HeroUI v2.7.0", "/blog/v2.7.0")}
           >
             HeroUI v2.7.0&nbsp;
             <span aria-label="emoji" role="img">
@@ -74,14 +61,6 @@ export const Hero = () => {
             href="/docs/guide/introduction"
             radius="full"
             size="lg"
-            onPress={() => {
-              posthog.capture("Hero - Get Started", {
-                name: "Get Started",
-                action: "click",
-                category: "landing-page",
-                data: "/docs/guide/introduction",
-              });
-            }}
           >
             Get Started
           </Button>
@@ -89,14 +68,6 @@ export const Hero = () => {
             className="hidden w-full rounded-full md:flex sm:w-auto"
             copyButtonProps={{
               radius: "full",
-            }}
-            onCopy={() => {
-              posthog.capture("Hero - Copy Install Command", {
-                name: "Copy",
-                action: "click",
-                category: "landing-page",
-                data: "npx heroui-cli@latest init",
-              });
             }}
           >
             npx heroui-cli@latest init
@@ -111,14 +82,6 @@ export const Hero = () => {
             size="lg"
             startContent={<GithubIcon />}
             variant="bordered"
-            onPress={() => {
-              posthog.capture("Hero - Github", {
-                name: "Github",
-                action: "click",
-                category: "landing-page",
-                data: siteConfig.links.github,
-              });
-            }}
           >
             GitHub
           </Button>

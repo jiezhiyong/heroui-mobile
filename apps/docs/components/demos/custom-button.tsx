@@ -2,11 +2,9 @@
 
 import { useRef } from "react";
 import { Button } from "@heroui/react";
-import { usePostHog } from "posthog-js/react";
 
 export const CustomButton = () => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const posthog = usePostHog();
 
   const handleConfetti = async () => {
     const { clientWidth, clientHeight } = document.documentElement;
@@ -27,11 +25,6 @@ export const CustomButton = () => {
         y: targetY / clientHeight,
         x: targetCenterX / clientWidth,
       },
-    });
-
-    posthog.capture("LandingPage - Confetti Button", {
-      action: "press",
-      category: "landing-page",
     });
   };
 

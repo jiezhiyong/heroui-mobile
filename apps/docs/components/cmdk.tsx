@@ -18,7 +18,6 @@ import { isAppleDevice, isWebKit } from "@react-aria/utils";
 import { create } from "zustand";
 import { isEmpty, intersectionBy } from "@heroui/shared-utils";
 import { writeStorage, useLocalStorage } from "@rehooks/local-storage";
-import { usePostHog } from "posthog-js/react";
 
 import {
   DocumentCodeBoldIcon,
@@ -142,8 +141,6 @@ export const Cmdk: FC<{}> = () => {
 
   const { isOpen, onClose, onOpen } = useCmdkStore();
 
-  const posthog = usePostHog();
-
   const [recentSearches] = useLocalStorage<SearchResultItem[]>(RECENT_SEARCHES_KEY);
 
   const addToRecentSearches = (item: SearchResultItem) => {
@@ -201,13 +198,6 @@ export const Cmdk: FC<{}> = () => {
 
       const matches = intersectionBy(...matchesForEachWord, "objectID").slice(0, MAX_RESULTS);
 
-      posthog.capture("Cmdk - Search", {
-        name: "cmdk - search",
-        action: "search",
-        category: "cmdk",
-        data: { query, words, matches: matches?.map((match) => match.url).join(", ") },
-      });
-
       return matches;
     },
     [query],
@@ -223,13 +213,6 @@ export const Cmdk: FC<{}> = () => {
       if (e?.key?.toLowerCase() === "k" && e[hotkey]) {
         e.preventDefault();
         isOpen ? onClose() : onOpen();
-
-        posthog.capture("Cmdk - Open/Close", {
-          name: "cmdk - open/close",
-          action: "keydown",
-          category: "cmdk",
-          data: isOpen ? "close" : "open",
-        });
       }
     };
 
@@ -245,13 +228,6 @@ export const Cmdk: FC<{}> = () => {
       onClose();
       router.push(item.url);
       addToRecentSearches(item);
-
-      posthog.capture("Cmdk - ItemSelect", {
-        name: item.content,
-        action: "click",
-        category: "cmdk",
-        data: item.url,
-      });
     },
     [router, recentSearches],
   );

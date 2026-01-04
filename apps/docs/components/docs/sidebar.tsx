@@ -13,7 +13,6 @@ import type { SpacerProps } from "@heroui/react";
 import type { Route } from "@/libs/docs/page";
 
 import { useEffect, useState, useRef, useMemo, useLayoutEffect } from "react";
-import { usePostHog } from "posthog-js/react";
 import { ChevronIcon } from "@heroui/shared-icons";
 import { BaseItem } from "@heroui/aria-utils";
 import { useFocusRing } from "@react-aria/focus";
@@ -64,7 +63,6 @@ function TreeItem<T>(props: TreeItemProps<T>) {
 
   const router = useRouter();
   const pathname = usePathname();
-  const posthog = usePostHog();
 
   const paths = item.props.path
     ? getRoutePaths(item.props.path, item.props?.tag)
@@ -107,12 +105,6 @@ function TreeItem<T>(props: TreeItemProps<T>) {
         state.toggleKey(item.key);
       } else {
         router.push(paths.pathname);
-
-        posthog.capture("SidebarDocs", {
-          category: "docs",
-          action: "click",
-          data: paths.pathname || "",
-        });
       }
     },
   });

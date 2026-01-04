@@ -3,7 +3,6 @@ import type { Language } from "prism-react-renderer";
 import { clsx } from "@heroui/shared-utils";
 import * as Components from "@heroui/react";
 import NextImage from "next/image";
-import { usePostHog } from "posthog-js/react";
 
 import { ThemeSwitch } from "./theme-switch";
 import { InfoCircle } from "./icons/info-circle";
@@ -144,7 +143,6 @@ const Code = ({
   const isMultiLine = (children as string)?.split?.("\n")?.length > 2;
   const language = (className?.replace(/language-/, "") ?? "jsx") as Language;
   const codeString = String(children).trim();
-  const posthog = usePostHog();
 
   if (!className) {
     return <InlineCode>{children}</InlineCode>;
@@ -167,12 +165,6 @@ const Code = ({
         copyButton: "text-lg text-zinc-500 mr-2",
       }}
       codeString={codeString}
-      onCopy={() => {
-        posthog.capture("MDXComponents - Copy", {
-          category: "docs",
-          action: "copyCode",
-        });
-      }}
     >
       <Codeblock
         className="sp-editor"
@@ -186,15 +178,6 @@ const Code = ({
 
 const Link = ({ href, children }: { href?: string; children?: React.ReactNode }) => {
   const isExternal = href?.startsWith("http") || href?.startsWith("https");
-  const posthog = usePostHog();
-
-  const handleClick = () => {
-    posthog.capture("MDXComponents - Click", {
-      category: "docs",
-      action: "click",
-      data: href || "",
-    });
-  };
 
   const externalProps = isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {};
 
@@ -208,7 +191,6 @@ const Link = ({ href, children }: { href?: string; children?: React.ReactNode })
         // font size inherit from parent
         fontSize: "inherit",
       }}
-      onPress={handleClick}
     >
       {children}
     </Components.Link>

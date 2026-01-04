@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 
 import { Button, Code, Link, Tooltip } from "@heroui/react";
 import Balancer from "react-wrap-balancer";
-import { usePostHog } from "posthog-js/react";
 
 import { GithubIcon, NpmIcon, AdobeIcon, StorybookIcon, NextJsIcon } from "@/components/icons";
 import { COMPONENT_PATH, COMPONENT_THEME_PATH } from "@/libs/github/constants";
@@ -28,16 +27,8 @@ const ButtonLink = ({
   href: string;
   tooltip?: string | ReactNode;
 }) => {
-  const posthog = usePostHog();
-
   const handlePress = () => {
     if (!href) return;
-
-    posthog.capture("ComponentLinks - Click", {
-      category: "docs",
-      action: "click",
-      data: href || "",
-    });
   };
 
   const button = (

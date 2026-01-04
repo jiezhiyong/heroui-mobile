@@ -8,7 +8,6 @@ import { useSwitch } from "@heroui/react";
 import { useTheme } from "next-themes";
 import { clsx } from "@heroui/shared-utils";
 import { useIsSSR } from "@react-aria/ssr";
-import { usePostHog } from "posthog-js/react";
 
 import { SunLinearIcon, MoonIcon } from "@/components/icons";
 
@@ -20,7 +19,6 @@ export interface ThemeSwitchProps {
 export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, classNames }) => {
   const { theme, setTheme } = useTheme();
   const isSSR = useIsSSR();
-  const posthog = usePostHog();
 
   const initialTheme = isSSR ? "light" : theme;
 
@@ -33,12 +31,6 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, classNames }) => 
     const newTheme = theme === "light" ? "dark" : "light";
 
     setTheme(newTheme);
-
-    posthog.capture("ThemeChange", {
-      action: "click",
-      category: "theme",
-      data: newTheme,
-    });
   };
 
   const { Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps } = useSwitch({

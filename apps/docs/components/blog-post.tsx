@@ -7,23 +7,11 @@ import Balancer from "react-wrap-balancer";
 import { format, parseISO } from "date-fns";
 import NextLink from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { usePostHog } from "posthog-js/react";
 
 import { useIsMounted } from "@/hooks/use-is-mounted";
 
 const BlogPostCard = (post: BlogPost) => {
   const isMounted = useIsMounted();
-
-  const posthog = usePostHog();
-
-  const handlePress = () => {
-    posthog.capture("BlogPostCard - Selection", {
-      name: post.title,
-      action: "click",
-      category: "blog",
-      data: post.url ?? "",
-    });
-  };
 
   return (
     <AnimatePresence>
@@ -41,7 +29,6 @@ const BlogPostCard = (post: BlogPost) => {
             className="p-2 h-full border-transparent text-start bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8]"
             href={post.url}
             isPressable={!!post.url}
-            onPress={handlePress}
           >
             <CardHeader>
               <Link
@@ -50,7 +37,6 @@ const BlogPostCard = (post: BlogPost) => {
                 href={post.url}
                 size="lg"
                 underline="hover"
-                onPress={handlePress}
               >
                 <Balancer>{post.title}</Balancer>
               </Link>

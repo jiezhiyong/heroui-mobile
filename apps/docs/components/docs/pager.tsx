@@ -4,7 +4,6 @@ import type { Route } from "@/libs/docs/page";
 
 import * as React from "react";
 import { Link } from "@heroui/react";
-import { usePostHog } from "posthog-js/react";
 import { useRouter } from "next/navigation";
 import { ChevronIcon } from "@heroui/shared-icons";
 
@@ -21,15 +20,7 @@ export const DocsPager: React.FC<FooterNavProps> = ({ currentRoute }) => {
 
   const { prevRoute, nextRoute } = useDocsRoute(manifest.routes, currentRoute);
 
-  const posthog = usePostHog();
-
   const handlePress = (path: string) => {
-    posthog.capture("DocsPager - Click", {
-      category: "docs",
-      action: "click",
-      data: path || "",
-    });
-
     router.push(removeFromLast(path || "", "."));
   };
 

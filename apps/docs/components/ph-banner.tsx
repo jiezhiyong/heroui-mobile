@@ -4,22 +4,12 @@ import { Icon } from "@iconify/react/dist/offline";
 import arrowRightIcon from "@iconify/icons-solar/arrow-right-linear";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import { usePostHog } from "posthog-js/react";
 
 import emitter from "@/libs/emitter";
 
 const hideOnPaths = ["examples"];
 
 export const PhBanner = () => {
-  const posthog = usePostHog();
-
-  const handleClick = () => {
-    posthog.capture("HeroUI Pro Banner", {
-      action: "click",
-      category: "landing-page",
-    });
-  };
-
   const pathname = usePathname();
   const shouldBeVisible = !hideOnPaths.some((path) => pathname.includes(path));
 
@@ -68,7 +58,6 @@ export const PhBanner = () => {
           href="https://ph.heroui.chat?utm_source=heroui.com&utm_medium=top-banner"
           rel="noopener noreferrer"
           target="_blank"
-          onClick={handleClick}
         >
           <span aria-label="rocket" className="hidden md:block" role="img">
             😺
