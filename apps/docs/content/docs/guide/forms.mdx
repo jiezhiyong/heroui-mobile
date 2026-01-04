@@ -1,13 +1,13 @@
 ---
 title: Forms
-description: Learn how to handle forms in HeroUI.
+description: Learn how to handle forms in HeroUiMobile.
 ---
 
 import { formContent } from "@/content/components/form";
 
 # Forms
 
-HeroUI provides form components with built-in validation and styling to help users input and submit data effectively.
+HeroUiMobile provides form components with built-in validation and styling to help users input and submit data effectively.
 
 
 
@@ -15,10 +15,10 @@ HeroUI provides form components with built-in validation and styling to help use
 
 ## Labels and help text
 
-Accessible forms start with clear, descriptive labels for each field. All HeroUI form components support labeling using
+Accessible forms start with clear, descriptive labels for each field. All HeroUiMobile form components support labeling using
 the Label component, which is automatically associated with the field via the id and for attributes on your behalf.
 
-In addition, HeroUI components support help text, which associates additional context with a field such as a **description**
+In addition, HeroUiMobile components support help text, which associates additional context with a field such as a **description**
 or **error message**. The label and help text are announced by assistive technology such as screen readers when the user focuses
 the field.
 
@@ -92,7 +92,7 @@ function Example() {
 
 #### Controlled forms
 
-HeroUI form components are uncontrolled by default, but if you need to manage state in real-time, you can use the `useState` hook to make the component controlled.
+HeroUiMobile form components are uncontrolled by default, but if you need to manage state in real-time, you can use the `useState` hook to make the component controlled.
 
 ```tsx {5,26-27}
 import * as React from "react";
@@ -185,17 +185,17 @@ export default function App() {
   files={formContent.customErrorMessages}
 />
 
-> **Note**: The default error messages are localized by the browser based on the browser/operating system language settings. The [locale setting in HeroUI Provider](/docs/api-references/heroui-provider#props) does not affect validation errors.
+> **Note**: The default error messages are localized by the browser based on the browser/operating system language settings. The [locale setting in HeroUiMobile Provider](/docs/api-references/heroui-provider#props) does not affect validation errors.
 
 
 ## Validation
 
 Form validation is crucial for ensuring that users enter the correct data.
-HeroUI supports native HTML constraint validation and allows for custom validation and real-time validation.
+HeroUiMobile supports native HTML constraint validation and allows for custom validation and real-time validation.
 
 #### Built-in validation
 
-HeroUI form components support [native HTML validation](https://developer.mozilla.org/docs/Web/HTML/Constraint_validation) attributes like `isRequired` and `minLength`.
+HeroUiMobile form components support [native HTML validation](https://developer.mozilla.org/docs/Web/HTML/Constraint_validation) attributes like `isRequired` and `minLength`.
 These constraints are checked by the browser when the user commits changes (e.g., on blur) or submits the form.
 You can display validation errors with custom styles instead of the browser's default UI.
 
@@ -227,7 +227,7 @@ export default function App() {
 
 To enable ARIA validation, set `validationBehavior="aria"`.
 When`validationBehavior="aria"` is set, fields are only marked as required or invalid for assistive technologies, without preventing form submission.
-You can change the form defaults for your entire app using [HeroUI Provider](/docs/api-references/heroui-provider).
+You can change the form defaults for your entire app using [HeroUiMobile Provider](/docs/api-references/heroui-provider).
 
 Supported constraints include:
 
@@ -335,7 +335,7 @@ Use `validationBehavior="aria"` to allow form submission even when fields are in
 #### Server validation
 
 Client-side validation provides immediate feedback, but you should also validate data on the server to ensure accuracy and security.
-HeroUI allows you to display server-side validation errors by using the `validationErrors` prop in the `Form` component.
+HeroUiMobile allows you to display server-side validation errors by using the `validationErrors` prop in the `Form` component.
 This prop should be an object where each key is the field `name` and the value is the error message.
 
 ```tsx {4,17,25-26}
@@ -395,7 +395,7 @@ function callServer(data) {
 
 #### Schema validation
 
-HeroUI supports errors from schema validation libraries like [Zod](https://zod.dev/).
+HeroUiMobile supports errors from schema validation libraries like [Zod](https://zod.dev/).
 You can use Zod's `flatten` method to get error messages for each field and return them as part of the server response.
 
 ```tsx {14}
@@ -520,12 +520,12 @@ export async function action({request}: ActionFunctionArgs) {
 
 ## Form libraries
 
-In most cases, the built-in validation features of HeroUI are sufficient. However, if you're building more complex forms or integrating HeroUI components into an existing form, you can use a form library like [React Hook Form](https://react-hook-form.com/) or [Formik](https://formik.org/).
+In most cases, the built-in validation features of HeroUiMobile are sufficient. However, if you're building more complex forms or integrating HeroUiMobile components into an existing form, you can use a form library like [React Hook Form](https://react-hook-form.com/) or [Formik](https://formik.org/).
 
 #### React Hook Form
 
-You can integrate HeroUI components using [Controller](https://react-hook-form.com/docs/usecontroller/controller).
-Controller allows you to manage field values and validation errors, and reflect the validation result in HeroUI components.
+You can integrate HeroUiMobile components using [Controller](https://react-hook-form.com/docs/usecontroller/controller).
+Controller allows you to manage field values and validation errors, and reflect the validation result in HeroUiMobile components.
 
 ```tsx
 import {Controller, useForm} from "react-hook-form";
@@ -570,4 +570,4 @@ function App() {
 }
 ```
 
-> For more information about forms in HeroUI, visit the [React Aria Forms Guide](https://react-spectrum.adobe.com/react-aria/forms.html).
+> For more information about forms in HeroUiMobile, visit the [React Aria Forms Guide](https://react-spectrum.adobe.com/react-aria/forms.html).

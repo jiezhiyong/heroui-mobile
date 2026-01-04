@@ -32,8 +32,9 @@ export const DarkMode = () => {
             </div>
           </div>
           <p className={subtitle()}>
-            HeroUI comes with a fully well-scaled default dark theme that you can apply to your
-            application with just adding the <Code>dark</Code> attribute to your <Code>html</Code>.
+            HeroUiMobile comes with a fully well-scaled default dark theme that you can apply to
+            your application with just adding the <Code>dark</Code> attribute to your{" "}
+            <Code>html</Code>.
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -90,7 +91,7 @@ export const DarkMode = () => {
       <DemoCodeModal
         code={landingContent.darkModeExampleCode}
         isOpen={isModalOpen}
-        subtitle="A simple music player component built using components from HeroUI."
+        subtitle="A simple music player component built using components from HeroUiMobile."
         title="MusicPlayer"
         onClose={() => setIsModalOpen(false)}
       />

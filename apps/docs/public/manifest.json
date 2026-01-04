@@ -1,6 +1,6 @@
 {
-  "name": "HeroUI",
-  "short_name": "HeroUI",
+  "name": "HeroUiMobile",
+  "short_name": "HeroUiMobile",
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "display": "standalone",

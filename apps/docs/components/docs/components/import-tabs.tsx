@@ -26,7 +26,7 @@ export const ImportTabs = ({ commands }: ImportTabsProps) => {
   return (
     <Tabs
       disableAnimation
-      aria-label="HeroUI import commands"
+      aria-label="HeroUiMobile import commands"
       classNames={{
         base: "group",
         tabList: "relative h-10 px-0",

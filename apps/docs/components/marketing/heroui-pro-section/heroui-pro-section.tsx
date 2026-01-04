@@ -63,7 +63,7 @@ export const HeroUIProSection = () => {
           </div>
           <p className={subtitle({ class: "pr-12 text-foreground-500" })}>
             Premade templates of over 210+ beautiful and responsive components, professionally
-            created by the team behind HeroUI.
+            created by the team behind HeroUiMobile.
           </p>
           <ul className="mt-4 text-foreground-600 font-medium">
             <li className="flex gap-x-4 items-center">

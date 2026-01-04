@@ -1,6 +1,6 @@
 ---
 title: Remix
-description: How to use HeroUI with Remix
+description: How to use HeroUiMobile with Remix
 ---
 
 # Remix
@@ -15,11 +15,11 @@ Requirements:
 
 
 
-To use HeroUI in your Remix project, you need to follow the following steps:
+To use HeroUiMobile in your Remix project, you need to follow the following steps:
 
-### Using HeroUI + Remix template
+### Using HeroUiMobile + Remix template
 
-If you are starting a new project, you can run one of the following commands to create a Remix project pre-configured with HeroUI:
+If you are starting a new project, you can run one of the following commands to create a Remix project pre-configured with HeroUiMobile:
 
 <PackageManagers
   commands={{
@@ -121,7 +121,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
 
 ### Add dependencies
 
-In your Remix project, run one of the following command to install HeroUI:
+In your Remix project, run one of the following command to install HeroUiMobile:
 
 <PackageManagers
   commands={{
@@ -135,7 +135,7 @@ In your Remix project, run one of the following command to install HeroUI:
 ### Hoisted Dependencies Setup
 
 <Blockquote color="primary">
-**Note**: This step is only for those who use `pnpm` to install. If you install HeroUI using other package managers, you may skip this step.
+**Note**: This step is only for those who use `pnpm` to install. If you install HeroUiMobile using other package managers, you may skip this step.
 </Blockquote>
 
 If you are using pnpm, you need to add the following line to your `.npmrc` file to hoist our packages to the root `node_modules`.
@@ -148,7 +148,7 @@ After modifying the `.npmrc` file, you need to run `pnpm install` again to ensur
 
 ### Tailwind CSS Setup
 
-HeroUI is built on top of Tailwind CSS, so you need to install Tailwind CSS first. You can follow the official
+HeroUiMobile is built on top of Tailwind CSS, so you need to install Tailwind CSS first. You can follow the official
 [installation guide](https://v3.tailwindcss.com/docs/guides/remix) to install Tailwind CSS. Then you need to add
 the following code to your `tailwind.config.js` file:
 
@@ -178,7 +178,7 @@ export default {
 
 ### Provider Setup
 
-After installing HeroUI, you need to set up the `HeroUIProvider` at the `root` of your application.
+After installing HeroUiMobile, you need to set up the `HeroUIProvider` at the `root` of your application.
 
 Go to the src directory and inside `root.tsx`, wrap `HeroUIProvider` around App:
 

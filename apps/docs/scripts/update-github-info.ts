@@ -52,7 +52,7 @@ async function getGithubInfo() {
 
     fs.writeFileSync(outPath, formattedJson);
 
-    console.log("[HeroUI] GitHub info updated successfully ✅");
+    console.log("[HeroUiMobile] GitHub info updated successfully ✅");
   } catch (error) {
     console.error("[ERROR 🔥]:", error);
   }

@@ -1,11 +1,11 @@
 ---
 title: Routing
-description: Learn how to integrate client side routing into your HeroUI application.
+description: Learn how to integrate client side routing into your HeroUiMobile application.
 ---
 
 # Routing
 
-HeroUI Components such as [Tabs](/docs/components/tabs), [Listbox](/docs/components/listbox), [Dropdown](/docs/components/dropdown) and many others offer
+HeroUiMobile Components such as [Tabs](/docs/components/tabs), [Listbox](/docs/components/listbox), [Dropdown](/docs/components/dropdown) and many others offer
 the flexibility to be rendered as **HTML links**.
 
 
@@ -15,10 +15,10 @@ the flexibility to be rendered as **HTML links**.
 By default, links perform native browser navigation when they are interacted with. However, many apps and
 frameworks use client side routers to avoid a full page reload when navigating between pages.
 
-The `HeroUIProvider` component configures all HeroUI components within it to navigate using the client side
+The `HeroUIProvider` component configures all HeroUiMobile components within it to navigate using the client side
 router you provide.
 
-Set this up once in the `root` of your app, and any HeroUI component with the `href` prop will automatically navigate
+Set this up once in the `root` of your app, and any HeroUiMobile component with the `href` prop will automatically navigate
 using your router.
 
 ## HeroUIProvider Setup
@@ -49,7 +49,7 @@ function App() {
 
 ### Router Options
 
-All `HeroUI` link components accept a `routerOptions` prop that passes options to the router's navigate function for
+All `HeroUiMobile` link components accept a `routerOptions` prop that passes options to the router's navigate function for
 controlling behavior like scrolling and history navigation.
 
 ```jsx
@@ -273,7 +273,7 @@ to the router.
 ## Remix
 
 Remix uses React Router under the hood, so the same `useNavigate` and `useHref` hook described above also works in Remix
-apps. `HeroUIProvider` should be rendered at the `root` of each page that includes HeroUI components, or in
+apps. `HeroUIProvider` should be rendered at the `root` of each page that includes HeroUiMobile components, or in
 `app/root.tsx` to add it to all pages. See the [Remix docs](https://remix.run/docs/en/main/file-conventions/root)
 for more details.
 
@@ -309,7 +309,7 @@ export default function App() {
 
 ## TanStack
 
-To use [TanStack Router](https://tanstack.com/router/latest) with HeroUI, render HeroUI's RouterProvider inside your root route.
+To use [TanStack Router](https://tanstack.com/router/latest) with HeroUiMobile, render HeroUiMobile's RouterProvider inside your root route.
 Use `router.navigate` in the `navigate` prop, and `router.buildLocation` in the `useHref` prop.
 
 ```tsx

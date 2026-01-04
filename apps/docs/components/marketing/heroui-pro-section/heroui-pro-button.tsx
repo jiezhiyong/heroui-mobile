@@ -9,7 +9,7 @@ export const HeroUIProButton = () => (
     rel="noopener noreferrer"
     target="_blank"
   >
-    Explore HeroUI Pro
+    Explore HeroUiMobile Pro
     <svg fill="none" height="21" viewBox="0 0 20 21" width="20" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M12.0254 5.44189L17.0837 10.5002L12.0254 15.5586"

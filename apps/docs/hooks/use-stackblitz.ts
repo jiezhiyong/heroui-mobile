@@ -95,7 +95,7 @@ export function useStackblitz(props: UseSandpackProps) {
       "package.json": packageJson,
     },
     dependencies,
-    title: "HeroUI",
+    title: "HeroUiMobile",
     template: "node",
   };
 

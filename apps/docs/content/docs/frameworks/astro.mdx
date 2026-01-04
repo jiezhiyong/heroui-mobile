@@ -1,6 +1,6 @@
 ---
 title: Astro
-description: How to use HeroUI with Astro
+description: How to use HeroUiMobile with Astro
 ---
 
 # Astro
@@ -15,19 +15,19 @@ Requirements:
 
 
 
-To use HeroUI in your Astro project, you need to follow the following steps:
+To use HeroUiMobile in your Astro project, you need to follow the following steps:
 
 <Steps>
 
 ### Install React
 
-HeroUI is built on top of React, so you need to install React first. You can follow the official
+HeroUiMobile is built on top of React, so you need to install React first. You can follow the official
 [integration guide](https://docs.astro.build/en/guides/integrations-guide/react/) to install React.
 
 
-### Install HeroUI
+### Install HeroUiMobile
 
-In your Astro project, run one of the following command to install HeroUI:
+In your Astro project, run one of the following command to install HeroUiMobile:
 
 <PackageManagers
   commands={{
@@ -41,7 +41,7 @@ In your Astro project, run one of the following command to install HeroUI:
 ### Hoisted Dependencies Setup
 
 <Blockquote color="primary">
-**Note**: This step is only for those who use `pnpm` to install. If you install HeroUI using other package managers, you may skip this step.
+**Note**: This step is only for those who use `pnpm` to install. If you install HeroUiMobile using other package managers, you may skip this step.
 </Blockquote>
 
 If you are using pnpm, you need to add the following line to your `.npmrc` file to hoist our packages to the root `node_modules`.
@@ -54,7 +54,7 @@ After modifying the `.npmrc` file, you need to run `pnpm install` again to ensur
 
 ### Tailwind CSS Setup
 
-HeroUI is built on top of Tailwind CSS, so you need to install Tailwind CSS first. You can follow the official
+HeroUiMobile is built on top of Tailwind CSS, so you need to install Tailwind CSS first. You can follow the official
 [installation guide](https://v3.tailwindcss.com/docs/guides/astro) to install Tailwind CSS. Then you need to add
 the following code to your `tailwind.config.cjs` file:
 
@@ -83,7 +83,7 @@ module.exports = {
 
 ### Usage
 
-Now you can import HeroUI components and use them in your Astro project:
+Now you can import HeroUiMobile components and use them in your Astro project:
 
 ```markdown
 ---
@@ -99,6 +99,6 @@ import {Button} from '@heroui/react';
 ```
 
 Note that you have to add `client:visible` to the component to make it visible only on the client side. Otherwise
-some functionalities of HeroUI components may not work properly.
+some functionalities of HeroUiMobile components may not work properly.
 
 </Steps>

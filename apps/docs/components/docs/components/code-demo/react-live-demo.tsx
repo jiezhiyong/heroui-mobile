@@ -4,7 +4,7 @@ import type { GradientBoxProps } from "@/components/gradient-box";
 import React from "react";
 import { LivePreview, LiveProvider, LiveError } from "react-live";
 import { clsx } from "@heroui/shared-utils";
-import * as HeroUI from "@heroui/react";
+import * as HeroUiMobile from "@heroui/react";
 import * as HeroUIMobile from "@heroui-mobile/react";
 import * as intlDateUtils from "@internationalized/date";
 import * as reactAriaI18n from "@react-aria/i18n";
@@ -41,7 +41,7 @@ export const scope = {
   // Make mobile components available in react-live demos so their imports can be stripped
   // by `transformCode()` and resolved from scope (avoids runtime `require` in the browser).
   ...HeroUIMobile,
-  ...HeroUI,
+  ...HeroUiMobile,
   ...intlDateUtils,
   ...reactAriaI18n,
   ...reactHookForm,

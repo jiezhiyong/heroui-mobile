@@ -18,7 +18,7 @@ const themesTabs = (isMobile: boolean) => [
     id: "heroui",
     title: () => (
       <p className="group-data-[selected=true]:text-foreground group-data-[selected=true]:font-medium">
-        HeroUI
+        HeroUiMobile
       </p>
     ),
     icon: () => (
@@ -239,8 +239,8 @@ export const CustomThemes = () => {
             </div>
           </div>
           <p className={subtitle()}>
-            HeroUI provides a custom TailwindCSS plugin that allows you to customize the default
-            themes or create your own.
+            HeroUiMobile provides a custom TailwindCSS plugin that allows you to customize the
+            default themes or create your own.
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">

@@ -101,7 +101,7 @@ export const A11yOtb = () => {
             </div>
           </div>
           <p className={subtitle()}>
-            HeroUI components are built on top of&nbsp;
+            HeroUiMobile components are built on top of&nbsp;
             <HeroUILink
               isExternal
               className="text-xl text-default-500 font-light [&>svg]:ml-1"

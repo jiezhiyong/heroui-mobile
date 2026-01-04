@@ -31,13 +31,13 @@ export default {
     {
       title: "Light & Dark UI",
       description:
-        "Automatic dark mode recognition, HeroUI automatically changes the theme when detects HTML theme prop changes.",
+        "Automatic dark mode recognition, HeroUiMobile automatically changes the theme when detects HTML theme prop changes.",
       icon: <MoonIcon className="text-pink-500" />,
     },
     {
       title: "Unique DX",
       description:
-        "HeroUI is fully-typed to minimize the learning curve, and provide the best possible developer experience.",
+        "HeroUiMobile is fully-typed to minimize the learning curve, and provide the best possible developer experience.",
       icon: <DevicesIcon className="text-pink-500" />,
     },
   ],
@@ -46,8 +46,8 @@ export default {
       title: "React server components",
       description: (
         <>
-          All HeroUI components already include the <Code>&quot;use client&quot;</Code> directive,
-          which means you can import and use them directly in your RSC.
+          All HeroUiMobile components already include the <Code>&quot;use client&quot;</Code>{" "}
+          directive, which means you can import and use them directly in your RSC.
         </>
       ),
       icon: <ServerLinearIcon className="text-pink-500" />,
@@ -55,7 +55,7 @@ export default {
     {
       title: "Accessible components",
       description:
-        "HeroUI components follow the WAI-ARIA guidelines, provide keyboard support and sensible focus management.",
+        "HeroUiMobile components follow the WAI-ARIA guidelines, provide keyboard support and sensible focus management.",
       icon: <TagUserLinearIcon className="text-pink-500" />,
     },
     {
@@ -67,30 +67,30 @@ export default {
     {
       title: "Multiple packages",
       description:
-        "HeroUI is divided into multiple packages, so you can install only the components you need.",
+        "HeroUiMobile is divided into multiple packages, so you can install only the components you need.",
       icon: <CubesLinearIcon className="text-pink-500" />,
     },
     {
       title: "TypeScript based",
       description:
-        "Build type safe applications, HeroUI has a fully-typed API to minimize the learning curve, and help you build applications.",
+        "Build type safe applications, HeroUiMobile has a fully-typed API to minimize the learning curve, and help you build applications.",
       icon: <CodeDocumentLinearIcon className="text-pink-500" />,
     },
     {
       title: "Override components tags",
-      description: "A polymorphic `as` prop is included in all HeroUI components.",
+      description: "A polymorphic `as` prop is included in all HeroUiMobile components.",
       icon: <HtmlLogoLinearIcon className="text-pink-500" />,
     },
     {
       title: "No runtime styles",
       description:
-        "HeroUI is based on Tailwind CSS, it means that there are no runtime styles, and no unnecessary classes in your bundle.",
+        "HeroUiMobile is based on Tailwind CSS, it means that there are no runtime styles, and no unnecessary classes in your bundle.",
       icon: <FlashIcon className="text-pink-500" />,
     },
     {
       title: "Beautifully designed",
       description:
-        "HeroUI components are unique and are not tied to any visual trend or design rule, which makes us unique and of course your projects as well.",
+        "HeroUiMobile components are unique and are not tied to any visual trend or design rule, which makes us unique and of course your projects as well.",
       icon: <MagicIcon className="text-pink-500" />,
     },
   ],
@@ -194,7 +194,7 @@ const Application = ({Component, pageProps}) => {
   );
 };
 
-export default Application;  
+export default Application;
 `,
   customizationCode: `import React from 'react';
 import {Button} from '@heroui/react';

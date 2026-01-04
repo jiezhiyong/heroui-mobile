@@ -29,7 +29,7 @@ export type ColorPickerType =
   | "success"
   | "warning";
 
-// HeroUI component props
+// HeroUiMobile component props
 export type Color = "default" | "primary" | "secondary" | "success" | "warning" | "danger";
 export type Size = "sm" | "md" | "lg";
 export type Variant =

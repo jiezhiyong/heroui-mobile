@@ -1,6 +1,6 @@
 ---
 title: Next.js
-description: How to use HeroUI with Next.js
+description: How to use HeroUiMobile with Next.js
 ---
 
 # Next.js
@@ -17,15 +17,15 @@ Requirements:
 
 
 
-To use HeroUI in your Next.js project, you need to follow the steps below, depending on your project structure.
+To use HeroUiMobile in your Next.js project, you need to follow the steps below, depending on your project structure.
 
 ## App Directory Setup
 
-Next.js 13's `app/` directory uses Server Components by default. HeroUI components can be imported directly in Server Components since we add `use client` at build time.
+Next.js 13's `app/` directory uses Server Components by default. HeroUiMobile components can be imported directly in Server Components since we add `use client` at build time.
 
-### HeroUI CLI (recommended)
+### HeroUiMobile CLI (recommended)
 
-If you are starting a new project, you can use the HeroUI CLI to create a new project with HeroUI pre-configured:
+If you are starting a new project, you can use the HeroUiMobile CLI to create a new project with HeroUiMobile pre-configured:
 
 <Spacer y={4}/>
 
@@ -46,7 +46,7 @@ or
 
 ### create-next-app
 
-If you are starting a new project, you can run one of the following commands to create a Next.js project pre-configured with HeroUI:
+If you are starting a new project, you can run one of the following commands to create a Next.js project pre-configured with HeroUiMobile:
 
 <PackageManagers
   commands={{
@@ -148,7 +148,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
 
 ### Add dependencies
 
-In your Next.js project, run one of the following commands to install HeroUI:
+In your Next.js project, run one of the following commands to install HeroUiMobile:
 
 <PackageManagers
   commands={{
@@ -162,7 +162,7 @@ In your Next.js project, run one of the following commands to install HeroUI:
 ### Hoisted Dependencies Setup
 
 <Blockquote color="primary">
-**Note**: This step is only for those who use `pnpm` to install. If you install HeroUI using other package managers, you may skip this step.
+**Note**: This step is only for those who use `pnpm` to install. If you install HeroUiMobile using other package managers, you may skip this step.
 </Blockquote>
 
 If you are using pnpm, you need to add the following line to your `.npmrc` file to hoist our packages to the root `node_modules`.
@@ -175,7 +175,7 @@ After modifying the `.npmrc` file, you need to run `pnpm install` again to ensur
 
 ### Tailwind CSS Setup
 
-HeroUI is built on top of Tailwind CSS, so you need to install Tailwind CSS first. You can follow the official
+HeroUiMobile is built on top of Tailwind CSS, so you need to install Tailwind CSS first. You can follow the official
 [installation guide](https://v3.tailwindcss.com/docs/guides/nextjs) to install Tailwind CSS. Then you need to add
 the following code to your `tailwind.config.js` file:
 
@@ -248,13 +248,13 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
 }
 ```
 
-> **Note**: HeroUI automatically adds two themes, `light` and `dark`, to your application. You can use any
+> **Note**: HeroUiMobile automatically adds two themes, `light` and `dark`, to your application. You can use any
 of them by adding the `dark`/`light` class to the `html` tag. See the [theme docs](/docs/customization/customize-theme) for more details.
 
 
-### Use HeroUI Components
+### Use HeroUiMobile Components
 
-Now you can import any HeroUI component directly in your Server Components without needing to use
+Now you can import any HeroUiMobile component directly in your Server Components without needing to use
 the `use client;` directive:
 
 ```jsx {2,7}
@@ -277,9 +277,9 @@ export default function Page() {
 
 ## Pages Directory Setup
 
-### HeroUI CLI (recommended)
+### HeroUiMobile CLI (recommended)
 
-If you are starting a new project, you can use the HeroUI CLI to create a new project with HeroUI pre-configured:
+If you are starting a new project, you can use the HeroUiMobile CLI to create a new project with HeroUiMobile pre-configured:
 
 <Spacer y={4}/>
 
@@ -291,7 +291,7 @@ If you are using the `/pages` Next.js project structure, you need to follow the 
 
 ### create-next-app
 
-If you are starting a new project, you can run one of the following commands to create a Next.js project pre-configured with HeroUI:
+If you are starting a new project, you can run one of the following commands to create a Next.js project pre-configured with HeroUiMobile:
 
 <PackageManagers
   commands={{
@@ -392,7 +392,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
 
 ### Add dependencies
 
-In your Next.js project, run one of the following commands to install HeroUI:
+In your Next.js project, run one of the following commands to install HeroUiMobile:
 
 <PackageManagers
   commands={{
@@ -406,7 +406,7 @@ In your Next.js project, run one of the following commands to install HeroUI:
 ### Hoisted Dependencies Setup
 
 <Blockquote color="primary">
-**Note**: This step is only for those who use `pnpm` to install. If you install HeroUI using other package managers, you may skip this step.
+**Note**: This step is only for those who use `pnpm` to install. If you install HeroUiMobile using other package managers, you may skip this step.
 </Blockquote>
 
 If you are using pnpm, you need to add the following line to your `.npmrc` file to hoist our packages to the root `node_modules`.
@@ -419,7 +419,7 @@ After modifying the `.npmrc` file, you need to run `pnpm install` again to ensur
 
 ### Tailwind CSS Setup
 
-HeroUI is built on top of Tailwind CSS, so you need to install Tailwind CSS first. You can follow the official
+HeroUiMobile is built on top of Tailwind CSS, so you need to install Tailwind CSS first. You can follow the official
 [installation guide](https://v3.tailwindcss.com/docs/guides/nextjs) to install Tailwind CSS. Then you need to add
 the following code to your `tailwind.config.js` file:
 
@@ -467,9 +467,9 @@ function MyApp({ Component, pageProps }) {
 export default MyApp;
 ```
 
-### Use HeroUI Components
+### Use HeroUiMobile Components
 
-Now you can import any HeroUI component wherever you want:
+Now you can import any HeroUiMobile component wherever you want:
 
 ```jsx {1,6}
 import {Button} from '@heroui/react'

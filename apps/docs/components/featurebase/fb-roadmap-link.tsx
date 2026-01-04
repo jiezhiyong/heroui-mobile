@@ -15,7 +15,7 @@ export const FbRoadmapLink = ({ className, innerClassName }: Props) => {
     <NextLink
       className={clsx("inline-flex items-center", className)}
       color="foreground"
-      href={`${process.env.NEXT_PUBLIC_FB_FEEDBACK_URL}/roadmap`}
+      href="/roadmap"
       target="_blank"
     >
       <div className={clsx("relative", innerClassName)}>

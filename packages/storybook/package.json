@@ -1,7 +1,7 @@
 {
   "name": "@heroui-mobile/storybook",
   "version": "1.0.0",
-  "description": "The HeroUI react components storybook ",
+  "description": "The HeroUiMobile react components storybook ",
   "private": true,
   "keywords": [
     "storybook"

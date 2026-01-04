@@ -62,7 +62,7 @@ export const PackageManagers = ({
   return (
     <>
       <Tabs
-        aria-label="HeroUI installation commands"
+        aria-label="HeroUiMobile installation commands"
         classNames={{
           base: "group min-w-[300px] w-full overflow-x-auto",
           tabList: "h-10",

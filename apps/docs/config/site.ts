@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "HeroUI Mobile - Beautiful, fast and modern React UI Library",
+  name: "HeroUiMobile - Beautiful, fast and modern React UI Library",
   description: "Make beautiful websites regardless of your design experience.",
   ogImage: "https://heroui.com/heroui.jpg",
   author: "jiezhiyong",
@@ -12,20 +12,20 @@ export const siteConfig = {
     type: "website",
     locale: "en_US",
     url: "https://heroui-mobile.com",
-    siteName: "HeroUI Mobile",
+    siteName: "HeroUiMobile",
     description: "Beautiful, fast and modern React UI Library",
     images: [
       {
         url: "https://heroui.com/heroui.jpg",
         width: 1200,
         height: 630,
-        alt: "HeroUI Mobile",
+        alt: "HeroUiMobile",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "HeroUI Mobile - Beautiful, fast and modern React UI Library",
+    title: "HeroUiMobile - Beautiful, fast and modern React UI Library",
     description: "Make beautiful websites regardless of your design experience.",
     image: "https://heroui.com/heroui.jpg",
     creator: "@jiezhiyong",
@@ -33,8 +33,9 @@ export const siteConfig = {
   links: {
     github: "https://github.com/jiezhiyong/heroui-mobile",
     docs: "https://heroui-mobile.com",
-    discord: false,
-    sponsor: false,
-    portfolio: false,
+    twitter: "",
+    discord: "",
+    sponsor: "",
+    portfolio: "",
   },
 };

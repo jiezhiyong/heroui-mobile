@@ -1,5 +1,5 @@
 import React from "react";
-import * as HeroUI from "@heroui/react";
+import * as HeroUiMobile from "@heroui/react";
 
 const importRegex = /^(import\s+(?!type\s+\{)[\s\S]*?;)/gm;
 
@@ -9,7 +9,7 @@ export const parseDependencies = (content: string) => {
   // by default, react and heroui packages are installed already
   const installedPackages = {
     ...React,
-    ...HeroUI,
+    ...HeroUiMobile,
   } as Record<string, unknown>;
 
   // create a map of installed packages

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "Next.js",
     "NextUI",
     "Tailwind CSS",
-    "HeroUI",
+    "HeroUiMobile",
     "React Aria",
     "Server Components",
     "React Components",
@@ -53,7 +53,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://heroui.com",
     types: {
-      "application/rss+xml": [{ url: "https://heroui.com/feed.xml", title: "HeroUI RSS Feed" }],
+      "application/rss+xml": [
+        { url: "https://heroui.com/feed.xml", title: "HeroUiMobile RSS Feed" },
+      ],
     },
   },
 };

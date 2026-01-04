@@ -30,7 +30,7 @@ const decorators: Preview["decorators"] = [
 ];
 
 const commonTheme = {
-  brandTitle: "HeroUI",
+  brandTitle: "HeroUiMobile",
   brandUrl: "/",
   brandTarget: "_self",
 };

@@ -22,10 +22,10 @@ const bannerSuggestions = [
     href: "/docs/guide/installation",
   },
   {
-    title: "HeroUI + Next.js",
+    title: "HeroUiMobile + Next.js",
     description: (
       <>
-        HeroUI is fully compatible with the new Next.js <Code>app/</Code> directory structure.
+        HeroUiMobile is fully compatible with the new Next.js <Code>app/</Code> directory structure.
       </>
     ),
     icon: <NextJsIcon className="text-pink-500" />,

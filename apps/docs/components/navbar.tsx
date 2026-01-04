@@ -175,7 +175,7 @@ export const Navbar: FC<NavbarProps> = ({ children, routes, mobileRoutes = [], s
             href="/blog/v2.7.0"
             variant="flat"
           >
-            HeroUI v2.7.0&nbsp;
+            HeroUiMobile v2.7.0&nbsp;
             <span aria-label="emoji" role="img">
               🔥
             </span>
@@ -235,31 +235,9 @@ export const Navbar: FC<NavbarProps> = ({ children, routes, mobileRoutes = [], s
               className={navLinkClasses}
               color="foreground"
               data-active={pathname.includes("components")}
-              href="/docs/components/accordion"
+              href="/docs/components/sms-ticker"
             >
               Components
-            </NextLink>
-          </NavbarItem>
-          {/*
-          // TODO: add playground
-          <NavbarItem>
-            <NextLink
-              className={navLinkClasses}
-              color="foreground"
-              data-active={pathname.includes("playground")}
-              href="/playground"
-            >
-              Playground
-            </NextLink>
-          </NavbarItem> */}
-          <NavbarItem>
-            <NextLink
-              className={navLinkClasses}
-              color="foreground"
-              data-active={pathname.includes("/docs/guide/figma")}
-              href="/docs/guide/figma"
-            >
-              Figma
             </NextLink>
           </NavbarItem>
           <NavbarItem>

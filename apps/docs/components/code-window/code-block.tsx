@@ -160,6 +160,6 @@ const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>((_props, forw
   );
 });
 
-CodeBlock.displayName = "HeroUI - CodeBlock";
+CodeBlock.displayName = "HeroUiMobile - CodeBlock";
 
 export default CodeBlock;

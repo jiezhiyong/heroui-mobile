@@ -319,7 +319,7 @@ export const MDXComponents = {
    */
   NextImage,
   /**
-   * HeroUI components
+   * HeroUiMobile components
    */
   ...Components,
   /**

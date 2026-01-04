@@ -42,25 +42,6 @@
           "keywords": "forms, form validation, heroui",
           "path": "/docs/guide/forms.mdx",
           "updated": true
-        },
-        {
-          "key": "tailwind-v4",
-          "title": "Tailwind v4",
-          "keywords": "migrate, tailwind, v4, heroui",
-          "path": "/docs/guide/tailwind-v4.mdx",
-          "newPost": true
-        },
-        {
-          "key": "nextui-to-heroui",
-          "title": "NextUI to HeroUI",
-          "keywords": "migrate, nextui, hero, heroui",
-          "path": "/docs/guide/nextui-to-heroui.mdx"
-        },
-        {
-          "key": "figma",
-          "title": "Figma",
-          "keywords": "figma, design, ui kit",
-          "path": "/docs/guide/figma.mdx"
         }
       ]
     },
@@ -192,7 +173,7 @@
       "routes": [
         {
           "key": "cli-api",
-          "title": "HeroUI CLI",
+          "title": "HeroUiMobile CLI",
           "keywords": "api references, heroui, api, cli",
           "path": "/docs/api-references/cli-api.mdx",
           "updated": true
@@ -224,7 +205,7 @@
           "key": "components",
           "title": "Components",
           "keywords": "components, heroui",
-          "path": "/docs/components/avatar"
+          "path": "/docs/components/spinner"
         },
         {
           "key": "blog",
@@ -233,16 +214,10 @@
           "path": "/blog"
         },
         {
-          "key": "figma",
-          "title": "Figma",
-          "keywords": "figma, heroui, design, ui kit",
-          "path": "/docs/guide/figma.mdx"
-        },
-        {
           "key": "roadmap",
           "title": "Roadmap",
           "keywords": "roadmap, heroui",
-          "path": "#"
+          "path": "/roadmap"
         }
       ]
     }

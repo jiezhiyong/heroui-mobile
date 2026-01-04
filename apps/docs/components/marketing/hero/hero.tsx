@@ -30,7 +30,7 @@ export const Hero = () => {
             href="/blog/v2.7.0"
             variant="flat"
           >
-            HeroUI v2.7.0&nbsp;
+            HeroUiMobile v2.7.0&nbsp;
             <span aria-label="emoji" role="img">
               🔥
             </span>
