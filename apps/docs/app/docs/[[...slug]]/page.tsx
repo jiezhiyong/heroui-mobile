@@ -96,7 +96,8 @@ export default async function DocPage({ params }: DocPageProps) {
           <MDXContent code={doc.body.code} />
         </div>
         {currentRoute && <DocsPager currentRoute={currentRoute} />}
-        <footer>
+        {/* Some browser extensions (e.g. translators) may inject attributes before hydration. */}
+        <footer suppressHydrationWarning>
           <Link isExternal showAnchorIcon href={editUrl} size="sm">
             Edit this page on GitHub
           </Link>
