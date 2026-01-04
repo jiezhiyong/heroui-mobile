@@ -1,4 +1,4 @@
-import { Meta, Story } from "@storybook/addon-docs";
+import { Meta, Story, Source } from "@storybook/addon-docs";
 
 <Meta title="Introduction" />
 
@@ -6,4 +6,318 @@ import { Meta, Story } from "@storybook/addon-docs";
 
 # Introduction 👋🏼
 
-HeroUI is a UI library for React that helps you build beautiful and accessible user interfaces. Created on top of Tailwind CSS and React Aria.
+基于 [HeroUI](https://github.com/heroui-inc/heroui) V2 + Tailwind CSS 3 扩展的适用于手机端的组件库。对过时、不支持现代浏览器特性的手机端浏览器更友好。
+
+使用 [Storybook](https://storybook.js.org/) 管理扩展组件，使用 [Shadcn CLI](https://github.com/shadcn/cli) 注册、安装组件示例。
+
+<br />
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # 配置安装 Heroui V2.7.11
+    <p style={{ marginBottom: '-15px' }}>
+      参考 [Heroui Initialization](https://canary.heroui.com/docs/guide/installation#initialization-and-starting-the-app)。
+    </p>
+  </div>
+  <Source language="bash" dark={true} code={
+`
+pnpm add @heroui/react framer-motion
+`
+    }
+  />
+
+<p style={{ marginBottom: "-20px" }}>如果你使用PNPM，需要在项目根目录创建`.npmrc`文件，并添加以下内容：</p>
+  <Source
+    language="json"
+    dark={true}
+    code={
+`public-hoist-pattern[]=*@heroui/*`
+    }
+  />
+</div>
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # 配置项目以支持 `shadcn CLI`
+    <p style={{ marginBottom: '-15px' }}>
+      配置您的项目，以便可以通过 `shadcn CLI` 添加组件示例，你的项目至少需要包含以下内容：
+    </p>
+  </div>
+
+  <p style={{ marginBottom: "-20px" }}>`components.json`</p>
+  <Source
+    language="json"
+    dark={true}
+    code={
+`{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "css": "app/styles/global.css",
+    "baseColor": "",
+    "cssVariables": true,
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "iconLibrary": "lucide",
+  "registries": {
+    "@heroui-mobile": "https://main--69549dc20eb3fc63d6bc3d0e.chromatic.com/r/{name}.json"
+  }
+}`
+    }
+  />
+
+  <p style={{ marginBottom: "-20px" }}>`package.json`</p>
+  <Source
+    language="json"
+    dark={true}
+    code={
+`{
+  "devDependencies": {
+    "@types/node": "20.19.9",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.1"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "7.11.0",
+    "@heroui/react": "2.7.11",
+    "@heroui/theme": "2.4.17",
+    "@heroui-mobile/react": "latest",
+    "@heroui-mobile/theme": "latest"
+  }
+}`
+    }
+  />
+
+  <p style={{ marginBottom: '-20px' }}>`tsconfig.json`</p>
+  <Source language="json" dark={true} code={
+`{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "jsx": "preserve",
+    "paths": {
+      "@/*": ["./app/*"]
+    }
+  }
+}`
+  } />
+</div>
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # 初始化 & 安装组件
+    <p style={{ marginBottom: '-15px' }}>
+      使用 `shadcn CLI` 的 `search` 命令来搜索组件示例，`add` 命令来添加组件示例。
+    </p>
+  </div>
+  <Source language="bash" dark={true} code={
+`
+npx shadcn@latest add @heroui-mobile/example-fruits
+npx shadcn@latest search @heroui-mobile
+`
+    }
+  />
+</div>
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # MCP 服务器
+    <p style={{ marginBottom: '-15px' }}>
+      为注册表启用 MCP 支持，这样你就可以在 `LLM` 中使用提示词来使用组件示例了。
+    </p>
+  </div>
+
+  <p style={{ marginBottom: "-20px" }}>`.vscode/mcp.json` or `.cursor/mcp.json`</p>
+  <Source
+    language="json"
+    dark={true}
+    code={
+`{
+  "mcpServers": {
+    "shadcn": {
+      "command": "npx",
+      "args": ["shadcn@latest", "mcp"]
+    }
+  }
+}`
+    }
+  />
+
+  <p style={{ marginBottom: '-20px' }}>然后，你可以在 `LLM` 中使用提示词来使用组件</p>
+  <Source language="bash" dark={true} code={
+`
+Show me the components in the @heroui-mobile registry
+Create a landing page using items from the @heroui-mobile registry
+`
+  } />
+</div>
+
+<style>
+  {`
+  .sb-container {
+    margin-bottom: 48px;
+  }
+
+  .sb-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  img {
+    object-fit: cover;
+  }
+
+  .sb-section-title {
+    margin-bottom: 32px;
+  }
+
+  .sb-section a:not(h1 a, h2 a, h3 a) {
+    font-size: 14px;
+  }
+
+  .sb-section-item, .sb-grid-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sb-section-item-heading {
+    padding-top: 20px !important;
+    padding-bottom: 5px !important;
+    margin: 0 !important;
+  }
+  .sb-section-item-paragraph {
+    margin: 0;
+    padding-bottom: 10px;
+  }
+
+  .sb-chevron {
+    margin-left: 5px;
+  }
+
+  .sb-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 32px 20px;
+  }
+
+  .sb-socials {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .sb-socials p {
+    margin-bottom: 10px;
+  }
+
+  .sb-explore-image {
+    max-height: 32px;
+    align-self: flex-start;
+  }
+
+  .sb-addon {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: #EEF3F8;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: #EEF3F8;
+    height: 180px;
+    margin-bottom: 48px;
+    overflow: hidden;
+  }
+
+  .sb-addon-text {
+    padding-left: 48px;
+    max-width: 240px;
+  }
+
+  .sb-addon-text h4 {
+    padding-top: 0px;
+  }
+
+  .sb-addon-img {
+    position: absolute;
+    left: 345px;
+    top: 0;
+    height: 100%;
+    width: 200%;
+    overflow: hidden;
+  }
+
+  .sb-addon-img img {
+    width: 650px;
+    transform: rotate(-15deg);
+    margin-left: 40px;
+    margin-top: -72px;
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0);
+    backface-visibility: hidden;
+  }
+
+  @media screen and (max-width: 800px) {
+    .sb-addon-img {
+      left: 300px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .sb-section {
+      flex-direction: column;
+    }
+
+    .sb-features-grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .sb-socials {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sb-addon {
+      height: 280px;
+      align-items: flex-start;
+      padding-top: 32px;
+      overflow: hidden;
+    }
+
+    .sb-addon-text {
+      padding-left: 24px;
+    }
+
+    .sb-addon-img {
+      right: 0;
+      left: 0;
+      top: 130px;
+      bottom: 0;
+      overflow: hidden;
+      height: auto;
+      width: 124%;
+    }
+
+    .sb-addon-img img {
+      width: 1200px;
+      transform: rotate(-12deg);
+      margin-left: 0;
+      margin-top: 48px;
+      margin-bottom: -40px;
+      margin-left: -24px;
+    }
+  }
+  `}
+</style>

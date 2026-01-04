@@ -28,10 +28,12 @@
     "react": "18.3.0",
     "react-dom": "18.3.0"
   },
+  "peerDependencies": {
+    "@heroui/react": "2.7.11"
+  },
   "devDependencies": {
     "shadcn": "^3.5.0",
-    "@heroui/react": "2.7.11",
-    "@chromatic-com/storybook": "^4.1.1",
+    "@chromatic-com/storybook": "^3",
     "@storybook/addon-a11y": "^8.6.15",
     "@storybook/blocks": "^8.6.14",
     "@storybook/addon-docs": "^8.6.15",

@@ -1,6 +1,7 @@
 # HeroUI Mobile
 
-基于 [HeroUI](https://github.com/heroui-inc/heroui) V2 扩展的适用于手机端的组件库
+基于 [HeroUI](https://github.com/heroui-inc/heroui) V2 扩展的适用于手机端的组件库，Monorepo 架构（pnpm workspace + Turbo）。
+使用 [Storybook](https://storybook.js.org/) 管理扩展组件，使用 [Shadcn CLI](https://github.com/shadcn/cli) 注册、安装组件示例。
 
 ## 使用 Plop 生成器创建新组件、Hook、工具包，组件名称小写，使用连字符，如 `my-component`
 
@@ -99,6 +100,12 @@ pnpm build
 ```bash
 # 构建文档站点
 pnpm build:docs
+```
+
+### 构建注册表
+
+```bash
+pnpm build:registry
 ```
 
 ### 构建 Storybook

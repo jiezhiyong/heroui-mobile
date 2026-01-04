@@ -46,6 +46,10 @@
     "postinstall": "husky install && pnpm --filter @heroui-mobile/theme build",
     "build:registry": "pnpm --filter @heroui-mobile/storybook build:registry"
   },
+  "dependencies": {
+    "@heroui/react": "2.7.11",
+    "@heroui/theme": "2.4.17"
+  },
   "devDependencies": {
     "@babel/cli": "^7.14.5",
     "@babel/core": "^7.16.7",
