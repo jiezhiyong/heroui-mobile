@@ -64,8 +64,9 @@ export const PackageManagers = ({
       <Tabs
         aria-label="HeroUI installation commands"
         classNames={{
-          base: "group mt-4 min-w-[300px] w-full overflow-x-auto",
+          base: "group min-w-[300px] w-full overflow-x-auto",
           tabList: "h-10",
+          panel: "px-0",
         }}
         selectedKey={selectedManager}
         variant="underlined"

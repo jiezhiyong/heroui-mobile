@@ -28,8 +28,9 @@ export const ImportTabs = ({ commands }: ImportTabsProps) => {
       disableAnimation
       aria-label="HeroUI import commands"
       classNames={{
-        base: "group mt-4",
-        tabList: "relative h-10",
+        base: "group",
+        tabList: "relative h-10 px-0",
+        panel: "px-0",
       }}
       variant="underlined"
     >
