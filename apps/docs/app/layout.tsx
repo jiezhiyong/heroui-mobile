@@ -84,7 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="relative flex flex-col" id="app-container">
             <Navbar mobileRoutes={manifest.mobileRoutes} routes={manifest.routes} />
             {children}
-            <Analytics mode="production" />
+            {process.env.NODE_ENV === "production" && <Analytics mode="production" />}
             <Footer />
           </div>
           <Cmdk />

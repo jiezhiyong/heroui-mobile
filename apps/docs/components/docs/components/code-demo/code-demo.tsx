@@ -184,58 +184,86 @@ export const CodeDemo: React.FC<CodeDemoProps> = ({
   const handleOpenInChat = useCallback(async () => {
     setIsLoading(true);
 
-    // assume doc demo files are all App.jsx
-    const content = files["/App.jsx"];
+    const normalizeError = (err: unknown) => {
+      if (err instanceof Error) return err.message;
+      if (typeof err === "string") return err;
 
-    if (!content || typeof content !== "string") {
-      addToast({
-        title: "Error",
-        description: "Invalid demo content",
-        color: "danger",
-      });
+      try {
+        return JSON.stringify(err);
+      } catch {
+        return String(err);
+      }
+    };
 
-      return;
-    }
+    let newTab: Window | null = null;
 
-    const component = pathname.split("/components/")[1];
-    const dependencies = parseDependencies(content);
+    try {
+      // assume doc demo files are all App.jsx
+      const content = files["/App.jsx"];
 
-    posthog.capture("CodeDemo - Open in Chat", {
-      component,
-      demo: title,
-    });
+      if (!content || typeof content !== "string") {
+        addToast({
+          title: "Error",
+          description: "Invalid demo content",
+          color: "danger",
+        });
 
-    const newTab = window.open(undefined, "_blank");
+        return;
+      }
 
-    const { data, error } = await openInChat({
-      component,
-      title,
-      content,
-      dependencies,
-      useWrapper: !asIframe,
-    });
+      const component = pathname.split("/components/")[1];
+      const dependencies = parseDependencies(content);
 
-    setIsLoading(false);
-
-    if (error || !data) {
-      if (newTab) newTab.close();
-      posthog.capture("CodeDemo - Open in Chat Error", {
+      posthog.capture("CodeDemo - Open in Chat", {
         component,
         demo: title,
-        error: error ?? "Unknown error",
       });
+
+      newTab = window.open(undefined, "_blank");
+
+      const { data, error } = await openInChat({
+        component,
+        title,
+        content,
+        dependencies,
+        useWrapper: !asIframe,
+      });
+
+      if (error || !data) {
+        const message = normalizeError(error ?? "Unknown error");
+
+        if (newTab) newTab.close();
+
+        posthog.capture("CodeDemo - Open in Chat Error", {
+          component,
+          demo: title,
+          error: message,
+        });
+
+        addToast({
+          title: "Error",
+          description: message,
+          color: "danger",
+        });
+
+        return;
+      }
+
+      if (newTab) newTab.location.href = data;
+    } catch (err) {
+      const message = normalizeError(err);
+
+      if (newTab) newTab.close();
 
       addToast({
         title: "Error",
-        description: error ?? "Unknown error",
+        description: message,
         color: "danger",
       });
-
-      return;
+    } finally {
+      setIsLoading(false);
     }
-
-    if (newTab) newTab.location.href = data;
-  }, [pathname, title, files, posthog]);
+  }, [pathname, title, files, posthog, asIframe]);
 
   return (
     <div ref={ref} className="flex flex-col gap-2 relative">

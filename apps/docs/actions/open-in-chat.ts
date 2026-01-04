@@ -68,7 +68,9 @@ export const openInChat = async ({
       )}`,
     };
   } catch (error) {
-    return { error: error, data: null };
+    const message = error instanceof Error ? error.message : String(error);
+
+    return { error: message, data: null };
   }
 };
 
