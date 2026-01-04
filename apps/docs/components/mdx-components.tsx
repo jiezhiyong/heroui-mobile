@@ -293,7 +293,7 @@ export const APITable: React.FC<APITableProps> = ({ data }) => {
               </TableCell>
               <TableCell className="font-mono text-small whitespace-nowrap text-primary">
                 <InlineCodeChip>
-                  <div className="flex max-w-[300px] flex-wrap text-wrap">{item.type}</div>
+                  <div className="flex overflow-x-auto">{item.type}</div>
                 </InlineCodeChip>
               </TableCell>
               <TableCell className="font-mono text-small whitespace-nowrap">

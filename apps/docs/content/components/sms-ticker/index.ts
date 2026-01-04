@@ -1,7 +1,7 @@
 import usage from "./usage";
-import disabled from "./disabled";
+import loading from "./loading";
 
 export const smsTickerContent = {
   usage,
-  disabled,
+  loading,
 };

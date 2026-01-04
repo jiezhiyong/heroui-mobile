@@ -5,6 +5,7 @@ import React from "react";
 import { LivePreview, LiveProvider, LiveError } from "react-live";
 import { clsx } from "@heroui/shared-utils";
 import * as HeroUI from "@heroui/react";
+import * as HeroUIMobile from "@heroui-mobile/react";
 import * as intlDateUtils from "@internationalized/date";
 import * as reactAriaI18n from "@react-aria/i18n";
 import * as reactHookFormBase from "react-hook-form";
@@ -37,6 +38,9 @@ const reactHookForm = {
 
 export const scope = {
   React,
+  // Make mobile components available in react-live demos so their imports can be stripped
+  // by `transformCode()` and resolved from scope (avoids runtime `require` in the browser).
+  ...HeroUIMobile,
   ...HeroUI,
   ...intlDateUtils,
   ...reactAriaI18n,

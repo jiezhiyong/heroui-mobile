@@ -9,28 +9,24 @@ import { smsTickerContent } from "@/content/components/sms-ticker";
 
 SMS Countdown Ticker for SMS verification.
 
-<ComponentLinks component="sms-ticker" reactAriaHook="useSmsTicker" />
+<ComponentLinks component="sms-ticker"  storybook="SmsTicker" />
 
 ---
 
 ## Installation
 
 <PackageManagers
-  showGlobalInstallWarning
+  showGlobalInstallWarning={false}
   commands={{
     cli: "npx heroui-mobile-cli@latest add sms-ticker",
     npm: "npm install @heroui-mobile/sms-ticker",
-    yarn: "yarn add @heroui-mobile/sms-ticker",
     pnpm: "pnpm add @heroui-mobile/sms-ticker",
+    yarn: "yarn add @heroui-mobile/sms-ticker",
     bun: "bun add @heroui-mobile/sms-ticker",
   }}
 />
 
 ## Import
-
-HeroUI Mobile exports 1 sms-ticker-related component:
-
-- **SmsTicker**: The main component to display a sms-ticker.
 
 <ImportTabs
   commands={{
@@ -43,15 +39,11 @@ HeroUI Mobile exports 1 sms-ticker-related component:
 
 <CodeDemo title="Usage" files={smsTickerContent.usage} />
 
-### Disabled
+## Usage - Loading
 
-<CodeDemo title="Disabled" files={smsTickerContent.disabled} />
-
-<Spacer y={4} />
+<CodeDemo title="Loading" files={smsTickerContent.loading} />
 
 ## Data Attributes
-
-`SmsTicker` has the following attributes on the `base` element:
 
 - **data-hover**:
   When the button is being hovered. Based on [useHover](https://react-spectrum.adobe.com/react-aria/useHover.html)
@@ -66,8 +58,6 @@ HeroUI Mobile exports 1 sms-ticker-related component:
 - **data-loading**:
   When the button is loading. Based on `isLoading` prop.
 
-<Spacer y={4} />
-
 ## Accessibility
 
 - SmsTicker has role of `button`.
@@ -75,17 +65,52 @@ HeroUI Mobile exports 1 sms-ticker-related component:
 - Mouse and touch event handling, and press state management.
 - Keyboard focus management and cross browser normalization.
 
-We recommend to read this [blog post](https://react-spectrum.adobe.com/blog/building-a-button-part-1.html) about the complexities of
-building buttons that work well across devices and interaction methods.
-
-<Spacer y={4} />
-
-## API
-
-### SmsTicker Props
+## API - SmsTicker Props
 
 <APITable
   data={[
+    {
+      attribute:'totalTicks',
+      type: 'number',
+      description: 'The total number of ticks to count down from.',
+      default: '60'
+    },
+    {
+      attribute:'duration',
+      type: 'number',
+      description: 'The duration of each tick in milliseconds.',
+      default: '1000'
+    },
+    {
+      attribute:'autoStart',
+      type: 'boolean',
+      description: 'Whether the sms-ticker should start automatically.',
+      default: 'false'
+    },
+    {
+      attribute:'format',
+      type: 'string | ((time: number) => string | React.ReactNode)',
+      description: 'The format of the time.',
+      default: '{t}s'
+    },
+    {
+      attribute:'displayUnstarted',
+      type: 'string | React.ReactNode',
+      description: 'The content to display when the sms-ticker is not started.',
+      default: '-'
+    },
+    {
+      attribute:'displayEnded',
+      type: 'string | React.ReactNode',
+      description: 'The content to display when the sms-ticker is ended.',
+      default: '-'
+    },
+    {
+      attribute:'displayProcessing',
+      type: 'string | React.ReactNode',
+      description: 'The content to display when the sms-ticker is processing.',
+      default: '-'
+    },
     {
       attribute: "children",
       type: "ReactNode",
@@ -161,7 +186,7 @@ building buttons that work well across devices and interaction methods.
   ]}
 />
 
-### SmsTicker Events
+## API - SmsTicker Events
 
 <APITable
   data={[
@@ -177,12 +202,5 @@ building buttons that work well across devices and interaction methods.
       description: "Handler called when the countdown ticks.",
       default: "-"
     },
-    {
-      attribute: "onClick",
-      deprecated: true,
-      type: "MouseEventHandler",
-      description: "The native button click event handler (Deprecated) use onPress instead.",
-      default: "-"
-    }
   ]}
 />

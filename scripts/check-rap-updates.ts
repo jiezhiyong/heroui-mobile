@@ -1,7 +1,9 @@
+/**
+ * 批量检查、自动升级仓库里所有 package.json 中的 React Aria 相关依赖版本。
+ */
 import ncu from 'npm-check-updates';
 import glob from 'glob';
 import { resolve } from 'path';
-
 
 const shouldUpgrade = process.argv.includes('--upgrade') || process.argv.includes('-u');
 

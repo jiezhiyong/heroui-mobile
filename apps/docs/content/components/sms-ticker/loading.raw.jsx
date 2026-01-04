@@ -1,5 +1,5 @@
 import { SmsTicker } from "@heroui-mobile/react";
 
 export default function App() {
-  return <SmsTicker isDisabled />;
+  return <SmsTicker isLoading color="primary" variant="flat" />;
 }

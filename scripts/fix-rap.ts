@@ -1,3 +1,6 @@
+/**
+ * 批量“规范化”仓库里所有 package.json 中 React Aria 相关依赖的版本写法：把这些包的版本前缀 ^ 去掉，变成精确版本锁定（例如 ^3.10.0 → 3.10.0）
+ */
 import glob from 'glob';
 import { resolve } from 'path';
 import { readFileSync, writeFileSync } from 'fs';

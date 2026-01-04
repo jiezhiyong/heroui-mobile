@@ -3,15 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "tailwind-variants": [
-        "./node_modules/tailwind-variants"
-      ],
-      "contentlayer2/generated": [
-        "./.contentlayer/generated"
-      ]
+      "@/*": ["./*"],
+      "tailwind-variants": ["./node_modules/tailwind-variants"],
+      "contentlayer2/generated": ["./.contentlayer/generated"]
     },
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
@@ -35,8 +29,5 @@
     ".contentlayer/generated",
     "global.d.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "next-redirect.js"
-  ]
+  "exclude": ["node_modules", "next-redirect.js"]
 }

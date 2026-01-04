@@ -1,4 +1,4 @@
-import App from "./disabled.raw.jsx?raw";
+import App from "./loading.raw.jsx?raw";
 
 const react = {
   "/App.jsx": App,

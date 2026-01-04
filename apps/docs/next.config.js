@@ -2,7 +2,14 @@ const withContentlayer = require("next-contentlayer2").withContentlayer;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@heroui/react", "@heroui/theme"],
+  // Workspace packages point `main` to TS source (e.g. `src/index.ts`), so Next must transpile them
+  // when they are imported by client components (like the CodeDemo react-live scope).
+  transpilePackages: [
+    "@heroui/react",
+    "@heroui/theme",
+    "@heroui-mobile/react",
+    "@heroui-mobile/theme",
+  ],
   reactStrictMode: true, // Recommended for the `pages` directory, default in `app`.
   redirects: require("./next-redirect.js"),
   eslint: {

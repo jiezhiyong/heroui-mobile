@@ -270,7 +270,7 @@ export const Navbar: FC<NavbarProps> = ({ children, routes, mobileRoutes = [], s
               Components
             </NextLink>
           </NavbarItem>
-          {/* 
+          {/*
           // TODO: add playground
           <NavbarItem>
             <NextLink

@@ -80,18 +80,18 @@ export const ComponentLinks = ({
   return (
     <div className="flex flex-wrap gap-3 mt-6">
       <ButtonLink
-        href={`https://storybook.heroui.com/?path=/story/components-${
-          storybook || component
-        }--default`}
+        href={`https://main--69549dc20eb3fc63d6bc3d0e.chromatic.com/?path=/docs/components-${
+          storybook?.toLowerCase() || component?.toLowerCase()
+        }--docs`}
         startContent={<StorybookIcon className="text-lg text-[#ff4785]" />}
       >
         Storybook
       </ButtonLink>
       <ButtonLink
-        href={`https://www.npmjs.com/package/@heroui/${npm || component}`}
+        href={`https://www.npmjs.com/package/@heroui-mobile/${npm || component}`}
         startContent={<NpmIcon className="text-2xl text-[#E53E3E]" />}
       >
-        {`@heroui/${npm || component}`}
+        {`@heroui-mobile/${npm || component}`}
       </ButtonLink>
       {reactAriaHook && (
         <ButtonLink

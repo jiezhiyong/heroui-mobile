@@ -1,8 +1,8 @@
-const {relative} = require("path");
-const escape = require('shell-quote').quote
-const isWin = process.platform === 'win32'
+const { relative } = require("path");
+const escape = require("shell-quote").quote;
+const isWin = process.platform === "win32";
 
-const {ESLint} = require("eslint");
+const { ESLint } = require("eslint");
 
 const removeIgnoredFiles = async (files) => {
   const cwd = process.cwd();
@@ -18,17 +18,15 @@ module.exports = {
   "**/*.{js,ts,jsx,tsx}": async (files) => {
     const filesToLint = await removeIgnoredFiles(files);
 
-    return filesToLint.map((filename) =>
-      `"${isWin ? filename : escape([filename])}"`
-    ).map((file) => `eslint --max-warnings=0 --fix ${file}`);
+    return filesToLint
+      .map((filename) => `"${isWin ? filename : escape([filename])}"`)
+      .map((file) => `eslint --max-warnings=0 --fix ${file}`);
   },
   "**/*.css": async (files) => {
     const filesToLint = await removeIgnoredFiles(files);
 
-    return filesToLint.map((filename) =>
-      `"${isWin ? filename : escape([filename])}"`
-    ).map(
-      (file) => `prettier --config .prettierrc.json --ignore-path --write ${file}`
-    );
+    return filesToLint
+      .map((filename) => `"${isWin ? filename : escape([filename])}"`)
+      .map((file) => `prettier --config .prettierrc.json --ignore-path --write ${file}`);
   },
 };
