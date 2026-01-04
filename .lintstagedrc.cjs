@@ -18,9 +18,11 @@ module.exports = {
   "**/*.{js,ts,jsx,tsx}": async (files) => {
     const filesToLint = await removeIgnoredFiles(files);
 
-    return filesToLint
-      .map((filename) => `"${isWin ? filename : escape([filename])}"`)
-      .map((file) => `eslint --max-warnings=0 --fix ${file}`);
+    // Use an API-based runner to avoid ESLint CLI globbing issues with paths that
+    // contain `[`/`]` (e.g. Next.js `[[...slug]]` routes).
+    const quoted = filesToLint.map((filename) => (isWin ? `"${filename}"` : escape([filename])));
+
+    return [`node ./scripts/lint-staged-eslint.cjs ${quoted.join(" ")}`];
   },
   "**/*.css": async (files) => {
     const filesToLint = await removeIgnoredFiles(files);
