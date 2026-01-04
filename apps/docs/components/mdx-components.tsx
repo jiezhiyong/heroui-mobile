@@ -10,7 +10,6 @@ import { InfoCircle } from "./icons/info-circle";
 import { FigmaButton } from "./figma-button";
 
 import { Sandpack } from "@/components/sandpack";
-import { CarbonAd } from "@/components/ads/carbon-ad";
 import * as DocsComponents from "@/components/docs/components";
 import * as BlogComponents from "@/components/blog/components";
 import { Codeblock } from "@/components/docs/components";
@@ -367,7 +366,6 @@ export const MDXComponents = {
   thead: Thead,
   tr: Trow,
   td: Tcol,
-  CarbonAd,
   code: Code,
   ul: List,
   a: (props: React.HTMLAttributes<HTMLAnchorElement>) => <Link {...props} />,

@@ -7,7 +7,7 @@ description: Learn how HeroUI enables effortless customization of default themes
 
 HeroUI provides `light` and `dark` themes that can be customized to match your needs. You can also create custom themes based on these defaults, using [Layout](/docs/customization/layout) and [Color](/docs/customization/colors) tokens.
 
-<CarbonAd/>
+
 
 ## Customizing Layout
 
@@ -77,7 +77,7 @@ import customLayout from "@/content/customization/customize-theme/custom-layout"
 
 ### Customizing Colors
 
-Now, Let's say you wish to modify the primary and focus colors of the dark theme. This can 
+Now, Let's say you wish to modify the primary and focus colors of the dark theme. This can
 be achieved by adding the following code to your `tailwind.config.js` file.
 
 ```js {10-16}
@@ -104,8 +104,8 @@ module.exports = {
 };
 ```
 
-This modification will impact all components using the `primary` color. For instance, 
-the [Button](/docs/components/button) component uses the `primary` color as background color when the 
+This modification will impact all components using the `primary` color. For instance,
+the [Button](/docs/components/button) component uses the `primary` color as background color when the
 variant is `solid` or `ghost`.
 
 ```jsx
@@ -127,5 +127,5 @@ import customColors from "@/content/customization/customize-theme/custom-colors"
 
 <CodeDemo title="Custom colors example" showEditor={false} files={customColors} />
 
-> 🎉 That's it! You have successfully customized the default theme. See the [Colors](/docs/customization/colors) 
-> section for more details about the available semantic colors and color tokens. 
+> 🎉 That's it! You have successfully customized the default theme. See the [Colors](/docs/customization/colors)
+> section for more details about the available semantic colors and color tokens.

@@ -1,0 +1,188 @@
+---
+title: "SMS Ticker"
+description: "SMS Countdown Ticker"
+---
+
+import { smsTickerContent } from "@/content/components/sms-ticker";
+
+# SMS Ticker
+
+SMS Countdown Ticker for SMS verification.
+
+<ComponentLinks component="sms-ticker" reactAriaHook="useSmsTicker" />
+
+---
+
+## Installation
+
+<PackageManagers
+  showGlobalInstallWarning
+  commands={{
+    cli: "npx heroui-mobile-cli@latest add sms-ticker",
+    npm: "npm install @heroui-mobile/sms-ticker",
+    yarn: "yarn add @heroui-mobile/sms-ticker",
+    pnpm: "pnpm add @heroui-mobile/sms-ticker",
+    bun: "bun add @heroui-mobile/sms-ticker",
+  }}
+/>
+
+## Import
+
+HeroUI Mobile exports 1 sms-ticker-related component:
+
+- **SmsTicker**: The main component to display a sms-ticker.
+
+<ImportTabs
+  commands={{
+    main: 'import { SmsTicker } from "@heroui-mobile/react";',
+    individual: 'import { SmsTicker } from "@heroui-mobile/sms-ticker";',
+  }}
+/>
+
+## Usage
+
+<CodeDemo title="Usage" files={smsTickerContent.usage} />
+
+### Disabled
+
+<CodeDemo title="Disabled" files={smsTickerContent.disabled} />
+
+<Spacer y={4} />
+
+## Data Attributes
+
+`SmsTicker` has the following attributes on the `base` element:
+
+- **data-hover**:
+  When the button is being hovered. Based on [useHover](https://react-spectrum.adobe.com/react-aria/useHover.html)
+- **data-focus**:
+  When the button is being focused. Based on [useFocusRing](https://react-spectrum.adobe.com/react-aria/useFocusRing.html).
+- **data-focus-visible**:
+  When the button is being focused with the keyboard. Based on [useFocusRing](https://react-spectrum.adobe.com/react-aria/useFocusRing.html).
+- **data-disabled**:
+  When the button is disabled. Based on `isDisabled` prop.
+- **data-pressed**:
+  When the button is pressed. Based on [usePress](https://react-spectrum.adobe.com/react-aria/usePress.html)
+- **data-loading**:
+  When the button is loading. Based on `isLoading` prop.
+
+<Spacer y={4} />
+
+## Accessibility
+
+- SmsTicker has role of `button`.
+- Keyboard event support for <Kbd>Space</Kbd> and <Kbd>Enter</Kbd> keys.
+- Mouse and touch event handling, and press state management.
+- Keyboard focus management and cross browser normalization.
+
+We recommend to read this [blog post](https://react-spectrum.adobe.com/blog/building-a-button-part-1.html) about the complexities of
+building buttons that work well across devices and interaction methods.
+
+<Spacer y={4} />
+
+## API
+
+### SmsTicker Props
+
+<APITable
+  data={[
+    {
+      attribute: "children",
+      type: "ReactNode",
+      description: "The content to display in the sms-ticker.",
+      default: "-"
+    },
+    {
+      attribute: "variant",
+      type: 'solid | bordered | light | flat | faded | shadow | ghost',
+      description: "The sms-ticker appearance style.",
+      default: "solid"
+    },
+    {
+      attribute: "color",
+      type: "default | primary | secondary | success | warning | danger",
+      description: "The sms-ticker color theme.",
+      default: "default"
+    },
+    {
+      attribute: "size",
+      type: "sm | md | lg",
+      description: "The sms-ticker size.",
+      default: "md"
+    },
+    {
+      attribute: "radius",
+      type: "none | sm | md | lg | full",
+      description: "The sms-ticker border radius.",
+      default: "-"
+    },
+    {
+      attribute: "spinner",
+      type: "ReactNode",
+      description: "Spinner to display when loading.",
+      default: "-"
+    },
+    {
+      attribute: "spinnerPlacement",
+      type: "start | end",
+      description: "The spinner placement.",
+      default: "start"
+    },
+    {
+      attribute: "fullWidth",
+      type: "boolean",
+      description: "Whether the button should take the full width of its parent.",
+      default: "false"
+    },
+    {
+      attribute: "isDisabled",
+      type: "boolean",
+      description: "Whether the sms-ticker is disabled.",
+      default: "false"
+    },
+    {
+      attribute: "isLoading",
+      type: "boolean",
+      description: "Whether the sms-ticker is loading.",
+      default: "false"
+    },
+    {
+      attribute: "disableRipple",
+      type: "boolean",
+      description: "Whether the sms-ticker should display a ripple effect on press.",
+      default: "false"
+    },
+    {
+      attribute: "disableAnimation",
+      type: "boolean",
+      description: "Whether the sms-ticker should display animations.",
+      default: "false"
+    }
+  ]}
+/>
+
+### SmsTicker Events
+
+<APITable
+  data={[
+    {
+      attribute: "onBeforeCountdown",
+      type: "() => Promise<void>",
+      description: "Handler called before the countdown starts.",
+      default: "-"
+    },
+    {
+      attribute: "onTick",
+      type: "(e: PressEvent) => void",
+      description: "Handler called when the countdown ticks.",
+      default: "-"
+    },
+    {
+      attribute: "onClick",
+      deprecated: true,
+      type: "MouseEventHandler",
+      description: "The native button click event handler (Deprecated) use onPress instead.",
+      default: "-"
+    }
+  ]}
+/>

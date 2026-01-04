@@ -15,7 +15,7 @@ Requirements:
 
 ------
 
-<CarbonAd/>
+
 
 To use HeroUI in your Next.js project, you need to follow the steps below, depending on your project structure.
 
@@ -44,7 +44,7 @@ or
   }}
 />
 
-### create-next-app 
+### create-next-app
 
 If you are starting a new project, you can run one of the following commands to create a Next.js project pre-configured with HeroUI:
 
@@ -176,7 +176,7 @@ After modifying the `.npmrc` file, you need to run `pnpm install` again to ensur
 ### Tailwind CSS Setup
 
 HeroUI is built on top of Tailwind CSS, so you need to install Tailwind CSS first. You can follow the official
-[installation guide](https://v3.tailwindcss.com/docs/guides/nextjs) to install Tailwind CSS. Then you need to add 
+[installation guide](https://v3.tailwindcss.com/docs/guides/nextjs) to install Tailwind CSS. Then you need to add
 the following code to your `tailwind.config.js` file:
 
 <Blockquote color="primary">
@@ -248,7 +248,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
 }
 ```
 
-> **Note**: HeroUI automatically adds two themes, `light` and `dark`, to your application. You can use any 
+> **Note**: HeroUI automatically adds two themes, `light` and `dark`, to your application. You can use any
 of them by adding the `dark`/`light` class to the `html` tag. See the [theme docs](/docs/customization/customize-theme) for more details.
 
 
@@ -259,7 +259,7 @@ the `use client;` directive:
 
 ```jsx {2,7}
 // app/page.tsx
-import {Button} from '@heroui/button'; 
+import {Button} from '@heroui/button';
 
 export default function Page() {
   return (
@@ -269,13 +269,13 @@ export default function Page() {
   )
 }
 ```
-> **Important 🚨**: Note that you need to import the component from the individual package, not from `@heroui/react`. 
+> **Important 🚨**: Note that you need to import the component from the individual package, not from `@heroui/react`.
 
 </Steps>
 
 ---
 
-## Pages Directory Setup 
+## Pages Directory Setup
 
 ### HeroUI CLI (recommended)
 
@@ -289,7 +289,7 @@ npx heroui-cli@latest init -t pages
 
 If you are using the `/pages` Next.js project structure, you need to follow the steps below.
 
-### create-next-app 
+### create-next-app
 
 If you are starting a new project, you can run one of the following commands to create a Next.js project pre-configured with HeroUI:
 
@@ -420,7 +420,7 @@ After modifying the `.npmrc` file, you need to run `pnpm install` again to ensur
 ### Tailwind CSS Setup
 
 HeroUI is built on top of Tailwind CSS, so you need to install Tailwind CSS first. You can follow the official
-[installation guide](https://v3.tailwindcss.com/docs/guides/nextjs) to install Tailwind CSS. Then you need to add 
+[installation guide](https://v3.tailwindcss.com/docs/guides/nextjs) to install Tailwind CSS. Then you need to add
 the following code to your `tailwind.config.js` file:
 
 <Blockquote color="primary">

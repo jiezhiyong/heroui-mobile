@@ -3,7 +3,7 @@ title: "Toast"
 description: "Toast are temporary notifications that provide concise feedback about an action or event."
 ---
 
-import {toastContent} from "@/content/components/toast";
+import { toastContent } from "@/content/components/toast";
 
 # Toast
 
@@ -13,7 +13,7 @@ Toasts are temporary notifications that provide concise feedback about an action
 
 ---
 
-<CarbonAd />
+
 
 ## Installation
 
@@ -132,7 +132,7 @@ You can pass a custom close icon to the toast by passing the `closeIcon` prop an
 You can pass global toast props to the `ToastProvider` to apply to all toasts.
 
 ```jsx
-<ToastProvider 
+<ToastProvider
   toastProps={{
     radius: "full",
     color: "primary",
@@ -142,7 +142,7 @@ You can pass global toast props to the `ToastProvider` to apply to all toasts.
     classNames: {
       closeButton: "opacity-100 absolute right-4 top-1/2 -translate-y-1/2",
     },
-  }} 
+  }}
 />
 ```
 
@@ -199,14 +199,14 @@ Toast has the following slots:
       default: "-"
     },
     {
-      attribute: "icon", 
+      attribute: "icon",
       type: "ReactNode",
       description: "The alert icon - overrides the default icon",
       default: "-"
     },
     {
       attribute: "description",
-      type: "ReactNode", 
+      type: "ReactNode",
       description: "The alert description",
       default: "-"
     },
@@ -231,7 +231,7 @@ Toast has the following slots:
     {
       attribute: "endContent",
       type: "ReactNode",
-      description: "The alert end content", 
+      description: "The alert end content",
       default: "-"
     },
     {
@@ -243,7 +243,7 @@ Toast has the following slots:
     {
       attribute: "timeout",
       type: "number",
-      description: "Time in milliseconds after which the toast will be closed", 
+      description: "Time in milliseconds after which the toast will be closed",
       default: "6000"
     },
     {
@@ -253,7 +253,7 @@ Toast has the following slots:
       default: "undefined"
     },
     {
-      attribute: "loadingIcon", 
+      attribute: "loadingIcon",
       type: "ReactNode",
       description: "The loading icon for toasts with promise prop - overrides the default loading icon",
       default: "-"
@@ -277,7 +277,7 @@ Toast has the following slots:
       default: "false",
     },
     {
-      attribute: "severity", 
+      attribute: "severity",
       type: "default | primary | secondary | success | warning | danger",
       description: "The severity of the toast. This changes the icon of the toast without having to change the color.",
       default: "default"
@@ -302,13 +302,13 @@ Toast has the following slots:
       default: "3"
     },
     {
-      attribute: "placement", 
+      attribute: "placement",
       type: "bottom-right | bottom-left | bottom-center | top-right | top-left | top-center",
       description: "The placement of the toast.",
       default: "bottom-right"
     },
     {
-      attribute: "disableAnimation", 
+      attribute: "disableAnimation",
       type: "boolean",
       description: "Disables the animation.",
       default: "false"

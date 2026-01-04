@@ -8,7 +8,7 @@ description: Learn how to integrate client side routing into your HeroUI applica
 HeroUI Components such as [Tabs](/docs/components/tabs), [Listbox](/docs/components/listbox), [Dropdown](/docs/components/dropdown) and many others offer
 the flexibility to be rendered as **HTML links**.
 
-<CarbonAd />
+
 
 ## Introduction
 
@@ -199,7 +199,7 @@ function MyApp({Component, pageProps}: AppProps) {
 export default MyApp;
 ```
 
-When using the [basePath](https://nextjs.org/docs/app/api-reference/next-config-js/basePath) configuration option, 
+When using the [basePath](https://nextjs.org/docs/app/api-reference/next-config-js/basePath) configuration option,
 provide a `useHref` option to the router passed to Provider to prepend it to links automatically.
 
 ```tsx {8}
@@ -309,7 +309,7 @@ export default function App() {
 
 ## TanStack
 
-To use [TanStack Router](https://tanstack.com/router/latest) with HeroUI, render HeroUI's RouterProvider inside your root route. 
+To use [TanStack Router](https://tanstack.com/router/latest) with HeroUI, render HeroUI's RouterProvider inside your root route.
 Use `router.navigate` in the `navigate` prop, and `router.buildLocation` in the `useHref` prop.
 
 ```tsx

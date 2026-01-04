@@ -1,7 +1,8 @@
 import type { Project } from "@stackblitz/sdk";
 import type { SandpackFiles } from "@codesandbox/sandpack-react/types";
 
-import { mapKeys, omit } from "@/../../packages/utilities/shared-utils/src";
+import { mapKeys, omit } from "@heroui/shared-utils";
+
 import { useSandpack } from "@/components/sandpack/use-sandpack";
 
 export interface UseSandpackProps {

@@ -1,6 +1,5 @@
-@import 'prism.css';
-@import 'nprogress.css';
-@import 'ads.css';
+@import "prism.css";
+@import "nprogress.css";
 
 @tailwind base;
 @tailwind components;
@@ -17,7 +16,7 @@ body {
   min-height: 100vh;
 }
 /* Experimental */
-/* body::after { 
+/* body::after {
   background-image: radial-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0) 40%),
   radial-gradient(rgb(255, 209, 82) 30%, rgb(226, 105, 150), rgba(226, 105, 150, 0.4) 41%, transparent 52%),
   radial-gradient(rgb(160, 51, 255) 37%, transparent 46%),
@@ -37,7 +36,7 @@ position: fixed;
 z-index: 0;
 } */
 
-/* 
+/*
 @media screen and (max-width: 640px) {
   #app-container {
     height: 100vh;
@@ -84,7 +83,6 @@ z-index: 0;
   }
 }
 
-
 @layer utilities {
   .step {
     counter-increment: step;
@@ -97,19 +95,19 @@ z-index: 0;
   }
 }
 
-pre details[open]>summary>span:first-child::before {
+pre details[open] > summary > span:first-child::before {
   transform: rotate(90deg);
 }
 
-pre details[open]>summary span.custom-folder {
+pre details[open] > summary span.custom-folder {
   display: none;
 }
 
-pre details:not([open])>summary span.ellipsis-token::after {
-  content: '...';
+pre details:not([open]) > summary span.ellipsis-token::after {
+  content: "...";
 }
 
-pre details:not([open])>summary span.copy-token {
+pre details:not([open]) > summary span.copy-token {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -121,7 +119,7 @@ pre details:not([open])>summary span.copy-token {
   border-width: 0;
 }
 
-pre details[open]>summary span.copy-token {
+pre details[open] > summary span.copy-token {
   display: none;
 }
 
@@ -129,11 +127,11 @@ pre details:not([open]) {
   display: inline;
 }
 
-pre details:not([open])>summary span.empty-token {
+pre details:not([open]) > summary span.empty-token {
   display: none;
 }
 
-pre details:not([open])+div.token-line {
+pre details:not([open]) + div.token-line {
   display: none;
 }
 
@@ -143,7 +141,7 @@ pre summary {
   list-style: none;
 }
 
-pre summary>span:first-child::before {
+pre summary > span:first-child::before {
   position: absolute;
   display: inline-flex;
   align-items: center;

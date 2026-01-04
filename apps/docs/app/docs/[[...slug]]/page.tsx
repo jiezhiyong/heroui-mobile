@@ -12,15 +12,18 @@ import { GITHUB_URL, REPO_NAME } from "@/libs/github/constants";
 import { CONTENT_PATH, TAG } from "@/libs/docs/config";
 import { getHeadings } from "@/libs/docs/utils";
 
+type DocParams = {
+  slug?: string[];
+};
+
 interface DocPageProps {
-  params: {
-    slug: string[];
-  };
+  params: Promise<DocParams>;
 }
 
 async function getDocFromParams({ params }: DocPageProps) {
-  const slug = params.slug?.join("/") || "";
-  const doc = allDocs.find((doc) => doc.slugAsParams === slug);
+  const { slug } = await params;
+  const slugAsParams = slug?.join("/") || "";
+  const doc = allDocs.find((doc) => doc.slugAsParams === slugAsParams);
 
   if (!doc) {
     null;
@@ -71,7 +74,7 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
   };
 }
 
-export async function generateStaticParams(): Promise<DocPageProps["params"][]> {
+export async function generateStaticParams(): Promise<DocParams[]> {
   return allDocs.map((doc) => ({
     slug: doc.slugAsParams.split("/"),
   }));

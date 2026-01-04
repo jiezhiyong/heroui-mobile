@@ -12,19 +12,21 @@ import { __DEV__, __PREVIEW__ } from "@/utils";
 import { MDXContent } from "@/components/mdx-content";
 import { siteConfig } from "@/config/site";
 import { ChevronRightLinearIcon } from "@/components/icons";
-import { CarbonAd } from "@/components/ads/carbon-ad";
+
+type BlogPostParams = {
+  slug?: string;
+};
 
 interface BlogPostProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<BlogPostParams>;
 }
 
 const isDraftVisible = __DEV__ || __PREVIEW__;
 
 async function getBlogPostFromParams({ params }: BlogPostProps) {
-  const slug = params.slug || "";
-  const post = allBlogPosts.find((post) => post.slugAsParams === slug);
+  const { slug } = await params;
+  const slugAsParams = slug || "";
+  const post = allBlogPosts.find((post) => post.slugAsParams === slugAsParams);
 
   if (!post) {
     null;
@@ -73,7 +75,7 @@ export async function generateMetadata({ params }: BlogPostProps): Promise<Metad
   };
 }
 
-export async function generateStaticParams(): Promise<BlogPostProps["params"][]> {
+export async function generateStaticParams(): Promise<BlogPostParams[]> {
   return allBlogPosts.map((doc) => ({
     slug: doc.slugAsParams,
   }));
@@ -100,8 +102,6 @@ export default async function DocPage({ params }: BlogPostProps) {
           <ChevronRightLinearIcon className="rotate-180 inline-block mr-1" size={15} />
           Back to blog
         </Link>
-
-        <CarbonAd />
 
         <Spacer y={4} />
 
