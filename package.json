@@ -25,7 +25,7 @@
     "test:strict": "cross-env STRICT_MODE=true pnpm test",
     "typecheck": "turbo typecheck",
     "lint": "eslint --max-warnings=0",
-    "lint:fix": "eslint --fix",
+    "lint:fix": "eslint --fix --debug",
     "check:rap": "tsx scripts/check-rap-updates.ts",
     "fix:rap": "tsx scripts/fix-rap.ts",
     "format:check": "prettier --check packages/**/**/src --cache",

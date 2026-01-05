@@ -1,8 +1,8 @@
-import type { UseSmsTickerProps, SmsTickerRefApi } from "./use-sms-ticker";
 import type { ReactRef } from "@heroui/react-utils";
+import type { SmsTickerRefApi, UseSmsTickerProps } from "./use-sms-ticker";
 
-import { Spinner } from "@heroui/spinner";
 import { Ripple } from "@heroui/ripple";
+import { Spinner } from "@heroui/spinner";
 import { forwardRef, useImperativeHandle } from "react";
 
 import { useSmsTicker } from "./use-sms-ticker";

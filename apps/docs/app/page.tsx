@@ -1,16 +1,16 @@
-import { Spacer } from "@heroui/spacer";
+import { Spacer } from "@heroui/react";
 
-import { Hero } from "@/components/marketing/hero";
-import { FeaturesGrid } from "@/components/marketing/features-grid";
-import { CustomThemes } from "@/components/marketing/custom-themes";
 import { A11yOtb } from "@/components/marketing/a11y-otb";
-import { DarkMode } from "@/components/marketing/dark-mode";
-import { Customization } from "@/components/marketing/customization";
-import { LastButNotLeast } from "@/components/marketing/last-but-not-least";
-import { InstallBanner } from "@/components/marketing/install-banner";
 import { Community } from "@/components/marketing/community";
-import landingContent from "@/content/landing";
+import { CustomThemes } from "@/components/marketing/custom-themes";
+import { Customization } from "@/components/marketing/customization";
+import { DarkMode } from "@/components/marketing/dark-mode";
+import { FeaturesGrid } from "@/components/marketing/features-grid";
+import { Hero } from "@/components/marketing/hero";
 import { HeroUIProSection } from "@/components/marketing/heroui-pro-section";
+import { InstallBanner } from "@/components/marketing/install-banner";
+import { LastButNotLeast } from "@/components/marketing/last-but-not-least";
+import landingContent from "@/content/landing";
 
 export default async function Home() {
   return (

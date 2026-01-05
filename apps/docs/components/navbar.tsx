@@ -3,7 +3,7 @@
 import type { FC, ReactNode } from "react";
 import type { Route } from "@/libs/docs/page";
 
-import { useRef, useState, useMemo } from "react";
+import { useRef, useState, useMemo, useEffect } from "react";
 import {
   link,
   Navbar as HeroUINavbar,
@@ -24,7 +24,6 @@ import { clsx } from "@heroui/shared-utils";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect } from "react";
 import { usePress } from "@react-aria/interactions";
 import { useFocusRing } from "@react-aria/focus";
 

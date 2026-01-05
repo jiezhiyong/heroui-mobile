@@ -1,10 +1,9 @@
 "use client";
 
-import { Button, Link } from "@heroui/react";
+import { Button, Link, Code } from "@heroui/react";
 import { ArrowRightIcon } from "@heroui/shared-icons";
 import { clsx } from "@heroui/shared-utils";
 import NextLink from "next/link";
-import { Code } from "@heroui/react";
 
 import { FeaturesGrid } from "./features-grid";
 
