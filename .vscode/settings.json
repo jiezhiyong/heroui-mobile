@@ -15,7 +15,15 @@
     ]
   },
   "tailwindCSS.experimental.classRegex": [
-    ["([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*).*?[\"'`]"]
+    // 仅在对象字面量里对 `class: "..."` 提供 Tailwind 补全（例如：subtitle({ class: "mt-4" })）
+    ["\\bclass\\s*:\\s*([\"'`][^\"'`]*[\"'`])", "[\"'`]([^\"'`]*)[\"'`]"],
+    // HeroUI 常用：classNames={{ base: "...", ... }} / classNames={{ base: ["..."], ... }}
+    ["\\bclassNames\\s*=\\s*\\{\\{([\\s\\S]*?)\\}\\}", "[\"'`]([^\"'`]*)[\"'`]"],
+    // tailwind-variants：tv({ base: ["..."], variants: { ... } })
+    ["\\btv\\(\\{([\\s\\S]*?)\\}\\)", "[\"'`]([^\"'`]*)[\"'`]"],
+    // 若你项目里使用 cn()/clsx()/classnames() 拼接类名，可启用下面两条
+    ["\\bcn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["\\b(?:clsx|classnames)\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ],
   "prettier.bracketSpacing": true,
   "files.readonlyInclude": {
