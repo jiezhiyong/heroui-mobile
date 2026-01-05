@@ -83,13 +83,15 @@ git add .
 git commit -m "feat: 添加新组件"
 
 # 2) 生成版本号与 CHANGELOG（会修改很多 package.json/CHANGELOG）
-pnpm version
+# 注意：本仓库使用 `@changesets/changelog-github` 生成 changelog，本地执行需要设置 `GITHUB_TOKEN`（Personal Access Token，至少包含 `read:user` 和 `repo:status` 权限），否则会报错并不修改任何文件；
+# 另外：`changelog-github` 需要能在 GitHub 上查到对应 commit 信息；建议先把 `.changeset/*.md` 提交并推送到远端，再执行此步骤；
+pnpm run version
 git add .
 git commit -m "chore: release"
 
 # 3) 构建并发布
 pnpm build
-pnpm release
+pnpm run release
 
 # 4) 推送代码（如你手动创建了 git tag，可用 --follow-tags 一并推送）
 git push
