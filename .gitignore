@@ -64,6 +64,3 @@ packages/**/.turbo
 
 # content layer
 .contentlayer
-
-# HeroUI v2 Tailwind content（自动生成）
-.heroui.tailwind-components*.json
