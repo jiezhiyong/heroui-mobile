@@ -3,6 +3,40 @@ const { commonColors } = require("@heroui/theme/colors");
 const svgToDataUri = require("mini-svg-data-uri");
 const plugin = require("tailwindcss/plugin");
 const { default: flattenColorPalette } = require("tailwindcss/lib/util/flattenColorPalette");
+const fs = require("node:fs");
+
+const HEROUI_TW_COMPONENTS_FILE =
+  process.env.HEROUI_TW_COMPONENTS_FILE ?? ".heroui.tailwind-components.json";
+
+function getHeroUIContentGlobs() {
+  try {
+    const raw = fs.readFileSync(`./${HEROUI_TW_COMPONENTS_FILE}`, "utf-8");
+    const json = JSON.parse(raw);
+    return Array.isArray(json?.patterns) ? json.patterns : [];
+  } catch {
+    console.warn(`[heroui] 未生成 ${HEROUI_TW_COMPONENTS_FILE} 文件，回退到全量收集`);
+    const fallback = [];
+    if (
+      fs.existsSync(
+        new URL("./node_modules/@heroui/theme/dist/components"),
+      )
+    ) {
+      fallback.push(
+        "./node_modules/@heroui/theme/dist/components/**/*.{js,ts,jsx,tsx}",
+      );
+    }
+    if (
+      fs.existsSync(
+        new URL("./node_modules/@heroui-mobile/theme/dist/components"),
+      )
+    ) {
+      fallback.push(
+        "./node_modules/@heroui-mobile/theme/dist/components/**/*.{js,ts,jsx,tsx}",
+      );
+    }
+    return fallback;
+  }
+}
 
 // get tailwindcss default config
 const defaultTheme = require("tailwindcss/defaultTheme");
@@ -16,7 +50,8 @@ module.exports = {
     "./layouts/**/*.{js,ts,jsx,tsx,mdx}",
     "./libs/**/*.{js,ts,jsx,tsx,mdx}",
     "./content/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
+
+    ...getHeroUIContentGlobs(),
   ],
   darkMode: "class",
   theme: {

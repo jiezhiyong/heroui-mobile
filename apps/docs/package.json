@@ -14,7 +14,10 @@
     "build:sponsors": "tsx scripts/build-sponsors.ts",
     "update:search-meta": "tsx scripts/update-search-meta.ts",
     "update:github-info": "tsx scripts/update-github-info.ts",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "predev": "pnpm heroui:sync",
+    "prebuild": "pnpm heroui:sync",
+    "heroui:sync": "node scripts/generate-heroui-tailwind-content.mjs"
   },
   "peerDependencies": {
     "@heroui/react": "2.7.11",

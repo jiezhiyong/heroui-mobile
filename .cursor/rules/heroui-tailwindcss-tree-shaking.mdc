@@ -1,0 +1,81 @@
+---
+alwaysApply: false
+---
+
+# HeroUI v2 + Tailwind v3：自动化 `content` 方案（替代手写组件列表）
+
+## 背景 / 痛点
+
+- HeroUI v2 的 Tailwind 主题样式无法自动 tree-shaking，需要在 `tailwind.config.js -> content` 手动指定 `@heroui/theme/dist/components/(button|...).{js,ts,jsx,tsx}`。
+- 新增/删除组件很容易忘记同步这段列表。
+- 非 SPA 应用如果每个路由作为单独的模块构建，但共享同一份 `tailwind.config.js` 时，无法做到 `按入口最小化` 且互相影响。
+
+## 目标
+
+- 无需手动修改 `tailwind.config.js` 中的 HeroUI 组件列表。
+- 让构建流程可扩展支持多入口 / 多包：使用同一份 `tailwind.config.js`，但按不同入口生成不同白名单。
+
+---
+
+## 方案概览（核心机制）
+
+- **生成阶段（dev/build 前）**：
+  - 扫描代码中：
+    - `import { ... } from "@heroui/react"`
+    - `import { ... } from "@heroui-mobile/react"`
+  - **仅对“实际导入过”的包**生成对应 theme 的 Tailwind `content`（避免“装了就全纳入”）：
+    - 使用了 `@heroui/react` 才会尝试生成 `@heroui/theme`
+    - 使用了 `@heroui-mobile/react` 才会尝试生成 `@heroui-mobile/theme`
+  - 根据对应 theme 的 `dist/components/*.mjs` 的 `export { ... }` 自动建立映射：
+    - `DateRangePicker` → `date-picker`
+    - `CircularProgress` → `progress`
+    - `Switch` → `toggle`（特例）
+  - 产出 `.heroui.tailwind-components.json`，包含：
+    - `patterns`: 可直接用于 Tailwind `content` 的 glob 数组
+- **消费阶段（tailwind.config.js）**：
+  - 优先读取 `.json` 里的 `patterns[]`，把每个主题的最小 glob 追加进 `content`：
+    - `./node_modules/@heroui/theme/dist/components/(button|... ).{js,ts,jsx,tsx}`
+    - `./node_modules/@heroui-mobile/theme/dist/components/(... ).{js,ts,jsx,tsx}`
+  - 如果 `.json` 不存在/解析失败：仅对“已安装的 theme 包”回退到全量 glob：
+    - `./node_modules/@heroui/theme/dist/components/**/*.{js,ts,jsx,tsx}`（存在时才加入）
+    - `./node_modules/@heroui-mobile/theme/dist/components/**/*.{js,ts,jsx,tsx}`（存在时才加入）
+
+---
+
+## 项目内落地
+
+- **生成脚本**：`scripts/generate-heroui-tailwind-content.mjs`
+- **输出文件**：默认 `.heroui.tailwind-components.json`
+- **Tailwind 配置**：`tailwind.config.js` 中用函数动态读取 `.json`
+- **NPM 脚本**：`predev` / `prebuild` 自动执行生成脚本、`pnpm heroui:sync` 可手动刷新
+
+---
+
+## Monorepo / 多入口 / 每个路由独立构建（关键用法）
+
+为避免“多个包/路由并行构建时写同一个 `.json` 互相覆盖”，每个构建单元应当：
+
+- 生成**自己的**清单文件（`--out` 指定不同文件名）
+- 构建时通过环境变量让 Tailwind 读取对应清单，如：`HEROUI_TW_COMPONENTS_FILE=.heroui.route-a.json`
+
+示例：
+
+```bash
+# 生成 A 路由/包的清单
+node scripts/generate-heroui-tailwind-content.mjs \
+  --scan packages/route-a/src \
+  --out .heroui.route-a.json
+
+# 构建 A（同一份 tailwind.config.js，读取 A 的清单）
+HEROUI_TW_COMPONENTS_FILE=.heroui.route-a.json pnpm -C packages/route-a build
+```
+
+---
+
+## 常见注意点
+
+- **只扫 import 更稳定**：不依赖 JSX 标签名推断，减少误判。
+- **复合组件归属**：如 `NavbarBrand` / `NavbarItem` 等，会归到 `navbar` 主题文件。
+- **少数不一致映射**：例如 `Switch` 对应 theme 的 `toggle`，脚本内已做手动兜底。
+- **多主题包**：脚本固定支持 `@heroui/theme` 与 `@heroui-mobile/theme`；只有在安装后才会被纳入生成结果。
+- **首次启动/CI 兜底**：如果生成文件缺失，`tailwind.config.js` 会回退到全量，保证不阻塞开发。

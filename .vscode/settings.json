@@ -18,6 +18,9 @@
     ["([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ],
   "prettier.bracketSpacing": true,
+  "files.readonlyInclude": {
+    "**/.heroui.tailwind-components*.json": true
+  },
   "cSpell.words": [
     "algoliasearch",
     "argstable",
