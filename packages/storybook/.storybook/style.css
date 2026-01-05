@@ -17,6 +17,10 @@ h3 {
 .dark .sbdocs-wrapper,
 .dark .sbdocs-preview {
   background-color: #000000;
+  color: #fff !important;
+}
+
+.dark .sbdocs-wrapper p {
   color: #fff;
 }
 
