@@ -3,7 +3,7 @@ const { commonColors } = require("@heroui/theme/colors");
 const svgToDataUri = require("mini-svg-data-uri");
 const plugin = require("tailwindcss/plugin");
 const { default: flattenColorPalette } = require("tailwindcss/lib/util/flattenColorPalette");
-const fs = require("node:fs");
+import fs from 'node:fs';
 
 const HEROUI_TW_COMPONENTS_FILE =
   process.env.HEROUI_TW_COMPONENTS_FILE ?? ".heroui.tailwind-components.json";
@@ -18,7 +18,7 @@ function getHeroUIContentGlobs() {
     const fallback = [];
     if (
       fs.existsSync(
-        new URL("./node_modules/@heroui/theme/dist/components"),
+        new URL("./node_modules/@heroui/theme/dist/components", import.meta.url),
       )
     ) {
       fallback.push(
@@ -27,7 +27,7 @@ function getHeroUIContentGlobs() {
     }
     if (
       fs.existsSync(
-        new URL("./node_modules/@heroui-mobile/theme/dist/components"),
+        new URL("./node_modules/@heroui-mobile/theme/dist/components", import.meta.url),
       )
     ) {
       fallback.push(

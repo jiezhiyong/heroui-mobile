@@ -68,13 +68,12 @@ function extractHerouiMobileImports(sourceText) {
 
 function extractPackageImports(sourceText, pkgName) {
   const results = new Set();
+  // 注意：这里不能用 [\\s\\S]*?（会允许跨越其他 import 的 '}'，导致把别的包的命名导入误判成目标包导入）
+  // 用 [^}]* 可以保证只匹配到“当前 import 语句”的第一个 '}' 为止（支持换行），避免跨语句误匹配。
   const re =
     new RegExp(
-      `import\\s*\\{([\\s\\S]*?)\\}\\s*from\\s*["']${pkgName.replace(
-        /[.*+?^${}()|[\]\\]/g,
-        "\\$&",
-      )}["']`,
-      "gms",
+      `import\\s*\\{([^}]*)\\}\\s*from\\s*["']${pkgName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}["']`,
+      'gm'
     );
   let m;
   while ((m = re.exec(sourceText))) {

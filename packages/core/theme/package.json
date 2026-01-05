@@ -6,13 +6,7 @@
   "main": "src/index.ts",
   "sideEffects": false,
   "files": [
-    "dist",
-    "config.js",
-    "config.d.ts",
-    "plugin.js",
-    "plugin.d.ts",
-    "colors.js",
-    "colors.d.ts"
+    "dist"
   ],
   "publishConfig": {
     "access": "public"
@@ -52,5 +46,6 @@
       "cjs",
       "esm"
     ]
-  }
+  },
+  "clean-package": "../../../clean-package.config.json"
 }

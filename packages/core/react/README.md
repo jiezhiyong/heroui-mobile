@@ -89,11 +89,15 @@ git push
 pnpm run version
 git add .
 git commit -m "chore: release"
+
+# 3) 创建 git tag
 VER=$(node -p "require('./packages/core/react/package.json').version")
-git tag -a "v$VER" -m "release v$VER"
+git tag -a "v$VER" -m "release v$VER" # echo $VER && git show "v$VER" --no-patch
+
+# 4) 推送代码（如你手动创建了 git tag，可用 --follow-tags 一并推送）
 git push --follow-tags
 
-# 3) 构建并发布
+# 5) 构建并发布
 pnpm build
 pnpm run release
 ```
