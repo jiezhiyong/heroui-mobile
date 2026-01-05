@@ -28,6 +28,7 @@
     "postpack": "clean-package restore"
   },
   "dependencies": {
+    "@heroui-mobile/theme": "workspace:*",
     "@heroui-mobile/safe-area-top": "workspace:*",
     "@heroui-mobile/safe-area-bottom": "workspace:*",
     "@heroui-mobile/sms-ticker": "workspace:*"

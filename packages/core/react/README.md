@@ -72,18 +72,28 @@ pnpm build:registry
 pnpm build:sb
 ```
 
-## 发布到 npm: 登录 npm、创建变更集、提交变更、更新版本号、构建项目、发布到 npm、推送代码和标签
+## 发布到 npm: 登录 npm、创建 changeset、提交变更、版本号/CHANGELOG 更新并提交、构建项目、发布到 npm、推送代码（可选推送标签）
 
 ```bash
 npm login
+
+# 1) 创建 changeset（记录本次变更）
 pnpm changeset
 git add .
 git commit -m "feat: 添加新组件"
+
+# 2) 生成版本号与 CHANGELOG（会修改很多 package.json/CHANGELOG）
 pnpm version
+git add .
+git commit -m "chore: release"
+
+# 3) 构建并发布
 pnpm build
 pnpm release
+
+# 4) 推送代码（如你手动创建了 git tag，可用 --follow-tags 一并推送）
 git push
-git push --tags
+git push --follow-tags
 ```
 
 ## 手动发布单个包
