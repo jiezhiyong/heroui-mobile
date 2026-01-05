@@ -1,6 +1,6 @@
 {
   "name": "@heroui-mobile/use-navigate",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Navigate Hook with query parameters",
   "keywords": [
     "react",
