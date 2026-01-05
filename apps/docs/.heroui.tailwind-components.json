@@ -3,7 +3,7 @@
     "./node_modules/@heroui/theme/dist/components/(accordion|autocomplete|avatar|breadcrumbs|button|card|checkbox|chip|code|divider|drawer|dropdown|form|image|input|kbd|link|listbox|modal|navbar|pagination|popover|progress|radio|scroll-shadow|select|skeleton|slider|snippet|spacer|spinner|table|tabs|toast|toggle|user).{js,ts,jsx,tsx}",
     "./node_modules/@heroui-mobile/theme/dist/components/(sms-ticker).{js,ts,jsx,tsx}"
   ],
-  "generatedAt": "2026-01-05T06:21:56.022Z",
+  "generatedAt": "2026-01-05T07:15:24.184Z",
   "scan": [
     "./content",
     "./components",

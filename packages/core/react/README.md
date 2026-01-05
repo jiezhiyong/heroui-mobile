@@ -88,14 +88,13 @@ git commit -m "feat: 添加新组件"
 pnpm run version
 git add .
 git commit -m "chore: release"
+VER=$(node -p "require('./packages/core/react/package.json').version")
+git tag -a "v$VER" -m "release v$VER"
+git push --follow-tags
 
 # 3) 构建并发布
 pnpm build
 pnpm run release
-
-# 4) 推送代码（如你手动创建了 git tag，可用 --follow-tags 一并推送）
-git push
-git push --follow-tags
 ```
 
 ## 手动发布单个包
