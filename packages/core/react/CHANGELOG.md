@@ -1,5 +1,11 @@
 # @heroui-mobile/react
 
+## 1.0.3
+
+### Patch Changes
+
+- [`0563425`](https://github.com/jiezhiyong/heroui-mobile/commit/05634259df6e5112f8091fdd7ef42487150af340) Thanks [@jiezhiyong](https://github.com/jiezhiyong)! - chore: update README
+
 ## 1.0.2
 
 ### Patch Changes

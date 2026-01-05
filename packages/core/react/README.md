@@ -81,6 +81,7 @@ npm login
 pnpm changeset
 git add .
 git commit -m "feat: 添加新组件"
+git push
 
 # 2) 生成版本号与 CHANGELOG（会修改很多 package.json/CHANGELOG）
 # 注意：本仓库使用 `@changesets/changelog-github` 生成 changelog，本地执行需要设置 `GITHUB_TOKEN`（Personal Access Token，至少包含 `read:user` 和 `repo:status` 权限），否则会报错并不修改任何文件；
