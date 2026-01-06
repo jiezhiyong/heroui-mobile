@@ -20,7 +20,7 @@
     "heroui:sync": "node scripts/generate-heroui-tailwind-content.mjs"
   },
   "peerDependencies": {
-    "@heroui/react": "2.7.11",
+    "@heroui/react": "2.8.7",
     "@heroui/theme": "2.4.17"
   },
   "dependencies": {
