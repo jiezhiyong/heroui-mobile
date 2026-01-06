@@ -180,6 +180,12 @@ function resolveUsedStems(importedNames, mapping, familyTriggers) {
     const direct = mapping.get(name);
     if (direct) {
       used.add(direct);
+
+      // 特殊处理：DatePicker, DateRangePicker 都使用 calendar
+      if (['DatePicker', 'DateRangePicker'].includes(name)) {
+        used.add('calendar');
+      }
+
       continue;
     }
 
